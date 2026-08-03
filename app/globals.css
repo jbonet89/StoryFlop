@@ -88,6 +88,10 @@ label { display:block;font-size:12px;font-weight:750;margin:15px 0;color:#394540
 .reaction-grid button:hover,.reaction-grid button:focus-visible { z-index:1;background:#f2f0ea;transform:scale(1.12); }
 .reaction-flight-layer { position:fixed;inset:0;z-index:100;pointer-events:none;overflow:visible; }
 .reaction-flight-layer .flying-reaction { position:fixed;left:0;top:0;font-size:34px;line-height:1;z-index:101;pointer-events:none;will-change:transform,opacity; }
+.profile-dialog-backdrop { position:fixed;inset:0;z-index:140;display:grid;place-items:center;padding:18px;background:rgba(18,28,24,.42);backdrop-filter:blur(3px); }
+.profile-dialog { width:min(440px,100%);max-height:calc(100dvh - 36px);overflow-y:auto;background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:0 24px 70px rgba(18,31,26,.28); }
+.profile-dialog>header { position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:16px 18px;background:rgba(255,253,248,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(12px); }
+.profile-dialog>header>div { display:flex;align-items:center;gap:10px; }.profile-dialog>header>div>span { width:42px;height:42px;display:grid;place-items:center;border-radius:12px;background:#f2efe8;font-size:24px; }.profile-dialog>header small { color:var(--coral);font-size:8px;font-weight:800;text-transform:uppercase;letter-spacing:.12em; }.profile-dialog h2 { margin:2px 0 0;font-family:Georgia,serif;font-size:22px;font-weight:500; }.profile-dialog form { padding:4px 18px 18px; }.profile-dialog .avatar-field { margin:16px 0; }.profile-dialog .avatar-picker { grid-template-columns:repeat(7,minmax(0,1fr)); }.profile-dialog .avatar { height:38px; }.profile-dialog .primary-button { margin-top:4px; }
 .completed-task { background:#f0f4f1;border:1px solid #d7e3dc; }
 .completed-task .task-select { padding-top:8px;padding-bottom:8px; }
 .task-copy { min-width:0;display:flex;flex-direction:column;gap:3px;flex:1; }
@@ -106,6 +110,7 @@ label { display:block;font-size:12px;font-weight:750;margin:15px 0;color:#394540
   .player-meta strong { max-width:53px; }
   .player-meta em { display:none; }
   .reaction-popover { position:fixed;left:50%;top:auto;bottom:calc(145px + env(safe-area-inset-bottom));transform:translateX(-50%);width:min(320px,calc(100vw - 24px)); }
+  .profile-dialog-backdrop { align-items:end;padding:0; }.profile-dialog { width:100%;max-height:min(82dvh,720px);border-radius:20px 20px 0 0;border-bottom:0; }.profile-dialog .avatar-picker { grid-template-columns:repeat(6,minmax(0,1fr)); }
   .task-list { scrollbar-width:thin; }
   .completed-task { min-width:225px; }
   .voting-dock { padding-bottom:max(12px,env(safe-area-inset-bottom)); }

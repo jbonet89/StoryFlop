@@ -28,6 +28,7 @@ import { ParticipationModeToggle } from "@/features/room/components/Participatio
 import { RoundHistory } from "@/features/room/components/RoundHistory";
 import { LinkedText } from "@/features/room/components/LinkedText";
 import { TaskDetailDrawer, type TaskDetailMode } from "@/features/room/components/TaskDetailDrawer";
+import { MemberProfileDialog } from "@/features/room/components/MemberProfileDialog";
 
 export function PokerRoom({ snapshot, code, realtimeStatus }: { snapshot: RoomSnapshot; code: string; realtimeStatus: RealtimeStatus }) {
   const t = useTranslations("Room");
@@ -52,6 +53,7 @@ export function PokerRoom({ snapshot, code, realtimeStatus }: { snapshot: RoomSn
   const [changingMode, setChangingMode] = useState(false);
   const [inspectedTaskId, setInspectedTaskId] = useState<string | null>(null);
   const [taskDetailMode, setTaskDetailMode] = useState<TaskDetailMode>("view");
+  const [profileOpen, setProfileOpen] = useState(false);
   const [animations, setAnimations] = useState<ReactionAnimation[]>([]);
   const inspectionOpenerRef = useRef<HTMLElement | null>(null);
   const processedReactionIds = useRef(new Set(snapshot.reactions.map(reaction => reaction.id)));
@@ -116,7 +118,7 @@ export function PokerRoom({ snapshot, code, realtimeStatus }: { snapshot: RoomSn
       <section className="table-stage"><div className="round-heading"><span>{activeRound ? t("round", { number: activeRound.round_number }) : t("tableReady")}</span><h1>{activeTask?.title ?? t("whatEstimate")}</h1>{activeTask?.description && <p><LinkedText text={activeTask.description} /></p>}</div>
         <ParticipationModeToggle preference={snapshot.me.default_participation_mode} currentMode={activeRound ? myCurrentMode : undefined} roundStatus={activeRound?.status} changing={changingMode} onChange={mode => void changeParticipationMode(mode)} />
         <div className={`poker-table player-count-${Math.min(members.length, 12)}`}><div className="felt"><div className="felt-ring"><span>{activeRound?.status === "revealed" ? t("results") : activeRound ? t("votingInProgress") : t("brand")}</span><strong>{statusText}</strong><div className="felt-dots">{members.map(member => { const participation = currentParticipation.find(item => item.member_id === member.id); const mode = getMemberRoundMode(member, participation); return <i key={member.id} className={mode === "observer" ? "observer" : participation?.has_voted ? "done" : ""} title={mode === "observer" ? t("observerDot", { name: member.display_name }) : undefined} />; })}</div></div></div>
-          <div className="seat-grid">{members.slice(0, 12).map((member, index) => { const participation = currentParticipation.find(item => item.member_id === member.id); return <PlayerSeat key={member.id} member={member} position={positions[index]} compact={members.length > 8} isMe={member.id === snapshot.me.id} online={member.id === snapshot.me.id || presence.onlineIds.has(member.id)} participationMode={getMemberRoundMode(member, participation)} roundActive={Boolean(activeRound)} voted={participation?.has_voted ?? false} vote={currentVotes.find(vote => vote.member_id === member.id)} revealed={activeRound?.status === "revealed"} onReact={emoji => void react(member.id, emoji)} />; })}</div>
+          <div className="seat-grid">{members.slice(0, 12).map((member, index) => { const participation = currentParticipation.find(item => item.member_id === member.id); return <PlayerSeat key={member.id} member={member} position={positions[index]} compact={members.length > 8} isMe={member.id === snapshot.me.id} online={member.id === snapshot.me.id || presence.onlineIds.has(member.id)} participationMode={getMemberRoundMode(member, participation)} roundActive={Boolean(activeRound)} voted={participation?.has_voted ?? false} vote={currentVotes.find(vote => vote.member_id === member.id)} revealed={activeRound?.status === "revealed"} onReact={emoji => void react(member.id, emoji)} onEditProfile={() => setProfileOpen(true)} />; })}</div>
         </div>
         {activeRound?.status === "revealed" && <RoundResults votes={currentVotes} participations={currentParticipation} />}
         {isHost && <HostControls task={activeTask} round={activeRound} canReveal={eligibleVotes.length > 0} onReveal={() => void action(() => roomApi.revealRound(activeRound!.id))} onRestart={() => void action(() => roomApi.restartRound(activeRound!.id))} onCancel={() => { if (confirm(t("cancelRoundConfirm"))) void action(() => roomApi.cancelRound(activeRound!.id)); }} onFinalize={value => void action(() => roomApi.finalizeTask(activeTask!.id, value))} />}
@@ -127,6 +129,7 @@ export function PokerRoom({ snapshot, code, realtimeStatus }: { snapshot: RoomSn
     <FlyingReactions animations={animations} onComplete={removeAnimation} />
     <span className="sr-only" aria-live="polite">{announcement}</span>
     {inspectedTask && <TaskDetailDrawer key={`${inspectedTask.id}-${taskDetailMode}`} task={inspectedTask} rounds={snapshot.rounds} participations={snapshot.participations} votes={snapshot.votes} estimateChanges={snapshot.estimateChanges} isHost={isHost} initialMode={taskDetailMode} onClose={closeTaskDetail} onSave={draft => action(() => roomApi.updateTask(inspectedTask.id, draft.title, draft.description, draft.taskUrl))} onUpdateEstimate={estimate => action(() => roomApi.updateFinalEstimate(inspectedTask.id, estimate))} />}
+    {profileOpen && <MemberProfileDialog member={snapshot.me} onClose={() => setProfileOpen(false)} onSave={(displayName, avatar) => action(() => roomApi.updateMyProfile(snapshot.room.id, displayName, avatar))} />}
     {toast && <div className="toast" role="status">{toast}</div>}
   </main>;
 }

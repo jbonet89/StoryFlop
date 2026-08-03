@@ -115,7 +115,14 @@
     "pending": "Ausstehend",
     "openReactions": "Reaktionen öffnen",
     "seatLabel": "{name}, {role, select, host {Organisator, } other {}}{mode}, {connection}{canReact, select, yes {, Reaktionen öffnen} other {}}",
-    "voterStatus": "Abstimmender · {status}"
+    "voterStatus": "Abstimmender · {status}",
+    "yourProfile": "Dein Profil",
+    "editProfile": "Name und Avatar bearbeiten",
+    "editProfileLabel": "Dein Profil bearbeiten, derzeit {name}",
+    "closeProfile": "Profilbearbeitung schließen",
+    "displayName": "Dein Name",
+    "saveProfile": "Änderungen speichern",
+    "savingProfile": "Wird gespeichert…"
   },
   "Participation": {
     "title": "Deine Teilnahme",

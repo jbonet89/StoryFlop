@@ -17,6 +17,7 @@ async function rpcRow<T>(name: string, args: Record<string, unknown>) {
 export const roomApi = {
   createRoom: (roomName: string, displayName: string, avatarKey: string) => rpcRow<{ code: string }>("create_room", { p_room_name: roomName, p_display_name: displayName, p_avatar_key: avatarKey }),
   joinRoom: (code: string, displayName: string, avatarKey: string) => rpcRow<{ room_id: string }>("join_room", { p_code: code, p_display_name: displayName, p_avatar_key: avatarKey }),
+  updateMyProfile: (roomId: string, displayName: string, avatarKey: string) => rpc("update_my_profile", { p_room_id: roomId, p_display_name: displayName, p_avatar_key: avatarKey }),
   leaveRoom: (roomId: string) => rpc("leave_room", { p_room_id: roomId }),
   transferHost: (roomId: string, memberId: string) => rpc("transfer_host", { p_room_id: roomId, p_target_member_id: memberId }),
   closeRoom: (roomId: string) => rpc("close_room", { p_room_id: roomId }),
