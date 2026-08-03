@@ -1,4 +1,8 @@
-export const AVATARS = ["🦊", "🐼", "🐙", "🦁", "🐸", "🦄", "🐧", "🐨"] as const;
+export const AVATARS = [
+  "🦊", "🐼", "🐙", "🦁", "🐸", "🦄", "🐧", "🐨",
+  "🐶", "🐱", "🦋", "🐷", "🦩", "🦆", "🦅", "🦤", "🦥",
+  "🦔", "🦘", "🐰", "🦈", "🫍", "🐬", "🐋",
+] as const;
 export const DECK = ["0", "1", "2", "3", "5", "8", "13", "21", "34", "?", "☕"] as const;
 export const REACTIONS = [
   { emoji: "😂", label: "laugh" }, { emoji: "🔥", label: "fire" }, { emoji: "👏", label: "applause" },
