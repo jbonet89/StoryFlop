@@ -1,0 +1,14 @@
+project_id = "plan-poker"
+
+[api]
+enabled = true
+schemas = ["public", "graphql_public"]
+extra_search_path = ["public", "extensions"]
+
+[auth]
+enabled = true
+site_url = "http://localhost:3000"
+enable_anonymous_sign_ins = true
+
+[realtime]
+enabled = true
