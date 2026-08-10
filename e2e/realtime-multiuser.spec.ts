@@ -2,13 +2,13 @@ import { expect, test, type Browser, type BrowserContext, type Page } from "@pla
 
 test.skip(process.env.RUN_SUPABASE_E2E !== "1", "Requiere un proyecto Supabase de pruebas con las migraciones aplicadas");
 
-async function joinRoom(browser: Browser, url: string, name: string) {
+async function joinRoom(browser: Browser, url: string, name: string, expectedMembers = 2) {
   const context = await browser.newContext();
   const page = await context.newPage();
   await page.goto(url);
   await page.getByLabel("Tu nombre").fill(name);
   await page.getByRole("button", { name: "Sentarme en la mesa" }).click();
-  await expect(page.locator("[data-player-id]")).toHaveCount(2, { timeout: 10_000 });
+  await expect(page.locator("[data-player-id]")).toHaveCount(expectedMembers, { timeout: 10_000 });
   return { context, page };
 }
 
@@ -97,14 +97,14 @@ test("sincroniza votantes y observadores, elimina votos y conserva el histórico
   try {
     await setMode(page, "Observador");
     const participantA = await joinRoom(browser, roomUrl, "Berto"); contexts.push(participantA.context);
-    const participantB = await joinRoom(browser, roomUrl, "Carla"); contexts.push(participantB.context);
+    const participantB = await joinRoom(browser, roomUrl, "Carla", 3); contexts.push(participantB.context);
     const pages = [page, participantA.page, participantB.page];
-    await Promise.all(pages.map(current => expect(current.getByRole("button", { name: /Host Ana, organizador, observador/ })).toBeVisible({ timeout: 10_000 })));
+    await Promise.all(pages.map(current => expect(current.locator('[data-player-id]').filter({ hasText: "Host Ana" })).toContainText("Observador", { timeout: 10_000 })));
 
     await page.getByRole("button", { name: "Añadir tarea" }).click();
-    await page.getByPlaceholder("Título de la tarea").fill("Modo por ronda");
-    await page.locator(".task-form").getByRole("button", { name: "Añadir", exact: true }).click();
-    await page.getByRole("button", { name: /Modo por ronda/ }).click();
+    await page.getByLabel("Título", { exact: true }).fill("Modo por ronda");
+    await page.locator(".task-editor").getByRole("button", { name: "Añadir tarea", exact: true }).click();
+    await page.getByRole("button", { name: "Votar esta tarea: Modo por ronda", exact: true }).click();
     await expectVotingStatus(pages, "0 de 2 han votado");
     await expect(page.getByText("Estás como observador en esta ronda. Actívate como votante para elegir una carta.", { exact: true })).toBeVisible();
     await expect(page.getByRole("button", { name: "Destapar cartas" })).toBeDisabled();
@@ -116,7 +116,7 @@ test("sincroniza votantes y observadores, elimina votos y conserva el histórico
       setMode(participantA.page, "Observador"),
     ]);
     await expectVotingStatus(pages, "0 de 1 han votado");
-    await Promise.all(pages.map(current => expect(current.getByRole("button", { name: /Berto, observador/ })).toBeVisible({ timeout: 10_000 })));
+    await Promise.all(pages.map(current => expect(current.locator('[data-player-id]').filter({ hasText: "Berto" })).toContainText("Observador", { timeout: 10_000 })));
 
     const roomCode = new URL(roomUrl).pathname.split("/").pop()!;
     expect(roomCode).toMatch(/^[23456789ABCDEFGHJKMNPQRSTUVWXYZ]{8}$/);

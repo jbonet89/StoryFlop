@@ -3,7 +3,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { useQueryClient } from "@tanstack/react-query";
-import { ChevronLeft, MoreHorizontal } from "lucide-react";
+import { ChevronLeft, MoreHorizontal, X } from "lucide-react";
 import { Brand } from "@/components/Brand";
 import { LanguageSelector } from "@/components/LanguageSelector";
 import type { VoteValue } from "@/lib/constants";
@@ -47,7 +47,7 @@ export function PokerRoom({ snapshot, code, realtimeStatus }: { snapshot: RoomSn
   const canReveal = canRevealRound(currentParticipation);
   const members = useMemo(() => sortMembersStable(snapshot.members), [snapshot.members]);
   const positions = useMemo(() => calculateSeatPositions(members.length), [members.length]);
-  const [toast, setToast] = useState("");
+  const [toast, setToast] = useState<{ id: number; message: string } | null>(null);
   const [announcement, setAnnouncement] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
   const [changingMode, setChangingMode] = useState(false);
@@ -89,15 +89,30 @@ export function PokerRoom({ snapshot, code, realtimeStatus }: { snapshot: RoomSn
     return () => cancelAnimationFrame(frame);
   }, [members, snapshot.reactions, t]);
 
+  useEffect(() => {
+    if (!toast) return;
+    const timeout = window.setTimeout(() => setToast(null), 6_000);
+    return () => window.clearTimeout(timeout);
+  }, [toast]);
+
   const invalidate = useCallback(() => queryClient.invalidateQueries({ queryKey: ["room", code], exact: true }), [code, queryClient]);
-  async function action(run: () => Promise<unknown>) { try { await run(); await invalidate(); return true; } catch (cause) { if (process.env.NODE_ENV === "development") console.error(cause); setToast(tErrors(getErrorCode(cause))); return false; } }
-  async function react(targetId: string, emoji: string) { try { await roomApi.sendReaction(snapshot.room.id, targetId, emoji); } catch (cause) { if (process.env.NODE_ENV === "development") console.error(cause); setToast(tErrors(getErrorCode(cause))); } }
+  const showError = useCallback((message: string) => setToast({ id: Date.now(), message }), [setToast]);
+  async function action(run: () => Promise<unknown>) { try { await run(); await invalidate(); return true; } catch (cause) { if (process.env.NODE_ENV === "development") console.error(cause); showError(tErrors(getErrorCode(cause))); return false; } }
+  async function react(targetId: string, emoji: string) { try { await roomApi.sendReaction(snapshot.room.id, targetId, emoji); } catch (cause) { if (process.env.NODE_ENV === "development") console.error(cause); showError(tErrors(getErrorCode(cause))); } }
   async function changeParticipationMode(mode: ParticipationMode) {
     if (activeRound?.status === "voting" && mode === "observer" && myVote && !confirm(t("observerVoteConfirm"))) return;
     setChangingMode(true);
-    const changed = await action(() => roomApi.setParticipationMode(snapshot.room.id, mode, activeRound?.id));
-    setChangingMode(false);
-    if (changed) setAnnouncement(mode === "observer" ? t("nowObserver") : activeRound?.status === "voting" ? t("nowVoter") : t("nextVoter"));
+    try {
+      await roomApi.setParticipationMode(snapshot.room.id, mode, activeRound?.id);
+      await invalidate();
+      setAnnouncement(mode === "observer" ? t("nowObserver") : activeRound?.status === "voting" ? t("nowVoter") : t("nextVoter"));
+    } catch (cause) {
+      if (process.env.NODE_ENV === "development") console.error(cause);
+      const code = getErrorCode(cause);
+      showError(tErrors(code === "UNKNOWN_ERROR" ? "PARTICIPATION_CHANGE_FAILED" : code));
+    } finally {
+      setChangingMode(false);
+    }
   }
   function inspectTask(taskId: string, mode: TaskDetailMode = "view") {
     inspectionOpenerRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
@@ -130,6 +145,6 @@ export function PokerRoom({ snapshot, code, realtimeStatus }: { snapshot: RoomSn
     <span className="sr-only" aria-live="polite">{announcement}</span>
     {inspectedTask && <TaskDetailDrawer key={`${inspectedTask.id}-${taskDetailMode}`} task={inspectedTask} rounds={snapshot.rounds} participations={snapshot.participations} votes={snapshot.votes} estimateChanges={snapshot.estimateChanges} isHost={isHost} initialMode={taskDetailMode} onClose={closeTaskDetail} onSave={draft => action(() => roomApi.updateTask(inspectedTask.id, draft.title, draft.description, draft.taskUrl))} onUpdateEstimate={estimate => action(() => roomApi.updateFinalEstimate(inspectedTask.id, estimate))} />}
     {profileOpen && <MemberProfileDialog member={snapshot.me} onClose={() => setProfileOpen(false)} onSave={(displayName, avatar) => action(() => roomApi.updateMyProfile(snapshot.room.id, displayName, avatar))} />}
-    {toast && <div className="toast" role="status">{toast}</div>}
+    {toast && <div key={toast.id} className="toast error-toast" role="alert"><span>{toast.message}</span><button type="button" aria-label={t("closeError")} onClick={() => setToast(null)}><X size={16} /></button></div>}
   </main>;
 }
