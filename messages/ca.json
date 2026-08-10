@@ -102,7 +102,8 @@
     "nowObserver": "Ara participes com a observador.",
     "nowVoter": "Ara participes com a votant. Pots triar una carta.",
     "nextVoter": "Seràs votant a la ronda següent.",
-    "reactionAnnouncement": "{sender} ha enviat {emoji} a {target}"
+    "reactionAnnouncement": "{sender} ha enviat {emoji} a {target}",
+    "closeError": "Tanca l’avís d’error"
   },
   "Members": {
     "organizer": "Organitzador",
@@ -304,6 +305,7 @@
     "REACTION_RATE_LIMITED": "Has enviat massa reaccions seguides. Espera un moment.",
     "NETWORK_ERROR": "No s’ha pogut connectar amb el servidor.",
     "COPY_FAILED": "No s’ha pogut copiar l’enllaç.",
+    "PARTICIPATION_CHANGE_FAILED": "No s’ha pogut canviar el teu mode de participació. La ronda pot haver canviat mentre es processava l’acció. Torna-ho a provar; si ja ha acabat, el canvi s’aplicarà a la ronda següent.",
     "UNKNOWN_ERROR": "S’ha produït un error inesperat."
   },
   "Invite": {

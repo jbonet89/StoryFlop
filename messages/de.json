@@ -102,7 +102,8 @@
     "nowObserver": "Du nimmst jetzt als Beobachter teil.",
     "nowVoter": "Du nimmst jetzt an der Abstimmung teil. Wähle eine Karte.",
     "nextVoter": "In der nächsten Runde stimmst du ab.",
-    "reactionAnnouncement": "{sender} hat {target} {emoji} geschickt"
+    "reactionAnnouncement": "{sender} hat {target} {emoji} geschickt",
+    "closeError": "Fehlermeldung schließen"
   },
   "Members": {
     "organizer": "Organisator",
@@ -304,6 +305,7 @@
     "REACTION_RATE_LIMITED": "Du hast zu viele Reaktionen nacheinander gesendet. Warte kurz.",
     "NETWORK_ERROR": "Verbindung zum Server fehlgeschlagen.",
     "COPY_FAILED": "Der Link konnte nicht kopiert werden.",
+    "PARTICIPATION_CHANGE_FAILED": "Dein Teilnahmemodus konnte nicht geändert werden. Die Runde hat sich möglicherweise während der Verarbeitung geändert. Versuche es erneut; ist sie bereits beendet, gilt die Änderung für die nächste Runde.",
     "UNKNOWN_ERROR": "Ein unerwarteter Fehler ist aufgetreten."
   },
   "Invite": {

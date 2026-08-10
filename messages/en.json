@@ -102,7 +102,8 @@
     "nowObserver": "You are now participating as an observer.",
     "nowVoter": "You are now participating as a voter. Choose a card.",
     "nextVoter": "You will be a voter in the next round.",
-    "reactionAnnouncement": "{sender} sent {emoji} to {target}"
+    "reactionAnnouncement": "{sender} sent {emoji} to {target}",
+    "closeError": "Close error notice"
   },
   "Members": {
     "organizer": "Host",
@@ -304,6 +305,7 @@
     "REACTION_RATE_LIMITED": "You sent too many reactions in a row. Wait a moment.",
     "NETWORK_ERROR": "Could not connect to the server.",
     "COPY_FAILED": "The link could not be copied.",
+    "PARTICIPATION_CHANGE_FAILED": "Your participation mode could not be changed. The round may have changed while the action was processed. Try again; if it has already ended, the change will apply to the next round.",
     "UNKNOWN_ERROR": "An unexpected error occurred."
   },
   "Invite": {

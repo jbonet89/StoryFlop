@@ -102,7 +102,8 @@
     "nowObserver": "Orain behatzaile gisa parte hartzen duzu.",
     "nowVoter": "Orain bozkatzaile gisa parte hartzen duzu. Aukeratu karta bat.",
     "nextVoter": "Hurrengo txandan bozkatzailea izango zara.",
-    "reactionAnnouncement": "{sender} erabiltzaileak {emoji} bidali dio {target} erabiltzaileari"
+    "reactionAnnouncement": "{sender} erabiltzaileak {emoji} bidali dio {target} erabiltzaileari",
+    "closeError": "Itxi errore-oharra"
   },
   "Members": {
     "organizer": "Antolatzailea",
@@ -304,6 +305,7 @@
     "REACTION_RATE_LIMITED": "Erreakzio gehiegi bidali dituzu jarraian. Itxaron pixka bat.",
     "NETWORK_ERROR": "Ezin izan da zerbitzariarekin konektatu.",
     "COPY_FAILED": "Ezin izan da esteka kopiatu.",
+    "PARTICIPATION_CHANGE_FAILED": "Ezin izan da parte-hartze modua aldatu. Baliteke txanda ekintza prozesatzen zen bitartean aldatu izana. Saiatu berriro; dagoeneko amaitu bada, aldaketa hurrengo txandan aplikatuko da.",
     "UNKNOWN_ERROR": "Ustekabeko errore bat gertatu da."
   },
   "Invite": {

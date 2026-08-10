@@ -102,7 +102,8 @@
     "nowObserver": "Ahora participas como observador.",
     "nowVoter": "Ahora participas como votante. Puedes elegir una carta.",
     "nextVoter": "Serás votante en la próxima ronda.",
-    "reactionAnnouncement": "{sender} ha lanzado {emoji} a {target}"
+    "reactionAnnouncement": "{sender} ha lanzado {emoji} a {target}",
+    "closeError": "Cerrar aviso de error"
   },
   "Members": {
     "organizer": "Organizador",
@@ -304,6 +305,7 @@
     "REACTION_RATE_LIMITED": "Has enviado demasiadas reacciones seguidas. Espera un momento.",
     "NETWORK_ERROR": "No se ha podido conectar con el servidor.",
     "COPY_FAILED": "No se pudo copiar el enlace.",
+    "PARTICIPATION_CHANGE_FAILED": "No se pudo cambiar tu modo de participación. La ronda puede haber cambiado mientras se procesaba la acción. Inténtalo de nuevo; si ya terminó, el cambio se aplicará en la siguiente ronda.",
     "UNKNOWN_ERROR": "Se ha producido un error inesperado."
   },
   "Invite": {
