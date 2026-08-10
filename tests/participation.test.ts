@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   calculateVotingProgress,
+  canRevealRound,
   canMemberVote,
   getEligibleRoundVotes,
   getMemberRoundMode,
@@ -39,6 +40,15 @@ describe("progreso de votación", () => {
 
   it("representa una ronda sin votantes sin fabricar 0 de 0", () => {
     expect(calculateVotingProgress([participation("a", "observer"), participation("b", "observer")])).toEqual({ voterCount: 0, votedCount: 0, pendingCount: 0, hasVoters: false });
+  });
+
+  it("permite revelar a un organizador observador cuando otra persona ha votado", () => {
+    const rows = [participation("host", "observer"), participation("voter", "voter", true)];
+    expect(canRevealRound(rows)).toBe(true);
+  });
+
+  it("no permite revelar sin ningún voto aunque existan votantes", () => {
+    expect(canRevealRound([participation("host", "observer"), participation("voter")])).toBe(false);
   });
 });
 

@@ -34,6 +34,10 @@ export function calculateVotingProgress(participations: Participation[]): Voting
   };
 }
 
+export function canRevealRound(participations: Participation[]): boolean {
+  return getEligibleVoters(participations).some(participation => participation.has_voted);
+}
+
 export function getEligibleRoundVotes(votes: Vote[], participations: Participation[]): Vote[] {
   const voterIds = new Set(getEligibleVoters(participations).map(participation => participation.member_id));
   return votes.filter(vote => voterIds.has(vote.member_id));

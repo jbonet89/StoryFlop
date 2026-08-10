@@ -10,7 +10,7 @@ import type { VoteValue } from "@/lib/constants";
 import type { ParticipationMode } from "@/lib/types";
 import type { ValidatedTaskDraft } from "@/lib/task-management";
 import { calculateSeatPositions, sortMembersStable } from "@/lib/seats";
-import { calculateVotingProgress, getEligibleRoundVotes, getMemberRoundMode } from "@/lib/participation";
+import { calculateVotingProgress, canRevealRound, getMemberRoundMode } from "@/lib/participation";
 import { isRecentReaction, removeReactionAnimation, resolveReaction } from "@/lib/room-state";
 import { getErrorCode } from "@/lib/errors";
 import type { RoomSnapshot } from "../api";
@@ -44,7 +44,7 @@ export function PokerRoom({ snapshot, code, realtimeStatus }: { snapshot: RoomSn
   const myVote = currentVotes.find(vote => vote.member_id === snapshot.me.id);
   const myCurrentMode = getMemberRoundMode(snapshot.me, myParticipation);
   const votingProgress = calculateVotingProgress(currentParticipation);
-  const eligibleVotes = getEligibleRoundVotes(currentVotes, currentParticipation);
+  const canReveal = canRevealRound(currentParticipation);
   const members = useMemo(() => sortMembersStable(snapshot.members), [snapshot.members]);
   const positions = useMemo(() => calculateSeatPositions(members.length), [members.length]);
   const [toast, setToast] = useState("");
@@ -121,7 +121,7 @@ export function PokerRoom({ snapshot, code, realtimeStatus }: { snapshot: RoomSn
           <div className="seat-grid">{members.slice(0, 12).map((member, index) => { const participation = currentParticipation.find(item => item.member_id === member.id); return <PlayerSeat key={member.id} member={member} position={positions[index]} compact={members.length > 8} isMe={member.id === snapshot.me.id} online={member.id === snapshot.me.id || presence.onlineIds.has(member.id)} participationMode={getMemberRoundMode(member, participation)} roundActive={Boolean(activeRound)} voted={participation?.has_voted ?? false} vote={currentVotes.find(vote => vote.member_id === member.id)} revealed={activeRound?.status === "revealed"} onReact={emoji => void react(member.id, emoji)} onEditProfile={() => setProfileOpen(true)} />; })}</div>
         </div>
         {activeRound?.status === "revealed" && <RoundResults votes={currentVotes} participations={currentParticipation} />}
-        {isHost && <HostControls task={activeTask} round={activeRound} canReveal={eligibleVotes.length > 0} onReveal={() => void action(() => roomApi.revealRound(activeRound!.id))} onRestart={() => void action(() => roomApi.restartRound(activeRound!.id))} onCancel={() => { if (confirm(t("cancelRoundConfirm"))) void action(() => roomApi.cancelRound(activeRound!.id)); }} onFinalize={value => void action(() => roomApi.finalizeTask(activeTask!.id, value))} />}
+        {isHost && <HostControls task={activeTask} round={activeRound} canReveal={canReveal} onReveal={() => void action(() => roomApi.revealRound(activeRound!.id))} onRestart={() => void action(() => roomApi.restartRound(activeRound!.id))} onCancel={() => { if (confirm(t("cancelRoundConfirm"))) void action(() => roomApi.cancelRound(activeRound!.id)); }} onFinalize={value => void action(() => roomApi.finalizeTask(activeTask!.id, value))} />}
         <RoundHistory rounds={snapshot.rounds} tasks={snapshot.tasks} members={members} participations={snapshot.participations} votes={snapshot.votes} />
       </section>
     </div>
