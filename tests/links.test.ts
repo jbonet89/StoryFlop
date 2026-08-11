@@ -25,5 +25,10 @@ describe("enlaces seguros en texto plano", () => {
     expect(parseTextWithLinks("javascript:alert(1)")).toEqual([{ type: "text", value: "javascript:alert(1)" }]);
   });
 
+  it("añade HTTPS cuando el usuario omite el protocolo", () => {
+    expect(normalizeHttpUrl("example.com/tareas/42")).toBe("https://example.com/tareas/42");
+    expect(normalizeHttpUrl("//example.com/tareas/42")).toBe("https://example.com/tareas/42");
+  });
+
   it("maneja texto vacío", () => expect(parseTextWithLinks("")).toEqual([]));
 });

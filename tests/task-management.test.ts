@@ -6,6 +6,10 @@ describe("validación de tareas", () => {
     expect(validateTaskDraft({ title: "  Historia  ", description: " Detalle ", taskUrl: " https://example.com/t/1 " }).value).toEqual({ title: "Historia", description: "Detalle", taskUrl: "https://example.com/t/1" });
   });
 
+  it("acepta una URL sin protocolo y guarda HTTPS", () => {
+    expect(validateTaskDraft({ title: "Historia", description: "", taskUrl: "jira.empresa.com/browse/APP-42" }).value?.taskUrl).toBe("https://jira.empresa.com/browse/APP-42");
+  });
+
   it("rechaza título vacío y protocolos inseguros", () => {
     const result = validateTaskDraft({ title: " ", description: "", taskUrl: "javascript:alert(1)" });
     expect(result.errors.title).toBe("titleRequired");

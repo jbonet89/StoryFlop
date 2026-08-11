@@ -290,7 +290,7 @@
     "titleRequired": "Izenburua nahitaezkoa da.",
     "titleTooLong": "Izenburuak gehienez 160 karaktere izan ditzake.",
     "descriptionTooLong": "Deskribapenak gehienez 5.000 karaktere izan ditzake.",
-    "invalidTaskUrl": "Sartu http:// edo https:// bidez hasten den URL absolutua.",
+    "invalidTaskUrl": "Sartu baliozko web-helbide bat, adibidez jira.enpresa.com/ataza.",
     "taskUrlTooLong": "URLak gehienez 2.048 karaktere izan ditzake."
   },
   "Errors": {

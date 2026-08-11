@@ -290,7 +290,7 @@
     "titleRequired": "Der Titel ist erforderlich.",
     "titleTooLong": "Der Titel darf höchstens 160 Zeichen lang sein.",
     "descriptionTooLong": "Die Beschreibung darf höchstens 5.000 Zeichen lang sein.",
-    "invalidTaskUrl": "Eine absolute URL mit http:// oder https:// eingeben.",
+    "invalidTaskUrl": "Gib eine gültige Webadresse ein, zum Beispiel jira.firma.de/aufgabe.",
     "taskUrlTooLong": "Die URL darf höchstens 2.048 Zeichen lang sein."
   },
   "Errors": {

@@ -5,8 +5,12 @@ export type TextPart =
 export function normalizeHttpUrl(value: string): string | null {
   const trimmed = value.trim();
   if (!trimmed) return null;
+  if (/^[a-z][a-z\d+.-]*:/i.test(trimmed) && !/^https?:/i.test(trimmed)) return null;
+  const candidate = /^https?:\/\//i.test(trimmed)
+    ? trimmed
+    : trimmed.startsWith("//") ? `https:${trimmed}` : `https://${trimmed}`;
   try {
-    const parsed = new URL(trimmed);
+    const parsed = new URL(candidate);
     if (parsed.protocol !== "http:" && parsed.protocol !== "https:") return null;
     return parsed.href;
   } catch {

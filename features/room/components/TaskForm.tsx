@@ -33,7 +33,7 @@ export function TaskForm({ task, submitLabel, onSave, onCancel }: { task?: Poker
     <textarea id={`task-description-${task?.id ?? "new"}`} value={description} onChange={event => setDescription(event.target.value)} maxLength={5000} rows={6} aria-invalid={Boolean(errors.description)} aria-describedby={errors.description ? "task-description-error" : undefined} />
     {errors.description && <span className="field-error" id="task-description-error">{tValidation(errors.description)}</span>}
     <label htmlFor={`task-url-${task?.id ?? "new"}`}>{t("url")}</label>
-    <input id={`task-url-${task?.id ?? "new"}`} type="url" inputMode="url" placeholder="https://…" value={taskUrl} onChange={event => setTaskUrl(event.target.value)} maxLength={2048} aria-invalid={Boolean(errors.taskUrl)} aria-describedby={errors.taskUrl ? "task-url-error" : undefined} />
+    <input id={`task-url-${task?.id ?? "new"}`} type="url" inputMode="url" placeholder="jira.empresa.com/tarea" value={taskUrl} onChange={event => setTaskUrl(event.target.value)} maxLength={2048} aria-invalid={Boolean(errors.taskUrl)} aria-describedby={errors.taskUrl ? "task-url-error" : undefined} />
     {errors.taskUrl && <span className="field-error" id="task-url-error">{tValidation(errors.taskUrl)}</span>}
     <div className="task-editor-actions"><button type="button" className="soft-button" onClick={onCancel} disabled={saving}>{t("cancel")}</button><button className="reveal-button" disabled={saving}>{saving ? t("saving") : submitLabel}</button></div>
   </form>;

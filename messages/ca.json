@@ -290,7 +290,7 @@
     "titleRequired": "El títol és obligatori.",
     "titleTooLong": "El títol no pot superar els 160 caràcters.",
     "descriptionTooLong": "La descripció no pot superar els 5.000 caràcters.",
-    "invalidTaskUrl": "Introdueix una URL absoluta que comenci per http:// o https://.",
+    "invalidTaskUrl": "Introdueix una adreça web vàlida, per exemple jira.empresa.com/tasca.",
     "taskUrlTooLong": "La URL no pot superar els 2.048 caràcters."
   },
   "Errors": {

@@ -10,7 +10,8 @@ import type { VoteValue } from "@/lib/constants";
 import type { ParticipationMode } from "@/lib/types";
 import type { ValidatedTaskDraft } from "@/lib/task-management";
 import { calculateSeatPositions, sortMembersStable } from "@/lib/seats";
-import { calculateVotingProgress, canRevealRound, getMemberRoundMode } from "@/lib/participation";
+import { calculateVotingProgress, canRevealRound, getEligibleRoundVotes, getMemberRoundMode } from "@/lib/participation";
+import { suggestFinalEstimate } from "@/lib/statistics";
 import { isRecentReaction, removeReactionAnimation, resolveReaction } from "@/lib/room-state";
 import { getErrorCode } from "@/lib/errors";
 import type { RoomSnapshot } from "../api";
@@ -40,6 +41,7 @@ export function PokerRoom({ snapshot, code, realtimeStatus }: { snapshot: RoomSn
   const activeTask = snapshot.tasks.find(task => task.id === activeRound?.task_id) ?? snapshot.tasks.find(task => task.status === "voting" || task.status === "revealed");
   const currentVotes = snapshot.votes.filter(vote => vote.round_id === activeRound?.id);
   const currentParticipation = snapshot.participations.filter(item => item.round_id === activeRound?.id);
+  const suggestedFinalEstimate = suggestFinalEstimate(getEligibleRoundVotes(currentVotes, currentParticipation).map(vote => vote.value));
   const myParticipation = currentParticipation.find(item => item.member_id === snapshot.me.id);
   const myVote = currentVotes.find(vote => vote.member_id === snapshot.me.id);
   const myCurrentMode = getMemberRoundMode(snapshot.me, myParticipation);
@@ -133,7 +135,7 @@ export function PokerRoom({ snapshot, code, realtimeStatus }: { snapshot: RoomSn
   const removeAnimation = useCallback((eventId: string) => setAnimations(current => removeReactionAnimation(current, eventId)), []);
   const statusText = activeRound?.status === "voting" ? (votingProgress.hasVoters ? t("progress", { voted: votingProgress.votedCount, total: votingProgress.voterCount }) : t("noVoters")) : activeRound?.status === "revealed" ? t("cardsRevealed") : t("chooseTask");
   const inspectedTask = snapshot.tasks.find(task => task.id === inspectedTaskId);
-  const hostControls = isHost && activeTask && activeRound ? <HostControls key={activeRound.id} task={activeTask} round={activeRound} canReveal={canReveal} onReveal={() => void action(() => roomApi.revealRound(activeRound.id))} onRestart={() => void action(() => roomApi.restartRound(activeRound.id))} onCancel={() => { if (confirm(t("cancelRoundConfirm"))) void action(() => roomApi.cancelRound(activeRound.id)); }} onFinalize={value => void action(() => roomApi.finalizeTask(activeTask.id, value))} /> : undefined;
+  const hostControls = isHost && activeTask && activeRound ? <HostControls key={`${activeRound.id}-${activeRound.status}`} task={activeTask} round={activeRound} canReveal={canReveal} suggestedEstimate={suggestedFinalEstimate} onReveal={() => void action(() => roomApi.revealRound(activeRound.id))} onRestart={() => void action(() => roomApi.restartRound(activeRound.id))} onCancel={() => { if (confirm(t("cancelRoundConfirm"))) void action(() => roomApi.cancelRound(activeRound.id)); }} onFinalize={value => void action(() => roomApi.finalizeTask(activeTask.id, value))} /> : undefined;
 
   return <main className="room-app">
     <header className="room-header"><div className="room-title"><Link href="/" aria-label={t("home")}><ChevronLeft /></Link><Brand /><span className="header-divider" /><div className="room-context"><strong>{snapshot.room.name}</strong><small>{t("code", { code })}</small></div></div><div className="room-actions"><ConnectionIndicator status={connectionStatus} /><InviteButton /><div className="room-menu-wrap"><button className="icon-button" aria-label={t("moreOptions")} aria-expanded={menuOpen} onClick={() => setMenuOpen(value => !value)}><MoreHorizontal /></button>{menuOpen && <div className="room-menu"><LanguageSelector compact /><hr />{isHost && <><strong>{t("transferHost")}</strong>{members.filter(member => member.id !== snapshot.me.id).map(member => <button key={member.id} onClick={() => { setMenuOpen(false); void action(() => roomApi.transferHost(snapshot.room.id, member.id)); }}>{member.avatar_key} {member.display_name}</button>)}<hr /><button className="danger" onClick={() => { if (confirm(t("closeConfirm"))) void action(async () => { await roomApi.closeRoom(snapshot.room.id); location.href = "/"; }); }}>{t("closeRoom")}</button></>}{!isHost && <button onClick={() => { if (confirm(t("leaveConfirm"))) void action(async () => { await roomApi.leaveRoom(snapshot.room.id); location.href = "/"; }); }}>{t("leaveRoom")}</button>}</div>}</div></div></header>

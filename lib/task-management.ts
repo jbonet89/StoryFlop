@@ -24,7 +24,7 @@ export function validateTaskDraft(draft: TaskDraft): { value?: ValidatedTaskDraf
   if (description.length > 5000) errors.description = "descriptionTooLong";
   const taskUrl = rawUrl ? normalizeHttpUrl(rawUrl) : null;
   if (rawUrl && !taskUrl) errors.taskUrl = "invalidTaskUrl";
-  if (rawUrl.length > 2048) errors.taskUrl = "taskUrlTooLong";
+  if (rawUrl.length > 2048 || (taskUrl?.length ?? 0) > 2048) errors.taskUrl = "taskUrlTooLong";
   return Object.keys(errors).length ? { errors } : { value: { title, description, taskUrl }, errors };
 }
 
