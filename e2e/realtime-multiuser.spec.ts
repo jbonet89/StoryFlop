@@ -85,6 +85,26 @@ test("sincroniza tres usuarios, posiciones y reacciones sin interacción adicion
   }
 });
 
+test("asigna un sufijo cuando dos participantes eligen el mismo nombre", async ({ browser, page }) => {
+  const contexts: BrowserContext[] = [];
+  await page.goto("/");
+  await page.getByLabel("Nombre de la sala").fill(`Nombres ${Date.now()}`);
+  await page.getByLabel("Tu nombre").fill("Alex");
+  await page.locator("form").getByRole("button", { name: "Crear sala" }).click();
+  await expect(page).toHaveURL(/\/sala\/[23456789ABCDEFGHJKMNPQRSTUVWXYZ]{8}$/);
+
+  try {
+    const second = await joinRoom(browser, page.url(), "Alex");
+    contexts.push(second.context);
+    await Promise.all([
+      expect(page.locator('[data-player-id]').filter({ hasText: "Alex 2" })).toHaveCount(1),
+      expect(second.page.locator('[data-player-id]').filter({ hasText: "Alex 2" })).toHaveCount(1),
+    ]);
+  } finally {
+    await Promise.all(contexts.map(context => context.close()));
+  }
+});
+
 test("sincroniza votantes y observadores, elimina votos y conserva el histórico", async ({ browser, page }) => {
   const contexts: BrowserContext[] = [];
   await page.goto("/");
