@@ -300,6 +300,7 @@
     "HOST_ONLY": "Só o organizador pode realizar esta ação.",
     "OBSERVER_CANNOT_VOTE": "Mude para votante para escolher uma carta.",
     "ROUND_NOT_OPEN": "A ronda não está aberta.",
+    "ACTIVE_ROUND_EXISTS": "Não podes iniciar outra votação enquanto há uma ronda em curso. Finaliza ou cancela a ronda atual antes de votar noutra tarefa.",
     "INVALID_TASK_URL": "A URL da tarefa é inválida.",
     "TASK_TITLE_REQUIRED": "O título da tarefa é obrigatório.",
     "REACTION_RATE_LIMITED": "Enviou demasiadas reações seguidas. Aguarde um momento.",

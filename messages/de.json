@@ -300,6 +300,7 @@
     "HOST_ONLY": "Nur der Organisator darf diese Aktion ausführen.",
     "OBSERVER_CANNOT_VOTE": "Wechsle zum Abstimmenden, um eine Karte zu wählen.",
     "ROUND_NOT_OPEN": "Die Runde ist nicht geöffnet.",
+    "ACTIVE_ROUND_EXISTS": "Du kannst keine weitere Abstimmung starten, solange eine Runde läuft. Beende oder brich die aktuelle Runde ab, bevor du über eine andere Aufgabe abstimmst.",
     "INVALID_TASK_URL": "Die Aufgaben-URL ist ungültig.",
     "TASK_TITLE_REQUIRED": "Der Aufgabentitel ist erforderlich.",
     "REACTION_RATE_LIMITED": "Du hast zu viele Reaktionen nacheinander gesendet. Warte kurz.",

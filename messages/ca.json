@@ -300,6 +300,7 @@
     "HOST_ONLY": "Només l’organitzador pot fer aquesta acció.",
     "OBSERVER_CANNOT_VOTE": "Activa’t com a votant per triar una carta.",
     "ROUND_NOT_OPEN": "La ronda no està oberta.",
+    "ACTIVE_ROUND_EXISTS": "No pots iniciar una altra votació mentre hi ha una ronda en curs. Finalitza o cancel·la la ronda actual abans de votar una altra tasca.",
     "INVALID_TASK_URL": "La URL de la tasca no és vàlida.",
     "TASK_TITLE_REQUIRED": "El títol de la tasca és obligatori.",
     "REACTION_RATE_LIMITED": "Has enviat massa reaccions seguides. Espera un moment.",

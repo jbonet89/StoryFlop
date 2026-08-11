@@ -300,6 +300,7 @@
     "HOST_ONLY": "Antolatzaileak bakarrik egin dezake ekintza hau.",
     "OBSERVER_CANNOT_VOTE": "Aldatu bozkatzaile modura karta bat aukeratzeko.",
     "ROUND_NOT_OPEN": "Txanda ez dago irekita.",
+    "ACTIVE_ROUND_EXISTS": "Ezin duzu beste bozketa bat hasi txanda bat martxan dagoen bitartean. Amaitu edo ezeztatu uneko txanda beste ataza bat bozkatu aurretik.",
     "INVALID_TASK_URL": "Zereginaren URLa ez da baliozkoa.",
     "TASK_TITLE_REQUIRED": "Zereginaren izenburua nahitaezkoa da.",
     "REACTION_RATE_LIMITED": "Erreakzio gehiegi bidali dituzu jarraian. Itxaron pixka bat.",

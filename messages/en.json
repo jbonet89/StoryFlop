@@ -300,6 +300,7 @@
     "HOST_ONLY": "Only the host can perform this action.",
     "OBSERVER_CANNOT_VOTE": "Switch to voter to choose a card.",
     "ROUND_NOT_OPEN": "The round is not open.",
+    "ACTIVE_ROUND_EXISTS": "You cannot start another vote while a round is in progress. Finish or cancel the current round before voting on another task.",
     "INVALID_TASK_URL": "The task URL is invalid.",
     "TASK_TITLE_REQUIRED": "The task title is required.",
     "REACTION_RATE_LIMITED": "You sent too many reactions in a row. Wait a moment.",
