@@ -78,6 +78,8 @@
     "home": "Inicio",
     "code": "Sala {code}",
     "moreOptions": "Más opciones",
+    "openBacklog": "Abrir backlog",
+    "closeBacklog": "Cerrar backlog",
     "transferHost": "Transferir organización",
     "closeRoom": "Cerrar sala",
     "leaveRoom": "Abandonar sala",
@@ -96,7 +98,8 @@
     "observerDot": "{name}: observador",
     "actionFailed": "No se pudo completar la acción.",
     "reactionFailed": "No se pudo enviar la reacción.",
-    "deleteTaskConfirm": "¿Eliminar esta tarea?",
+    "deleteTaskConfirm": "¿Eliminar esta tarea? También se eliminarán sus rondas, votos e historial. Esta acción no se puede deshacer.",
+    "clearBacklogConfirm": "¿Eliminar las {count} tareas del backlog? También se eliminarán todas sus rondas, votos e historial. Esta acción no se puede deshacer.",
     "cancelRoundConfirm": "¿Cancelar esta ronda y devolver la tarea a pendientes?",
     "observerVoteConfirm": "Al pasar a observador se eliminará tu voto de esta ronda. ¿Continuar?",
     "nowObserver": "Ahora participas como observador.",
@@ -144,8 +147,6 @@
     "empty": "Aún no hay tareas",
     "emptyHost": "Añade la primera para empezar a estimar.",
     "emptyGuest": "El organizador añadirá tareas pronto.",
-    "reorder": "Reordenar tarea: {title}",
-    "drag": "Arrastrar para reordenar",
     "inspect": "Consultar tarea: {title}",
     "status": {
       "pending": "Pendiente",
@@ -164,7 +165,9 @@
     "moveDown": "Mover abajo",
     "moveStart": "Mover al principio",
     "moveEnd": "Mover al final",
-    "delete": "Eliminar tarea"
+    "delete": "Eliminar tarea",
+    "clearBacklog": "Limpiar backlog",
+    "closeBacklog": "Cerrar backlog"
   },
   "TaskEditor": {
     "title": "Título",
@@ -199,6 +202,7 @@
     "estimateSet": "Estimación fijada en {estimate}",
     "auditBy": "{change} por {name} · {date}",
     "editTask": "Editar tarea",
+    "deleteTask": "Eliminar tarea",
     "status": {
       "pending": "Pendiente",
       "voting": "En votación",

@@ -78,6 +78,8 @@
     "home": "Hasiera",
     "code": "{code} gela",
     "moreOptions": "Aukera gehiago",
+    "openBacklog": "Backloga ireki",
+    "closeBacklog": "Backloga itxi",
     "transferHost": "Antolakuntza transferitu",
     "closeRoom": "Gela itxi",
     "leaveRoom": "Gelatik irten",
@@ -96,7 +98,8 @@
     "observerDot": "{name}: behatzailea",
     "actionFailed": "Ezin izan da ekintza osatu.",
     "reactionFailed": "Ezin izan da erreakzioa bidali.",
-    "deleteTaskConfirm": "Zeregin hau ezabatu?",
+    "deleteTaskConfirm": "Zeregin hau ezabatu? Bere txandak, botoak eta historia ere ezabatuko dira. Ekintza ezin da desegin.",
+    "clearBacklogConfirm": "Backlogeko {count} zereginak ezabatu? Txanda, boto eta historia guztiak ere ezabatuko dira. Ekintza ezin da desegin.",
     "cancelRoundConfirm": "Txanda bertan behera utzi eta zeregina egiteke utzi?",
     "observerVoteConfirm": "Behatzaile bihurtzean zure botoa ezabatuko da. Jarraitu?",
     "nowObserver": "Orain behatzaile gisa parte hartzen duzu.",
@@ -144,8 +147,6 @@
     "empty": "Oraindik ez dago zereginik",
     "emptyHost": "Gehitu lehenengoa estimatzen hasteko.",
     "emptyGuest": "Antolatzaileak laster gehituko ditu zereginak.",
-    "reorder": "Zeregina berrordenatu: {title}",
-    "drag": "Arrastatu berrordenatzeko",
     "inspect": "Zeregina ikusi: {title}",
     "status": {
       "pending": "Egiteke",
@@ -164,7 +165,9 @@
     "moveDown": "Behera mugitu",
     "moveStart": "Hasierara mugitu",
     "moveEnd": "Amaierara mugitu",
-    "delete": "Zeregina ezabatu"
+    "delete": "Zeregina ezabatu",
+    "clearBacklog": "Backloga garbitu",
+    "closeBacklog": "Backloga itxi"
   },
   "TaskEditor": {
     "title": "Izenburua",
@@ -199,6 +202,7 @@
     "estimateSet": "Estimazioa {estimate} balioan ezarri da",
     "auditBy": "{change}, {name} erabiltzaileak · {date}",
     "editTask": "Zeregina editatu",
+    "deleteTask": "Zeregina ezabatu",
     "status": {
       "pending": "Egiteke",
       "voting": "Bozketan",

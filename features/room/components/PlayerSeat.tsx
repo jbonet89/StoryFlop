@@ -13,7 +13,7 @@ export function PlayerSeat({ member, position, compact, online, participationMod
   const style = { "--seat-x": position.xPercent, "--seat-y": position.yPercent } as CSSProperties;
   const participationLabel = participationMode === "observer" ? t("observer") : roundActive ? t("voterStatus", { status: voted ? t("voted") : t("pending") }) : t("voter");
   const connectionLabel = online ? t("connected") : t("disconnected");
-  return <div className={`player-seat ${isMe ? "me" : ""} ${compact ? "compact" : ""} ${participationMode === "observer" ? "observer" : ""}`} style={style} data-player-id={member.id} data-participation-mode={participationMode}>
+  return <div className={`player-seat ${isMe ? "me" : ""} ${compact ? "compact" : ""} ${participationMode === "observer" ? "observer" : ""} ${pickerOpen ? "picker-open" : ""}`} style={style} data-player-id={member.id} data-participation-mode={participationMode}>
     <button className="seat-main" title={isMe ? t("editProfile") : member.display_name} onClick={() => isMe ? onEditProfile() : setPickerOpen(open => !open)} aria-expanded={!isMe ? pickerOpen : undefined} aria-label={isMe ? t("editProfileLabel", { name: member.display_name }) : t("seatLabel", { name: member.display_name, role: member.role, mode: participationLabel, connection: connectionLabel, canReact: "yes" })}>
       <span className="player-avatar">{member.avatar_key}<i className={online ? "online" : "offline"} /></span>
       <span className="player-meta"><strong>{member.display_name}{isMe && <small> {t("you")}</small>}</strong><em>{member.role === "host" && <Crown size={11} />}{member.role === "host" ? t("organizer") : connectionLabel}</em></span>

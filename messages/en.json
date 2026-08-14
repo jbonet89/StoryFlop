@@ -78,6 +78,8 @@
     "home": "Home",
     "code": "Room {code}",
     "moreOptions": "More options",
+    "openBacklog": "Open backlog",
+    "closeBacklog": "Close backlog",
     "transferHost": "Transfer host",
     "closeRoom": "Close room",
     "leaveRoom": "Leave room",
@@ -96,7 +98,8 @@
     "observerDot": "{name}: observer",
     "actionFailed": "The action could not be completed.",
     "reactionFailed": "The reaction could not be sent.",
-    "deleteTaskConfirm": "Delete this task?",
+    "deleteTaskConfirm": "Delete this task? Its rounds, votes, and history will also be deleted. This action cannot be undone.",
+    "clearBacklogConfirm": "Delete all {count} backlog tasks? All their rounds, votes, and history will also be deleted. This action cannot be undone.",
     "cancelRoundConfirm": "Cancel this round and return the task to pending?",
     "observerVoteConfirm": "Switching to observer will remove your vote from this round. Continue?",
     "nowObserver": "You are now participating as an observer.",
@@ -144,8 +147,6 @@
     "empty": "No tasks yet",
     "emptyHost": "Add the first task to start estimating.",
     "emptyGuest": "The host will add tasks soon.",
-    "reorder": "Reorder task: {title}",
-    "drag": "Drag to reorder",
     "inspect": "View task: {title}",
     "status": {
       "pending": "Pending",
@@ -164,7 +165,9 @@
     "moveDown": "Move down",
     "moveStart": "Move to start",
     "moveEnd": "Move to end",
-    "delete": "Delete task"
+    "delete": "Delete task",
+    "clearBacklog": "Clear backlog",
+    "closeBacklog": "Close backlog"
   },
   "TaskEditor": {
     "title": "Title",
@@ -199,6 +202,7 @@
     "estimateSet": "Estimate set to {estimate}",
     "auditBy": "{change} by {name} · {date}",
     "editTask": "Edit task",
+    "deleteTask": "Delete task",
     "status": {
       "pending": "Pending",
       "voting": "Voting",

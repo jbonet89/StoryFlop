@@ -78,6 +78,8 @@
     "home": "Inici",
     "code": "Sala {code}",
     "moreOptions": "Més opcions",
+    "openBacklog": "Obrir el backlog",
+    "closeBacklog": "Tancar el backlog",
     "transferHost": "Transferir l’organització",
     "closeRoom": "Tancar la sala",
     "leaveRoom": "Abandonar la sala",
@@ -96,7 +98,8 @@
     "observerDot": "{name}: observador",
     "actionFailed": "No s’ha pogut completar l’acció.",
     "reactionFailed": "No s’ha pogut enviar la reacció.",
-    "deleteTaskConfirm": "Vols eliminar aquesta tasca?",
+    "deleteTaskConfirm": "Vols eliminar aquesta tasca? També se n’eliminaran les rondes, els vots i l’historial. Aquesta acció no es pot desfer.",
+    "clearBacklogConfirm": "Vols eliminar les {count} tasques del backlog? També se n’eliminaran totes les rondes, els vots i l’historial. Aquesta acció no es pot desfer.",
     "cancelRoundConfirm": "Vols cancel·lar la ronda i tornar la tasca a pendent?",
     "observerVoteConfirm": "En passar a observador s’eliminarà el teu vot. Vols continuar?",
     "nowObserver": "Ara participes com a observador.",
@@ -144,8 +147,6 @@
     "empty": "Encara no hi ha tasques",
     "emptyHost": "Afegeix la primera per començar a estimar.",
     "emptyGuest": "L’organitzador afegirà tasques aviat.",
-    "reorder": "Reordenar la tasca: {title}",
-    "drag": "Arrossega per reordenar",
     "inspect": "Consultar la tasca: {title}",
     "status": {
       "pending": "Pendent",
@@ -164,7 +165,9 @@
     "moveDown": "Moure avall",
     "moveStart": "Moure al principi",
     "moveEnd": "Moure al final",
-    "delete": "Eliminar la tasca"
+    "delete": "Eliminar la tasca",
+    "clearBacklog": "Netejar el backlog",
+    "closeBacklog": "Tancar el backlog"
   },
   "TaskEditor": {
     "title": "Títol",
@@ -199,6 +202,7 @@
     "estimateSet": "Estimació fixada en {estimate}",
     "auditBy": "{change} per {name} · {date}",
     "editTask": "Editar la tasca",
+    "deleteTask": "Eliminar la tasca",
     "status": {
       "pending": "Pendent",
       "voting": "En votació",

@@ -24,6 +24,7 @@ export const roomApi = {
   createTask: (roomId: string, title: string, description: string, taskUrl: string | null) => rpc("create_task", { p_room_id: roomId, p_title: title, p_description: description, p_task_url: taskUrl }),
   updateTask: (taskId: string, title: string, description: string, taskUrl: string | null) => rpc("update_task", { p_task_id: taskId, p_title: title, p_description: description, p_task_url: taskUrl }),
   deleteTask: (taskId: string) => rpc("delete_task", { p_task_id: taskId }),
+  clearBacklog: (roomId: string) => rpc("clear_backlog", { p_room_id: roomId }),
   reorderTasks: (roomId: string, taskIds: string[]) => rpc("reorder_tasks", { p_room_id: roomId, p_task_ids: taskIds }),
   startRound: (taskId: string) => rpc("start_round", { p_task_id: taskId }),
   castVote: (roundId: string, value: VoteValue) => rpc("cast_vote", { p_round_id: roundId, p_value: value }),

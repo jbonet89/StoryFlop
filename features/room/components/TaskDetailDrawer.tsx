@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useMemo, useState } from "react";
-import { ExternalLink, FileText, Pencil, X } from "lucide-react";
+import { ExternalLink, FileText, Pencil, Trash2, X } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { DECK } from "@/lib/constants";
 import { getEligibleRoundVotes, getEligibleVoters } from "@/lib/participation";
@@ -15,7 +15,7 @@ import { TaskForm } from "./TaskForm";
 export type TaskDetailMode = "view" | "edit" | "estimate";
 
 export function TaskDetailDrawer({
-  task, rounds, participations, votes, estimateChanges, isHost, initialMode, onClose, onSave, onUpdateEstimate,
+  task, rounds, participations, votes, estimateChanges, isHost, initialMode, onClose, onSave, onUpdateEstimate, onDelete,
 }: {
   task: PokerTask;
   rounds: Round[];
@@ -27,6 +27,7 @@ export function TaskDetailDrawer({
   onClose: () => void;
   onSave: (draft: ValidatedTaskDraft) => Promise<boolean>;
   onUpdateEstimate: (estimate: string) => Promise<boolean>;
+  onDelete: () => void;
 }) {
   const t = useTranslations("TaskDetails");
   const tEditor = useTranslations("TaskEditor");
@@ -71,7 +72,7 @@ export function TaskDetailDrawer({
           return <article key={round.id}><strong>{t("round", { number: round.round_number })}</strong><span>{t("roundMetrics", { votes: eligibleVotes.length, voters: getEligibleVoters(roundParticipation).length, average: formatStatistic(stats.average, locale, tCommon("unavailable")), median: formatStatistic(stats.median, locale, tCommon("unavailable")) })}</span>{task.finalized_from_round_id === round.id && <b>{t("acceptedRound")}</b>}</article>;
         })}</div> : <p className="empty-detail">{t("notVoted")}</p>}</section>
         {taskChanges.length > 0 && <section><h3>{t("estimateChanges")}</h3><div className="estimate-audit">{taskChanges.map(change => { const changeLabel = change.previous_estimate ? t("estimateCorrected", { previous: change.previous_estimate, next: change.new_estimate }) : t("estimateSet", { estimate: change.new_estimate }); return <p key={change.id}>{t("auditBy", { change: changeLabel, name: change.changed_by_name, date: formatDateTime(change.changed_at, locale, tCommon("unavailable")) })}</p>; })}</div></section>}
-        {isHost && <div className="detail-host-actions"><button className="soft-button" onClick={() => setMode("edit")}><Pencil size={14} />{t("editTask")}</button>{task.status === "completed" && <button className="soft-button" onClick={() => setMode("estimate")}>{t("editFinal")}</button>}</div>}
+        {isHost && <div className="detail-host-actions"><button className="soft-button" onClick={() => setMode("edit")}><Pencil size={14} />{t("editTask")}</button>{task.status === "completed" && <button className="soft-button" onClick={() => setMode("estimate")}>{t("editFinal")}</button>}<button className="soft-button danger-button" onClick={onDelete}><Trash2 size={14} />{t("deleteTask")}</button></div>}
       </div>}
     </aside>
   </div>;

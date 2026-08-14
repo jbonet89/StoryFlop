@@ -3,7 +3,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { useQueryClient } from "@tanstack/react-query";
-import { ChevronLeft, MoreHorizontal, X } from "lucide-react";
+import { ChevronLeft, ListTodo, MoreHorizontal, X } from "lucide-react";
 import { Brand } from "@/components/Brand";
 import { LanguageSelector } from "@/components/LanguageSelector";
 import type { VoteValue } from "@/lib/constants";
@@ -52,6 +52,7 @@ export function PokerRoom({ snapshot, code, realtimeStatus }: { snapshot: RoomSn
   const [toast, setToast] = useState<{ id: number; message: string } | null>(null);
   const [announcement, setAnnouncement] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [mobileBacklogOpen, setMobileBacklogOpen] = useState(false);
   const [changingMode, setChangingMode] = useState(false);
   const [inspectedTaskId, setInspectedTaskId] = useState<string | null>(null);
   const [taskDetailMode, setTaskDetailMode] = useState<TaskDetailMode>("view");
@@ -97,6 +98,18 @@ export function PokerRoom({ snapshot, code, realtimeStatus }: { snapshot: RoomSn
     return () => window.clearTimeout(timeout);
   }, [toast]);
 
+  useEffect(() => {
+    if (!mobileBacklogOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    const closeOnEscape = (event: KeyboardEvent) => { if (event.key === "Escape") setMobileBacklogOpen(false); };
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [mobileBacklogOpen]);
+
   const invalidate = useCallback(() => queryClient.invalidateQueries({ queryKey: ["room", code], exact: true }), [code, queryClient]);
   const showError = useCallback((message: string) => setToast({ id: Date.now(), message }), [setToast]);
   async function action(run: () => Promise<unknown>) { try { await run(); await invalidate(); return true; } catch (cause) { if (process.env.NODE_ENV === "development") console.error(cause); showError(tErrors(getErrorCode(cause))); return false; } }
@@ -135,11 +148,21 @@ export function PokerRoom({ snapshot, code, realtimeStatus }: { snapshot: RoomSn
   const removeAnimation = useCallback((eventId: string) => setAnimations(current => removeReactionAnimation(current, eventId)), []);
   const statusText = activeRound?.status === "voting" ? (votingProgress.hasVoters ? t("progress", { voted: votingProgress.votedCount, total: votingProgress.voterCount }) : t("noVoters")) : activeRound?.status === "revealed" ? t("cardsRevealed") : t("chooseTask");
   const inspectedTask = snapshot.tasks.find(task => task.id === inspectedTaskId);
+  async function deleteTask(taskId: string) {
+    if (!confirm(t("deleteTaskConfirm"))) return;
+    const deleted = await action(() => roomApi.deleteTask(taskId));
+    if (deleted && inspectedTaskId === taskId) closeTaskDetail();
+  }
+  function clearBacklog() {
+    if (!confirm(t("clearBacklogConfirm", { count: snapshot.tasks.length }))) return;
+    void action(() => roomApi.clearBacklog(snapshot.room.id));
+  }
   const hostControls = isHost && activeTask && activeRound ? <HostControls key={`${activeRound.id}-${activeRound.status}`} task={activeTask} round={activeRound} canReveal={canReveal} suggestedEstimate={suggestedFinalEstimate} onReveal={() => void action(() => roomApi.revealRound(activeRound.id))} onRestart={() => void action(() => roomApi.restartRound(activeRound.id))} onCancel={() => { if (confirm(t("cancelRoundConfirm"))) void action(() => roomApi.cancelRound(activeRound.id)); }} onFinalize={value => void action(() => roomApi.finalizeTask(activeTask.id, value))} /> : undefined;
 
   return <main className="room-app">
-    <header className="room-header"><div className="room-title"><Link href="/" aria-label={t("home")}><ChevronLeft /></Link><Brand /><span className="header-divider" /><div className="room-context"><strong>{snapshot.room.name}</strong><small>{t("code", { code })}</small></div></div><div className="room-actions"><ConnectionIndicator status={connectionStatus} /><InviteButton /><div className="room-menu-wrap"><button className="icon-button" aria-label={t("moreOptions")} aria-expanded={menuOpen} onClick={() => setMenuOpen(value => !value)}><MoreHorizontal /></button>{menuOpen && <div className="room-menu"><LanguageSelector compact /><hr />{isHost && <><strong>{t("transferHost")}</strong>{members.filter(member => member.id !== snapshot.me.id).map(member => <button key={member.id} onClick={() => { setMenuOpen(false); void action(() => roomApi.transferHost(snapshot.room.id, member.id)); }}>{member.avatar_key} {member.display_name}</button>)}<hr /><button className="danger" onClick={() => { if (confirm(t("closeConfirm"))) void action(async () => { await roomApi.closeRoom(snapshot.room.id); location.href = "/"; }); }}>{t("closeRoom")}</button></>}{!isHost && <button onClick={() => { if (confirm(t("leaveConfirm"))) void action(async () => { await roomApi.leaveRoom(snapshot.room.id); location.href = "/"; }); }}>{t("leaveRoom")}</button>}</div>}</div></div></header>
-    <div className="room-layout"><TaskList tasks={snapshot.tasks} activeTaskId={activeTask?.id} activeControls={hostControls} isHost={isHost} onCreate={(draft: ValidatedTaskDraft) => action(() => roomApi.createTask(snapshot.room.id, draft.title, draft.description, draft.taskUrl))} onDelete={id => { if (confirm(t("deleteTaskConfirm"))) void action(() => roomApi.deleteTask(id)); }} onStart={startTaskRound} onInspect={(task, mode) => inspectTask(task.id, mode)} onReorder={taskIds => action(() => roomApi.reorderTasks(snapshot.room.id, taskIds))} />
+    <header className="room-header"><div className="room-title"><Link href="/" aria-label={t("home")}><ChevronLeft /></Link><Brand /><span className="header-divider" /><div className="room-context"><strong>{snapshot.room.name}</strong><small>{t("code", { code })}</small></div></div><div className="room-actions"><button type="button" className="icon-button mobile-backlog-toggle" aria-label={t("openBacklog")} aria-expanded={mobileBacklogOpen} onClick={() => setMobileBacklogOpen(true)}><ListTodo /></button><ConnectionIndicator status={connectionStatus} /><InviteButton /><div className="room-menu-wrap"><button className="icon-button" aria-label={t("moreOptions")} aria-expanded={menuOpen} onClick={() => setMenuOpen(value => !value)}><MoreHorizontal /></button>{menuOpen && <div className="room-menu"><LanguageSelector compact /><hr />{isHost && <><strong>{t("transferHost")}</strong>{members.filter(member => member.id !== snapshot.me.id).map(member => <button key={member.id} onClick={() => { setMenuOpen(false); void action(() => roomApi.transferHost(snapshot.room.id, member.id)); }}>{member.avatar_key} {member.display_name}</button>)}<hr /><button className="danger" onClick={() => { if (confirm(t("closeConfirm"))) void action(async () => { await roomApi.closeRoom(snapshot.room.id); location.href = "/"; }); }}>{t("closeRoom")}</button></>}{!isHost && <button onClick={() => { if (confirm(t("leaveConfirm"))) void action(async () => { await roomApi.leaveRoom(snapshot.room.id); location.href = "/"; }); }}>{t("leaveRoom")}</button>}</div>}</div></div></header>
+    {mobileBacklogOpen && <button type="button" className="mobile-backlog-backdrop" aria-label={t("closeBacklog")} onClick={() => setMobileBacklogOpen(false)} />}
+    <div className={`room-layout ${mobileBacklogOpen ? "backlog-open" : ""}`}><TaskList tasks={snapshot.tasks} activeTaskId={activeTask?.id} activeControls={hostControls} isHost={isHost} onCreate={(draft: ValidatedTaskDraft) => action(() => roomApi.createTask(snapshot.room.id, draft.title, draft.description, draft.taskUrl))} onDelete={id => void deleteTask(id)} onClear={clearBacklog} onStart={taskId => { setMobileBacklogOpen(false); startTaskRound(taskId); }} onInspect={(task, mode) => { setMobileBacklogOpen(false); inspectTask(task.id, mode); }} onReorder={taskIds => action(() => roomApi.reorderTasks(snapshot.room.id, taskIds))} onClose={() => setMobileBacklogOpen(false)} />
       <section className="table-stage"><div className="round-heading"><span>{activeRound ? t("round", { number: activeRound.round_number }) : t("tableReady")}</span><h1>{activeTask?.title ?? t("whatEstimate")}</h1>{activeTask?.description && <p><LinkedText text={activeTask.description} /></p>}</div>
         <ParticipationModeToggle preference={snapshot.me.default_participation_mode} currentMode={activeRound ? myCurrentMode : undefined} roundStatus={activeRound?.status} changing={changingMode} onChange={mode => void changeParticipationMode(mode)} />
         {activeRound?.status === "revealed" && <RoundResults votes={currentVotes} participations={currentParticipation} />}
@@ -152,7 +175,7 @@ export function PokerRoom({ snapshot, code, realtimeStatus }: { snapshot: RoomSn
     <VotingDeck selected={myVote?.value} roundOpen={activeRound?.status === "voting"} observer={myCurrentMode === "observer"} onBecomeVoter={() => void changeParticipationMode("voter")} onVote={(value: VoteValue) => { if (activeRound?.status === "voting" && myCurrentMode === "voter") void action(() => roomApi.castVote(activeRound.id, value)); }} />
     <FlyingReactions animations={animations} onComplete={removeAnimation} />
     <span className="sr-only" aria-live="polite">{announcement}</span>
-    {inspectedTask && <TaskDetailDrawer key={`${inspectedTask.id}-${taskDetailMode}`} task={inspectedTask} rounds={snapshot.rounds} participations={snapshot.participations} votes={snapshot.votes} estimateChanges={snapshot.estimateChanges} isHost={isHost} initialMode={taskDetailMode} onClose={closeTaskDetail} onSave={draft => action(() => roomApi.updateTask(inspectedTask.id, draft.title, draft.description, draft.taskUrl))} onUpdateEstimate={estimate => action(() => roomApi.updateFinalEstimate(inspectedTask.id, estimate))} />}
+    {inspectedTask && <TaskDetailDrawer key={`${inspectedTask.id}-${taskDetailMode}`} task={inspectedTask} rounds={snapshot.rounds} participations={snapshot.participations} votes={snapshot.votes} estimateChanges={snapshot.estimateChanges} isHost={isHost} initialMode={taskDetailMode} onClose={closeTaskDetail} onSave={draft => action(() => roomApi.updateTask(inspectedTask.id, draft.title, draft.description, draft.taskUrl))} onUpdateEstimate={estimate => action(() => roomApi.updateFinalEstimate(inspectedTask.id, estimate))} onDelete={() => void deleteTask(inspectedTask.id)} />}
     {profileOpen && <MemberProfileDialog member={snapshot.me} onClose={() => setProfileOpen(false)} onSave={(displayName, avatar) => action(() => roomApi.updateMyProfile(snapshot.room.id, displayName, avatar))} />}
     {toast && <div key={toast.id} className="toast error-toast" role="alert"><span>{toast.message}</span><button type="button" aria-label={t("closeError")} onClick={() => setToast(null)}><X size={16} /></button></div>}
   </main>;

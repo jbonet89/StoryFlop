@@ -78,6 +78,8 @@
     "home": "Start",
     "code": "Raum {code}",
     "moreOptions": "Weitere Optionen",
+    "openBacklog": "Backlog öffnen",
+    "closeBacklog": "Backlog schließen",
     "transferHost": "Organisation übertragen",
     "closeRoom": "Raum schließen",
     "leaveRoom": "Raum verlassen",
@@ -96,7 +98,8 @@
     "observerDot": "{name}: Beobachter",
     "actionFailed": "Die Aktion konnte nicht abgeschlossen werden.",
     "reactionFailed": "Die Reaktion konnte nicht gesendet werden.",
-    "deleteTaskConfirm": "Diese Aufgabe löschen?",
+    "deleteTaskConfirm": "Diese Aufgabe löschen? Runden, Stimmen und Verlauf werden ebenfalls gelöscht. Dies kann nicht rückgängig gemacht werden.",
+    "clearBacklogConfirm": "Alle {count} Aufgaben im Backlog löschen? Alle Runden, Stimmen und Verläufe werden ebenfalls gelöscht. Dies kann nicht rückgängig gemacht werden.",
     "cancelRoundConfirm": "Runde abbrechen und Aufgabe auf ausstehend setzen?",
     "observerVoteConfirm": "Beim Wechsel zum Beobachter wird deine Stimme entfernt. Fortfahren?",
     "nowObserver": "Du nimmst jetzt als Beobachter teil.",
@@ -144,8 +147,6 @@
     "empty": "Noch keine Aufgaben",
     "emptyHost": "Füge die erste Aufgabe hinzu, um mit dem Schätzen zu beginnen.",
     "emptyGuest": "Der Organisator fügt bald Aufgaben hinzu.",
-    "reorder": "Aufgabe neu ordnen: {title}",
-    "drag": "Zum Neuordnen ziehen",
     "inspect": "Aufgabe ansehen: {title}",
     "status": {
       "pending": "Ausstehend",
@@ -164,7 +165,9 @@
     "moveDown": "Nach unten",
     "moveStart": "An den Anfang",
     "moveEnd": "Ans Ende",
-    "delete": "Aufgabe löschen"
+    "delete": "Aufgabe löschen",
+    "clearBacklog": "Backlog leeren",
+    "closeBacklog": "Backlog schließen"
   },
   "TaskEditor": {
     "title": "Titel",
@@ -199,6 +202,7 @@
     "estimateSet": "Schätzung auf {estimate} gesetzt",
     "auditBy": "{change} von {name} · {date}",
     "editTask": "Aufgabe bearbeiten",
+    "deleteTask": "Aufgabe löschen",
     "status": {
       "pending": "Ausstehend",
       "voting": "In Abstimmung",
