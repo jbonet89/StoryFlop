@@ -5,6 +5,7 @@ import { createPortal } from "react-dom";
 export interface ReactionAnimation {
   eventId: string;
   emoji: string;
+  scale: number;
   senderMemberId: string;
   targetMemberId: string;
   senderName: string;
@@ -17,19 +18,10 @@ export function FlyingReactions({ animations, onComplete }: { animations: Reacti
   const reduced = useReducedMotion();
   if (typeof document === "undefined") return null;
   return createPortal(<div className="reaction-flight-layer" aria-hidden="true"><AnimatePresence>{animations.map(animation => {
-    const middle = { x: (animation.from.x + animation.to.x) / 2, y: Math.min(animation.from.y, animation.to.y) - 90 };
-    return <motion.div
-      key={animation.eventId}
-      className="flying-reaction"
-      data-event-id={animation.eventId}
-      data-sender-id={animation.senderMemberId}
-      data-target-id={animation.targetMemberId}
-      data-emoji={animation.emoji}
-      initial={reduced ? { x: animation.to.x, y: animation.to.y, opacity: 0, scale: .8 } : { x: animation.from.x, y: animation.from.y, opacity: 0, scale: .8, rotate: 0 }}
-      animate={reduced ? { x: animation.to.x, y: animation.to.y, opacity: [0, 1, 0], scale: [1, 1.35, 1] } : { x: [animation.from.x, middle.x, animation.to.x], y: [animation.from.y, middle.y, animation.to.y], opacity: [0, 1, 1, 0], scale: [.8, 1.5, 1], rotate: [0, 15, -5] }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: reduced ? .45 : .95, ease: "easeInOut" }}
-      onAnimationComplete={() => onComplete(animation.eventId)}
-    >{animation.emoji}</motion.div>;
+    const scale = Math.min(Math.max(animation.scale, 1), 3);
+    if (reduced) return <motion.span key={animation.eventId} className="flying-reaction" initial={{ x: animation.to.x - 17, y: animation.to.y - 17, opacity: 1, scale }} animate={{ opacity: [1, 1, 0], scale: [scale, scale * 1.12, scale] }} transition={{ duration: .45 }} onAnimationComplete={() => onComplete(animation.eventId)}>{animation.emoji}</motion.span>;
+    return <div className="reaction-effect" key={animation.eventId} data-event-id={animation.eventId} data-sender-id={animation.senderMemberId} data-target-id={animation.targetMemberId} data-emoji={animation.emoji} data-scale={scale.toFixed(2)}>
+      <motion.span className="flying-reaction" initial={{ x: animation.from.x - 17, y: animation.from.y - 17, opacity: 1, scale, rotate: 0 }} animate={{ x: [animation.from.x - 17, animation.from.x - 17, animation.to.x - 17], y: [animation.from.y - 17, animation.from.y - 17, animation.to.y - 17], opacity: [1, 1, 1, 0], scale: [scale, scale, scale, scale * .9], rotate: [0, 0, -8, -8] }} transition={{ duration: .78, times: [0, .26, .94, 1], ease: "linear" }} onAnimationComplete={() => onComplete(animation.eventId)}>{animation.emoji}</motion.span>
+    </div>;
   })}</AnimatePresence></div>, document.body);
 }

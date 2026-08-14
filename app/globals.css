@@ -87,8 +87,12 @@ label { display:block;font-size:12px;font-weight:750;margin:15px 0;color:#394540
 .reaction-grid { display:grid!important;grid-template-columns:repeat(7,minmax(0,1fr));gap:2px;width:100%;overflow:visible; }
 .reaction-grid button { position:relative;min-width:0;border:0;background:transparent;border-radius:7px;font-size:21px;padding:5px 2px;cursor:pointer; }
 .reaction-grid button:hover,.reaction-grid button:focus-visible { z-index:1;background:#f2f0ea;transform:scale(1.12); }
+.reaction-grid button { touch-action:none;user-select:none; }
+.reaction-grid button.charging { z-index:2;background:#fff3d2;animation:charge-reaction 2.5s linear forwards; }
 .reaction-flight-layer { position:fixed;inset:0;z-index:100;pointer-events:none;overflow:visible; }
 .reaction-flight-layer .flying-reaction { position:fixed;left:0;top:0;font-size:34px;line-height:1;z-index:101;pointer-events:none;will-change:transform,opacity; }
+.reaction-effect { display:contents; }
+@keyframes charge-reaction { from { transform:scale(1); } to { transform:scale(3); } }
 .profile-dialog-backdrop { position:fixed;inset:0;z-index:140;display:grid;place-items:center;padding:18px;background:rgba(18,28,24,.42);backdrop-filter:blur(3px); }
 .profile-dialog { width:min(440px,100%);max-height:calc(100dvh - 36px);overflow-y:auto;background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:0 24px 70px rgba(18,31,26,.28); }
 .profile-dialog>header { position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:16px 18px;background:rgba(255,253,248,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(12px); }

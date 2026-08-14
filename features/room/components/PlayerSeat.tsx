@@ -6,7 +6,7 @@ import type { SeatPosition } from "@/lib/seats";
 import { Crown, Eye } from "lucide-react";
 import { EmojiPicker } from "./EmojiPicker";
 
-export function PlayerSeat({ member, position, compact, online, participationMode, roundActive, voted, vote, revealed, isMe, onReact, onEditProfile }: { member: Member; position: SeatPosition; compact: boolean; online: boolean; participationMode: ParticipationMode; roundActive: boolean; voted: boolean; vote?: Vote; revealed: boolean; isMe: boolean; onReact: (emoji: string) => void; onEditProfile: () => void }) {
+export function PlayerSeat({ member, position, compact, online, participationMode, roundActive, voted, vote, revealed, isMe, onReact, onEditProfile }: { member: Member; position: SeatPosition; compact: boolean; online: boolean; participationMode: ParticipationMode; roundActive: boolean; voted: boolean; vote?: Vote; revealed: boolean; isMe: boolean; onReact: (emoji: string, scale?: number) => void; onEditProfile: () => void }) {
   const t = useTranslations("Members");
   const [pickerOpen, setPickerOpen] = useState(false);
   const closePicker = useCallback(() => setPickerOpen(false), []);

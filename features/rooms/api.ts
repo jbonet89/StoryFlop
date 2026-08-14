@@ -34,7 +34,7 @@ export const roomApi = {
   cancelRound: (roundId: string) => rpc("cancel_round", { p_round_id: roundId }),
   finalizeTask: (taskId: string, estimate: string) => rpc("finalize_task", { p_task_id: taskId, p_estimate: estimate }),
   updateFinalEstimate: (taskId: string, estimate: string) => rpc("update_final_estimate", { p_task_id: taskId, p_estimate: estimate }),
-  sendReaction: (roomId: string, targetMemberId: string, emoji: string) => rpc("send_reaction", { p_room_id: roomId, p_target_member_id: targetMemberId, p_emoji: emoji }),
+  sendReaction: (roomId: string, targetMemberId: string, emoji: string, scale = 1) => rpc("send_reaction", { p_room_id: roomId, p_target_member_id: targetMemberId, p_emoji: emoji, p_scale: scale }),
 };
 
 export interface ParticipationModeResult {

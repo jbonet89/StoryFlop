@@ -78,7 +78,7 @@ export function PokerRoom({ snapshot, code, realtimeStatus }: { snapshot: RoomSn
       const sourceRect = source.getBoundingClientRect();
       const targetRect = target.getBoundingClientRect();
       nextAnimations.push({
-        eventId: reaction.id, emoji: reaction.emoji,
+        eventId: reaction.id, emoji: reaction.emoji, scale: reaction.scale ?? 1,
         senderMemberId: reaction.sender_member_id, targetMemberId: reaction.target_member_id,
         senderName: participants.sender.display_name, targetName: participants.target.display_name,
         from: { x: sourceRect.left + sourceRect.width / 2, y: sourceRect.top + sourceRect.height / 2 },
@@ -113,7 +113,7 @@ export function PokerRoom({ snapshot, code, realtimeStatus }: { snapshot: RoomSn
   const invalidate = useCallback(() => queryClient.invalidateQueries({ queryKey: ["room", code], exact: true }), [code, queryClient]);
   const showError = useCallback((message: string) => setToast({ id: Date.now(), message }), [setToast]);
   async function action(run: () => Promise<unknown>) { try { await run(); await invalidate(); return true; } catch (cause) { if (process.env.NODE_ENV === "development") console.error(cause); showError(tErrors(getErrorCode(cause))); return false; } }
-  async function react(targetId: string, emoji: string) { try { await roomApi.sendReaction(snapshot.room.id, targetId, emoji); } catch (cause) { if (process.env.NODE_ENV === "development") console.error(cause); showError(tErrors(getErrorCode(cause))); } }
+  async function react(targetId: string, emoji: string, scale = 1) { try { await roomApi.sendReaction(snapshot.room.id, targetId, emoji, scale); } catch (cause) { if (process.env.NODE_ENV === "development") console.error(cause); showError(tErrors(getErrorCode(cause))); } }
   function startTaskRound(taskId: string) {
     if (activeRound) {
       showError(tErrors("ACTIVE_ROUND_EXISTS"));
@@ -167,7 +167,7 @@ export function PokerRoom({ snapshot, code, realtimeStatus }: { snapshot: RoomSn
         <ParticipationModeToggle preference={snapshot.me.default_participation_mode} currentMode={activeRound ? myCurrentMode : undefined} roundStatus={activeRound?.status} changing={changingMode} onChange={mode => void changeParticipationMode(mode)} />
         {activeRound?.status === "revealed" && <RoundResults votes={currentVotes} participations={currentParticipation} />}
         <div className={`poker-table player-count-${Math.min(members.length, 12)} ${activeRound?.status === "revealed" ? "has-round-results" : ""}`}><div className="felt"><div className="felt-ring"><span>{activeRound?.status === "revealed" ? t("results") : activeRound ? t("votingInProgress") : t("brand")}</span><strong>{statusText}</strong><div className="felt-dots">{members.map(member => { const participation = currentParticipation.find(item => item.member_id === member.id); const mode = getMemberRoundMode(member, participation); return <i key={member.id} className={mode === "observer" ? "observer" : participation?.has_voted ? "done" : ""} title={mode === "observer" ? t("observerDot", { name: member.display_name }) : undefined} />; })}</div></div></div>
-          <div className="seat-grid">{members.slice(0, 12).map((member, index) => { const participation = currentParticipation.find(item => item.member_id === member.id); return <PlayerSeat key={member.id} member={member} position={positions[index]} compact={members.length > 8} isMe={member.id === snapshot.me.id} online={member.id === snapshot.me.id || presence.onlineIds.has(member.id)} participationMode={getMemberRoundMode(member, participation)} roundActive={Boolean(activeRound)} voted={participation?.has_voted ?? false} vote={currentVotes.find(vote => vote.member_id === member.id)} revealed={activeRound?.status === "revealed"} onReact={emoji => void react(member.id, emoji)} onEditProfile={() => setProfileOpen(true)} />; })}</div>
+          <div className="seat-grid">{members.slice(0, 12).map((member, index) => { const participation = currentParticipation.find(item => item.member_id === member.id); return <PlayerSeat key={member.id} member={member} position={positions[index]} compact={members.length > 8} isMe={member.id === snapshot.me.id} online={member.id === snapshot.me.id || presence.onlineIds.has(member.id)} participationMode={getMemberRoundMode(member, participation)} roundActive={Boolean(activeRound)} voted={participation?.has_voted ?? false} vote={currentVotes.find(vote => vote.member_id === member.id)} revealed={activeRound?.status === "revealed"} onReact={(emoji, scale) => void react(member.id, emoji, scale)} onEditProfile={() => setProfileOpen(true)} />; })}</div>
         </div>
         <RoundHistory rounds={snapshot.rounds} tasks={snapshot.tasks} members={members} participations={snapshot.participations} votes={snapshot.votes} />
       </section>

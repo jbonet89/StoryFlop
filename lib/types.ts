@@ -10,5 +10,5 @@ export interface PokerTask { id: string; room_id: string; title: string; descrip
 export interface Round { id: string; room_id: string; task_id: string; round_number: number; status: RoundStatus; revealed_at: string | null; created_at: string }
 export interface Vote { id: string; room_id: string; round_id: string; member_id: string; value: VoteValue; created_at: string; updated_at: string }
 export interface Participation { room_id: string; round_id: string; member_id: string; participation_mode: ParticipationMode; has_voted: boolean; voted_at: string | null; created_at: string; updated_at: string }
-export interface Reaction { id: string; room_id: string; sender_member_id: string; target_member_id: string; emoji: string; created_at: string }
+export interface Reaction { id: string; room_id: string; sender_member_id: string; target_member_id: string; emoji: string; scale?: number; created_at: string }
 export interface TaskEstimateChange { id: string; room_id: string; task_id: string; previous_estimate: string | null; new_estimate: string; changed_by: string | null; changed_by_name: string; changed_at: string }
