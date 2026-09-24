@@ -1,5 +1,6 @@
 export const errorCodes = [
-  "ROOM_NOT_FOUND", "ROOM_CLOSED", "NOT_A_ROOM_MEMBER", "HOST_ONLY",
+  "ROOM_NOT_FOUND", "ROOM_CLOSED", "NOT_A_ROOM_MEMBER", "HOST_ONLY", "FACILITATOR_ONLY",
+  "HOST_PROTECTED", "MEMBER_REMOVE_NOT_ALLOWED", "MEMBER_ROLE_INVALID",
   "OBSERVER_CANNOT_VOTE", "ROUND_NOT_OPEN", "ACTIVE_ROUND_EXISTS", "INVALID_TASK_URL",
   "TASK_TITLE_REQUIRED", "REACTION_RATE_LIMITED", "NETWORK_ERROR",
   "COPY_FAILED", "PARTICIPATION_CHANGE_FAILED", "UNKNOWN_ERROR",
@@ -15,6 +16,10 @@ export function getErrorCode(error: unknown): ErrorCode {
   if (/room_closed|sala (está )?cerrada/.test(normalized)) return "ROOM_CLOSED";
   if (/not_a_room_member|no perteneces|ya no perteneces/.test(normalized)) return "NOT_A_ROOM_MEMBER";
   if (/host_only|acción no permitida|accion no permitida|solo.*organizador/.test(normalized)) return "HOST_ONLY";
+  if (/facilitator_only/.test(normalized)) return "FACILITATOR_ONLY";
+  if (/host_protected|cannot_remove_self/.test(normalized)) return "HOST_PROTECTED";
+  if (/member_remove_not_allowed|member_selection/.test(normalized)) return "MEMBER_REMOVE_NOT_ALLOWED";
+  if (/member_role_invalid/.test(normalized)) return "MEMBER_ROLE_INVALID";
   if (/observer_cannot_vote|observador.*vot/.test(normalized)) return "OBSERVER_CANNOT_VOTE";
   if (/round_not_open|ronda no está abierta|ronda no esta abierta|votación está cerrada/.test(normalized)) return "ROUND_NOT_OPEN";
   if (/active_round_exists|ya existe una ronda activa|ronda.*en curso/.test(normalized)) return "ACTIVE_ROUND_EXISTS";

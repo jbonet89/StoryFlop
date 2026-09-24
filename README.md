@@ -115,12 +115,14 @@ Las escrituras sensibles se realizan mediante funciones PostgreSQL `SECURITY DEF
 
 ## Privacidad y mantenimiento
 
-StoryFlop utiliza autenticación anónima de Supabase. Los datos de las salas permanecen en el proyecto configurado por quien despliega la aplicación. Las reacciones son eventos efímeros; se recomienda programar una limpieza periódica:
+StoryFlop utiliza autenticación anónima de Supabase. Las migraciones activan Supabase Cron (`pg_cron`) y configuran automáticamente la política de conservación:
 
-```sql
-delete from public.reactions
-where created_at < now() - interval '24 hours';
-```
+- las reacciones se eliminan pasados 15 minutos;
+- las salas sin actividad funcional durante 14 días se eliminan junto con sus datos vinculados;
+- los usuarios anónimos huérfanos se eliminan después de un margen de seguridad de 15 días;
+- el historial técnico de ejecuciones Cron se conserva durante 30 días.
+
+Los cambios de tarjetas, rondas, votos, participación y miembros cuentan como actividad. Presence, las reacciones y las ediciones de perfil no prolongan la vida de una sala. Los jobs pueden supervisarse en **Supabase → Integrations → Cron → Jobs**.
 
 ## Estado del proyecto
 

@@ -10,7 +10,11 @@ export function createClient() {
 export async function ensureAnonymousSession() {
   const supabase = createClient();
   const { data } = await supabase.auth.getSession();
-  if (data.session) return data.session;
+  if (data.session) {
+    const { data: verified, error: verificationError } = await supabase.auth.getUser();
+    if (!verificationError && verified.user) return data.session;
+    await supabase.auth.signOut({ scope: "local" });
+  }
   const { data: signedIn, error } = await supabase.auth.signInAnonymously();
   if (error || !signedIn.session) throw error ?? new Error("No se pudo crear la sesión anónima");
   return signedIn.session;

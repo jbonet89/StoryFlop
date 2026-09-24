@@ -29,11 +29,19 @@ export function useRoom(code: string) {
       queryClient.setQueryData<RoomSnapshot | null>(queryKey, current => current ? updater(current) : current);
     };
     const handleMember = (payload: RealtimePostgresChangesPayload<Member>) => {
-      if (payload.eventType === "DELETE") updateSnapshot(current => ({ ...current, members: removeMember(current.members, (payload.old as Member).id) }));
+      if (payload.eventType === "DELETE") updateSnapshot(current => ({ ...current, members: removeMember(current.members, (payload.old as Member).id), memberDirectory: removeMember(current.memberDirectory, (payload.old as Member).id) }));
       else updateSnapshot(current => {
         const incoming = payload.new as Member;
-        return { ...current, members: upsertMember(current.members, incoming), me: current.me.id === incoming.id ? incoming : current.me };
+        if (current.me.id === incoming.id && incoming.is_kicked) return current;
+        return {
+          ...current,
+          members: incoming.is_kicked ? removeMember(current.members, incoming.id) : upsertMember(current.members, incoming),
+          memberDirectory: upsertMember(current.memberDirectory, incoming),
+          me: current.me.id === incoming.id ? incoming : current.me,
+        };
       });
+      const incoming = payload.eventType === "DELETE" ? payload.old as Member : payload.new as Member;
+      if (incoming.id === query.data?.me.id && (payload.eventType === "DELETE" || incoming.is_kicked)) refreshRoom();
     };
     const handleParticipation = (payload: RealtimePostgresChangesPayload<Participation>) => {
       if (payload.eventType === "DELETE") updateSnapshot(current => ({ ...current, participations: removeParticipation(current.participations, payload.old as Participation) }));
@@ -67,7 +75,7 @@ export function useRoom(code: string) {
       });
 
     return () => { active = false; void supabase.removeChannel(channel); };
-  }, [queryClient, queryKey, roomId]);
+  }, [query.data?.me.id, queryClient, queryKey, roomId]);
 
   return { ...query, realtimeStatus };
 }
@@ -75,13 +83,14 @@ export function useRoom(code: string) {
 export function usePresence(roomId: string | undefined, memberId: string | undefined) {
   const [onlineIds, setOnlineIds] = useState<Set<string>>(new Set());
   const [status, setStatus] = useState<RealtimeStatus>("conectando");
+  const [syncedRoomId, setSyncedRoomId] = useState<string>();
   useEffect(() => {
     if (!roomId || !memberId) return;
     let active = true;
     const supabase = createClient();
     const channelName = `presence:${roomId}`;
     const channel = supabase.channel(channelName, { config: { presence: { key: memberId } } });
-    const syncPresence = () => { if (active) setOnlineIds(new Set(Object.keys(channel.presenceState()))); };
+    const syncPresence = () => { if (active) { setOnlineIds(new Set(Object.keys(channel.presenceState()))); setSyncedRoomId(roomId); } };
     channel
       .on("presence", { event: "sync" }, syncPresence)
       .on("presence", { event: "join" }, syncPresence)
@@ -96,5 +105,5 @@ export function usePresence(roomId: string | undefined, memberId: string | undef
       });
     return () => { active = false; void channel.untrack(); void supabase.removeChannel(channel); };
   }, [memberId, roomId]);
-  return useMemo(() => ({ onlineIds, status }), [onlineIds, status]);
+  return useMemo(() => ({ onlineIds, status, synced: syncedRoomId === roomId }), [onlineIds, roomId, status, syncedRoomId]);
 }

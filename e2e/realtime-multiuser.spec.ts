@@ -48,6 +48,32 @@ async function probeDirectSecurity(page: Page, code: string, targetName: string)
   }, { supabaseUrl, anonKey, code, targetName });
 }
 
+async function probeCollaboratorGovernance(page: Page, code: string, hostName: string) {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  if (!supabaseUrl || !anonKey) throw new Error("Faltan variables públicas de Supabase para el E2E");
+  return page.evaluate(async ({ supabaseUrl, anonKey, code, hostName }) => {
+    const authKey = Object.keys(localStorage).find(key => key.startsWith("sb-") && key.endsWith("-auth-token"));
+    const stored = authKey ? localStorage.getItem(authKey) : null;
+    const accessToken = stored ? JSON.parse(stored).access_token as string | undefined : undefined;
+    if (!accessToken) throw new Error("No se encontró la sesión anónima");
+    const headers = { apikey: anonKey, Authorization: `Bearer ${accessToken}`, "Content-Type": "application/json" };
+    const rooms = await (await fetch(`${supabaseUrl}/rest/v1/rooms?code=eq.${code}&select=id`, { headers })).json() as { id: string }[];
+    const roomId = rooms[0]?.id;
+    const members = await (await fetch(`${supabaseUrl}/rest/v1/room_members?room_id=eq.${roomId}&display_name=eq.${encodeURIComponent(hostName)}&select=id`, { headers })).json() as { id: string }[];
+    const hostId = members[0]?.id;
+    if (!roomId || !hostId) throw new Error("No se pudo resolver la sala de prueba");
+    const call = (name: string, body: object) => fetch(`${supabaseUrl}/rest/v1/rpc/${name}`, { method: "POST", headers, body: JSON.stringify(body) });
+    const [transfer, close, role, remove] = await Promise.all([
+      call("transfer_host", { p_room_id: roomId, p_target_member_id: hostId }),
+      call("close_room", { p_room_id: roomId }),
+      call("set_member_role", { p_room_id: roomId, p_target_member_id: hostId, p_role: "participant" }),
+      call("remove_room_members", { p_room_id: roomId, p_target_member_ids: [hostId] }),
+    ]);
+    return [transfer.status, close.status, role.status, remove.status];
+  }, { supabaseUrl, anonKey, code, hostName });
+}
+
 test("sincroniza tres usuarios, posiciones y reacciones sin interacción adicional", async ({ browser, page }) => {
   const contexts: BrowserContext[] = [];
   await page.goto("/");
@@ -171,6 +197,48 @@ test("sincroniza votantes y observadores, elimina votos y conserva el histórico
     await expect(page.getByRole("button", { name: "Destapar cartas" })).toBeDisabled();
     await setMode(participantB.page, "Votante");
     await expectVotingStatus(pages, "0 de 1 han votado");
+  } finally {
+    await Promise.all(contexts.map(context => context.close()));
+  }
+});
+
+test("delega operaciones, protege al organizador y permite retirar y reincorporar participantes", async ({ browser, page }) => {
+  const contexts: BrowserContext[] = [];
+  await page.goto("/");
+  await page.getByLabel("Nombre de la sala").fill(`Colaboradores ${Date.now()}`);
+  await page.getByLabel("Tu nombre").fill("Host Ana");
+  await page.locator("form").getByRole("button", { name: "Crear sala" }).click();
+  const roomUrl = page.url();
+
+  try {
+    const collaborator = await joinRoom(browser, roomUrl, "Berto"); contexts.push(collaborator.context);
+    const participant = await joinRoom(browser, roomUrl, "Carla", 3); contexts.push(participant.context);
+
+    await page.getByRole("button", { name: "Más opciones" }).click();
+    await page.getByRole("button", { name: "Gestionar participantes" }).click();
+    await page.getByRole("combobox", { name: "Rol de Berto" }).selectOption("collaborator");
+    await expect(page.getByRole("combobox", { name: "Rol de Berto" })).toHaveValue("collaborator");
+    await page.getByRole("button", { name: "Cerrar gestión de participantes" }).click();
+
+    await collaborator.page.getByRole("button", { name: "Añadir tarea" }).click();
+    await collaborator.page.getByLabel("Título", { exact: true }).fill("Creada por colaborador");
+    await collaborator.page.locator(".task-editor").getByRole("button", { name: "Añadir tarea", exact: true }).click();
+    await expect(page.getByText("Creada por colaborador", { exact: true })).toBeVisible({ timeout: 10_000 });
+
+    const code = new URL(roomUrl).pathname.split("/").pop()!;
+    for (const status of await probeCollaboratorGovernance(collaborator.page, code, "Host Ana")) expect(status).toBeGreaterThanOrEqual(400);
+
+    await collaborator.page.getByRole("button", { name: "Más opciones" }).click();
+    await collaborator.page.getByRole("button", { name: "Gestionar participantes" }).click();
+    collaborator.page.once("dialog", dialog => dialog.accept());
+    await collaborator.page.getByRole("button", { name: "Retirar a Carla" }).click();
+    await expect(page.locator("[data-player-id]")).toHaveCount(2, { timeout: 10_000 });
+
+    await participant.page.reload();
+    await expect(participant.page.getByRole("heading", { name: "Tu asiento te espera" })).toBeVisible();
+    await participant.page.getByLabel("Tu nombre").fill("Carla");
+    await participant.page.getByRole("button", { name: "Sentarme en la mesa" }).click();
+    await Promise.all([page, collaborator.page, participant.page].map(current => expect(current.locator("[data-player-id]")).toHaveCount(3, { timeout: 10_000 })));
   } finally {
     await Promise.all(contexts.map(context => context.close()));
   }

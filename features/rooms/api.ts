@@ -1,5 +1,5 @@
 import { createClient, ensureAnonymousSession } from "@/lib/supabase/client";
-import type { Member, Participation, ParticipationMode, PokerTask, Reaction, Room, Round, TaskEstimateChange, Vote } from "@/lib/types";
+import type { Member, MemberRole, Participation, ParticipationMode, PokerTask, Reaction, Room, Round, TaskEstimateChange, Vote } from "@/lib/types";
 import type { VoteValue } from "@/lib/constants";
 import { unwrapRpcRow } from "@/lib/supabase/rpc";
 
@@ -20,6 +20,8 @@ export const roomApi = {
   updateMyProfile: (roomId: string, displayName: string, avatarKey: string) => rpc("update_my_profile", { p_room_id: roomId, p_display_name: displayName, p_avatar_key: avatarKey }),
   leaveRoom: (roomId: string) => rpc("leave_room", { p_room_id: roomId }),
   transferHost: (roomId: string, memberId: string) => rpc("transfer_host", { p_room_id: roomId, p_target_member_id: memberId }),
+  setMemberRole: (roomId: string, memberId: string, role: Extract<MemberRole, "collaborator" | "participant">) => rpc("set_member_role", { p_room_id: roomId, p_target_member_id: memberId, p_role: role }),
+  removeRoomMembers: (roomId: string, memberIds: string[]) => rpc<number>("remove_room_members", { p_room_id: roomId, p_target_member_ids: memberIds }),
   closeRoom: (roomId: string) => rpc("close_room", { p_room_id: roomId }),
   createTask: (roomId: string, title: string, description: string, taskUrl: string | null) => rpc("create_task", { p_room_id: roomId, p_title: title, p_description: description, p_task_url: taskUrl }),
   updateTask: (taskId: string, title: string, description: string, taskUrl: string | null) => rpc("update_task", { p_task_id: taskId, p_title: title, p_description: description, p_task_url: taskUrl }),
@@ -46,7 +48,7 @@ export interface ParticipationModeResult {
   voted_at: string | null;
 }
 
-export interface RoomSnapshot { room: Room; members: Member[]; tasks: PokerTask[]; rounds: Round[]; participations: Participation[]; votes: Vote[]; reactions: Reaction[]; estimateChanges: TaskEstimateChange[]; me: Member }
+export interface RoomSnapshot { room: Room; members: Member[]; memberDirectory: Member[]; tasks: PokerTask[]; rounds: Round[]; participations: Participation[]; votes: Vote[]; reactions: Reaction[]; estimateChanges: TaskEstimateChange[]; me: Member }
 
 export async function fetchRoom(code: string): Promise<RoomSnapshot | null> {
   await ensureAnonymousSession();
@@ -56,7 +58,7 @@ export async function fetchRoom(code: string): Promise<RoomSnapshot | null> {
   if (!room) return null;
   const userId = (await supabase.auth.getUser()).data.user?.id;
   const [members, tasks, rounds, participations, votes, reactions, estimateChanges] = await Promise.all([
-    supabase.from("room_members").select("*").eq("room_id", room.id).eq("is_kicked", false).order("joined_at"),
+    supabase.from("room_members").select("*").eq("room_id", room.id).order("joined_at"),
     supabase.from("tasks").select("*").eq("room_id", room.id).order("sort_order"),
     supabase.from("rounds").select("*").eq("room_id", room.id).order("created_at", { ascending: false }),
     supabase.from("round_participation").select("*").eq("room_id", room.id),
@@ -65,8 +67,9 @@ export async function fetchRoom(code: string): Promise<RoomSnapshot | null> {
     supabase.from("task_estimate_changes").select("*").eq("room_id", room.id).order("changed_at", { ascending: false }),
   ]);
   for (const result of [members, tasks, rounds, participations, votes, reactions, estimateChanges]) if (result.error) throw new Error(result.error.message);
-  const memberList = members.data as Member[];
+  const memberDirectory = members.data as Member[];
+  const memberList = memberDirectory.filter(member => !member.is_kicked);
   const me = memberList.find(member => member.user_id === userId);
   if (!me) return null;
-  return { room: room as Room, members: memberList, tasks: tasks.data as PokerTask[], rounds: rounds.data as Round[], participations: participations.data as Participation[], votes: votes.data as Vote[], reactions: reactions.data as Reaction[], estimateChanges: estimateChanges.data as TaskEstimateChange[], me };
+  return { room: room as Room, members: memberList, memberDirectory, tasks: tasks.data as PokerTask[], rounds: rounds.data as Round[], participations: participations.data as Participation[], votes: votes.data as Vote[], reactions: reactions.data as Reaction[], estimateChanges: estimateChanges.data as TaskEstimateChange[], me };
 }
