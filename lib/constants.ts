@@ -9,6 +9,6 @@ export const REACTIONS = [
   { emoji: "🤔", label: "thinking" }, { emoji: "🎯", label: "target" }, { emoji: "☕", label: "coffee" },
   { emoji: "💩", label: "poop" }, { emoji: "🫏", label: "donkey" }, { emoji: "🐔", label: "chicken" },
   { emoji: "🧠", label: "brain" }, { emoji: "🏆", label: "trophy" }, { emoji: "🐸", label: "frog" },
-  { emoji: "🦄", label: "unicorn" }, { emoji: "🍌", label: "banana" },
+  { emoji: "🦄", label: "unicorn" }, { emoji: "🍌", label: "banana" }, { emoji: "✈️", label: "airplane" },
 ] as const;
 export type VoteValue = (typeof DECK)[number];

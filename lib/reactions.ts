@@ -4,6 +4,16 @@ export const REACTION_HOLD_THRESHOLD_MS = 400;
 export const REACTION_MAX_HOLD_MS = 2500;
 export const MAX_REACTION_SCALE = 3;
 
+export type ReactionMotionKind = "sticky" | "airplane" | "bounce";
+
+const STICKY_REACTIONS = new Set(["💩", "🧠", "🍌"]);
+
+export function reactionMotionKind(emoji: string): ReactionMotionKind {
+  if (STICKY_REACTIONS.has(emoji)) return "sticky";
+  if (emoji === "✈️") return "airplane";
+  return "bounce";
+}
+
 export function advanceReactionBurst(currentCount: number) {
   const count = Math.min(currentCount + 1, MAX_REACTIONS_PER_OPEN);
   return { count, shouldClose: count === MAX_REACTIONS_PER_OPEN };

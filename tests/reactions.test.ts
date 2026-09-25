@@ -1,11 +1,11 @@
 import { describe, expect, it } from "vitest";
 import { REACTIONS } from "@/lib/constants";
-import { advanceReactionBurst, MAX_REACTION_SCALE, MAX_REACTIONS_PER_OPEN, REACTION_HOLD_THRESHOLD_MS, REACTION_MAX_HOLD_MS, REACTION_SEND_INTERVAL_MS, reactionScaleForHold, reactionSendDelay } from "@/lib/reactions";
+import { advanceReactionBurst, MAX_REACTION_SCALE, MAX_REACTIONS_PER_OPEN, REACTION_HOLD_THRESHOLD_MS, REACTION_MAX_HOLD_MS, REACTION_SEND_INTERVAL_MS, reactionMotionKind, reactionScaleForHold, reactionSendDelay } from "@/lib/reactions";
 import { reactionSchema } from "@/lib/validation";
 
 describe("selector simplificado de reacciones", () => {
-  it("contiene una única lista de catorce emojis", () => {
-    expect(REACTIONS.map(option => option.emoji)).toEqual(["😂", "🔥", "👏", "🤔", "🎯", "☕", "💩", "🫏", "🐔", "🧠", "🏆", "🐸", "🦄", "🍌"]);
+  it("contiene una única lista de quince emojis", () => {
+    expect(REACTIONS.map(option => option.emoji)).toEqual(["😂", "🔥", "👏", "🤔", "🎯", "☕", "💩", "🫏", "🐔", "🧠", "🏆", "🐸", "🦄", "🍌", "✈️"]);
   });
 
   it("acepta todas las reacciones visibles en la validación", () => {
@@ -29,5 +29,11 @@ describe("selector simplificado de reacciones", () => {
     expect(reactionScaleForHold(REACTION_MAX_HOLD_MS)).toBe(MAX_REACTION_SCALE);
     expect(reactionScaleForHold(REACTION_MAX_HOLD_MS * 2)).toBe(MAX_REACTION_SCALE);
     expect(reactionScaleForHold(1250)).toBe(2);
+  });
+
+  it("asigna una física distinta a pegajosos, avión y resto", () => {
+    for (const emoji of ["💩", "🧠", "🍌"]) expect(reactionMotionKind(emoji)).toBe("sticky");
+    expect(reactionMotionKind("✈️")).toBe("airplane");
+    for (const emoji of ["😂", "🔥", "🏆"]) expect(reactionMotionKind(emoji)).toBe("bounce");
   });
 });

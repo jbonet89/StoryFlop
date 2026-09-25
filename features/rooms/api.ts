@@ -1,5 +1,5 @@
 import { createClient, ensureAnonymousSession } from "@/lib/supabase/client";
-import type { Member, MemberRole, Participation, ParticipationMode, PokerTask, Reaction, Room, Round, TaskEstimateChange, Vote } from "@/lib/types";
+import type { Member, MemberRole, Participation, ParticipationMode, PokerTask, Room, Round, TaskEstimateChange, Vote } from "@/lib/types";
 import type { VoteValue } from "@/lib/constants";
 import { unwrapRpcRow } from "@/lib/supabase/rpc";
 
@@ -36,7 +36,6 @@ export const roomApi = {
   cancelRound: (roundId: string) => rpc("cancel_round", { p_round_id: roundId }),
   finalizeTask: (taskId: string, estimate: string) => rpc("finalize_task", { p_task_id: taskId, p_estimate: estimate }),
   updateFinalEstimate: (taskId: string, estimate: string) => rpc("update_final_estimate", { p_task_id: taskId, p_estimate: estimate }),
-  sendReaction: (roomId: string, targetMemberId: string, emoji: string, scale = 1) => rpc("send_reaction", { p_room_id: roomId, p_target_member_id: targetMemberId, p_emoji: emoji, p_scale: scale }),
 };
 
 export interface ParticipationModeResult {
@@ -48,7 +47,7 @@ export interface ParticipationModeResult {
   voted_at: string | null;
 }
 
-export interface RoomSnapshot { room: Room; members: Member[]; memberDirectory: Member[]; tasks: PokerTask[]; rounds: Round[]; participations: Participation[]; votes: Vote[]; reactions: Reaction[]; estimateChanges: TaskEstimateChange[]; me: Member }
+export interface RoomSnapshot { room: Room; members: Member[]; memberDirectory: Member[]; tasks: PokerTask[]; rounds: Round[]; participations: Participation[]; votes: Vote[]; estimateChanges: TaskEstimateChange[]; me: Member }
 
 export async function fetchRoom(code: string): Promise<RoomSnapshot | null> {
   await ensureAnonymousSession();
@@ -57,19 +56,18 @@ export async function fetchRoom(code: string): Promise<RoomSnapshot | null> {
   if (error) throw new Error(error.message);
   if (!room) return null;
   const userId = (await supabase.auth.getUser()).data.user?.id;
-  const [members, tasks, rounds, participations, votes, reactions, estimateChanges] = await Promise.all([
+  const [members, tasks, rounds, participations, votes, estimateChanges] = await Promise.all([
     supabase.from("room_members").select("*").eq("room_id", room.id).order("joined_at"),
     supabase.from("tasks").select("*").eq("room_id", room.id).order("sort_order"),
     supabase.from("rounds").select("*").eq("room_id", room.id).order("created_at", { ascending: false }),
     supabase.from("round_participation").select("*").eq("room_id", room.id),
     supabase.from("votes").select("*").eq("room_id", room.id),
-    supabase.from("reactions").select("*").eq("room_id", room.id).gte("created_at", new Date(Date.now() - 15_000).toISOString()).order("created_at"),
     supabase.from("task_estimate_changes").select("*").eq("room_id", room.id).order("changed_at", { ascending: false }),
   ]);
-  for (const result of [members, tasks, rounds, participations, votes, reactions, estimateChanges]) if (result.error) throw new Error(result.error.message);
+  for (const result of [members, tasks, rounds, participations, votes, estimateChanges]) if (result.error) throw new Error(result.error.message);
   const memberDirectory = members.data as Member[];
   const memberList = memberDirectory.filter(member => !member.is_kicked);
   const me = memberList.find(member => member.user_id === userId);
   if (!me) return null;
-  return { room: room as Room, members: memberList, memberDirectory, tasks: tasks.data as PokerTask[], rounds: rounds.data as Round[], participations: participations.data as Participation[], votes: votes.data as Vote[], reactions: reactions.data as Reaction[], estimateChanges: estimateChanges.data as TaskEstimateChange[], me };
+  return { room: room as Room, members: memberList, memberDirectory, tasks: tasks.data as PokerTask[], rounds: rounds.data as Round[], participations: participations.data as Participation[], votes: votes.data as Vote[], estimateChanges: estimateChanges.data as TaskEstimateChange[], me };
 }

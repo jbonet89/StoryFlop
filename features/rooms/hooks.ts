@@ -1,10 +1,11 @@
 "use client";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import type { RealtimePostgresChangesPayload } from "@supabase/supabase-js";
+import type { RealtimeChannel, RealtimePostgresChangesPayload } from "@supabase/supabase-js";
 import { createClient } from "@/lib/supabase/client";
-import type { Member, Participation, Reaction, Vote } from "@/lib/types";
-import { mergeReaction, removeMember, removeParticipation, removeVote, upsertMember, upsertParticipation, upsertVote } from "@/lib/room-state";
+import type { Member, Participation, Vote } from "@/lib/types";
+import { removeMember, removeParticipation, removeVote, upsertMember, upsertParticipation, upsertVote } from "@/lib/room-state";
+import { isReactionBroadcastEvent, REACTION_BROADCAST_EVENT, type ReactionBroadcastEvent } from "@/lib/reaction-events";
 import { fetchRoom, type RoomSnapshot } from "./api";
 
 export type RealtimeStatus = "conectando" | "en_directo" | "reconectando" | "sin_conexion" | "error";
@@ -51,10 +52,6 @@ export function useRoom(code: string) {
       if (payload.eventType === "DELETE") updateSnapshot(current => ({ ...current, votes: removeVote(current.votes, payload.old as Vote) }));
       else updateSnapshot(current => ({ ...current, votes: upsertVote(current.votes, payload.new as Vote) }));
     };
-    const handleReaction = (payload: RealtimePostgresChangesPayload<Reaction>) => {
-      if (payload.eventType !== "INSERT") return;
-      updateSnapshot(current => ({ ...current, reactions: mergeReaction(current.reactions, payload.new as Reaction) }));
-    };
     const refreshRoom = () => { if (active) void queryClient.invalidateQueries({ queryKey, exact: true }); };
 
     const channel = supabase.channel(`room-data:${roomId}`)
@@ -64,7 +61,6 @@ export function useRoom(code: string) {
       .on("postgres_changes", { event: "*", schema: "public", table: "round_participation", filter: `room_id=eq.${roomId}` }, handleParticipation)
       .on("postgres_changes", { event: "*", schema: "public", table: "votes", filter: `room_id=eq.${roomId}` }, handleVote)
       .on("postgres_changes", { event: "*", schema: "public", table: "task_estimate_changes", filter: `room_id=eq.${roomId}` }, refreshRoom)
-      .on("postgres_changes", { event: "INSERT", schema: "public", table: "reactions", filter: `room_id=eq.${roomId}` }, handleReaction)
       .subscribe((status: string) => {
         debugStatus(`room-data:${roomId}`, status);
         if (!active) return;
@@ -106,4 +102,39 @@ export function usePresence(roomId: string | undefined, memberId: string | undef
     return () => { active = false; void channel.untrack(); void supabase.removeChannel(channel); };
   }, [memberId, roomId]);
   return useMemo(() => ({ onlineIds, status, synced: syncedRoomId === roomId }), [onlineIds, roomId, status, syncedRoomId]);
+}
+
+export function useReactionBroadcast(roomId: string | undefined, onReaction: (event: ReactionBroadcastEvent) => void) {
+  const channelRef = useRef<RealtimeChannel | null>(null);
+  const onReactionRef = useRef(onReaction);
+
+  useEffect(() => { onReactionRef.current = onReaction; }, [onReaction]);
+
+  useEffect(() => {
+    if (!roomId) return;
+    const supabase = createClient();
+    const channel = supabase.channel(`room-reactions:${roomId}`, { config: { broadcast: { self: false, ack: true } } });
+    channelRef.current = channel;
+    channel
+      .on("broadcast", { event: REACTION_BROADCAST_EVENT }, (message: { payload: unknown }) => {
+        const event = message.payload;
+        if (!isReactionBroadcastEvent(event) || event.roomId !== roomId) return;
+        onReactionRef.current(event);
+      })
+      .subscribe((status: string) => debugStatus(`room-reactions:${roomId}`, status));
+
+    return () => {
+      if (channelRef.current === channel) channelRef.current = null;
+      void supabase.removeChannel(channel);
+    };
+  }, [roomId]);
+
+  const sendReaction = useCallback(async (event: ReactionBroadcastEvent) => {
+    const channel = channelRef.current;
+    if (!channel) throw new Error("NETWORK_ERROR");
+    const status = await channel.send({ type: "broadcast", event: REACTION_BROADCAST_EVENT, payload: event });
+    if (status !== "ok") throw new Error("NETWORK_ERROR");
+  }, []);
+
+  return { sendReaction };
 }

@@ -12,12 +12,13 @@ import type { ValidatedTaskDraft } from "@/lib/task-management";
 import { calculateSeatPositions, sortMembersStable } from "@/lib/seats";
 import { calculateVotingProgress, canRevealRound, getEligibleRoundVotes, getMemberRoundMode } from "@/lib/participation";
 import { suggestFinalEstimate } from "@/lib/statistics";
-import { isRecentReaction, removeReactionAnimation, resolveReaction } from "@/lib/room-state";
+import { removeReactionAnimation } from "@/lib/room-state";
+import type { ReactionBroadcastEvent } from "@/lib/reaction-events";
 import { getErrorCode } from "@/lib/errors";
 import { canFacilitateRoom } from "@/lib/members";
 import type { RoomSnapshot } from "../api";
 import { roomApi } from "../api";
-import { usePresence, type RealtimeStatus } from "../hooks";
+import { usePresence, useReactionBroadcast, type RealtimeStatus } from "../hooks";
 import { InviteButton } from "@/features/room/components/InviteButton";
 import { ConnectionIndicator } from "@/features/room/components/ConnectionIndicator";
 import { PlayerSeat } from "@/features/room/components/PlayerSeat";
@@ -63,38 +64,32 @@ export function PokerRoom({ snapshot, code, realtimeStatus }: { snapshot: RoomSn
   const [participantsOpen, setParticipantsOpen] = useState(false);
   const [animations, setAnimations] = useState<ReactionAnimation[]>([]);
   const inspectionOpenerRef = useRef<HTMLElement | null>(null);
-  const processedReactionIds = useRef(new Set(snapshot.reactions.map(reaction => reaction.id)));
+  const processedReactionIds = useRef(new Set<string>());
   const connectionStatus = realtimeStatus === "en_directo" ? presence.status : realtimeStatus;
 
-  useEffect(() => {
-    const pending = snapshot.reactions.filter(reaction => !processedReactionIds.current.has(reaction.id) && isRecentReaction(reaction, Date.now(), 5_000));
-    if (!pending.length) return;
-    const nextAnimations: ReactionAnimation[] = [];
-    let latestMessage = "";
-    for (const reaction of pending) {
-      processedReactionIds.current.add(reaction.id);
-      const participants = resolveReaction(reaction, members);
-      if (!participants) continue;
-      latestMessage = t("reactionAnnouncement", { sender: participants.sender.display_name, emoji: reaction.emoji, target: participants.target.display_name });
-      const source = document.querySelector<HTMLElement>(`[data-player-id="${reaction.sender_member_id}"]`);
-      const target = document.querySelector<HTMLElement>(`[data-player-id="${reaction.target_member_id}"]`);
-      if (!source || !target) continue;
-      const sourceRect = source.getBoundingClientRect();
-      const targetRect = target.getBoundingClientRect();
-      nextAnimations.push({
-        eventId: reaction.id, emoji: reaction.emoji, scale: reaction.scale ?? 1,
-        senderMemberId: reaction.sender_member_id, targetMemberId: reaction.target_member_id,
-        senderName: participants.sender.display_name, targetName: participants.target.display_name,
-        from: { x: sourceRect.left + sourceRect.width / 2, y: sourceRect.top + sourceRect.height / 2 },
-        to: { x: targetRect.left + targetRect.width / 2, y: targetRect.top + targetRect.height / 2 },
-      });
-    }
-    const frame = requestAnimationFrame(() => {
-      if (nextAnimations.length) setAnimations(current => [...current, ...nextAnimations].slice(-20));
-      if (latestMessage) setAnnouncement(latestMessage);
-    });
-    return () => cancelAnimationFrame(frame);
-  }, [members, snapshot.reactions, t]);
+  const playReaction = useCallback((reaction: ReactionBroadcastEvent) => {
+    if (processedReactionIds.current.has(reaction.eventId)) return;
+    processedReactionIds.current.add(reaction.eventId);
+    if (processedReactionIds.current.size > 100) processedReactionIds.current = new Set([...processedReactionIds.current].slice(-50));
+    const sender = members.find(member => member.id === reaction.senderMemberId);
+    const targetMember = members.find(member => member.id === reaction.targetMemberId);
+    if (!sender || !targetMember || sender.id === targetMember.id) return;
+    const sourceElement = document.querySelector<HTMLElement>(`[data-player-id="${reaction.senderMemberId}"]`);
+    const targetElement = document.querySelector<HTMLElement>(`[data-player-id="${reaction.targetMemberId}"]`);
+    if (!sourceElement || !targetElement) return;
+    const sourceRect = sourceElement.getBoundingClientRect();
+    const targetRect = targetElement.getBoundingClientRect();
+    const animation: ReactionAnimation = {
+      eventId: reaction.eventId, emoji: reaction.emoji, scale: reaction.scale,
+      senderMemberId: sender.id, targetMemberId: targetMember.id,
+      senderName: sender.display_name, targetName: targetMember.display_name,
+      from: { x: sourceRect.left + sourceRect.width / 2, y: sourceRect.top + sourceRect.height / 2 },
+      to: { x: targetRect.left + targetRect.width / 2, y: targetRect.top + targetRect.height / 2 },
+    };
+    setAnimations(current => [...current, animation].slice(-20));
+    setAnnouncement(t("reactionAnnouncement", { sender: sender.display_name, emoji: reaction.emoji, target: targetMember.display_name }));
+  }, [members, t]);
+  const { sendReaction } = useReactionBroadcast(snapshot.room.id, playReaction);
 
   useEffect(() => {
     if (!toast) return;
@@ -117,7 +112,16 @@ export function PokerRoom({ snapshot, code, realtimeStatus }: { snapshot: RoomSn
   const invalidate = useCallback(() => queryClient.invalidateQueries({ queryKey: ["room", code], exact: true }), [code, queryClient]);
   const showError = useCallback((message: string) => setToast({ id: Date.now(), message }), [setToast]);
   async function action(run: () => Promise<unknown>) { try { await run(); await invalidate(); return true; } catch (cause) { if (process.env.NODE_ENV === "development") console.error(cause); showError(tErrors(getErrorCode(cause))); return false; } }
-  async function react(targetId: string, emoji: string, scale = 1) { try { await roomApi.sendReaction(snapshot.room.id, targetId, emoji, scale); } catch (cause) { if (process.env.NODE_ENV === "development") console.error(cause); showError(tErrors(getErrorCode(cause))); } }
+  async function react(targetId: string, emoji: string, scale = 1) {
+    const event: ReactionBroadcastEvent = {
+      eventId: crypto.randomUUID(), roomId: snapshot.room.id,
+      senderMemberId: snapshot.me.id, targetMemberId: targetId,
+      emoji, scale: Math.min(Math.max(scale, 1), 3), sentAt: new Date().getTime(),
+    };
+    playReaction(event);
+    try { await sendReaction(event); }
+    catch (cause) { if (process.env.NODE_ENV === "development") console.error(cause); showError(tErrors(getErrorCode(cause))); }
+  }
   function startTaskRound(taskId: string) {
     if (activeRound) {
       showError(tErrors("ACTIVE_ROUND_EXISTS"));
