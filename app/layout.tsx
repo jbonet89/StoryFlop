@@ -15,6 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
     applicationName: APP_NAME,
     title: { default: t("title"), template: `%s · ${APP_NAME}` },
     description: t("description"),
+    other: { "google-adsense-account": "ca-pub-2657741160026304" },
     metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
     manifest: "/manifest.webmanifest",
     icons: {
