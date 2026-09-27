@@ -3,7 +3,7 @@ import { useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { ZodError } from "zod";
-import { ArrowRight, Check, CircleCheck, Copy, EyeOff, Globe2, History, Layers3, LockKeyhole, Radio, ShieldCheck, Sparkles, UsersRound, Zap } from "lucide-react";
+import { ArrowRight, Check, CircleCheck, Copy, EyeOff, Globe2, History, Infinity, Layers3, ListPlus, LockKeyhole, Radio, ShieldCheck, Sparkles, UserPlus, UsersRound, Zap } from "lucide-react";
 import { AvatarPicker } from "@/components/AvatarPicker";
 import { LanguageSelector } from "@/components/LanguageSelector";
 import { Brand } from "@/components/Brand";
@@ -89,6 +89,9 @@ export function LandingPage() {
         <article><UsersRound /><h3>{tSeo("rolesTitle")}</h3><p>{tSeo("rolesBody")}</p></article>
         <article><Globe2 /><h3>{tSeo("remoteTitle")}</h3><p>{tSeo("remoteBody")}</p></article>
         <article><ShieldCheck /><h3>{tSeo("privacyTitle")}</h3><p>{tSeo("privacyBody")}</p></article>
+        <article><Infinity /><h3>{tSeo("unlimitedRoundsTitle")}</h3><p>{tSeo("unlimitedRoundsBody")}</p></article>
+        <article><UserPlus /><h3>{tSeo("unlimitedPeopleTitle")}</h3><p>{tSeo("unlimitedPeopleBody")}</p></article>
+        <article><ListPlus /><h3>{tSeo("collaboratorsTitle")}</h3><p>{tSeo("collaboratorsBody")}</p></article>
       </div>
     </section>
     <section className="seo-section use-cases">

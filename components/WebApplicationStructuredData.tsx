@@ -21,6 +21,8 @@ const structuredData = {
     "Real-time team estimation",
     "Round history",
     "Voter and observer roles",
+    "Unlimited voting rounds and room participants",
+    "Multiple collaborators can manage stories and voting rounds",
     "No registration required",
   ],
 };
