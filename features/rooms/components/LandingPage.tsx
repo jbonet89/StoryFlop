@@ -3,7 +3,7 @@ import { useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { ZodError } from "zod";
-import { ArrowRight, Check, Copy, Layers3, LockKeyhole, Radio, Sparkles } from "lucide-react";
+import { ArrowRight, Check, CircleCheck, Copy, EyeOff, Globe2, History, Layers3, LockKeyhole, Radio, ShieldCheck, Sparkles, UsersRound, Zap } from "lucide-react";
 import { AvatarPicker } from "@/components/AvatarPicker";
 import { LanguageSelector } from "@/components/LanguageSelector";
 import { Brand } from "@/components/Brand";
@@ -15,6 +15,7 @@ import { roomApi } from "../api";
 export function LandingPage() {
   const router = useRouter();
   const t = useTranslations("Home");
+  const tSeo = useTranslations("LandingSeo");
   const tBrand = useTranslations("Brand");
   const tValidation = useTranslations("Validation");
   const tErrors = useTranslations("Errors");
@@ -41,12 +42,12 @@ export function LandingPage() {
   }
 
   return <main className="landing">
-    <nav className="landing-nav"><Brand showTagline /><div className="landing-nav-actions"><span className="live-pill"><Radio size={14} /> {t("realtime")}</span><LanguageSelector /></div></nav>
+    <nav className="landing-nav"><Brand showTagline /><div className="landing-nav-links"><a href="#como-funciona">{tSeo("navHow")}</a><a href="#funciones">{tSeo("navFeatures")}</a><a href="#preguntas">{tSeo("navFaq")}</a></div><div className="landing-nav-actions"><span className="live-pill"><Radio size={14} /> {t("realtime")}</span><LanguageSelector /></div></nav>
     <div className="landing-grid">
       <section className="hero-copy">
         <div className="eyebrow"><Sparkles size={15} /> {tBrand("tagline")}</div>
         <h1>{t("heroLine1")}<br /><em>{t("heroLine2")}</em></h1>
-        <p className="hero-lead">{tBrand("claim")}</p>
+        <p className="hero-lead">{t("lead")}</p>
         <div className="feature-row">
           <span><LockKeyhole /> {t("privateVotes")}</span><span><Radio /> {t("live")}</span><span><Layers3 /> {t("roundHistory")}</span>
         </div>
@@ -71,6 +72,40 @@ export function LandingPage() {
         </form>
       </section>
     </div>
-    <footer className="landing-footer"><span>{t("footerTime")}</span><span><Copy size={13} /> {t("footerShare")}</span></footer>
+    <section className="seo-section how-section" id="como-funciona">
+      <div className="seo-heading"><span>{tSeo("howEyebrow")}</span><h2>{tSeo("howTitle")}</h2><p>{tSeo("howLead")}</p></div>
+      <ol className="step-grid">
+        <li><b>1</b><div><h3>{tSeo("step1Title")}</h3><p>{tSeo("step1Body")}</p></div></li>
+        <li><b>2</b><div><h3>{tSeo("step2Title")}</h3><p>{tSeo("step2Body")}</p></div></li>
+        <li><b>3</b><div><h3>{tSeo("step3Title")}</h3><p>{tSeo("step3Body")}</p></div></li>
+      </ol>
+    </section>
+    <section className="seo-section feature-section" id="funciones">
+      <div className="seo-heading"><span>{tSeo("featuresEyebrow")}</span><h2>{tSeo("featuresTitle")}</h2><p>{tSeo("featuresLead")}</p></div>
+      <div className="seo-feature-grid">
+        <article><EyeOff /><h3>{tSeo("privateTitle")}</h3><p>{tSeo("privateBody")}</p></article>
+        <article><Zap /><h3>{tSeo("realtimeTitle")}</h3><p>{tSeo("realtimeBody")}</p></article>
+        <article><History /><h3>{tSeo("historyTitle")}</h3><p>{tSeo("historyBody")}</p></article>
+        <article><UsersRound /><h3>{tSeo("rolesTitle")}</h3><p>{tSeo("rolesBody")}</p></article>
+        <article><Globe2 /><h3>{tSeo("remoteTitle")}</h3><p>{tSeo("remoteBody")}</p></article>
+        <article><ShieldCheck /><h3>{tSeo("privacyTitle")}</h3><p>{tSeo("privacyBody")}</p></article>
+      </div>
+    </section>
+    <section className="seo-section use-cases">
+      <div className="seo-heading"><span>{tSeo("useEyebrow")}</span><h2>{tSeo("useTitle")}</h2><p>{tSeo("useLead")}</p></div>
+      <div className="use-case-grid"><article><CircleCheck /><div><h3>{tSeo("refinementTitle")}</h3><p>{tSeo("refinementBody")}</p></div></article><article><CircleCheck /><div><h3>{tSeo("planningTitle")}</h3><p>{tSeo("planningBody")}</p></div></article><article><CircleCheck /><div><h3>{tSeo("remoteTeamsTitle")}</h3><p>{tSeo("remoteTeamsBody")}</p></div></article></div>
+    </section>
+    <section className="seo-section faq-section" id="preguntas">
+      <div className="seo-heading"><span>{tSeo("faqEyebrow")}</span><h2>{tSeo("faqTitle")}</h2></div>
+      <div className="faq-list">
+        <details><summary>{tSeo("faq1Question")}</summary><p>{tSeo("faq1Answer")}</p></details>
+        <details><summary>{tSeo("faq2Question")}</summary><p>{tSeo("faq2Answer")}</p></details>
+        <details><summary>{tSeo("faq3Question")}</summary><p>{tSeo("faq3Answer")}</p></details>
+        <details><summary>{tSeo("faq4Question")}</summary><p>{tSeo("faq4Answer")}</p></details>
+        <details><summary>{tSeo("faq5Question")}</summary><p>{tSeo("faq5Answer")}</p></details>
+      </div>
+    </section>
+    <section className="seo-cta"><div><span>{tSeo("ctaEyebrow")}</span><h2>{tSeo("ctaTitle")}</h2><p>{tSeo("ctaBody")}</p></div><a href="#entry-title">{tSeo("ctaButton")}<ArrowRight size={18} /></a></section>
+    <footer className="landing-footer"><span>{t("footerTime")}</span><nav aria-label={tSeo("footerNavLabel")}><a href="#como-funciona">{tSeo("navHow")}</a><a href="#funciones">{tSeo("navFeatures")}</a><a href="#preguntas">{tSeo("navFaq")}</a></nav><span><Copy size={13} /> {t("footerShare")}</span></footer>
   </main>;
 }

@@ -11,6 +11,7 @@ export const viewport: Viewport = {
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Metadata");
+  const googleSiteVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
   return {
     applicationName: APP_NAME,
     title: { default: t("title"), template: `%s · ${APP_NAME}` },
@@ -25,6 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
     keywords: ["Agile", "Scrum", "Scrum Poker", "story points", "team estimation", "sprint planning", "user stories"],
     openGraph: { title: t("title"), description: t("socialDescription"), siteName: APP_NAME, images: [{ url: "/og.png", width: 1200, height: 630, alt: APP_NAME }] },
     twitter: { card: "summary_large_image", title: t("title"), description: t("socialDescription"), images: ["/og.png"] },
+    verification: googleSiteVerification ? { google: googleSiteVerification } : undefined,
   };
 }
 
