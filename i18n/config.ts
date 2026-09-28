@@ -1,4 +1,4 @@
-export const supportedLocales = ["es", "en", "de", "pt", "ca", "eu"] as const;
+export const supportedLocales = ["es", "en", "fr", "it", "de", "pt", "ca", "eu", "ru"] as const;
 export type SupportedLocale = (typeof supportedLocales)[number];
 
 export const defaultLocale: SupportedLocale = "es";
@@ -7,11 +7,18 @@ export const localeCookieName = "NEXT_LOCALE";
 export const localeNames: Record<SupportedLocale, string> = {
   es: "Español",
   en: "English",
+  fr: "Français",
+  it: "Italiano",
   de: "Deutsch",
   pt: "Português",
   ca: "Català",
   eu: "Euskara",
+  ru: "Русский",
 };
+
+export const localeAlternates = Object.fromEntries(
+  supportedLocales.map(locale => [locale, `/${locale}`]),
+) as Record<SupportedLocale, string>;
 
 export function isSupportedLocale(value: string | null | undefined): value is SupportedLocale {
   return supportedLocales.includes(value?.toLowerCase() as SupportedLocale);

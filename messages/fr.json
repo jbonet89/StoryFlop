@@ -1,0 +1,58 @@
+{
+  "Metadata": {
+    "appName": "StoryFlop",
+    "title": "Planning Poker en ligne gratuit pour les équipes Agile | StoryFlop",
+    "description": "Estimez ensemble les user stories et les story points avec un Scrum Poker en temps réel. Révélez les cartes et trouvez un consensus.",
+    "socialDescription": "Révélez les estimations. Trouvez un consensus.",
+    "roomTitle": "Salle"
+  },
+  "Brand": {
+    "tagline": "Scrum Poker pour les équipes Agile",
+    "claim": "Mettez chaque story sur la table, révélez les cartes et trouvez un consensus.",
+    "shortClaim": "Révélez les estimations. Trouvez un consensus."
+  },
+  "Language": {
+    "label": "Langue",
+    "changed": "Langue changée en {language}"
+  },
+  "Common": {
+    "cancel": "Annuler", "save": "Enregistrer", "saving": "Enregistrement…", "choose": "Choisir…", "close": "Fermer", "home": "Accueil", "edit": "Modifier", "delete": "Supprimer", "unavailable": "Non disponible"
+  },
+  "Home": {
+    "realtime": "Temps réel", "eyebrow": "Scrum Poker pour les équipes Agile", "heroLine1": "Scrum Poker en ligne.", "heroLine2": "Estimez ensemble.",
+    "lead": "Créez gratuitement une salle de Planning Poker, invitez votre équipe et estimez les story points en temps réel, sans inscription.",
+    "privateVotes": "Votes privés", "live": "En direct", "roundHistory": "Historique des tours", "ready": "Prêt ?", "createRoom": "Créer une salle", "joinWithCode": "Rejoindre avec un code",
+    "prepareTable": "Préparer la table", "joinTeam": "Rejoindre votre équipe", "createDetail": "Créer une salle prend moins d’une minute.", "joinDetail": "Collez le code à 8 caractères de votre invitation.",
+    "roomName": "Nom de la salle", "roomNamePlaceholder": "Ex. Sprint 24 · Produit", "yourName": "Votre nom", "namePlaceholder": "Comment devons-nous vous appeler ?", "roomCode": "Code de la salle",
+    "preparing": "Préparation…", "enterRoom": "Entrer dans la salle", "privacy": "Sans inscription. Salles privées et données temporaires.", "footerTime": "Conçu pour les équipes qui valorisent leur temps.", "footerShare": "Partagez un lien et commencez.", "chooseAvatar": "Choisissez votre avatar", "avatarLabel": "Avatar {avatar}"
+  },
+  "LandingSeo": {
+    "navHow": "Fonctionnement", "navFeatures": "Fonctionnalités", "navFaq": "Questions",
+    "howEyebrow": "Planning Poker simple", "howTitle": "De la user story au consensus en trois étapes", "howLead": "StoryFlop transforme l’estimation agile en une conversation ciblée : chacun décide indépendamment, l’équipe compare les résultats et s’accorde sur la suite.",
+    "step1Title": "Créez la salle", "step1Body": "Nommez la session et partagez son lien ou son code à huit caractères. Aucun compte n’est nécessaire.",
+    "step2Title": "Votez en privé", "step2Body": "Ajoutez une user story, ouvrez le tour et laissez chaque participant choisir une carte sans voir le vote des autres.",
+    "step3Title": "Révélez et décidez", "step3Body": "Retournez toutes les cartes en même temps, comparez la répartition et enregistrez l’estimation finale lorsque l’équipe atteint un consensus.",
+    "featuresEyebrow": "Conçu pour les équipes Agile", "featuresTitle": "Tout ce qu’il faut pour estimer sans distraire la réunion", "featuresLead": "Une table rapide et visuelle pour le refinement du backlog, la planification de sprint et les sessions à distance.",
+    "privateTitle": "Des votes vraiment privés", "privateBody": "Les choix restent cachés jusqu’à la révélation simultanée, ce qui réduit l’ancrage et la pression du groupe.",
+    "realtimeTitle": "Synchronisation en temps réel", "realtimeBody": "Participants, votes, tours et résultats sont mis à jour instantanément sur tous les écrans connectés.",
+    "historyTitle": "Un historique utile", "historyBody": "Consultez les tours précédents et conservez le contexte de l’évolution de l’estimation de chaque story.",
+    "rolesTitle": "Votants et observateurs", "rolesBody": "Chaque personne peut estimer ou observer le tour sans modifier la progression du vote de l’équipe.",
+    "remoteTitle": "Adapté au travail à distance", "remoteBody": "Utilisez-le dans un navigateur sur mobile ou ordinateur. Partagez un lien et commencez sans rien installer.",
+    "privacyTitle": "Données temporaires", "privacyBody": "Aucune inscription n’est requise, et les salles inactives ainsi que leurs données sont automatiquement supprimées après 14 jours.",
+    "unlimitedRoundsTitle": "Votes illimités", "unlimitedRoundsBody": "Créez autant de stories et de tours de vote que nécessaire, sans quota imposé par StoryFlop.",
+    "unlimitedPeopleTitle": "Participants illimités", "unlimitedPeopleBody": "Invitez toute l’équipe sans payer par siège ni atteindre une limite d’utilisateurs imposée par StoryFlop.",
+    "collaboratorsTitle": "Plusieurs collaborateurs", "collaboratorsBody": "L’organisateur peut nommer plusieurs collaborateurs pour ajouter des stories et gérer ensemble les tours de vote.",
+    "useEyebrow": "Quand l’utiliser", "useTitle": "Un outil pour les conversations qui comptent", "useLead": "Utilisez-le lorsque l’équipe doit partager son jugement, révéler les incertitudes et transformer des avis différents en une estimation commune.",
+    "refinementTitle": "Refinement du backlog", "refinementBody": "Repérez les stories trop grandes, les exigences peu claires et les différences de compréhension avant la planification.",
+    "planningTitle": "Planification du sprint", "planningBody": "Comparez l’effort relatif des stories candidates et prenez des décisions à partir d’un point de référence commun.",
+    "remoteTeamsTitle": "Équipes distantes et hybrides", "remoteTeamsBody": "Offrez à chacun le même espace pour voter, qu’il soit en salle de réunion ou chez lui.",
+    "faqEyebrow": "Questions fréquentes", "faqTitle": "Le Scrum Poker sans complications",
+    "faq1Question": "Qu’est-ce que le Scrum Poker ou Planning Poker ?", "faq1Answer": "C’est une technique collaborative pour estimer l’effort relatif des user stories. Chaque participant choisit une carte en privé, puis toutes les cartes sont révélées ensemble afin de discuter des écarts.",
+    "faq2Question": "StoryFlop est-il gratuit ?", "faq2Answer": "Oui. Vous pouvez créer une salle, inviter votre équipe et lancer des tours d’estimation dans le navigateur sans payer ni vous inscrire.",
+    "faq3Question": "Dois-je installer quelque chose ?", "faq3Answer": "Non. StoryFlop fonctionne directement dans les navigateurs modernes sur ordinateur et mobile. Il suffit de partager le lien de la salle.",
+    "faq4Question": "Que deviennent les données de la salle ?", "faq4Answer": "Les données fonctionnelles d’une salle inactive sont automatiquement supprimées après 14 jours. Les réactions visuelles sont éphémères et ne sont pas stockées dans l’historique.",
+    "faq5Question": "Puis-je participer comme observateur ?", "faq5Answer": "Oui. Vous pouvez passer du mode votant au mode observateur. Les observateurs suivent la discussion et les résultats sans compter dans la progression du vote.",
+    "ctaEyebrow": "Commencez maintenant", "ctaTitle": "Créez votre première salle de Scrum Poker", "ctaBody": "Mettez une story sur la table, invitez votre équipe et obtenez une estimation commune en quelques minutes.", "ctaButton": "Créer une salle",
+    "footerNavLabel": "Contenu de la page, informations légales et confidentialité", "legalNotice": "Mentions légales", "privacyPolicy": "Confidentialité", "cookiesPolicy": "Cookies", "privacySettings": "Paramètres de confidentialité"
+  }
+}

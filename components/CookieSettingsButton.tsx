@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { useLocale } from "next-intl";
 
 declare global {
   interface Window {
@@ -19,6 +20,7 @@ function queueGooglePrivacySettings() {
 }
 
 export function CookieSettingsButton({ children }: { children: React.ReactNode }) {
+  const locale = useLocale();
   useEffect(() => {
     const url = new URL(window.location.href);
     if (url.searchParams.get("privacy-settings") !== "1") return;
@@ -28,8 +30,8 @@ export function CookieSettingsButton({ children }: { children: React.ReactNode }
   }, []);
 
   function openSettings() {
-    if (window.location.pathname !== "/") {
-      window.location.assign("/?privacy-settings=1#privacy-settings");
+    if (!/^\/[a-z]{2}\/?$/.test(window.location.pathname)) {
+      window.location.assign(`/${locale}?privacy-settings=1#privacy-settings`);
       return;
     }
     queueGooglePrivacySettings();

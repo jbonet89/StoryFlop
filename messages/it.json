@@ -1,0 +1,49 @@
+{
+  "Metadata": {
+    "appName": "StoryFlop", "title": "Planning Poker online gratuito per team Agile | StoryFlop", "description": "Stima insieme user story e story point con uno Scrum Poker in tempo reale. Scoprite le carte e raggiungete il consenso.", "socialDescription": "Scoprite le stime. Raggiungete il consenso.", "roomTitle": "Stanza"
+  },
+  "Brand": {
+    "tagline": "Scrum Poker per team Agile", "claim": "Metti ogni story sul tavolo, scopri le carte e raggiungi il consenso.", "shortClaim": "Scopri le stime. Raggiungi il consenso."
+  },
+  "Language": { "label": "Lingua", "changed": "Lingua cambiata in {language}" },
+  "Common": {
+    "cancel": "Annulla", "save": "Salva", "saving": "Salvataggio…", "choose": "Scegli…", "close": "Chiudi", "home": "Home", "edit": "Modifica", "delete": "Elimina", "unavailable": "Non disponibile"
+  },
+  "Home": {
+    "realtime": "Tempo reale", "eyebrow": "Scrum Poker per team Agile", "heroLine1": "Scrum Poker online.", "heroLine2": "Stimate insieme.",
+    "lead": "Crea gratuitamente una stanza di Planning Poker, invita il tuo team e stima gli story point in tempo reale senza registrarti.",
+    "privateVotes": "Voti privati", "live": "In diretta", "roundHistory": "Cronologia dei round", "ready": "Pronti?", "createRoom": "Crea stanza", "joinWithCode": "Entra con un codice",
+    "prepareTable": "Prepara il tavolo", "joinTeam": "Unisciti al team", "createDetail": "Creare una stanza richiede meno di un minuto.", "joinDetail": "Incolla il codice di 8 caratteri del tuo invito.",
+    "roomName": "Nome della stanza", "roomNamePlaceholder": "Es. Sprint 24 · Prodotto", "yourName": "Il tuo nome", "namePlaceholder": "Come dobbiamo chiamarti?", "roomCode": "Codice della stanza",
+    "preparing": "Preparazione…", "enterRoom": "Entra nella stanza", "privacy": "Nessuna registrazione. Stanze private e dati temporanei.", "footerTime": "Pensato per i team che danno valore al proprio tempo.", "footerShare": "Condividi un link e inizia.", "chooseAvatar": "Scegli il tuo avatar", "avatarLabel": "Avatar {avatar}"
+  },
+  "LandingSeo": {
+    "navHow": "Come funziona", "navFeatures": "Funzionalità", "navFaq": "Domande",
+    "howEyebrow": "Planning Poker semplice", "howTitle": "Dalla user story al consenso in tre passaggi", "howLead": "StoryFlop trasforma la stima Agile in una conversazione focalizzata: ognuno decide in autonomia, il team confronta i risultati e concorda il passo successivo.",
+    "step1Title": "Crea la stanza", "step1Body": "Dai un nome alla sessione e condividi il link o il codice di otto caratteri. Nessuno deve creare un account.",
+    "step2Title": "Vota in privato", "step2Body": "Aggiungi una user story, apri il round e lascia che ogni partecipante scelga una carta senza vedere il voto degli altri.",
+    "step3Title": "Scopri e decidi", "step3Body": "Scoprite tutte le carte nello stesso momento, confrontate la distribuzione e registrate la stima finale quando il team raggiunge il consenso.",
+    "featuresEyebrow": "Creato per team Agile", "featuresTitle": "Tutto ciò che serve per stimare senza distrarre la riunione", "featuresLead": "Un tavolo rapido e visuale per il refinement del backlog, lo sprint planning e le sessioni da remoto.",
+    "privateTitle": "Voti davvero privati", "privateBody": "Le scelte restano nascoste fino alla scoperta simultanea, riducendo l’ancoraggio e la pressione del gruppo.",
+    "realtimeTitle": "Sincronizzazione in tempo reale", "realtimeBody": "Partecipanti, voti, round e risultati si aggiornano istantaneamente su ogni schermo connesso.",
+    "historyTitle": "Cronologia utile", "historyBody": "Rivedi i round precedenti e conserva il contesto di come si è evoluta la stima di ogni story.",
+    "rolesTitle": "Votanti e osservatori", "rolesBody": "Ogni persona può stimare o osservare il round senza alterare l’avanzamento del voto del team.",
+    "remoteTitle": "Pronto per il lavoro da remoto", "remoteBody": "Usalo nel browser da mobile o desktop. Condividi un link e inizia senza installare nulla.",
+    "privacyTitle": "Dati temporanei", "privacyBody": "Non è richiesta la registrazione e le stanze inattive, insieme ai relativi dati, vengono eliminate automaticamente dopo 14 giorni.",
+    "unlimitedRoundsTitle": "Votazioni illimitate", "unlimitedRoundsBody": "Crea tutte le story e i round di voto necessari al tuo team, senza limiti imposti da StoryFlop.",
+    "unlimitedPeopleTitle": "Partecipanti illimitati", "unlimitedPeopleBody": "Invita tutto il team senza pagare per postazione e senza limiti di utenti imposti da StoryFlop.",
+    "collaboratorsTitle": "Più collaboratori", "collaboratorsBody": "L’organizzatore può nominare più collaboratori per aggiungere story e gestire insieme i round di voto.",
+    "useEyebrow": "Quando usarlo", "useTitle": "Uno strumento per le conversazioni importanti", "useLead": "Usalo quando il team deve condividere valutazioni, far emergere le incertezze e trasformare opinioni diverse in un’unica stima.",
+    "refinementTitle": "Refinement del backlog", "refinementBody": "Individua story troppo grandi, requisiti poco chiari e differenze di comprensione prima della pianificazione.",
+    "planningTitle": "Sprint planning", "planningBody": "Confronta l’impegno relativo delle story candidate e prendi decisioni partendo da un riferimento condiviso.",
+    "remoteTeamsTitle": "Team remoti e ibridi", "remoteTeamsBody": "Offri a tutti lo stesso spazio per votare, sia a chi è in sala riunioni sia a chi partecipa da casa.",
+    "faqEyebrow": "Domande frequenti", "faqTitle": "Scrum Poker senza complicazioni",
+    "faq1Question": "Che cos’è lo Scrum Poker o Planning Poker?", "faq1Answer": "È una tecnica collaborativa per stimare l’impegno relativo delle user story. Ogni partecipante sceglie una carta in privato e tutte le carte vengono scoperte insieme per discutere le differenze.",
+    "faq2Question": "StoryFlop è gratuito?", "faq2Answer": "Sì. Puoi creare una stanza, invitare il team ed eseguire round di stima nel browser senza pagare né registrarti.",
+    "faq3Question": "Devo installare qualcosa?", "faq3Answer": "No. StoryFlop funziona direttamente nei browser moderni su desktop e mobile. Devi solo condividere il link della stanza.",
+    "faq4Question": "Che cosa succede ai dati della stanza?", "faq4Answer": "I dati funzionali di una stanza inattiva vengono eliminati automaticamente dopo 14 giorni. Le reazioni visive sono eventi effimeri e non vengono salvate nella cronologia.",
+    "faq5Question": "Posso entrare come osservatore?", "faq5Answer": "Sì. Puoi passare dalla modalità votante a quella osservatore. Gli osservatori seguono la discussione e i risultati senza essere conteggiati nell’avanzamento del voto.",
+    "ctaEyebrow": "Inizia ora", "ctaTitle": "Crea la tua prima stanza di Scrum Poker", "ctaBody": "Metti una story sul tavolo, invita il team e raggiungi una stima condivisa in pochi minuti.", "ctaButton": "Crea stanza",
+    "footerNavLabel": "Contenuto della pagina, informazioni legali e privacy", "legalNotice": "Note legali", "privacyPolicy": "Privacy", "cookiesPolicy": "Cookie", "privacySettings": "Impostazioni privacy"
+  }
+}

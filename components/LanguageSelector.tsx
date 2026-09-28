@@ -3,7 +3,7 @@
 import { useState, useTransition } from "react";
 import { Languages } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { setLocale } from "@/i18n/actions";
 import { isSupportedLocale, localeNames, supportedLocales, type SupportedLocale } from "@/i18n/config";
 
@@ -11,6 +11,7 @@ export function LanguageSelector({ compact = false }: { compact?: boolean }) {
   const currentLocale = useLocale() as SupportedLocale;
   const t = useTranslations("Language");
   const router = useRouter();
+  const pathname = usePathname();
   const [isPending, startTransition] = useTransition();
   const [announcement, setAnnouncement] = useState("");
 
@@ -20,7 +21,15 @@ export function LanguageSelector({ compact = false }: { compact?: boolean }) {
       await setLocale(value);
       document.documentElement.lang = value;
       setAnnouncement(t("changed", { language: localeNames[value] }));
-      router.refresh();
+      const segments = pathname.split("/");
+      if (isSupportedLocale(segments[1])) {
+        segments[1] = value;
+        router.push(segments.join("/") || `/${value}`);
+      } else if (pathname === "/") {
+        router.push(`/${value}`);
+      } else {
+        router.refresh();
+      }
     });
   }
 
