@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages, getTranslations } from "next-intl/server";
+import { Analytics } from "@vercel/analytics/next";
 import { APP_NAME } from "@/lib/brand";
 import "./globals.css";
 import { Providers } from "./providers";
@@ -32,5 +33,5 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const [locale, messages] = await Promise.all([getLocale(), getMessages()]);
-  return <html lang={locale} dir="ltr"><body><NextIntlClientProvider locale={locale} messages={messages}><Providers>{children}</Providers></NextIntlClientProvider></body></html>;
+  return <html lang={locale} dir="ltr"><body><NextIntlClientProvider locale={locale} messages={messages}><Providers>{children}</Providers></NextIntlClientProvider><Analytics /></body></html>;
 }
