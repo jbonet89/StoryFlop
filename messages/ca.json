@@ -114,7 +114,11 @@
     "ctaTitle": "Crea la teva primera sala de Scrum Poker",
     "ctaBody": "Posa una història sobre la taula, convida l'equip i arribeu a una estimació compartida en pocs minuts.",
     "ctaButton": "Crear sala",
-    "footerNavLabel": "Contingut de la pàgina"
+    "footerNavLabel": "Contingut, informació legal i privacitat",
+    "legalNotice": "Avís legal",
+    "privacyPolicy": "Privacitat",
+    "cookiesPolicy": "Galetes",
+    "privacySettings": "Preferències de privacitat"
   },
   "RoomGate": {
     "invalidCode": "Codi no vàlid",

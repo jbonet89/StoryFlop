@@ -94,7 +94,7 @@ No ejecutes las pruebas E2E contra datos de producción.
 1. Importa el repositorio en Vercel.
 2. Mantén el preset de Next.js y `pnpm build` como comando de construcción.
 3. Configura las tres variables públicas mostradas anteriormente.
-4. Cambia `NEXT_PUBLIC_SITE_URL` por la URL pública de la aplicación.
+4. Configura `NEXT_PUBLIC_SITE_URL=https://storyflop.com` como URL pública canónica de la aplicación.
 5. Añade las URL de producción y preview a las URL permitidas en Supabase.
 6. Aplica cualquier migración pendiente con `supabase db push`.
 

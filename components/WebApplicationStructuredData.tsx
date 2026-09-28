@@ -1,4 +1,4 @@
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://story-flop.vercel.app";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://storyflop.com";
 
 const structuredData = {
   "@context": "https://schema.org",

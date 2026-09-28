@@ -208,7 +208,11 @@
     "ctaTitle": "Erstellt euren ersten Scrum-Poker-Raum",
     "ctaBody": "Bringt eine Story auf den Tisch, ladet das Team ein und erreicht in wenigen Minuten eine gemeinsame Schätzung.",
     "ctaButton": "Raum erstellen",
-    "footerNavLabel": "Seiteninhalt"
+    "footerNavLabel": "Seiteninhalt, Rechtliches und Datenschutz",
+    "legalNotice": "Impressum",
+    "privacyPolicy": "Datenschutz",
+    "cookiesPolicy": "Cookies",
+    "privacySettings": "Datenschutzeinstellungen"
   },
   "Participation": {
     "title": "Deine Teilnahme",

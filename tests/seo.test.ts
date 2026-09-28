@@ -12,6 +12,9 @@ describe("SEO técnico", () => {
     expect(homePage).toContain('canonical: "/"');
     expect(robots).toContain("/sitemap.xml");
     expect(sitemap).toContain('changeFrequency: "weekly"');
+    expect(sitemap).toContain("/aviso-legal");
+    expect(sitemap).toContain("/privacidad");
+    expect(sitemap).toContain("/cookies");
   });
 
   it("excluye las salas de los resultados sin impedir leer la directiva", () => {

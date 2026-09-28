@@ -208,7 +208,11 @@
     "ctaTitle": "Sortu zure lehen Scrum Poker gela",
     "ctaBody": "Jarri historia bat mahai gainean, gonbidatu taldea eta lortu estimazio partekatua minutu gutxitan.",
     "ctaButton": "Gela sortu",
-    "footerNavLabel": "Orriaren edukia"
+    "footerNavLabel": "Edukia, lege-informazioa eta pribatutasuna",
+    "legalNotice": "Lege-oharra",
+    "privacyPolicy": "Pribatutasuna",
+    "cookiesPolicy": "Cookieak",
+    "privacySettings": "Pribatutasun-hobespenak"
   },
   "Participation": {
     "title": "Zure parte-hartzea",

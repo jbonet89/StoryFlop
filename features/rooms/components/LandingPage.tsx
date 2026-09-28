@@ -1,5 +1,6 @@
 "use client";
 import { useState, type FormEvent } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { ZodError } from "zod";
@@ -7,6 +8,7 @@ import { ArrowRight, Check, CircleCheck, Copy, EyeOff, Globe2, History, Infinity
 import { AvatarPicker } from "@/components/AvatarPicker";
 import { LanguageSelector } from "@/components/LanguageSelector";
 import { Brand } from "@/components/Brand";
+import { CookieSettingsButton } from "@/components/CookieSettingsButton";
 import { AVATARS } from "@/lib/constants";
 import { displayNameSchema, roomCodeSchema, roomNameSchema } from "@/lib/validation";
 import { getErrorCode } from "@/lib/errors";
@@ -109,6 +111,6 @@ export function LandingPage() {
       </div>
     </section>
     <section className="seo-cta"><div><span>{tSeo("ctaEyebrow")}</span><h2>{tSeo("ctaTitle")}</h2><p>{tSeo("ctaBody")}</p></div><a href="#entry-title">{tSeo("ctaButton")}<ArrowRight size={18} /></a></section>
-    <footer className="landing-footer"><span>{t("footerTime")}</span><nav aria-label={tSeo("footerNavLabel")}><a href="#como-funciona">{tSeo("navHow")}</a><a href="#funciones">{tSeo("navFeatures")}</a><a href="#preguntas">{tSeo("navFaq")}</a></nav><span><Copy size={13} /> {t("footerShare")}</span></footer>
+    <footer className="landing-footer"><span>{t("footerTime")}</span><nav aria-label={tSeo("footerNavLabel")}><a href="#como-funciona">{tSeo("navHow")}</a><a href="#funciones">{tSeo("navFeatures")}</a><a href="#preguntas">{tSeo("navFaq")}</a><Link href="/aviso-legal">{tSeo("legalNotice")}</Link><Link href="/privacidad">{tSeo("privacyPolicy")}</Link><Link href="/cookies">{tSeo("cookiesPolicy")}</Link><CookieSettingsButton>{tSeo("privacySettings")}</CookieSettingsButton></nav><span><Copy size={13} /> {t("footerShare")}</span></footer>
   </main>;
 }

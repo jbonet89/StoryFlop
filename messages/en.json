@@ -114,7 +114,11 @@
     "ctaTitle": "Create your first Scrum Poker room",
     "ctaBody": "Put a story on the table, invite your team and reach a shared estimate in minutes.",
     "ctaButton": "Create room",
-    "footerNavLabel": "Page content"
+    "footerNavLabel": "Page content, legal information and privacy",
+    "legalNotice": "Legal notice",
+    "privacyPolicy": "Privacy",
+    "cookiesPolicy": "Cookies",
+    "privacySettings": "Privacy settings"
   },
   "RoomGate": {
     "invalidCode": "Invalid code",
