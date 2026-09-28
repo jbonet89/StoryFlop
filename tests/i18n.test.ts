@@ -5,21 +5,24 @@ import de from "@/messages/de.json";
 import pt from "@/messages/pt.json";
 import ca from "@/messages/ca.json";
 import eu from "@/messages/eu.json";
+import fr from "@/messages/fr.json";
+import itCatalog from "@/messages/it.json";
+import ru from "@/messages/ru.json";
 import { normalizeLocale, parseAcceptLanguage, resolveLocalePreference, resolveSupportedLocale } from "@/i18n/config";
 import { flattenMessageKeys, mergeMessages, validateMessageCatalogs, type MessageTree } from "@/i18n/messages";
 import { formatDateTime } from "@/lib/formatting";
 import { formatStatistic } from "@/lib/statistics";
 
 describe("resolución de idioma", () => {
-  it.each([["es-ES","es"],["en-GB","en"],["de-AT","de"],["pt-BR","pt"],["ca-ES","ca"],["eu-ES","eu"],["fr-FR",null],["EN_us","en"]])("normaliza %s", (requested, expected) => expect(normalizeLocale(requested)).toBe(expected));
+  it.each([["es-ES","es"],["en-GB","en"],["fr-FR","fr"],["it-IT","it"],["ru-RU","ru"],["de-AT","de"],["pt-BR","pt"],["ca-ES","ca"],["eu-ES","eu"],["EN_us","en"]])("normaliza %s", (requested, expected) => expect(normalizeLocale(requested)).toBe(expected));
   it("respeta el primer idioma soportado y los pesos de Accept-Language", () => {
-    expect(resolveSupportedLocale(["fr-FR", "de-CH", "en-US"])).toBe("de");
+    expect(resolveSupportedLocale(["nl-NL", "de-CH", "en-US"])).toBe("de");
     expect(parseAcceptLanguage("en-US;q=0.7, de-DE;q=0.9, es;q=0.8")).toEqual(["de-DE", "es", "en-US"]);
   });
   it("da prioridad a una cookie válida e ignora una inválida", () => {
     expect(resolveLocalePreference("ca", "de-DE")).toBe("ca");
-    expect(resolveLocalePreference("fr", "pt-BR")).toBe("pt");
-    expect(resolveLocalePreference(undefined, "fr-FR")).toBe("es");
+    expect(resolveLocalePreference("nl", "pt-BR")).toBe("pt");
+    expect(resolveLocalePreference(undefined, "fr-FR")).toBe("fr");
   });
 });
 
@@ -30,6 +33,11 @@ describe("catálogos", () => {
     const merged = mergeMessages({ A: { one: "uno", two: "dos" } }, { A: { one: "one" } });
     expect(merged).toEqual({ A: { one: "one", two: "dos" } });
     expect(flattenMessageKeys(es as MessageTree).length).toBeGreaterThan(200);
+  });
+  it.each([["fr", fr], ["it", itCatalog], ["ru", ru]])("traduce todas las claves públicas en %s", (_locale, catalog) => {
+    for (const section of ["Metadata", "Brand", "Language", "Common", "Home", "LandingSeo"] as const) {
+      expect(Object.keys(catalog[section])).toEqual(Object.keys(en[section]));
+    }
   });
 });
 

@@ -18,7 +18,7 @@ StoryFlop permite preparar historias, estimarlas de forma colaborativa y alcanza
 - Reacciones rápidas entre participantes.
 - Identidad anónima persistente y avatares predefinidos.
 - Interfaz responsive y accesible.
-- Español, inglés, alemán, portugués, catalán y euskera.
+- Landing indexable en español, inglés, francés, italiano, alemán, portugués, catalán, euskera y ruso; las salas usan inglés como respaldo cuando falta una traducción operativa.
 
 ## Tecnologías
 

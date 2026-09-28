@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 
-const homePage = readFileSync("app/page.tsx", "utf8");
+const homePage = readFileSync("app/[locale]/page.tsx", "utf8");
 const roomPage = readFileSync("app/sala/[code]/page.tsx", "utf8");
 const robots = readFileSync("app/robots.ts", "utf8");
 const sitemap = readFileSync("app/sitemap.ts", "utf8");
@@ -9,9 +9,12 @@ const structuredData = readFileSync("components/WebApplicationStructuredData.tsx
 
 describe("SEO técnico", () => {
   it("publica canonical, robots y sitemap", () => {
-    expect(homePage).toContain('canonical: "/"');
+    expect(homePage).toContain("canonical: `/${locale}`");
+    expect(homePage).toContain('"x-default": "/"');
+    expect(homePage).toContain("localeAlternates");
     expect(robots).toContain("/sitemap.xml");
     expect(sitemap).toContain('changeFrequency: "weekly"');
+    expect(sitemap).toContain("supportedLocales.map");
     expect(sitemap).toContain("/aviso-legal");
     expect(sitemap).toContain("/privacidad");
     expect(sitemap).toContain("/cookies");

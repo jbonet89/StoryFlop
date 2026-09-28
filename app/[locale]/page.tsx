@@ -5,6 +5,7 @@ import { AdSenseScript } from "@/components/AdSenseScript";
 import { WebApplicationStructuredData } from "@/components/WebApplicationStructuredData";
 import { LandingPage } from "@/features/rooms/components/LandingPage";
 import { isSupportedLocale, localeAlternates, supportedLocales, type SupportedLocale } from "@/i18n/config";
+import { APP_NAME } from "@/lib/brand";
 
 type PageProps = { params: Promise<{ locale: string }> };
 
@@ -28,7 +29,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description: t("socialDescription"),
       locale: openGraphLocale(locale),
       alternateLocale: supportedLocales.filter(item => item !== locale).map(openGraphLocale),
+      siteName: APP_NAME,
+      images: [{ url: "/og.png", width: 1200, height: 630, alt: APP_NAME }],
     },
+    twitter: { card: "summary_large_image", title: t("title"), description: t("socialDescription"), images: ["/og.png"] },
   };
 }
 

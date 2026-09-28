@@ -10,11 +10,14 @@ import de from "@/messages/de.json";
 import pt from "@/messages/pt.json";
 import ca from "@/messages/ca.json";
 import eu from "@/messages/eu.json";
+import fr from "@/messages/fr.json";
+import itCatalog from "@/messages/it.json";
+import ru from "@/messages/ru.json";
 
 describe("marca StoryFlop", () => {
-  it("mantiene el nombre sin traducir y las claves de marca en los seis idiomas", () => {
+  it("mantiene el nombre sin traducir y las claves de marca en los nueve idiomas", () => {
     expect(APP_NAME).toBe("StoryFlop");
-    for (const catalog of [es, en, de, pt, ca, eu]) {
+    for (const catalog of [es, en, fr, itCatalog, de, pt, ca, eu, ru]) {
       expect(catalog.Metadata.appName).toBe(APP_NAME);
       expect(catalog.Brand.tagline).toBeTruthy();
       expect(catalog.Brand.claim).toBeTruthy();
