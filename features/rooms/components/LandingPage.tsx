@@ -1,7 +1,6 @@
 "use client";
+/* eslint-disable @next/next/no-html-link-for-pages -- Full document navigation discards the advertising runtime on non-editorial pages. */
 import { useState, type FormEvent } from "react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { ZodError } from "zod";
 import { ArrowRight, Check, CircleCheck, Copy, EyeOff, Globe2, History, Infinity, Layers3, ListPlus, LockKeyhole, Radio, ShieldCheck, Sparkles, UserPlus, UsersRound, Zap } from "lucide-react";
@@ -9,13 +8,13 @@ import { AvatarPicker } from "@/components/AvatarPicker";
 import { LanguageSelector } from "@/components/LanguageSelector";
 import { Brand } from "@/components/Brand";
 import { CookieSettingsButton } from "@/components/CookieSettingsButton";
+import { PlanningGuide } from "@/components/PlanningGuide";
 import { AVATARS } from "@/lib/constants";
 import { displayNameSchema, roomCodeSchema, roomNameSchema } from "@/lib/validation";
 import { getErrorCode } from "@/lib/errors";
 import { roomApi } from "../api";
 
 export function LandingPage() {
-  const router = useRouter();
   const t = useTranslations("Home");
   const tSeo = useTranslations("LandingSeo");
   const tBrand = useTranslations("Brand");
@@ -36,15 +35,16 @@ export function LandingPage() {
         const name = roomNameSchema.parse(roomName);
         const person = displayNameSchema.parse(displayName);
         const result = await roomApi.createRoom(name, person, avatar);
-        router.push(`/sala/${result.code}`);
+        // A new document discards Auto ads and their runtime before entering a room.
+        window.location.assign(`/sala/${result.code}`);
       } else {
-        router.push(`/sala/${roomCodeSchema.parse(code)}`);
+        window.location.assign(`/sala/${roomCodeSchema.parse(code)}`);
       }
     } catch (cause) { setError(cause instanceof ZodError ? tValidation(cause.issues[0]?.message ?? "CHECK_DATA") : tErrors(getErrorCode(cause))); setPending(false); }
   }
 
   return <main className="landing">
-    <nav className="landing-nav"><Brand showTagline /><div className="landing-nav-links"><a href="#como-funciona">{tSeo("navHow")}</a><a href="#funciones">{tSeo("navFeatures")}</a><a href="#preguntas">{tSeo("navFaq")}</a></div><div className="landing-nav-actions"><span className="live-pill"><Radio size={14} /> {t("realtime")}</span><LanguageSelector /></div></nav>
+    <nav className="landing-nav"><Brand showTagline /><div className="landing-nav-links"><a href="#guia">{tSeo("guideNav")}</a><a href="#como-funciona">{tSeo("navHow")}</a><a href="#funciones">{tSeo("navFeatures")}</a><a href="#preguntas">{tSeo("navFaq")}</a></div><div className="landing-nav-actions"><span className="live-pill"><Radio size={14} /> {t("realtime")}</span><LanguageSelector /></div></nav>
     <div className="landing-grid">
       <section className="hero-copy">
         <div className="eyebrow"><Sparkles size={15} /> {tBrand("tagline")}</div>
@@ -74,6 +74,7 @@ export function LandingPage() {
         </form>
       </section>
     </div>
+    <PlanningGuide />
     <section className="seo-section how-section" id="como-funciona">
       <div className="seo-heading"><span>{tSeo("howEyebrow")}</span><h2>{tSeo("howTitle")}</h2><p>{tSeo("howLead")}</p></div>
       <ol className="step-grid">
@@ -111,6 +112,6 @@ export function LandingPage() {
       </div>
     </section>
     <section className="seo-cta"><div><span>{tSeo("ctaEyebrow")}</span><h2>{tSeo("ctaTitle")}</h2><p>{tSeo("ctaBody")}</p></div><a href="#entry-title">{tSeo("ctaButton")}<ArrowRight size={18} /></a></section>
-    <footer className="landing-footer"><span>{t("footerTime")}</span><nav aria-label={tSeo("footerNavLabel")}><a href="#como-funciona">{tSeo("navHow")}</a><a href="#funciones">{tSeo("navFeatures")}</a><a href="#preguntas">{tSeo("navFaq")}</a><Link href="/aviso-legal">{tSeo("legalNotice")}</Link><Link href="/privacidad">{tSeo("privacyPolicy")}</Link><Link href="/cookies">{tSeo("cookiesPolicy")}</Link><CookieSettingsButton>{tSeo("privacySettings")}</CookieSettingsButton></nav><span><Copy size={13} /> {t("footerShare")}</span></footer>
+    <footer className="landing-footer"><span>{t("footerTime")}</span><nav aria-label={tSeo("footerNavLabel")}><a href="#guia">{tSeo("guideNav")}</a><a href="#como-funciona">{tSeo("navHow")}</a><a href="#funciones">{tSeo("navFeatures")}</a><a href="#preguntas">{tSeo("navFaq")}</a><a href="/aviso-legal">{tSeo("legalNotice")}</a><a href="/privacidad">{tSeo("privacyPolicy")}</a><a href="/cookies">{tSeo("cookiesPolicy")}</a><CookieSettingsButton>{tSeo("privacySettings")}</CookieSettingsButton></nav><span><Copy size={13} /> {t("footerShare")}</span></footer>
   </main>;
 }

@@ -44,6 +44,27 @@
     "faq4Question": "Che cosa succede ai dati della stanza?", "faq4Answer": "I dati funzionali di una stanza inattiva vengono eliminati automaticamente dopo 14 giorni. Le reazioni visive sono eventi effimeri e non vengono salvate nella cronologia.",
     "faq5Question": "Posso entrare come osservatore?", "faq5Answer": "Sì. Puoi passare dalla modalità votante a quella osservatore. Gli osservatori seguono la discussione e i risultati senza essere conteggiati nell’avanzamento del voto.",
     "ctaEyebrow": "Inizia ora", "ctaTitle": "Crea la tua prima stanza di Scrum Poker", "ctaBody": "Metti una story sul tavolo, invita il team e raggiungi una stima condivisa in pochi minuti.", "ctaButton": "Crea stanza",
-    "footerNavLabel": "Contenuto della pagina, informazioni legali e privacy", "legalNotice": "Note legali", "privacyPolicy": "Privacy", "cookiesPolicy": "Cookie", "privacySettings": "Impostazioni privacy"
+    "footerNavLabel": "Contenuto della pagina, informazioni legali e privacy", "legalNotice": "Note legali", "privacyPolicy": "Privacy", "cookiesPolicy": "Cookie", "privacySettings": "Impostazioni privacy",
+    "guideNav": "Guida pratica",
+    "guideEyebrow": "Imparare a stimare",
+    "guideTitle": "Planning Poker: arrivare a una decisione condivisa",
+    "guideIntro": "Ognuno stima in autonomia, poi il gruppo scopre le carte e confronta le ipotesi. Il risultato utile è una storia più chiara con rischi visibili, non soltanto un numero.",
+    "guidePointsTitle": "Cosa rappresentano i punti?",
+    "guidePointsBody": "I punti esprimono dimensioni relative: impegno, complessità e incertezza. Scegliete una storia nota come riferimento. Non convertite i punti in ore e non confrontate team diversi. StoryFlop offre 0, 1, 2, 3, 5, 8, 13, 21 e 34, più ? per un dubbio e ☕ per una pausa.",
+    "guidePrepareTitle": "Prima di votare",
+    "guidePrepareBody": "Definite risultato, criteri di accettazione, test e dipendenze. Per recuperare una password sono inclusi link scaduti e limiti ai tentativi? Risolvete i dubbi che cambiano le dimensioni prima di scegliere un numero.",
+    "guideDiscussTitle": "Discutere le differenze",
+    "guideDiscussBody": "Votate senza annunciare numeri. Dopo la rivelazione, chi ha scelto gli estremi spiega le proprie ipotesi. Chiarite il perimetro e votate ancora se serve. Se resta molta incertezza, dividete la storia o concordate una ricerca mirata.",
+    "guideExampleLabel": "Un esempio di turno",
+    "guideExampleTitle": "Recuperare una password",
+    "guideExampleBefore": "I voti sono 3, 5 e 13. Il 3 presume di riutilizzare un messaggio; il 13 include un nuovo servizio email. Le persone stanno stimando lavori diversi.",
+    "guideVotesLabel": "Voti di esempio: 3, 5 e 13",
+    "guideExampleAfter": "Il servizio esiste già. Il team aggiunge test sui link scaduti e separa la revisione infrastrutturale. Vota di nuovo e sceglie 5: un esempio, non un valore universale.",
+    "guideTakeawayTitle": "Cosa conservare",
+    "guideTakeawayBody": "Annotate accordo, ipotesi e lavoro separato. La media descrive i voti ma non sostituisce la decisione. Rileggete le note quando cambia il perimetro.",
+    "guideChecklistTitle": "Per la prossima sessione",
+    "guideCheck1": "Usate una storia di riferimento coerente.",
+    "guideCheck2": "Includete test, revisioni e dipendenze.",
+    "guideCheck3": "Usate i punti per pianificare insieme, mai per valutare una persona."
   }
 }

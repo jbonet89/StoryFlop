@@ -356,6 +356,20 @@ label { display:block;font-size:12px;font-weight:750;margin:15px 0;color:#394540
 .landing-nav-links a:hover,.landing-footer a:hover,.cookie-settings-link:hover { color:var(--green); }
 .cookie-settings-link { margin:0;padding:0;border:0;background:transparent;cursor:pointer; }
 .seo-section { width:min(1080px,calc(100% - 40px));margin:0 auto;padding:82px 0;scroll-margin-top:80px; }
+.planning-guide { border-top:1px solid var(--line); }
+.guide-layout { display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:44px;align-items:start; }
+.guide-chapters { display:grid;gap:28px; }
+.planning-guide h3 { margin:0 0 12px;color:#263d34;font-size:20px;line-height:1.35; }
+.planning-guide p,.guide-checklist li { font-size:15px;line-height:1.8;color:var(--muted); }
+.guide-chapters p,.guide-example p { margin:0; }
+.guide-example { padding:30px;border:1px solid #ccd9cb;border-radius:20px;background:#edf2e9; }
+.guide-label { display:block;margin-bottom:14px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--green);font-weight:800; }
+.guide-votes { display:flex;gap:12px;margin:24px 0; }
+.guide-votes span { display:grid;place-items:center;width:52px;height:72px;background:#fffdf8;border:1px solid #ccd9cb;border-radius:9px;font-size:25px;color:#263d34;font-family:Georgia,serif; }
+.guide-example h4 { margin:24px 0 8px;font-size:16px;color:#263d34; }
+.guide-checklist { margin-top:36px;padding-top:28px;border-top:1px solid var(--line); }
+.guide-checklist ul { margin:0;padding-left:22px;display:grid;gap:10px; }
+@media (max-width:760px) { .guide-layout { grid-template-columns:1fr;gap:28px; }.guide-example { padding:24px; } }
 .seo-heading { max-width:680px;margin:0 auto 38px;text-align:center; }
 .seo-heading>span,.seo-cta span { color:var(--coral);font-size:11px;font-weight:850;letter-spacing:.14em;text-transform:uppercase; }
 .seo-heading h2,.seo-cta h2 { margin:8px 0 12px;font-family:Georgia,serif;font-size:clamp(29px,4vw,44px);font-weight:500;letter-spacing:-.025em;color:#263d34; }
