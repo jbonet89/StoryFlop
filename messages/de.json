@@ -233,7 +233,17 @@
     "guideChecklistTitle": "Für die nächste Sitzung",
     "guideCheck1": "Nutzt eine einheitliche Referenzstory.",
     "guideCheck2": "Berücksichtigt Tests, Reviews und Abhängigkeiten.",
-    "guideCheck3": "Nutzt Punkte zur gemeinsamen Planung, nie zur individuellen Leistungsbewertung."
+    "guideCheck3": "Nutzt Punkte zur gemeinsamen Planung, nie zur individuellen Leistungsbewertung.",
+    "historyEyebrow": "Von Papierkarten zu verteilten Teams",
+    "historyOriginTitle": "Eine kurze Geschichte des Planning Poker",
+    "historyIntro": "Die Methode entstand, damit bei der Schätzung alle im Team gehört werden. Ihre Geschichte erklärt, warum Karten gleichzeitig aufgedeckt werden und die Abstände mit wachsender Unsicherheit größer werden.",
+    "history2002Body": "In einer festgefahrenen Planungssitzung für Extreme Programming entwickelte Grenning eine gleichzeitige Abstimmung mit Karten. Sein Artikel vom April 2002 beschrieb und benannte Planning Poker. Grenning gehörte auch zu den 17 ursprünglichen Unterzeichnern des Agilen Manifests.",
+    "history2005Body": "Cohn machte die Methode mit Agile Estimating and Planning bekannt. Das Buch verband individuelle Schätzungen, Diskussion und Konsens und verbreitete die angepasste Skala 0, 1, 2, 3, 5, 8, 13, 20, 40 und 100.",
+    "historyTodayLabel": "Heute",
+    "historyTodayTitle": "Vom Tisch zum digitalen Raum",
+    "historyTodayBody": "Papierkarten wurden durch Werkzeuge für verteilte Teams ergänzt. Der Kern bleibt: unabhängig denken, gleichzeitig aufdecken und Unterschiede nutzen, um Annahmen, Risiken und verborgene Arbeit zu erkennen.",
+    "historySourcesLabel": "Quellen zur Geschichte von Planning Poker",
+    "historyOriginalSource": "Originalartikel von James Grenning"
   },
   "Participation": {
     "title": "Deine Teilnahme",

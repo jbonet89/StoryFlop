@@ -233,7 +233,17 @@
     "guideChecklistTitle": "Hurrengo saiorako",
     "guideCheck1": "Erabili erreferentziazko istorio koherente bat.",
     "guideCheck2": "Sartu probak, berrikuspenak eta mendekotasunak.",
-    "guideCheck3": "Erabili puntuak taldean planifikatzeko, inoiz ez norbanakoen errendimendua neurtzeko."
+    "guideCheck3": "Erabili puntuak taldean planifikatzeko, inoiz ez norbanakoen errendimendua neurtzeko.",
+    "historyEyebrow": "Paperezko kartetatik urruneko taldeetara",
+    "historyOriginTitle": "Planning Pokerraren historia laburra",
+    "historyIntro": "Teknika estimazioan talde osoari ahotsa emateko sortu zen. Bere bilakaerak azaltzen du zergatik erakusten diren kartak batera eta zergatik handitzen diren balioen arteko tarteak ziurgabetasuna haztean.",
+    "history2002Body": "Extreme Programming plangintza-bilera trabatu batean, Grenningek kartekin aldi bereko bozketa asmatu zuen. 2002ko apirileko bere artikuluak Planning Poker deskribatu eta izendatu zuen. Grenning Manifestu Arinaren jatorrizko 17 sinatzaileetako bat ere izan zen.",
+    "history2005Body": "Cohnek Agile Estimating and Planning liburuan zabaldu zuen metodoa. Liburuak banakako estimazioak, elkarrizketa eta adostasuna uztartu zituen, eta 0, 1, 2, 3, 5, 8, 13, 20, 40 eta 100 eskala egokitua hedatu zuen.",
+    "historyTodayLabel": "Gaur",
+    "historyTodayTitle": "Mahai fisikotik gela digitalera",
+    "historyTodayBody": "Paperezko kartek talde banatuentzako tresnei bide eman zieten. Funtsezko mekanismoa mantentzen da: modu independentean pentsatu, batera erakutsi eta aldeak erabili hipotesiak, arriskuak eta ezkutuko lana aurkitzeko.",
+    "historySourcesLabel": "Planning Pokerraren historiari buruzko iturriak",
+    "historyOriginalSource": "James Grenningen jatorrizko artikulua"
   },
   "Participation": {
     "title": "Zure parte-hartzea",
