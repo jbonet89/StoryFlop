@@ -53,6 +53,27 @@
     "faq4Question": "Que deviennent les données de la salle ?", "faq4Answer": "Les données fonctionnelles d’une salle inactive sont automatiquement supprimées après 14 jours. Les réactions visuelles sont éphémères et ne sont pas stockées dans l’historique.",
     "faq5Question": "Puis-je participer comme observateur ?", "faq5Answer": "Oui. Vous pouvez passer du mode votant au mode observateur. Les observateurs suivent la discussion et les résultats sans compter dans la progression du vote.",
     "ctaEyebrow": "Commencez maintenant", "ctaTitle": "Créez votre première salle de Scrum Poker", "ctaBody": "Mettez une story sur la table, invitez votre équipe et obtenez une estimation commune en quelques minutes.", "ctaButton": "Créer une salle",
-    "footerNavLabel": "Contenu de la page, informations légales et confidentialité", "legalNotice": "Mentions légales", "privacyPolicy": "Confidentialité", "cookiesPolicy": "Cookies", "privacySettings": "Paramètres de confidentialité"
+    "footerNavLabel": "Contenu de la page, informations légales et confidentialité", "legalNotice": "Mentions légales", "privacyPolicy": "Confidentialité", "cookiesPolicy": "Cookies", "privacySettings": "Paramètres de confidentialité",
+    "guideNav": "Guide pratique",
+    "guideEyebrow": "Apprendre à estimer",
+    "guideTitle": "Planning Poker : construire une décision commune",
+    "guideIntro": "Chaque personne estime seule, puis le groupe révèle les cartes et confronte ses hypothèses. Le résultat utile est une histoire plus claire et des risques identifiés, pas seulement un nombre.",
+    "guidePointsTitle": "Que représentent les points ?",
+    "guidePointsBody": "Les points mesurent une taille relative : effort, complexité et incertitude. Choisissez une histoire connue comme référence. Ne convertissez pas les points en heures et ne comparez pas les équipes. StoryFlop propose 0, 1, 2, 3, 5, 8, 13, 21 et 34, ainsi que ? pour un doute et ☕ pour une pause.",
+    "guidePrepareTitle": "Avant de voter",
+    "guidePrepareBody": "Précisez le résultat attendu, les critères d’acceptation, les tests et les dépendances. Pour une réinitialisation de mot de passe, faut-il gérer les liens expirés et les limites de tentatives ? Résolvez les questions qui changent le périmètre avant de choisir un nombre.",
+    "guideDiscussTitle": "Discuter les écarts",
+    "guideDiscussBody": "Votez sans annoncer votre nombre. Après la révélation, les personnes ayant choisi les extrêmes expliquent leurs hypothèses. Clarifiez le périmètre puis revotez si nécessaire. Si l’incertitude reste forte, découpez l’histoire ou prévoyez une investigation.",
+    "guideExampleLabel": "Exemple de tour",
+    "guideExampleTitle": "Réinitialiser un mot de passe",
+    "guideExampleBefore": "Les votes sont 3, 5 et 13. Le 3 suppose un courriel existant ; le 13 inclut un nouveau service d’envoi. Ce sont deux périmètres différents.",
+    "guideVotesLabel": "Exemple de votes : 3, 5 et 13",
+    "guideExampleAfter": "Le service existe déjà. L’équipe ajoute les tests des liens expirés et sépare la revue d’infrastructure. Elle revote et choisit 5 : un exemple, pas une valeur universelle.",
+    "guideTakeawayTitle": "Que conserver ?",
+    "guideTakeawayBody": "Notez l’accord, les hypothèses et le travail séparé. La moyenne décrit les votes, elle ne remplace pas la décision. Relisez ces notes si le périmètre change.",
+    "guideChecklistTitle": "Pour la prochaine session",
+    "guideCheck1": "Gardez une histoire de référence cohérente.",
+    "guideCheck2": "Incluez les tests, les revues et les dépendances.",
+    "guideCheck3": "Utilisez les points pour planifier ensemble, jamais pour évaluer une personne."
   }
 }
