@@ -369,7 +369,19 @@ label { display:block;font-size:12px;font-weight:750;margin:15px 0;color:#394540
 .guide-example h4 { margin:24px 0 8px;font-size:16px;color:#263d34; }
 .guide-checklist { margin-top:36px;padding-top:28px;border-top:1px solid var(--line); }
 .guide-checklist ul { margin:0;padding-left:22px;display:grid;gap:10px; }
-@media (max-width:760px) { .guide-layout { grid-template-columns:1fr;gap:28px; }.guide-example { padding:24px; } }
+.history-section { margin-top:52px;padding-top:48px;border-top:1px solid var(--line); }
+.history-section>header { max-width:720px;margin-bottom:30px; }
+.history-section>header h2 { margin:8px 0 12px;font-family:Georgia,serif;font-size:clamp(27px,3.5vw,38px);font-weight:500;color:#263d34; }
+.history-section>header p { margin:0; }
+.history-timeline { display:grid;grid-template-columns:repeat(3,1fr);gap:18px; }
+.history-timeline article { padding:25px;border:1px solid var(--line);border-radius:18px;background:#fffdf8; }
+.history-timeline time { display:block;margin-bottom:14px;color:var(--coral);font-size:13px;font-weight:850;letter-spacing:.08em;text-transform:uppercase; }
+.history-timeline h3 a { color:inherit;text-decoration-thickness:1px;text-underline-offset:4px; }
+.history-timeline h3 a:hover,.history-sources a:hover { color:var(--green); }
+.history-timeline p { margin:0; }
+.history-sources { display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:24px; }
+.history-sources a { color:var(--muted);font-size:12px;font-weight:700;text-underline-offset:3px; }
+@media (max-width:760px) { .guide-layout,.history-timeline { grid-template-columns:1fr;gap:28px; }.guide-example { padding:24px; }.history-section { margin-top:42px;padding-top:38px; } }
 .seo-heading { max-width:680px;margin:0 auto 38px;text-align:center; }
 .seo-heading>span,.seo-cta span { color:var(--coral);font-size:11px;font-weight:850;letter-spacing:.14em;text-transform:uppercase; }
 .seo-heading h2,.seo-cta h2 { margin:8px 0 12px;font-family:Georgia,serif;font-size:clamp(29px,4vw,44px);font-weight:500;letter-spacing:-.025em;color:#263d34; }

@@ -139,7 +139,17 @@
     "guideChecklistTitle": "Tres comprobaciones para la siguiente sesión",
     "guideCheck1": "Usad la misma historia de referencia durante la sesión y revisadla cuando deje de ser representativa.",
     "guideCheck2": "Incluid pruebas, revisión y dependencias en la conversación; evitad estimar únicamente la programación.",
-    "guideCheck3": "Utilizad los puntos para conversar y planificar como equipo, nunca para medir el rendimiento individual."
+    "guideCheck3": "Utilizad los puntos para conversar y planificar como equipo, nunca para medir el rendimiento individual.",
+    "historyEyebrow": "De las tarjetas de papel a los equipos remotos",
+    "historyOriginTitle": "Una breve historia del Planning Poker",
+    "historyIntro": "La técnica nació para devolver la voz a todo el equipo durante la estimación. Su evolución explica por qué las cartas se revelan a la vez y por qué los valores se separan conforme aumenta la incertidumbre.",
+    "history2002Body": "Durante una reunión de planificación de Extreme Programming que se había atascado, Grenning ideó una votación simultánea con tarjetas. Su artículo original, fechado en abril de 2002, describió y dio nombre al Planning Poker. Grenning también fue uno de los 17 firmantes originales del Manifiesto Ágil.",
+    "history2005Body": "Cohn popularizó el método en Agile Estimating and Planning. El libro presentó el Planning Poker como una forma de combinar estimaciones individuales, conversación y consenso, y difundió la escala modificada 0, 1, 2, 3, 5, 8, 13, 20, 40 y 100.",
+    "historyTodayLabel": "Hoy",
+    "historyTodayTitle": "De una mesa física a una sala digital",
+    "historyTodayBody": "Las cartas de papel dieron paso a herramientas para equipos distribuidos. El mecanismo esencial se mantiene: pensar de forma independiente, revelar a la vez y usar las diferencias para descubrir supuestos, riesgos y trabajo oculto.",
+    "historySourcesLabel": "Fuentes para ampliar la historia del Planning Poker",
+    "historyOriginalSource": "Artículo original de James Grenning"
   },
   "RoomGate": {
     "invalidCode": "Código no válido",

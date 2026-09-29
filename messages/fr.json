@@ -74,6 +74,16 @@
     "guideChecklistTitle": "Pour la prochaine session",
     "guideCheck1": "Gardez une histoire de référence cohérente.",
     "guideCheck2": "Incluez les tests, les revues et les dépendances.",
-    "guideCheck3": "Utilisez les points pour planifier ensemble, jamais pour évaluer une personne."
+    "guideCheck3": "Utilisez les points pour planifier ensemble, jamais pour évaluer une personne.",
+    "historyEyebrow": "Des cartes en papier aux équipes à distance",
+    "historyOriginTitle": "Une brève histoire du Planning Poker",
+    "historyIntro": "La technique est née pour donner la parole à toute l’équipe pendant l’estimation. Son évolution explique pourquoi les cartes sont révélées ensemble et pourquoi les valeurs s’espacent lorsque l’incertitude augmente.",
+    "history2002Body": "Lors d’une réunion de planification Extreme Programming bloquée, Grenning imagina un vote simultané avec des cartes. Son article d’avril 2002 décrivit et nomma le Planning Poker. Grenning fut aussi l’un des 17 signataires originaux du Manifeste Agile.",
+    "history2005Body": "Cohn popularisa la méthode dans Agile Estimating and Planning. Le livre associait estimations individuelles, discussion et consensus, et diffusa l’échelle modifiée 0, 1, 2, 3, 5, 8, 13, 20, 40 et 100.",
+    "historyTodayLabel": "Aujourd’hui",
+    "historyTodayTitle": "D’une table physique à une salle numérique",
+    "historyTodayBody": "Les cartes en papier ont laissé place à des outils pour les équipes distribuées. Le principe reste le même : réfléchir indépendamment, révéler ensemble et utiliser les écarts pour découvrir hypothèses, risques et travail caché.",
+    "historySourcesLabel": "Sources sur l’histoire du Planning Poker",
+    "historyOriginalSource": "Article original de James Grenning"
   }
 }

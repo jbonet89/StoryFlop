@@ -7,6 +7,9 @@ test("sirve la guía editorial sin JavaScript", async ({ browser }) => {
   await expect(page.getByRole("heading", { name: "Planning Poker: del número a una decisión compartida" })).toBeVisible();
   await expect(page.locator("#guia")).toContainText("No convirtáis cada punto en horas");
   await expect(page.getByRole("heading", { name: "Una recuperación de contraseña con sorpresas" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Una breve historia del Planning Poker" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "James Grenning", exact: true })).toHaveAttribute("href", /agilealliance\.org/);
+  await expect(page.getByRole("link", { name: "Mike Cohn", exact: true })).toHaveAttribute("href", /wikipedia\.org/);
   await context.close();
 });
 

@@ -139,7 +139,17 @@
     "guideChecklistTitle": "Three checks for your next session",
     "guideCheck1": "Use a consistent reference story during the session and revisit it when it no longer represents the work.",
     "guideCheck2": "Include testing, review and dependencies in the discussion; do not estimate only implementation.",
-    "guideCheck3": "Use points to discuss and plan as a team, never to measure individual performance."
+    "guideCheck3": "Use points to discuss and plan as a team, never to measure individual performance.",
+    "historyEyebrow": "From paper cards to remote teams",
+    "historyOriginTitle": "A brief history of Planning Poker",
+    "historyIntro": "The technique was created to give everyone a voice during estimation. Its history explains why cards are revealed together and why values spread out as uncertainty grows.",
+    "history2002Body": "During a stalled Extreme Programming planning meeting, Grenning devised a simultaneous card vote. His original paper, dated April 2002, described and named Planning Poker. Grenning was also one of the 17 original signatories of the Agile Manifesto.",
+    "history2005Body": "Cohn popularized the method in Agile Estimating and Planning. The book presented Planning Poker as a way to combine individual estimates, discussion and consensus, and spread the modified scale 0, 1, 2, 3, 5, 8, 13, 20, 40 and 100.",
+    "historyTodayLabel": "Today",
+    "historyTodayTitle": "From a physical table to a digital room",
+    "historyTodayBody": "Paper cards gave way to tools for distributed teams. The essential mechanism remains: think independently, reveal together and use differences to uncover assumptions, risks and hidden work.",
+    "historySourcesLabel": "Sources about the history of Planning Poker",
+    "historyOriginalSource": "James Grenning's original article"
   },
   "RoomGate": {
     "invalidCode": "Invalid code",
