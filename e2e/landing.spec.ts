@@ -25,6 +25,15 @@ test("descarta el documento publicitario al entrar en una sala", async ({ page }
   await expect(page.locator('script[src*="adsbygoogle.js"]')).toHaveCount(0);
 });
 
+test("coloca las unidades manuales solo entre contenido editorial", async ({ page }) => {
+  await page.route("**/pagead2.googlesyndication.com/**", route => route.fulfill({ contentType: "application/javascript", body: "" }));
+  await page.goto("/es");
+  await expect(page.locator('.ad-horizontal ins[data-ad-slot="3113577981"]')).toHaveCount(1);
+  await expect(page.locator('.ad-horizontal ins[data-full-width-responsive="true"]')).toHaveCount(1);
+  await expect(page.locator('.ad-multiplex ins[data-ad-slot="1608924623"][data-ad-format="autorelaxed"]')).toHaveCount(1);
+  await expect(page.locator(".landing-grid .adsbygoogle")).toHaveCount(0);
+});
+
 test("la guía no desborda la pantalla", async ({ page }) => {
   await page.goto("/es");
   await page.locator("#guia").scrollIntoViewIfNeeded();

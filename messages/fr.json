@@ -53,7 +53,7 @@
     "faq4Question": "Que deviennent les données de la salle ?", "faq4Answer": "Les données fonctionnelles d’une salle inactive sont automatiquement supprimées après 14 jours. Les réactions visuelles sont éphémères et ne sont pas stockées dans l’historique.",
     "faq5Question": "Puis-je participer comme observateur ?", "faq5Answer": "Oui. Vous pouvez passer du mode votant au mode observateur. Les observateurs suivent la discussion et les résultats sans compter dans la progression du vote.",
     "ctaEyebrow": "Commencez maintenant", "ctaTitle": "Créez votre première salle de Scrum Poker", "ctaBody": "Mettez une story sur la table, invitez votre équipe et obtenez une estimation commune en quelques minutes.", "ctaButton": "Créer une salle",
-    "footerNavLabel": "Contenu de la page, informations légales et confidentialité", "legalNotice": "Mentions légales", "privacyPolicy": "Confidentialité", "cookiesPolicy": "Cookies", "privacySettings": "Paramètres de confidentialité",
+    "footerNavLabel": "Contenu de la page, informations légales et confidentialité", "legalNotice": "Mentions légales", "privacyPolicy": "Confidentialité", "cookiesPolicy": "Cookies", "privacySettings": "Paramètres de confidentialité", "advertisementLabel": "Publicité",
     "guideNav": "Guide pratique",
     "guideEyebrow": "Apprendre à estimer",
     "guideTitle": "Planning Poker : construire une décision commune",

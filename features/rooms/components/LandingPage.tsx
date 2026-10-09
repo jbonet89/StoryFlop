@@ -9,6 +9,7 @@ import { LanguageSelector } from "@/components/LanguageSelector";
 import { Brand } from "@/components/Brand";
 import { CookieSettingsButton } from "@/components/CookieSettingsButton";
 import { PlanningGuide } from "@/components/PlanningGuide";
+import { AdSenseUnit } from "@/components/AdSenseUnit";
 import { AVATARS } from "@/lib/constants";
 import { displayNameSchema, roomCodeSchema, roomNameSchema } from "@/lib/validation";
 import { getErrorCode } from "@/lib/errors";
@@ -74,6 +75,7 @@ export function LandingPage() {
         </form>
       </section>
     </div>
+    <AdSenseUnit slot="3113577981" format="auto" fullWidthResponsive label={tSeo("advertisementLabel")} className="ad-horizontal" />
     <PlanningGuide />
     <section className="seo-section how-section" id="como-funciona">
       <div className="seo-heading"><span>{tSeo("howEyebrow")}</span><h2>{tSeo("howTitle")}</h2><p>{tSeo("howLead")}</p></div>
@@ -103,12 +105,15 @@ export function LandingPage() {
     </section>
     <section className="seo-section faq-section" id="preguntas">
       <div className="seo-heading"><span>{tSeo("faqEyebrow")}</span><h2>{tSeo("faqTitle")}</h2></div>
-      <div className="faq-list">
-        <details><summary>{tSeo("faq1Question")}</summary><p>{tSeo("faq1Answer")}</p></details>
-        <details><summary>{tSeo("faq2Question")}</summary><p>{tSeo("faq2Answer")}</p></details>
-        <details><summary>{tSeo("faq3Question")}</summary><p>{tSeo("faq3Answer")}</p></details>
-        <details><summary>{tSeo("faq4Question")}</summary><p>{tSeo("faq4Answer")}</p></details>
-        <details><summary>{tSeo("faq5Question")}</summary><p>{tSeo("faq5Answer")}</p></details>
+      <div className="faq-with-ad">
+        <div className="faq-list">
+          <details><summary>{tSeo("faq1Question")}</summary><p>{tSeo("faq1Answer")}</p></details>
+          <details><summary>{tSeo("faq2Question")}</summary><p>{tSeo("faq2Answer")}</p></details>
+          <details><summary>{tSeo("faq3Question")}</summary><p>{tSeo("faq3Answer")}</p></details>
+          <details><summary>{tSeo("faq4Question")}</summary><p>{tSeo("faq4Answer")}</p></details>
+          <details><summary>{tSeo("faq5Question")}</summary><p>{tSeo("faq5Answer")}</p></details>
+        </div>
+        <AdSenseUnit slot="1608924623" format="autorelaxed" label={tSeo("advertisementLabel")} className="ad-multiplex" />
       </div>
     </section>
     <section className="seo-cta"><div><span>{tSeo("ctaEyebrow")}</span><h2>{tSeo("ctaTitle")}</h2><p>{tSeo("ctaBody")}</p></div><a href="#entry-title">{tSeo("ctaButton")}<ArrowRight size={18} /></a></section>
