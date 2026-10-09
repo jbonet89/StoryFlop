@@ -5,6 +5,8 @@ const layout = readFileSync("app/layout.tsx", "utf8");
 const homePage = readFileSync("app/page.tsx", "utf8");
 const roomPage = readFileSync("app/sala/[code]/page.tsx", "utf8");
 const adSenseScript = readFileSync("components/AdSenseScript.tsx", "utf8");
+const adSenseUnit = readFileSync("components/AdSenseUnit.tsx", "utf8");
+const landingPage = readFileSync("features/rooms/components/LandingPage.tsx", "utf8");
 const adsTxt = readFileSync("public/ads.txt", "utf8").trim();
 
 describe("AdSense", () => {
@@ -17,5 +19,13 @@ describe("AdSense", () => {
     expect(homePage).toContain("<AdSenseScript />");
     expect(roomPage).not.toContain("AdSenseScript");
     expect(adSenseScript).toContain("pagead2.googlesyndication.com/pagead/js/adsbygoogle.js");
+  });
+
+  it("inicializa las unidades manuales una sola vez y conserva sus slots", () => {
+    expect(adSenseUnit).toContain("initialized.current");
+    expect(adSenseUnit).toContain("window.adsbygoogle");
+    expect(landingPage).toContain('slot="3113577981"');
+    expect(landingPage).toContain('slot="1608924623"');
+    expect(roomPage).not.toContain("AdSenseUnit");
   });
 });
