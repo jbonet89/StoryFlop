@@ -103,6 +103,7 @@ export function LandingPage() {
         <li><b>3</b><div><h3>{tSeo("step3Title")}</h3><p>{tSeo("step3Body")}</p></div></li>
       </ol>
     </section>
+    <AdSenseUnit slot="3113577981" format="auto" fullWidthResponsive label={tSeo("advertisementLabel")} className="ad-horizontal" />
     <section className="seo-section feature-section" id="funciones">
       <div className="seo-heading"><span>{tSeo("featuresEyebrow")}</span><h2>{tSeo("featuresTitle")}</h2><p>{tSeo("featuresLead")}</p></div>
       <div className="seo-feature-grid">
@@ -121,6 +122,7 @@ export function LandingPage() {
       <div className="seo-heading"><span>{tSeo("useEyebrow")}</span><h2>{tSeo("useTitle")}</h2><p>{tSeo("useLead")}</p></div>
       <div className="use-case-grid"><article><CircleCheck /><div><h3>{tSeo("refinementTitle")}</h3><p>{tSeo("refinementBody")}</p></div></article><article><CircleCheck /><div><h3>{tSeo("planningTitle")}</h3><p>{tSeo("planningBody")}</p></div></article><article><CircleCheck /><div><h3>{tSeo("remoteTeamsTitle")}</h3><p>{tSeo("remoteTeamsBody")}</p></div></article></div>
     </section>
+    <AdSenseUnit slot="3113577981" format="auto" fullWidthResponsive label={tSeo("advertisementLabel")} className="ad-horizontal" />
     <section className="seo-section faq-section" id="preguntas">
       <div className="seo-heading"><span>{tSeo("faqEyebrow")}</span><h2>{tSeo("faqTitle")}</h2></div>
       <div className="faq-with-ad">

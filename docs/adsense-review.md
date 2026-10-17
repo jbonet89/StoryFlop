@@ -45,3 +45,16 @@ Referencias:
 - https://support.google.com/adsense/answer/9305577?hl=es
 
 La captura de otro sitio es una referencia visual, no prueba de que sus ubicaciones estén permitidas. El icono AdChoices informa sobre publicidad y sus controles; por sí solo no identifica la plataforma que monetiza un sitio.
+
+
+## Espacios publicitarios condicionales
+
+`NEXT_PUBLIC_ADSENSE_ENABLED` está desactivado por defecto. Mientras no sea exactamente `true`, no se renderizan unidades ni se carga el runtime de AdSense: no hay márgenes ni columnas reservadas. El meta de verificación de la cuenta y ads.txt permanecen publicados.
+
+Tras la aprobación, configurar `NEXT_PUBLIC_ADSENSE_ENABLED=true` en producción y volver a desplegar (Next.js integra las variables públicas durante el build). La aplicación no puede consultar automáticamente el estado de aprobación de la cuenta. No activar el interruptor solo para simular una aprobación.
+
+La portada tiene cuatro ubicaciones: tras el bloque inicial, entre cómo funciona y funciones, entre casos de uso y preguntas frecuentes, y junto a las preguntas frecuentes. Las tres unidades adaptables reutilizan el bloque de display existente; no se han creado identificadores ficticios. Las nueve versiones usan las mismas ubicaciones y etiquetas traducidas. No se añaden anuncios a salas, formularios, demo, recursos ni páginas legales.
+
+Cuando se activan, los bloques se solicitan visibles, como recomienda Google. `data-ad-status="unfilled"` oculta el bloque completo, incluidos sus márgenes. Los márgenes y la columna lateral del FAQ solo aparecen con `filled` o `unfill-optimized` (este último es contenido optimizado por Google y no debe ocultarse como vacío). Sin respuesta, no hay márgenes ni columna lateral añadidos; Google puede reservar temporalmente altura durante la carga. No se fuerza una altura cero en anuncios pendientes ni se oculta una creatividad servida.
+
+Referencia: https://support.google.com/adsense/answer/10762946?hl=es

@@ -66,7 +66,11 @@ test("sirve todos los recursos y la ficha sin JavaScript con idioma y canónica 
 test("descarta el runtime publicitario al abrir los recursos desde la portada", async ({ page }) => {
   await page.route("**/pagead2.googlesyndication.com/**", route => route.fulfill({ contentType: "application/javascript", body: "window.__adRuntime = true;" }));
   await page.goto("/es");
-  await expect.poll(() => page.evaluate(() => "__adRuntime" in window)).toBe(true);
+  if (process.env.NEXT_PUBLIC_ADSENSE_ENABLED === "true") {
+    await expect.poll(() => page.evaluate(() => "__adRuntime" in window)).toBe(true);
+  } else {
+    await page.evaluate(() => { Object.assign(window, { __adRuntime: true }); });
+  }
   await page.getByRole("link", { name: /Explorar las guías/ }).click();
   await expect(page).toHaveURL(/\/recursos$/);
   expect(await page.evaluate(() => "__adRuntime" in window)).toBe(false);

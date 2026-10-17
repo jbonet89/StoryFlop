@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { adsenseEnabled } from "@/lib/adsense";
 
 const ADSENSE_CLIENT = "ca-pub-2657741160026304";
 
@@ -22,7 +23,7 @@ export function AdSenseUnit({ slot, format, label, className = "", fullWidthResp
   const initialized = useRef(false);
 
   useEffect(() => {
-    if (initialized.current) return;
+    if (!adsenseEnabled || initialized.current) return;
     initialized.current = true;
     try {
       (window.adsbygoogle = window.adsbygoogle || []).push({});
@@ -30,6 +31,8 @@ export function AdSenseUnit({ slot, format, label, className = "", fullWidthResp
       if (process.env.NODE_ENV !== "production") console.warn("AdSense unit could not be initialized", error);
     }
   }, []);
+
+  if (!adsenseEnabled) return null;
 
   return <aside className={`ad-placement ${className}`.trim()} aria-label={label}>
     <ins
