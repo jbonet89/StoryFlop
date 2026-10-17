@@ -485,6 +485,8 @@ label { display:block;font-size:12px;font-weight:750;margin:15px 0;color:#394540
 .resource-shell { min-height:100dvh;padding:28px clamp(18px,5vw,72px) 24px; }
 .resource-header { max-width:1120px;margin:0 auto 64px;display:flex;align-items:center;justify-content:space-between;gap:24px; }
 .resource-header>a { text-decoration:none;color:inherit; }
+.resource-header .language-selector.compact { flex:none;width:auto;padding:0; }
+.resource-header .language-selector.compact select { width:auto;min-width:112px; }
 .resource-header nav { display:flex;align-items:center;gap:22px;flex-wrap:wrap; }
 .resource-header nav a { color:var(--green);font-size:13px;font-weight:750;text-decoration:none; }
 .resource-header nav .resource-start { padding:11px 16px;border-radius:10px;background:var(--green);color:white; }
