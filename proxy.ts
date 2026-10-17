@@ -14,9 +14,9 @@ export function proxy(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  if (isSupportedLocale(firstSegment)) {
+  if (isSupportedLocale(firstSegment) || ["recursos", "demo", "sobre-storyflop"].includes(firstSegment)) {
     const headers = new Headers(request.headers);
-    headers.set("x-storyflop-locale", firstSegment);
+    headers.set("x-storyflop-locale", isSupportedLocale(firstSegment) ? firstSegment : "es");
     return NextResponse.next({ request: { headers } });
   }
 

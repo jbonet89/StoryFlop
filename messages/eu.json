@@ -150,6 +150,10 @@
     "removeLabel": "Kendu {name}"
   },
   "LandingSeo": {
+    "demoNav": "Demoa (ES)",
+    "resourcesNav": "Gidak eta baliabideak (ES)",
+    "projectNav": "Proiektua (ES)",
+    "resourcesLanguage": "Gaztelaniazko baliabideak",
     "navHow": "Nola funtzionatzen du",
     "navFeatures": "Funtzioak",
     "navFaq": "Galderak",

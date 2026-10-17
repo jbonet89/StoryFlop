@@ -45,7 +45,7 @@ export function LandingPage() {
   }
 
   return <main className="landing">
-    <nav className="landing-nav"><Brand showTagline /><div className="landing-nav-links"><a href="#guia">{tSeo("guideNav")}</a><a href="#como-funciona">{tSeo("navHow")}</a><a href="#funciones">{tSeo("navFeatures")}</a><a href="#preguntas">{tSeo("navFaq")}</a></div><div className="landing-nav-actions"><span className="live-pill"><Radio size={14} /> {t("realtime")}</span><LanguageSelector /></div></nav>
+    <nav className="landing-nav"><Brand showTagline /><div className="landing-nav-links"><a href="/demo" hrefLang="es">{tSeo("demoNav")}</a><a href="/recursos" hrefLang="es">{tSeo("resourcesNav")}</a><a href="#como-funciona">{tSeo("navHow")}</a><a href="#preguntas">{tSeo("navFaq")}</a></div><div className="landing-nav-actions"><span className="live-pill"><Radio size={14} /> {t("realtime")}</span><LanguageSelector /></div></nav>
     <div className="landing-grid">
       <section className="hero-copy">
         <div className="eyebrow"><Sparkles size={15} /> {tBrand("tagline")}</div>
@@ -76,6 +76,15 @@ export function LandingPage() {
       </section>
     </div>
     <AdSenseUnit slot="3113577981" format="auto" fullWidthResponsive label={tSeo("advertisementLabel")} className="ad-horizontal" />
+    <section className="seo-section landing-resources" aria-labelledby="resources-title">
+      <div className="seo-heading"><span>{tSeo("resourcesLanguage")}</span><h2 id="resources-title">{tSeo("resourcesNav")}</h2></div>
+      <div className="resource-grid" lang="es">
+        <a className="resource-card" href="/demo" hrefLang="es"><span className="resource-eyebrow">Practica</span><h3>Una ronda, paso a paso</h3><p>Vota, revela y descubre cómo cambia una estimación al aclarar el alcance. Una demo sin crear salas.</p><span className="resource-card-link">Probar la demostración →</span></a>
+        <a className="resource-card" href="/recursos" hrefLang="es"><span className="resource-eyebrow">Aprende</span><h3>Guías para tu equipo</h3><p>Tu primera sesión, cómo resolver desacuerdos y tres historias trabajadas para preparar el backlog.</p><span className="resource-card-link">Explorar las guías →</span></a>
+        <a className="resource-card" href="/recursos/plantilla-refinamiento" hrefLang="es"><span className="resource-eyebrow">Prepara</span><h3>Una plantilla para llevarte</h3><p>Escribe criterios, preguntas y acuerdos. Copia, descarga o imprime la ficha de tu próxima sesión.</p><span className="resource-card-link">Usar la plantilla →</span></a>
+      </div>
+      <p className="landing-project-link"><a href="/sobre-storyflop" hrefLang="es">{tSeo("projectNav")} →</a></p>
+    </section>
     <PlanningGuide />
     <section className="seo-section how-section" id="como-funciona">
       <div className="seo-heading"><span>{tSeo("howEyebrow")}</span><h2>{tSeo("howTitle")}</h2><p>{tSeo("howLead")}</p></div>

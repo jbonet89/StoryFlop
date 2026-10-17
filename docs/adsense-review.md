@@ -1,5 +1,25 @@
 # Revisión de AdSense
 
+## Recursos públicos · primera fase (17 de octubre de 2026)
+
+- `/recursos`: índice editorial con tres guías, demo y plantilla.
+- `/recursos/primera-sesion`: preparación, roles, votación y registro del acuerdo.
+- `/recursos/resolver-desacuerdos`: caso ficticio trabajado de votos 3, 5 y 13.
+- `/recursos/historias-listas-para-estimar`: tres ejemplos originales con alcance, criterios y preguntas.
+- `/recursos/plantilla-refinamiento`: ficha editable, copia, descarga de texto e impresión, con ejemplo cumplimentado. No persiste cambios.
+- `/demo`: simulación local de dos rondas, sin crear salas ni acceder al backend. Los personajes son ficticios y el voto de quien prueba se conserva aunque discrepe.
+- `/sobre-storyflop`: propósito, titular, criterios editoriales y contacto ya publicado en el aviso legal.
+
+Estos recursos se sirven en español, con idioma de documento explícito, canónica propia y entradas en el sitemap. Las nueve portadas enlazan los recursos e indican que están en español. El texto editorial y la ficha están disponibles sin JavaScript; la demo requiere JavaScript para interactuar y enlaza un caso legible sin él.
+
+Los recursos no cargan el script ni unidades de AdSense. La navegación desde la portada carga un documento nuevo para descartar su runtime publicitario. No se han cambiado ajustes de la cuenta de AdSense ni solicitado una revisión. La publicación de estos recursos no garantiza aprobación.
+
+Al cambiar una guía, mantener su fecha de revisión y la fecha correspondiente del sitemap. Los casos ficticios deben seguir identificados como tales. No atribuir experiencia, certificaciones, resultados o testimonios que no estén acreditados.
+
+Verificación: `e2e/resources.spec.ts` cubre la demo, la descarga del texto editado, la impresión, lectura sin JavaScript, idioma, canónicas, sitemap, desbordamiento y descarte del runtime publicitario en escritorio y móvil.
+
+## Configuración publicitaria existente
+
 La portada incorpora una guía editorial visible y renderizada en el HTML inicial, traducida a los nueve idiomas. Explica estimación relativa, preparación, desacuerdos y una ronda ilustrativa. No se utiliza un mínimo de palabras como garantía de aprobación.
 
 El script se incluye únicamente en `/` y las portadas de idioma. Las entradas desde la landing a salas y páginas legales cargan un documento nuevo para descartar el runtime de Auto ads. No añadir el script al layout compartido, salas, errores ni páginas de navegación.
