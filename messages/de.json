@@ -107,7 +107,9 @@
     "nowVoter": "Du nimmst jetzt an der Abstimmung teil. Wähle eine Karte.",
     "nextVoter": "In der nächsten Runde stimmst du ab.",
     "reactionAnnouncement": "{sender} hat {target} {emoji} geschickt",
-    "closeError": "Fehlermeldung schließen"
+    "closeError": "Fehlermeldung schließen",
+    "proposeImprovement": "Verbesserung vorschlagen",
+    "opensNewTab": "öffnet in einem neuen Tab"
   },
   "Members": {
     "organizer": "Organisator",
@@ -150,10 +152,6 @@
     "removeLabel": "{name} entfernen"
   },
   "LandingSeo": {
-    "demoNav": "Demo (ES)",
-    "resourcesNav": "Anleitungen & Vorlagen (ES)",
-    "projectNav": "Das Projekt (ES)",
-    "resourcesLanguage": "Ressourcen auf Spanisch",
     "navHow": "So funktioniert es",
     "navFeatures": "Funktionen",
     "navFaq": "Fragen",

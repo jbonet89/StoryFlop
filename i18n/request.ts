@@ -15,5 +15,6 @@ export default getRequestConfig(async () => {
     : spanish;
   const localized = locale === "es" ? spanish : (await import(`../messages/${locale}.json`)).default as MessageTree;
   const messages = mergeMessages(fallback, localized);
-  return { locale, messages };
+  const resources = (await import(`../messages/resources/${locale}.json`)).default;
+  return { locale, messages: { ...messages, Resources: resources.ui } };
 });

@@ -124,6 +124,14 @@ StoryFlop utiliza autenticación anónima de Supabase. Las migraciones activan S
 
 Los cambios de tarjetas, rondas, votos, participación y miembros cuentan como actividad. Presence, las reacciones y las ediciones de perfil no prolongan la vida de una sala. Los jobs pueden supervisarse en **Supabase → Integrations → Cron → Jobs**.
 
+## Propuestas y soporte
+
+La página `/sobre-storyflop#proponer-mejora` recibe ideas e incidencias sin registro. El menú de todas las salas incluye un enlace que abre el formulario en otra pestaña y conserva el idioma.
+
+Configura `SUPABASE_SERVICE_ROLE_KEY` exclusivamente en el servidor y aplica la migración `20261017180143_feedback_submissions.sql`. El endpoint `/api/feedback` valida origen, tamaño y contenido, y limita a cinco mensajes por dirección de origen por hora mediante una huella HMAC. La tabla y la función de envío no son accesibles para `anon` ni `authenticated`.
+
+Jaume puede revisar los mensajes en **Supabase → Table Editor → feedback_submissions**. No se envían correos automáticos: el correo opcional permite responder manualmente. La limpieza diaria elimina las huellas tras un día y los mensajes tras 24 meses. `scripts/verify-feedback.sql` comprueba permisos, restricciones y el límite dentro de una transacción que revierte todos sus mensajes de prueba.
+
 ## Estado del proyecto
 
 El proyecto está en desarrollo activo. Antes de utilizarlo en producción, revisa las políticas de conservación de datos, límites de Supabase y disponibilidad legal del nombre de marca para tu jurisdicción.

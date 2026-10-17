@@ -107,7 +107,9 @@
     "nowVoter": "Orain bozkatzaile gisa parte hartzen duzu. Aukeratu karta bat.",
     "nextVoter": "Hurrengo txandan bozkatzailea izango zara.",
     "reactionAnnouncement": "{sender} erabiltzaileak {emoji} bidali dio {target} erabiltzaileari",
-    "closeError": "Itxi errore-oharra"
+    "closeError": "Itxi errore-oharra",
+    "proposeImprovement": "Hobekuntza bat proposatu",
+    "opensNewTab": "fitxa berri batean irekitzen da"
   },
   "Members": {
     "organizer": "Antolatzailea",
@@ -150,10 +152,6 @@
     "removeLabel": "Kendu {name}"
   },
   "LandingSeo": {
-    "demoNav": "Demoa (ES)",
-    "resourcesNav": "Gidak eta baliabideak (ES)",
-    "projectNav": "Proiektua (ES)",
-    "resourcesLanguage": "Gaztelaniazko baliabideak",
     "navHow": "Nola funtzionatzen du",
     "navFeatures": "Funtzioak",
     "navFaq": "Galderak",

@@ -1,0 +1,409 @@
+{
+  "guides": [
+    {
+      "slug": "primera-sesion",
+      "title": "Tu primera sesión de Planning Poker con StoryFlop",
+      "description": "Prepara una historia, reparte los roles y recorre una ronda completa: desde el voto privado hasta la decisión del equipo.",
+      "category": "Empezar",
+      "sections": [
+        {
+          "id": "preparar",
+          "title": "1. Llega con una historia que se pueda discutir",
+          "paragraphs": [
+            "Antes de abrir la sala, escribe el resultado que necesita la persona usuaria y cómo comprobaréis que funciona. «Mejorar el acceso» puede significar muchas cosas. «Recuperar el acceso mediante un enlace de correo que caduca» permite hablar de un comportamiento concreto.",
+            "Para practicar, usaremos una recuperación de contraseña. El servicio de correo ya existe. El enlace debe caducar, solo puede utilizarse una vez y debe mostrar un mensaje comprensible cuando deja de ser válido. Cambiar de proveedor de correo queda fuera. Este caso es ficticio: su estimación no es una referencia universal.",
+            "Llevad también una historia terminada que el equipo conozca. Sirve para comparar tamaño relativo, incluyendo pruebas y revisión. Si nadie entiende el trabajo o falta una decisión que cambia mucho su alcance, anotad la pregunta antes de votar."
+          ],
+          "checklist": [
+            "Resultado esperado y criterios de aceptación",
+            "Dependencias y elementos fuera de alcance",
+            "Una historia conocida como referencia"
+          ]
+        },
+        {
+          "id": "sala",
+          "title": "2. Crea la sala y acuerda quién hace qué",
+          "paragraphs": [
+            "En la portada, selecciona Crear sala, introduce el nombre de la sesión, tu nombre y un avatar. Comparte el enlace o el código con las personas invitadas. Cada participante entra desde su propio navegador; no necesita registrarse.",
+            "El organizador conduce la ronda y revela los votos. Puede nombrar colaboradores para ayudar con las historias y las rondas. Quien vaya a estimar participa como votante; quien solo necesite seguir la conversación puede actuar como observador. Revisad esa elección antes de empezar.",
+            "Añade la historia con su título, descripción y, si resulta útil, un enlace a vuestra tarea. Compartid solo información que estéis autorizados a introducir. Guardad las decisiones duraderas en vuestro sistema de trabajo: StoryFlop utiliza salas temporales."
+          ]
+        },
+        {
+          "id": "votar",
+          "title": "3. Aclara el alcance y vota sin anunciar tu número",
+          "paragraphs": [
+            "Lee la historia y deja espacio para preguntas. ¿El correo ya está disponible? ¿Hay que impedir reutilizar el enlace? ¿Quién verifica el mensaje de caducidad? Cuando todos estén estimando el mismo alcance, abrid la ronda y elegid una carta de forma independiente.",
+            "StoryFlop ofrece 0, 1, 2, 3, 5, 8, 13, 21 y 34, además de ? y la pausa. Los valores representan comparaciones del equipo, no un número fijo de horas. Si falta información, la carta ? ayuda a hacer visible esa duda; no hace falta inventar precisión.",
+            "Esperad a los votantes antes de revelar. Decir «para mí es un 5» mientras los demás eligen puede condicionar sus respuestas. La utilidad de votar en privado consiste en conservar perspectivas distintas hasta la conversación."
+          ]
+        },
+        {
+          "id": "acordar",
+          "title": "4. Revela, conversa y registra la decisión",
+          "paragraphs": [
+            "Imagina que aparecen 3, 5 y 13. Pregunta primero qué trabajo ha incluido cada persona. En nuestro caso, quien votó 13 pensaba que había que crear el servicio de correo, mientras que quien votó 3 no había contado las pruebas de caducidad. Las cartas permiten descubrir esas diferencias.",
+            "Aclarad que el servicio ya existe y que las pruebas forman parte de la historia. Si esa conversación cambia lo que entendéis, repetid la votación. En el ejemplo, el equipo puede acordar 5; otro equipo, con otras referencias, podría acordar un valor distinto.",
+            "Registrad la estimación final y los supuestos relevantes. Si no hay acuerdo, podéis dividir la historia o encargar una investigación con una pregunta concreta. El promedio de votos describe lo que ha ocurrido, pero no decide el alcance por vosotros."
+          ]
+        },
+        {
+          "id": "cerrar",
+          "title": "5. Cierra con una comprobación útil",
+          "paragraphs": [
+            "Antes de pasar a la siguiente historia, pregunta: «¿Qué acabamos de descubrir que no estaba escrito?». Anota esa información en la tarea. El resultado de la sesión debería incluir una historia más clara, además de una cifra.",
+            "Al terminar, recuperad del historial las decisiones que necesitéis y trasladadlas a vuestro backlog. Las salas inactivas y sus datos asociados se eliminan después de 14 días. Para la siguiente sesión, conservad las referencias que todavía representen vuestro trabajo y revisad las que hayan dejado de ser útiles.",
+            "Planning Poker es una técnica que podéis utilizar en vuestro contexto. La Guía Scrum no exige usar cartas ni puntos de historia. Adaptad la sesión para que ayude a comprender el trabajo, sin convertir la votación en una obligación sin propósito."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "James Grenning: Planning Poker, artículo original",
+          "url": "https://wingman-sw.com/articles/planning-poker"
+        },
+        {
+          "label": "Guía Scrum: Product Backlog y refinamiento",
+          "url": "https://scrumguides.org/scrum-guide.html#product-backlog"
+        }
+      ]
+    },
+    {
+      "slug": "resolver-desacuerdos",
+      "title": "Votos 3, 5 y 13: cómo resolver el desacuerdo",
+      "description": "Un caso de recuperación de contraseña para aprender a distinguir diferencias de alcance, incertidumbre y referencias del equipo.",
+      "category": "Facilitar",
+      "sections": [
+        {
+          "id": "caso",
+          "title": "El caso: la misma frase, tres trabajos diferentes",
+          "paragraphs": [
+            "«Permitir recuperar la contraseña por correo». En esta situación ficticia, Ana vota 3, Bruno 5 y Cris 13. La media es 7 y la mediana es 5. Ninguno de esos dos números explica qué ha entendido cada persona.",
+            "Ana supone que existe una pantalla reutilizable y que el correo ya está resuelto. Bruno incluye el tratamiento de enlaces caducados y sus pruebas. Cris entiende que hay que contratar e integrar un proveedor de correo. Votar otra vez sin aclararlo solo repetiría el problema.",
+            "El objetivo de quien facilita es averiguar qué contiene cada estimación. Evita preguntar «¿por qué has votado tan alto?», porque puede sonar a una petición de rebajar el número. Prueba con «¿qué pasos y riesgos has incluido?»."
+          ]
+        },
+        {
+          "id": "preguntas",
+          "title": "Tres preguntas que convierten cifras en información",
+          "paragraphs": [
+            "Primero: «¿Qué das por hecho que ya existe?». Revisad componentes, permisos, servicios y datos. En el caso, basta confirmar que existe un servicio de correo para eliminar una diferencia importante de alcance.",
+            "Segundo: «¿Qué tiene que pasar para considerar la historia terminada?». Escribid los comportamientos verificables: el enlace caduca, no se reutiliza y los mensajes se entienden. Una estimación que solo contempla la implementación de la pantalla no representa el mismo trabajo que otra que incluye esas comprobaciones.",
+            "Tercero: «¿Qué desconocemos y cómo podemos averiguarlo?». Si nadie sabe si el proveedor permite invalidar enlaces, formulad esa pregunta y asignad una investigación acotada. No ocultéis una incertidumbre grande detrás de una cifra precisa."
+          ],
+          "checklist": [
+            "Qué existe y puede reutilizarse",
+            "Qué incluye la definición de terminado del equipo",
+            "Qué falta conocer y quién lo aclarará"
+          ]
+        },
+        {
+          "id": "decidir",
+          "title": "Decide entre aclarar, dividir o investigar",
+          "paragraphs": [
+            "Aclarar sirve cuando la diferencia era una interpretación. En nuestro ejemplo, se confirma el servicio existente y se incorporan las pruebas a la descripción. Todos pueden volver a estimar el mismo trabajo.",
+            "Dividir sirve cuando aparecen resultados separables. Podéis entregar primero la recuperación por correo para cuentas existentes y tratar otro canal de recuperación como una historia distinta, siempre que cada parte tenga utilidad y cumpla vuestros criterios de calidad. Separar «programar» de «probar» no resuelve por sí solo el tamaño de una entrega.",
+            "Investigar sirve cuando una pregunta técnica o de producto impide estimar con sentido. Definid qué evidencia necesitáis, quién la buscará y cuándo revisaréis el resultado. La investigación debe permitir una decisión posterior, no convertirse en un cajón donde aplazar una historia indefinidamente."
+          ]
+        },
+        {
+          "id": "segunda-ronda",
+          "title": "Repite la ronda cuando haya información nueva",
+          "paragraphs": [
+            "Después de aclarar el alcance, volved a elegir cartas en privado. Supongamos que ahora aparecen 5, 5 y 5. El acuerdo refleja una comprensión más cercana, aunque no garantiza que no aparezcan imprevistos durante la ejecución.",
+            "Si aparecen 5, 5 y 8, preguntad si sigue habiendo un supuesto diferente. No es necesario encadenar rondas hasta que alguien ceda. El equipo puede acordar cómo proceder, documentar el riesgo o decidir que necesita una división adicional.",
+            "En StoryFlop podéis consultar la distribución y el historial. Usadlos para recordar la conversación. Evitad convertir el promedio en la estimación final de forma automática: una media puede quedar entre cartas y no representa una decisión compartida."
+          ]
+        },
+        {
+          "id": "registro",
+          "title": "Qué escribir en la tarea después de la conversación",
+          "paragraphs": [
+            "Un registro útil sería: «Recuperación por correo usando el servicio existente. Incluye enlace de un solo uso, caducidad y pruebas de error. No incluye sustituir al proveedor. Estimación acordada: 5. Revisar si cambia el servicio disponible». Es un ejemplo didáctico, no una estimación aplicable a cualquier implementación.",
+            "Si utilizáis los puntos para comparar personas o exigir que todos estimen igual desde el principio, desaparecerá parte de la información que buscabais. Las discrepancias son útiles cuando revelan trabajo oculto y permiten tomar una decisión.",
+            "En la siguiente sesión, observad si las mismas preguntas vuelven a aparecer. Si ocurre, incorporadlas a la preparación de historias. Una mejora concreta del proceso vale más que conseguir una mesa llena de cartas iguales."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "James Grenning: origen y propósito de Planning Poker",
+          "url": "https://wingman-sw.com/articles/planning-poker"
+        }
+      ]
+    },
+    {
+      "slug": "historias-listas-para-estimar",
+      "title": "Historias de usuario listas para estimar",
+      "description": "Tres ejemplos trabajados para descubrir alcance, pruebas y dependencias antes de elegir una carta.",
+      "category": "Preparar",
+      "sections": [
+        {
+          "id": "preparacion",
+          "title": "Preparar no significa conocer todos los detalles",
+          "paragraphs": [
+            "Una historia lista para conversar tiene un resultado comprensible, límites y preguntas visibles. No necesita una especificación exhaustiva. El refinamiento ayuda precisamente a descomponer y aclarar el trabajo conforme aprendéis sobre él.",
+            "Los siguientes ejemplos son ficticios y están creados para practicar. No les asignamos puntos predeterminados: el tamaño depende del producto, las dependencias, las prácticas de calidad y las referencias del equipo. Empezad por preguntar qué entendéis que hay que entregar.",
+            "Esta lista es una ayuda de preparación, no una regla oficial de Scrum ni una barrera para conversar sobre trabajo todavía incierto. Cuando una historia no se puede estimar, también es útil salir con una pregunta mejor formulada."
+          ]
+        },
+        {
+          "id": "busqueda",
+          "title": "Ejemplo 1: buscar pedidos por referencia",
+          "paragraphs": [
+            "Resultado: una persona de soporte encuentra un pedido introduciendo su referencia completa. La API ya admite esa búsqueda y existe un campo de búsqueda reutilizable. Quedan fuera las coincidencias parciales y los nuevos filtros.",
+            "Criterios de aceptación: una referencia válida muestra el pedido autorizado; una referencia inexistente muestra un estado vacío; un fallo de red ofrece reintentar sin perder el texto. La búsqueda debe poder utilizarse con teclado y mostrar una etiqueta comprensible.",
+            "Antes de votar, preguntad cómo se comprueban los permisos, qué ocurre con espacios al pegar una referencia y si las pruebas de la API cubren el contrato que necesita la pantalla. Si la API no existe, ya no estáis estimando el alcance descrito al principio.",
+            "Comparad con una búsqueda similar terminada. Si esta incorpora un nuevo modelo de permisos, explicitad la diferencia. El parecido visual entre dos pantallas no basta para afirmar que tienen el mismo tamaño."
+          ]
+        },
+        {
+          "id": "notificaciones",
+          "title": "Ejemplo 2: desactivar un correo de resumen",
+          "paragraphs": [
+            "Resultado: una persona con cuenta puede desactivar el resumen semanal desde sus preferencias. Se mantienen los correos necesarios para recuperar el acceso. Queda fuera elegir una frecuencia personalizada.",
+            "Criterios de aceptación: la preferencia se conserva al volver a entrar; el proceso de envío respeta el cambio; un error al guardar permite recuperar el estado anterior. El equipo debe decidir qué ocurre si el resumen ya está en la cola de envío.",
+            "La incertidumbre principal puede estar en el proceso que envía correos, no en el interruptor de la interfaz. Invitad a quien conozca ese proceso a aclararlo antes de estimar. Si falta información sobre las colas, definid una investigación sobre ese comportamiento.",
+            "Para dividir, podéis empezar por una preferencia binaria y dejar frecuencias adicionales para otra historia. Cada parte debería poder comprobarse de principio a fin. Separar la interfaz del proceso de envío dejaría una preferencia que aparenta funcionar sin modificar los correos."
+          ]
+        },
+        {
+          "id": "exportacion",
+          "title": "Ejemplo 3: exportar los resultados de un informe",
+          "paragraphs": [
+            "Resultado: una persona autorizada descarga en CSV los resultados filtrados de un informe. Esta es una historia de un producto ficticio, no una funcionalidad anunciada de StoryFlop. El archivo contiene las columnas acordadas y una cabecera legible.",
+            "Antes de votar, concretad el volumen esperado, el formato de fechas, los caracteres especiales y los permisos. ¿Se exporta la página visible o todo el resultado filtrado? ¿Qué ve la persona mientras espera? Dos respuestas distintas pueden implicar soluciones muy diferentes.",
+            "Criterios de aceptación: el archivo corresponde a los filtros aplicados; conserva acentos; se abre correctamente en la herramienta objetivo; y no expone filas que la persona no puede consultar. Incluid las comprobaciones de seguridad y el tratamiento seguro de valores interpretables como fórmulas.",
+            "Si el volumen hace incierto el enfoque, investigad con un conjunto de datos representativo y autorizado. Una posible división es entregar primero un alcance de exportación explícitamente limitado que siga resolviendo una necesidad real, en lugar de prometer una exportación completa sin conocer su coste."
+          ]
+        },
+        {
+          "id": "comprobacion",
+          "title": "La comprobación común antes de votar",
+          "paragraphs": [
+            "Pedid a dos participantes que expliquen la historia con sus palabras. Si describen resultados distintos, aclaradlos antes de comparar cartas. Después revisad pruebas, revisión, permisos y dependencias: forman parte del trabajo que el equipo necesita terminar.",
+            "Registrad lo que queda fuera para evitar que reaparezca como un supuesto durante la ronda. Si una pregunta puede cambiar mucho la solución, acordad quién la resolverá y cuándo volveréis a revisar la historia.",
+            "Usad la plantilla de refinamiento para conservar esas respuestas. Una vez definido el alcance, podéis llevar el título y la descripción a una sala de StoryFlop. Tras la conversación, trasladad el acuerdo a vuestro backlog para mantener el contexto cuando empiece el trabajo."
+          ],
+          "checklist": [
+            "Podemos explicar el resultado esperado",
+            "Sabemos cómo comprobarlo",
+            "Hemos hecho visibles dependencias, límites y preguntas"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "Guía Scrum: refinamiento del Product Backlog",
+          "url": "https://scrumguides.org/scrum-guide.html#product-backlog"
+        }
+      ]
+    }
+  ],
+  "templateText": "PLANTILLA DE REFINAMIENTO · STORYFLOP\n\nSesión / fecha:\nParticipantes y facilitador:\nHistoria de referencia del equipo:\n\nHISTORIA\nTítulo:\nPersona usuaria y resultado esperado:\nCriterios de aceptación (comportamientos comprobables):\n1.\n2.\n3.\nFuera de alcance:\nDependencias y componentes disponibles:\nPruebas, revisión y condiciones de calidad:\nPreguntas abiertas / responsable / siguiente revisión:\n\nCONVERSACIÓN\nVotos iniciales:\nSupuestos detrás del voto menor y mayor:\nInformación nueva o cambio de alcance:\nDecisión: aclarar / dividir / investigar / acordar\nSegunda ronda (si aporta información):\nEstimación acordada (o motivo para aplazarla):\nRiesgos y supuestos que acompañan el acuerdo:\nDónde se registra la decisión en el backlog:\n\nCIERRE\n¿Qué descubrimos que no estaba escrito?\n¿Qué mejoraremos en la siguiente preparación?\n\nUso: copia una ficha HISTORIA y CONVERSACIÓN por cada elemento.\nLos puntos son relativos al equipo; no equivalen a horas ni miden el rendimiento individual.\nRecurso: https://storyflop.com/recursos/plantilla-refinamiento\n",
+  "ui": {
+    "skip": "Saltar al contenido",
+    "home": "StoryFlop, inicio",
+    "navigation": "Navegación principal",
+    "demoNav": "Demostración",
+    "resourcesNav": "Guías y recursos",
+    "projectNav": "El proyecto",
+    "createRoom": "Crear sala",
+    "learn": "Aprender con StoryFlop",
+    "byline": "Por StoryFlop",
+    "aboutResources": "Sobre estos recursos",
+    "published": "Publicado el",
+    "projectContact": "Proyecto y contacto",
+    "legal": "Aviso legal",
+    "privacy": "Privacidad",
+    "cookies": "Cookies",
+    "indexMeta": "Guías y recursos de Planning Poker",
+    "indexDescription": "Ejemplos trabajados, una demostración y una plantilla para preparar historias y facilitar sesiones de estimación con StoryFlop.",
+    "indexTitle": "Una mejor conversación, antes de elegir una carta.",
+    "indexLead": "Guías prácticas de Planning Poker: prepara el trabajo, descubre supuestos y conserva las decisiones de tu equipo.",
+    "startHere": "Empieza por aquí",
+    "tryRound": "Prueba una ronda sin preparar una reunión",
+    "tryRoundBody": "Una recuperación de contraseña, tres perspectivas y un desacuerdo por resolver. Recorre un caso ficticio y comprueba qué cambia después de conversar.",
+    "openDemo": "Abrir la demostración",
+    "threeGuides": "Tres guías para tu próxima sesión",
+    "readGuide": "Leer la guía",
+    "takeTemplate": "Llévate una plantilla de refinamiento",
+    "takeTemplateBody": "Una ficha para escribir criterios, dependencias, votos y decisiones. Incluye un ejemplo cumplimentado y una versión editable que puedes copiar, descargar o imprimir.",
+    "useTemplate": "Usar la plantilla",
+    "useResources": "Cómo usar estos recursos",
+    "useResourcesBody": "Si es tu primera sesión, empieza por la demostración y la guía de inicio. Si las votaciones se atascan, revisa el caso de desacuerdo. Para preparar el backlog, utiliza los ejemplos de historias y la plantilla.",
+    "fictionNotice": "Los casos son didácticos y ficticios; las cifras ilustran conversaciones, no estimaciones universales. Puedes adaptar los materiales de esta sección al trabajo de tu equipo.",
+    "projectLink": "Conoce el proyecto y cómo proponer una corrección.",
+    "toc": "En esta guía",
+    "practice": "Pásalo a la práctica",
+    "interactiveCase": "Prueba el caso interactivo",
+    "prepareTemplate": "Prepara tu siguiente sesión con la plantilla",
+    "createTeamRoom": "Crea una sala con tu equipo",
+    "sources": "Fuentes y lecturas",
+    "sourcesBody": "Los ejemplos y las instrucciones de uso de StoryFlop son propios de esta sección. Estas fuentes permiten consultar el contexto del método y del refinamiento:",
+    "related": "Sigue aprendiendo",
+    "otherGuides": "Otras guías",
+    "demoMeta": "Demostración de Planning Poker",
+    "demoDescription": "Prueba una ronda ficticia de StoryFlop: elige una carta, revela los votos y descubre cómo cambia la estimación al aclarar el alcance.",
+    "demoTitle": "Prueba una ronda. Descubre la conversación.",
+    "demoLead": "Elige una carta, compara perspectivas y vuelve a estimar con información nueva. No necesitas una cuenta ni reunir a tu equipo.",
+    "simulation": "Esta es una simulación local con personajes y votos ficticios. No crea una sala, no conecta con otros participantes ni guarda tus elecciones al salir.",
+    "practicing": "Qué estás practicando",
+    "practicingBody": "Votar de forma independiente hace visibles las diferencias. Revelar las cartas permite preguntar qué alcance ha considerado cada persona. La segunda ronda tiene sentido cuando esa conversación aporta información nueva.",
+    "realRoom": "En una sala real, cada persona vota desde su navegador y el organizador gestiona las rondas. Esta demostración representa el recorrido didáctico; sus personajes y decisiones están preparados para explicar un caso.",
+    "firstGuide": "Lee cómo preparar tu primera sesión",
+    "practiceLabel": "Sesión de práctica · Datos ficticios",
+    "reset": "Reiniciar demo",
+    "progress": "Progreso de la demostración",
+    "stepVote": "Votar",
+    "stepDiscuss": "Conversar",
+    "stepRepeat": "Repetir",
+    "stepFinish": "Concluir",
+    "practiceStory": "Historia de práctica",
+    "taskTitle": "Recuperar el acceso por correo",
+    "taskBody": "Una persona con cuenta solicita un enlace para cambiar su contraseña. El enlace caduca, solo puede utilizarse una vez y muestra un mensaje de error comprensible.",
+    "scopeLabel": "Alcance aclarado:",
+    "beforeVote": "Antes de votar:",
+    "scopeBody": "El servicio de correo ya existe. Incluimos las pruebas de caducidad y reutilización. Cambiar de proveedor queda fuera.",
+    "beforeBody": "Compara con una historia conocida de tu equipo. Decide qué supuestos estás haciendo sobre el correo y las pruebas.",
+    "step": "Paso {phase} de 4",
+    "phaseVote": "Elige tu primera carta",
+    "phaseDiscuss": "Descubre los supuestos",
+    "phaseRepeat": "Vuelve a estimar el alcance aclarado",
+    "phaseFinish": "Interpreta el resultado",
+    "revealedBody": "Las cartas están reveladas. Ahora puedes comparar los votos.",
+    "hiddenBody": "Los personajes ya han votado. Sus cartas permanecen ocultas hasta que reveles la ronda.",
+    "players": "Votos de los participantes ficticios",
+    "you": "Tú",
+    "noVote": "sin voto",
+    "hiddenVote": "voto oculto",
+    "yourChoice": "Tu elección",
+    "chooseCard": "Elige una carta",
+    "revealedVote": "Voto revelado",
+    "hasVoted": "Ha votado",
+    "estimateInitial": "Tu estimación inicial",
+    "estimateSecond": "Tu estimación en la segunda ronda",
+    "unsure": "Tengo dudas",
+    "pause": "Pedir una pausa",
+    "estimate": "Estimar {value}",
+    "reveal": "Revelar votos",
+    "revealSecond": "Revelar segunda ronda",
+    "numbers": "Lo que dicen los números",
+    "mean": "Media numérica",
+    "median": "Mediana numérica",
+    "equalVotes": "Todos los votos iguales",
+    "yes": "Sí",
+    "no": "No",
+    "unavailable": "No disponible",
+    "calculation": "Los cálculos incluyen tu voto y excluyen ? y ☕ de la media y la mediana. Una coincidencia de cartas no comprueba por sí sola que compartáis el mismo alcance.",
+    "whyDifferent": "¿Por qué han votado distinto?",
+    "anaReason": "Ha pensado en reutilizar una pantalla y no ha incluido pruebas de caducidad.",
+    "brunoReason": "Ha contado la pantalla, el enlace de un solo uso y sus pruebas.",
+    "crisReason": "Ha supuesto que habría que crear el servicio de correo.",
+    "discussBody": "El equipo confirma que el correo ya existe y que las pruebas están dentro del alcance. ¿Qué cambiarías en tu voto con esta información?",
+    "clarify": "Aclarar el alcance y repetir",
+    "agreed": "Hay coincidencia; falta documentar el acuerdo",
+    "stopDiscuss": "Tu carta pide detenerse y conversar",
+    "difference": "Tu diferencia sigue siendo información útil",
+    "agreedBody": "Los cuatro votos son 5. En una sesión real, confirmad los supuestos y registrad la estimación que el equipo acuerde.",
+    "differenceBody": "Los personajes han votado 5, pero tu carta es distinta. Explica qué trabajo o incertidumbre estás considerando antes de buscar una cifra compartida. La demo no cambia tu voto para forzar un acuerdo.",
+    "closingLabel": "Nota de cierre del ejemplo:",
+    "closingBody": "Servicio de correo existente, enlace de un solo uso, caducidad y pruebas incluidas. Sustituir al proveedor queda fuera. El 5 es ilustrativo; no es una estimación recomendada para otros equipos.",
+    "saveContext": "Guardar el contexto con la plantilla",
+    "needsJs": "La interacción necesita JavaScript. Puedes leer el caso completo sin activarlo.",
+    "fullCase": "Caso completo de votos 3, 5 y 13",
+    "templateMeta": "Plantilla de refinamiento para Planning Poker",
+    "templateDescription": "Copia, edita, descarga o imprime una ficha de preparación y decisiones. Con instrucciones y un ejemplo de recuperación de contraseña.",
+    "templateTitle": "Prepara la historia. Conserva el acuerdo.",
+    "templateLead": "Una plantilla de refinamiento para llevar a la sesión las preguntas adecuadas y salir con algo más que una cifra.",
+    "howTo": "Cómo utilizarla",
+    "instruction1": "Antes de la sesión, completa el resultado esperado, los criterios y las dependencias. Deja las preguntas abiertas a la vista.",
+    "instruction2": "Usa una ficha por historia. Durante la votación, recoge los supuestos del voto menor y mayor, sin registrar datos personales innecesarios.",
+    "instruction3": "Tras conversar, anota si vais a aclarar, dividir, investigar o acordar una estimación. Repite la ronda si hay información nueva.",
+    "instruction4": "Copia el acuerdo a vuestro backlog. Guarda la ficha descargada si necesitas conservarla: este editor no almacena los cambios.",
+    "templatePermission": "Puedes copiar y adaptar esta plantilla para el trabajo de tu equipo. No es un requisito oficial de Scrum ni sustituye vuestra conversación.",
+    "editable": "Tu ficha editable",
+    "editorBody": "Adapta los campos antes de copiar o descargar. Los cambios permanecen solo en esta página y se pierden al cerrarla o recargarla.",
+    "templateLabel": "Plantilla de la sesión",
+    "copy": "Copiar plantilla",
+    "download": "Descargar .txt",
+    "print": "Imprimir ficha",
+    "copied": "Plantilla copiada al portapapeles.",
+    "copyFailed": "No se pudo copiar. Selecciona el texto de la plantilla y cópialo manualmente.",
+    "downloadReady": "Archivo de texto preparado para descargar.",
+    "templateNoJs": "Puedes seleccionar y copiar el texto de la ficha. Activa JavaScript para editar, descargar o usar el botón de impresión.",
+    "exampleTitle": "Ejemplo cumplimentado · Caso ficticio",
+    "exampleStory": "Historia",
+    "exampleStoryBody": "Recuperar el acceso mediante un enlace enviado por correo.",
+    "exampleCriteria": "Criterios",
+    "exampleCriteriaBody": "El enlace caduca, solo se usa una vez y muestra un error comprensible cuando ya no es válido.",
+    "exampleDependencies": "Dependencias y límites",
+    "exampleDependenciesBody": "Servicio de correo existente. No incluye contratar otro proveedor.",
+    "exampleVotes": "Votos iniciales",
+    "exampleVotesBody": "3, 5 y 13. El 3 omitía pruebas de caducidad; el 13 incluía crear el servicio de correo.",
+    "exampleInfo": "Información nueva",
+    "exampleInfoBody": "Confirmamos el servicio disponible e incluimos las pruebas en la historia.",
+    "exampleDecision": "Decisión",
+    "exampleDecisionBody": "Repetir la ronda. En este caso ilustrativo, el equipo acuerda 5 y registra el alcance aclarado en su backlog.",
+    "exampleReview": "Siguiente revisión",
+    "exampleReviewBody": "Revisar alcance y estimación si cambia el servicio de correo disponible.",
+    "missingInfo": "Cuándo falta información",
+    "missingInfoBody": "En vez de completar el campo de estimación a la fuerza, escribe la pregunta, una persona responsable y el momento para revisarla. Por ejemplo: «Comprobar si el servicio invalida enlaces usados; responsable asignado en la sesión; revisar antes de la siguiente ronda».",
+    "threeExamples": "Consulta tres historias trabajadas",
+    "aboutMeta": "Sobre StoryFlop y contacto",
+    "aboutDescription": "Crea una sala, comparte el enlace y empieza a estimar con tu equipo. Sin registro, sin suscripciones y con un toque divertido.",
+    "aboutTitle": "Scrum Poker sin complicaciones. Y con algún emoji volando.",
+    "aboutLead": "Crea una sala, comparte el enlace y empieza a estimar con tu equipo. Sin registro, sin suscripciones y con un toque divertido.",
+    "purpose": "El propósito del proyecto",
+    "purposeBody": "StoryFlop nace de una idea sencilla: poder hacer Scrum Poker sin encontrarse con suscripciones, pagos por asiento o límites de participantes y votaciones impuestos por la herramienta. El propósito es que cualquier equipo pueda centrarse en conversar y estimar, de forma ágil y sin complicaciones.",
+    "featuresBody": "Prepara las historias, invita al equipo por enlace y revela las cartas cuando todos hayan votado. Y cuando la sesión necesite un poco de energía, lanza un emoji a un compañero: estimar también puede ser divertido.",
+    "retentionBody": "Las salas son temporales: sus datos asociados se eliminan tras 14 días de inactividad. Conserva las decisiones importantes en vuestro backlog y consulta la política de privacidad antes de compartir información.",
+    "owner": "Quién está detrás",
+    "ownerBody": "El titular de StoryFlop es Jaume Bonet Martín, que presta el servicio como particular. La información identificativa y las condiciones de uso están disponibles en el aviso legal.",
+    "authorship": "Los recursos publicados bajo la firma StoryFlop forman parte de la documentación del proyecto. Explican el uso de la herramienta y proponen ejercicios de estimación; no representan una certificación ni una afiliación con los autores del método o de Scrum.",
+    "editorial": "Cómo están planteadas las guías",
+    "editorialBody": "Las guías separan las funciones de StoryFlop de los ejemplos de otros productos. Los casos y los personajes son ficticios y se indican como tales. Los números sirven para explicar una decisión; no son tablas de esfuerzo reutilizables entre equipos.",
+    "correctionsBody": "Cada guía incluye su fecha de publicación y las fuentes pertinentes. Las correcciones y los cambios sustanciales se reflejarán en el contenido y en su fecha de revisión. Puedes sugerir mejoras cuando una instrucción resulte ambigua o deje de coincidir con la aplicación.",
+    "contact": "Contacto y soporte",
+    "contactBody": "También puedes escribir a este correo para comunicar incidencias, proponer mejoras o correcciones de las guías y consultar sobre privacidad.",
+    "reportBody": "Para una incidencia, indica la página, el navegador y los pasos para reproducirla. Para una corrección, incluye el enlace y el párrafo al que te refieres. Evita enviar códigos de salas activas o contenido confidencial del equipo.",
+    "landingDemoEyebrow": "Practica",
+    "landingDemoTitle": "Una ronda, paso a paso",
+    "landingDemoBody": "Vota, revela y descubre cómo cambia una estimación al aclarar el alcance. Una demo sin crear salas.",
+    "landingDemoLink": "Probar la demostración",
+    "landingGuidesEyebrow": "Aprende",
+    "landingGuidesTitle": "Guías para tu equipo",
+    "landingGuidesBody": "Tu primera sesión, cómo resolver desacuerdos y tres historias trabajadas para preparar el backlog.",
+    "landingGuidesLink": "Explorar las guías",
+    "landingTemplateEyebrow": "Prepara",
+    "landingTemplateTitle": "Una plantilla para llevarte",
+    "landingTemplateBody": "Escribe criterios, preguntas y acuerdos. Copia, descarga o imprime la ficha de tu próxima sesión.",
+    "ownerBio": "Soy ingeniero y arquitecto de software, con más de diez años de experiencia. He creado StoryFlop y me encargo de su mantenimiento para facilitar las sesiones de estimación y darles un toque más cercano y divertido.",
+    "ownerLinkedIn": "Conóceme en LinkedIn",
+    "promiseRegistration": "Sin registro",
+    "promiseSubscriptions": "Sin suscripciones",
+    "promisePeople": "Participantes sin límite",
+    "promiseVoting": "Votaciones sin límite",
+    "proposeImprovement": "Proponer una mejora",
+    "feedbackEyebrow": "Tu experiencia cuenta",
+    "feedbackTitle": "¿Una idea para mejorar StoryFlop?",
+    "feedbackLead": "Comparte una propuesta o cuéntame qué ha fallado. No necesitas una cuenta. Los mensajes son privados y los revisa Jaume.",
+    "feedbackKind": "¿Qué quieres compartir?",
+    "feedbackIdea": "Tengo una idea",
+    "feedbackProblem": "He encontrado un problema",
+    "feedbackSubject": "Título",
+    "feedbackDescription": "Descripción",
+    "feedbackIdeaHint": "¿Qué necesidad resolvería tu idea y cómo ayudaría a tu equipo?",
+    "feedbackProblemHint": "Indica los pasos para reproducirlo, qué esperabas y qué ocurrió. Puedes añadir el navegador y la página, sin incluir el código de la sala.",
+    "feedbackName": "Nombre (opcional)",
+    "feedbackEmail": "Correo electrónico (opcional)",
+    "feedbackEmailHint": "Déjalo si quieres que pueda responderte. No se usará para publicidad.",
+    "feedbackPrivacy": "No incluyas información confidencial ni enlaces de salas privadas. Tus datos se usan para revisar y responder el mensaje y se conservan como máximo 24 meses.",
+    "feedbackSend": "Enviar mensaje",
+    "feedbackSending": "Enviando…",
+    "feedbackSuccess": "¡Gracias! Tu mensaje se ha guardado y lo revisaré. Si has dejado tu correo, podré responderte.",
+    "feedbackError": "No se ha podido enviar. Tu texto sigue aquí: vuelve a intentarlo o escribe a",
+    "feedbackLimited": "Has enviado varios mensajes en poco tiempo. Inténtalo dentro de una hora o escribe a",
+    "opensNewTab": "se abre en una pestaña nueva"
+  }
+}

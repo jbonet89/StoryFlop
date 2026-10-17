@@ -56,10 +56,6 @@
     "avatarLabel": "Avatar {avatar}"
   },
   "LandingSeo": {
-    "demoNav": "Demostració (ES)",
-    "resourcesNav": "Guies i recursos (ES)",
-    "projectNav": "El projecte (ES)",
-    "resourcesLanguage": "Recursos en castellà",
     "navHow": "Com funciona",
     "navFeatures": "Funcions",
     "navFaq": "Preguntes",
@@ -208,7 +204,9 @@
     "nowVoter": "Ara participes com a votant. Pots triar una carta.",
     "nextVoter": "Seràs votant a la ronda següent.",
     "reactionAnnouncement": "{sender} ha enviat {emoji} a {target}",
-    "closeError": "Tanca l’avís d’error"
+    "closeError": "Tanca l’avís d’error",
+    "proposeImprovement": "Proposar una millora",
+    "opensNewTab": "s’obre en una pestanya nova"
   },
   "Members": {
     "organizer": "Organitzador",

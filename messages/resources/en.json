@@ -1,0 +1,409 @@
+{
+  "guides": [
+    {
+      "slug": "primera-sesion",
+      "title": "Your first Planning Poker session with StoryFlop",
+      "description": "Prepare a story, assign roles and follow a complete round from private votes to a team decision.",
+      "category": "Get started",
+      "sections": [
+        {
+          "id": "preparar",
+          "title": "1. Bring a story the team can discuss",
+          "paragraphs": [
+            "Before opening the room, write the user's outcome and how to verify it. “Improve access” is vague; recovery through an expiring email link describes a concrete behaviour.",
+            "Practise with password recovery and an existing email service. The link expires, works once and explains invalid links clearly. Changing provider is excluded. This fictional estimate is not a universal reference.",
+            "Bring a completed story the team knows to compare relative size, including tests and review. If work is unclear or a missing decision changes scope, note the question before voting."
+          ],
+          "checklist": [
+            "Expected outcome and acceptance criteria",
+            "Dependencies and exclusions",
+            "A familiar reference story"
+          ]
+        },
+        {
+          "id": "sala",
+          "title": "2. Create the room and agree who does what",
+          "paragraphs": [
+            "On the homepage, choose Create room, enter the session name, your name and an avatar. Share the link or code. Everyone joins from a browser without registering.",
+            "The organiser runs rounds and reveals votes. Collaborators can help with stories and rounds. Estimators vote; others may observe. Check roles before starting.",
+            "Add the story's title, description and optional task link. Share only authorised information and keep lasting decisions in your work system: rooms are temporary."
+          ]
+        },
+        {
+          "id": "votar",
+          "title": "3. Clarify scope and vote without announcing a number",
+          "paragraphs": [
+            "Read the story and ask about email availability, link reuse and expiry messages. Once scope is shared, open the round and choose cards independently.",
+            "StoryFlop offers 0, 1, 2, 3, 5, 8, 13, 21 and 34, plus ? and a break. Values compare work within the team, not fixed hours. Use ? for missing information.",
+            "Wait for voters before revealing. Announcing “I think it's a 5” influences others. Private voting preserves different perspectives until discussion."
+          ]
+        },
+        {
+          "id": "acordar",
+          "title": "4. Reveal, discuss and record the decision",
+          "paragraphs": [
+            "Suppose votes are 3, 5 and 13. Ask what each person included. Here, 13 assumed building the email service; 3 omitted expiry tests. Cards expose those differences.",
+            "Clarify that email exists and tests are included. Vote again if understanding changes. This team may agree on 5; other teams with different references may choose differently.",
+            "Record the final estimate and assumptions. Without agreement, split the story or investigate a concrete question. The average describes votes, not the agreed scope."
+          ]
+        },
+        {
+          "id": "cerrar",
+          "title": "5. Finish with a useful check",
+          "paragraphs": [
+            "Ask what was discovered that was not written down and add it to the task. A session should produce a clearer story as well as a number.",
+            "Transfer needed decisions from history to the backlog. Rooms and data are deleted after 14 days of inactivity. Keep useful references and review outdated ones for the next session.",
+            "Planning Poker is a technique for your context. The Scrum Guide does not require cards or story points. Adapt sessions to understand work rather than voting without purpose."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "James Grenning: Planning Poker, the original paper",
+          "url": "https://wingman-sw.com/articles/planning-poker"
+        },
+        {
+          "label": "Scrum Guide: Product Backlog and refinement",
+          "url": "https://scrumguides.org/scrum-guide.html#product-backlog"
+        }
+      ]
+    },
+    {
+      "slug": "resolver-desacuerdos",
+      "title": "Votes of 3, 5 and 13: resolving disagreement",
+      "description": "A password-recovery case to distinguish differences in scope, uncertainty and team references.",
+      "category": "Facilitate",
+      "sections": [
+        {
+          "id": "caso",
+          "title": "The case: one sentence, three different jobs",
+          "paragraphs": [
+            "“Allow password recovery by email.” In this fictional case, Ana votes 3, Bruno 5 and Cris 13. Mean 7 and median 5 explain neither person's understanding.",
+            "Ana assumes a reusable screen and existing email. Bruno includes expired-link handling and tests. Cris includes selecting and integrating a provider. Another vote without clarification repeats the issue.",
+            "Facilitation uncovers what estimates contain. Rather than “Why so high?”, which can pressure someone to lower a vote, ask which steps and risks were included."
+          ]
+        },
+        {
+          "id": "preguntas",
+          "title": "Three questions that turn numbers into information",
+          "paragraphs": [
+            "First, ask what already exists. Review components, permissions, services and data. Confirming the email service removes a major scope difference.",
+            "Second, ask what must happen to finish the story. Specify expiry, single use and clear messages. A screen-only estimate differs from one including these checks.",
+            "Third, ask what is unknown and how to learn it. If invalidating links is unclear, assign a bounded investigation rather than hiding uncertainty behind a precise number."
+          ],
+          "checklist": [
+            "What exists and can be reused",
+            "What the team's Definition of Done includes",
+            "What is unknown and who will clarify it"
+          ]
+        },
+        {
+          "id": "decidir",
+          "title": "Choose whether to clarify, split or investigate",
+          "paragraphs": [
+            "Clarify when interpretations differ. Confirm the existing service and add tests to the description so everyone re-estimates the same work.",
+            "Split separable useful outcomes: email recovery for existing accounts could precede another channel if each meets quality criteria. Separating coding from testing does not itself reduce delivery size.",
+            "Investigate technical or product questions that prevent sensible estimation. Define evidence, an owner and a review time. Investigation should enable a decision, not postpone the story indefinitely."
+          ]
+        },
+        {
+          "id": "segunda-ronda",
+          "title": "Repeat when new information appears",
+          "paragraphs": [
+            "After clarifying, choose cards privately again. Votes of 5, 5 and 5 suggest closer understanding, not a guarantee against implementation surprises.",
+            "If votes become 5, 5 and 8, check remaining assumptions. Do not repeat until someone gives in. Agree how to proceed, document risks or split again.",
+            "Use distribution and history in StoryFlop to recall the discussion. Do not automatically adopt the mean: it can fall between cards and is not a shared decision."
+          ]
+        },
+        {
+          "id": "registro",
+          "title": "What to write in the task afterwards",
+          "paragraphs": [
+            "Illustrative note: existing email; single-use link, expiry and error tests included; provider replacement excluded; agreed estimate 5; review if the service changes. It is not a universal estimate.",
+            "Using points to compare individuals or demanding identical initial votes removes useful information. Differences uncover hidden work and support decisions.",
+            "If questions recur next session, add them to preparation. A concrete process improvement matters more than matching cards."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "James Grenning: Planning Poker's origin and purpose",
+          "url": "https://wingman-sw.com/articles/planning-poker"
+        }
+      ]
+    },
+    {
+      "slug": "historias-listas-para-estimar",
+      "title": "User stories ready to estimate",
+      "description": "Three worked examples to uncover scope, tests and dependencies before choosing a card.",
+      "category": "Prepare",
+      "sections": [
+        {
+          "id": "preparacion",
+          "title": "Preparation does not mean knowing every detail",
+          "paragraphs": [
+            "A story ready for discussion has an understandable outcome, boundaries and visible questions, not an exhaustive specification. Refinement clarifies and breaks down work as you learn.",
+            "These fictional exercises have no preset points. Size depends on product, dependencies, quality practices and team references. Start by explaining the intended delivery.",
+            "This preparation aid is not an official Scrum rule or a barrier to discussing uncertainty. A better question is useful even when you cannot estimate yet."
+          ]
+        },
+        {
+          "id": "busqueda",
+          "title": "Example 1: find orders by reference",
+          "paragraphs": [
+            "A support person finds an order by full reference. The API and reusable search field exist. Partial matches and new filters are excluded.",
+            "Acceptance: valid reference shows an authorised order; unknown reference shows an empty state; network error permits retry without losing text. Search has a clear label and works by keyboard.",
+            "Ask about permission checks, pasted spaces and API tests covering the screen's contract. If the API does not exist, the original scope has changed.",
+            "Compare with a similar completed search. Make new permission models explicit; visual similarity does not imply equal size."
+          ]
+        },
+        {
+          "id": "notificaciones",
+          "title": "Example 2: turn off a summary email",
+          "paragraphs": [
+            "An account holder can disable weekly summaries in preferences. Recovery emails remain enabled. Custom frequency is excluded.",
+            "Acceptance: settings persist across sign-ins, sending respects changes and save errors restore the previous state. Decide what happens to already queued summaries.",
+            "Uncertainty may be in sending, not the switch. Consult someone familiar with it; investigate unknown queue behaviour before estimating.",
+            "Start with a binary setting and leave extra frequencies for later. Each part must work end to end. A screen without sending changes only appears functional."
+          ]
+        },
+        {
+          "id": "exportacion",
+          "title": "Example 3: export report results",
+          "paragraphs": [
+            "An authorised user downloads filtered results as CSV, with agreed columns and readable headers. This fictional product story is not an announced StoryFlop feature.",
+            "Clarify volume, dates, special characters and permissions. Visible page or all filtered results? What appears while waiting? Answers may require different solutions.",
+            "Acceptance: matching filters, preserved accents, compatibility with the target tool and no unauthorised rows. Include security and safe handling of formula-like values.",
+            "Investigate uncertain volumes using representative authorised data. An explicitly limited useful export may be a first step rather than a full export with unknown cost."
+          ]
+        },
+        {
+          "id": "comprobacion",
+          "title": "The shared check before voting",
+          "paragraphs": [
+            "Ask two people to explain the story. Clarify differing outcomes. Include tests, review, permissions and dependencies in the work to finish.",
+            "Record exclusions to prevent recurring assumptions. Assign an owner and review time for questions that can change the solution substantially.",
+            "Keep answers in the template and bring the story's title and description to StoryFlop. Transfer the agreement to your backlog to preserve context for implementation."
+          ],
+          "checklist": [
+            "We can explain the expected outcome",
+            "We know how to verify it",
+            "Dependencies, boundaries and questions are visible"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "Scrum Guide: Product Backlog refinement",
+          "url": "https://scrumguides.org/scrum-guide.html#product-backlog"
+        }
+      ]
+    }
+  ],
+  "templateText": "REFINEMENT TEMPLATE · STORYFLOP\n\nSession / date:\nParticipants and facilitator:\nTeam reference story:\n\nSTORY\nTitle:\nUser and expected outcome:\nAcceptance criteria (testable behaviours):\n1.\n2.\n3.\nOut of scope:\nDependencies and available components:\nTests, review and quality conditions:\nOpen questions / owner / next review:\n\nDISCUSSION\nInitial votes:\nAssumptions behind lowest and highest votes:\nNew information or scope change:\nDecision: clarify / split / investigate / agree\nSecond round (if informative):\nAgreed estimate (or reason to defer):\nRisks and assumptions accompanying the agreement:\nWhere the decision is recorded in the backlog:\n\nCLOSING\nWhat did we discover that was not written down?\nWhat will we improve in the next preparation?\n\nUse: copy a STORY and DISCUSSION sheet for each item.\nPoints are relative to the team, not hours or individual performance measures.\nResource: https://storyflop.com/recursos/plantilla-refinamiento\n",
+  "ui": {
+    "skip": "Skip to content",
+    "home": "StoryFlop, home",
+    "navigation": "Main navigation",
+    "demoNav": "Demo",
+    "resourcesNav": "Guides and resources",
+    "projectNav": "The project",
+    "createRoom": "Create room",
+    "learn": "Learn with StoryFlop",
+    "byline": "By StoryFlop",
+    "aboutResources": "About these resources",
+    "published": "Published on",
+    "projectContact": "Project and contact",
+    "legal": "Legal notice",
+    "privacy": "Privacy",
+    "cookies": "Cookies",
+    "indexMeta": "Planning Poker guides and resources",
+    "indexDescription": "Worked examples, a demo and a template to prepare stories and facilitate estimation with StoryFlop.",
+    "indexTitle": "A better conversation, before choosing a card.",
+    "indexLead": "Practical Planning Poker guides: prepare work, uncover assumptions and keep your team's decisions.",
+    "startHere": "Start here",
+    "tryRound": "Try a round without arranging a meeting",
+    "tryRoundBody": "Password recovery, three perspectives and a disagreement. Explore a fictional case and see what changes after a discussion.",
+    "openDemo": "Open the demo",
+    "threeGuides": "Three guides for your next session",
+    "readGuide": "Read the guide",
+    "takeTemplate": "Take a refinement template with you",
+    "takeTemplateBody": "A worksheet for criteria, dependencies, votes and decisions. Includes a completed example and an editable version to copy, download or print.",
+    "useTemplate": "Use the template",
+    "useResources": "How to use these resources",
+    "useResourcesBody": "Start with the demo and first-session guide. If voting gets stuck, read the disagreement case. Prepare your backlog with the story examples and template.",
+    "fictionNotice": "These are fictional learning exercises. Numbers illustrate conversations, not universal estimates. Adapt the materials to your team's work.",
+    "projectLink": "Learn about the project and suggest a correction.",
+    "toc": "In this guide",
+    "practice": "Put it into practice",
+    "interactiveCase": "Try the interactive case",
+    "prepareTemplate": "Prepare your next session with the template",
+    "createTeamRoom": "Create a room with your team",
+    "sources": "Sources and further reading",
+    "sourcesBody": "The examples and StoryFlop instructions were written for this section. These sources provide context for the method and refinement:",
+    "related": "Keep learning",
+    "otherGuides": "Other guides",
+    "demoMeta": "Planning Poker demo",
+    "demoDescription": "Try a fictional round: choose a card, reveal votes and see how clarifying scope changes an estimate.",
+    "demoTitle": "Try a round. Discover the conversation.",
+    "demoLead": "Choose a card, compare perspectives and estimate again with new information. No account or team meeting needed.",
+    "simulation": "This local simulation uses fictional characters and votes. It does not create a room, connect to other participants or keep your choices after you leave.",
+    "practicing": "What you are practising",
+    "practicingBody": "Independent voting exposes differences. Revealing cards lets you ask what scope each person considered. Repeat when discussion adds information.",
+    "realRoom": "In a real room, everyone votes from their browser and the organiser manages rounds. This demo uses prepared characters and decisions to explain a case.",
+    "firstGuide": "Read how to prepare your first session",
+    "practiceLabel": "Practice session · Fictional data",
+    "reset": "Restart demo",
+    "progress": "Demo progress",
+    "stepVote": "Vote",
+    "stepDiscuss": "Discuss",
+    "stepRepeat": "Repeat",
+    "stepFinish": "Conclude",
+    "practiceStory": "Practice story",
+    "taskTitle": "Recover access by email",
+    "taskBody": "An account holder requests a password-change link. It expires, works once and displays clear error messages.",
+    "scopeLabel": "Clarified scope:",
+    "beforeVote": "Before voting:",
+    "scopeBody": "The email service exists. Expiry and reuse tests are included. Changing provider is out of scope.",
+    "beforeBody": "Compare with a familiar team story. Consider your assumptions about email and tests.",
+    "step": "Step {phase} of 4",
+    "phaseVote": "Choose your first card",
+    "phaseDiscuss": "Uncover the assumptions",
+    "phaseRepeat": "Estimate the clarified scope again",
+    "phaseFinish": "Interpret the result",
+    "revealedBody": "The cards are revealed. You can compare votes now.",
+    "hiddenBody": "The characters have voted. Their cards stay hidden until you reveal the round.",
+    "players": "Fictional participants' votes",
+    "you": "You",
+    "noVote": "no vote",
+    "hiddenVote": "hidden vote",
+    "yourChoice": "Your choice",
+    "chooseCard": "Choose a card",
+    "revealedVote": "Revealed vote",
+    "hasVoted": "Has voted",
+    "estimateInitial": "Your initial estimate",
+    "estimateSecond": "Your second-round estimate",
+    "unsure": "I have questions",
+    "pause": "Ask for a break",
+    "estimate": "Estimate {value}",
+    "reveal": "Reveal votes",
+    "revealSecond": "Reveal second round",
+    "numbers": "What the numbers tell you",
+    "mean": "Numeric mean",
+    "median": "Numeric median",
+    "equalVotes": "All votes match",
+    "yes": "Yes",
+    "no": "No",
+    "unavailable": "Unavailable",
+    "calculation": "Calculations include your vote and exclude ? and ☕ from mean and median. Matching cards do not prove a shared understanding of scope.",
+    "whyDifferent": "Why did they vote differently?",
+    "anaReason": "Assumed a reusable screen and omitted expiry tests.",
+    "brunoReason": "Included the screen, single-use link and tests.",
+    "crisReason": "Assumed the email service needed building.",
+    "discussBody": "The team confirms existing email and includes tests. Would this information change your vote?",
+    "clarify": "Clarify scope and repeat",
+    "agreed": "The votes match; document the agreement",
+    "stopDiscuss": "Your card asks for a pause and discussion",
+    "difference": "Your difference is still useful information",
+    "agreedBody": "All four votes are 5. In a real session, confirm assumptions and record the agreed estimate.",
+    "differenceBody": "The characters voted 5, but your card differs. Explain the work or uncertainty you considered. The demo does not change your vote to force agreement.",
+    "closingLabel": "Closing note for this example:",
+    "closingBody": "Existing email service, single-use link, expiry and tests included. Provider replacement is excluded. The 5 is illustrative, not a recommendation for other teams.",
+    "saveContext": "Keep context with the template",
+    "needsJs": "Interaction needs JavaScript. The complete case can be read without it.",
+    "fullCase": "Complete case: votes of 3, 5 and 13",
+    "templateMeta": "Planning Poker refinement template",
+    "templateDescription": "Copy, edit, download or print a preparation and decision worksheet with instructions and a password-recovery example.",
+    "templateTitle": "Prepare the story. Keep the agreement.",
+    "templateLead": "A refinement template to bring useful questions and leave with more than a number.",
+    "howTo": "How to use it",
+    "instruction1": "Complete the expected outcome, criteria and dependencies before the session. Keep open questions visible.",
+    "instruction2": "Use one worksheet per story. Record assumptions behind the lowest and highest votes without unnecessary personal data.",
+    "instruction3": "After discussion, note whether to clarify, split, investigate or agree an estimate. Repeat if information changes.",
+    "instruction4": "Copy the agreement to your backlog. Keep the downloaded worksheet: this editor does not save changes.",
+    "templatePermission": "Copy and adapt this template for your team. It is not an official Scrum requirement or a substitute for discussion.",
+    "editable": "Your editable worksheet",
+    "editorBody": "Adapt the fields before copying or downloading. Changes stay on this page and are lost when you close or reload it.",
+    "templateLabel": "Session template",
+    "copy": "Copy template",
+    "download": "Download .txt",
+    "print": "Print worksheet",
+    "copied": "Template copied to the clipboard.",
+    "copyFailed": "Could not copy. Select the template text and copy it manually.",
+    "downloadReady": "Text file ready to download.",
+    "templateNoJs": "Select and copy the worksheet text. Enable JavaScript to edit, download or use the print button.",
+    "exampleTitle": "Completed example · Fictional case",
+    "exampleStory": "Story",
+    "exampleStoryBody": "Recover access through an emailed link.",
+    "exampleCriteria": "Criteria",
+    "exampleCriteriaBody": "The link expires, works once and shows a clear error when invalid.",
+    "exampleDependencies": "Dependencies and boundaries",
+    "exampleDependenciesBody": "Existing email service. A new provider is excluded.",
+    "exampleVotes": "Initial votes",
+    "exampleVotesBody": "3, 5 and 13. The 3 omitted expiry tests; the 13 included building email services.",
+    "exampleInfo": "New information",
+    "exampleInfoBody": "We confirm the existing service and include testing.",
+    "exampleDecision": "Decision",
+    "exampleDecisionBody": "Repeat the round. This fictional team agrees on 5 and records clarified scope in its backlog.",
+    "exampleReview": "Next review",
+    "exampleReviewBody": "Review scope and estimate if the available email service changes.",
+    "missingInfo": "When information is missing",
+    "missingInfoBody": "Instead of forcing an estimate, record the question, owner and review time. For example: check invalidation of used links; assign an owner during the session; review before the next round.",
+    "threeExamples": "Explore three worked stories",
+    "aboutMeta": "About StoryFlop and contact",
+    "aboutDescription": "Create a room, share the link and start estimating with your team. No registration, no subscriptions and a little fun.",
+    "aboutTitle": "Scrum Poker without the hassle. With a few flying emojis.",
+    "aboutLead": "Create a room, share the link and start estimating with your team. No registration, no subscriptions and a little fun.",
+    "purpose": "The project's purpose",
+    "purposeBody": "StoryFlop started with a simple idea: run Scrum Poker without subscriptions, per-seat payments or tool-imposed limits on participants and voting rounds. The aim is to help any team focus on discussion and estimation, quickly and easily.",
+    "featuresBody": "Prepare stories, invite your team by link and reveal the cards when everyone has voted. When the session needs a little energy, throw an emoji to a teammate: estimation can be fun too.",
+    "retentionBody": "Rooms are temporary: data is deleted after 14 days of inactivity. Keep decisions in your backlog and read the privacy policy before sharing information.",
+    "owner": "Who is behind it",
+    "ownerBody": "StoryFlop is owned by Jaume Bonet Martín, providing the service as an individual. Identification details and terms are in the legal notice.",
+    "authorship": "Resources signed StoryFlop are project documentation and estimation exercises. They imply no certification or affiliation with the authors of the method or Scrum.",
+    "editorial": "How the guides are written",
+    "editorialBody": "Guides distinguish StoryFlop features from other product examples. Cases and characters are identified as fictional. Numbers explain decisions, not effort tables transferable between teams.",
+    "correctionsBody": "Each guide has a publication date and sources. Corrections and substantial changes will appear in content and review dates. Suggest improvements when instructions are unclear or outdated.",
+    "contact": "Contact and support",
+    "contactBody": "You can also email this address to report issues, suggest improvements or guide corrections, and ask privacy questions.",
+    "reportBody": "Include the page, browser and reproduction steps for an issue; link and paragraph for corrections. Do not send active room codes or confidential team content.",
+    "landingDemoEyebrow": "Practise",
+    "landingDemoTitle": "One round, step by step",
+    "landingDemoBody": "Vote, reveal and see how clarifying scope changes an estimate, without creating rooms.",
+    "landingDemoLink": "Try the demo",
+    "landingGuidesEyebrow": "Learn",
+    "landingGuidesTitle": "Guides for your team",
+    "landingGuidesBody": "Your first session, resolving disagreements and three worked stories for backlog preparation.",
+    "landingGuidesLink": "Explore the guides",
+    "landingTemplateEyebrow": "Prepare",
+    "landingTemplateTitle": "A template to take with you",
+    "landingTemplateBody": "Write criteria, questions and agreements. Copy, download or print your next session's worksheet.",
+    "ownerBio": "I am a software engineer and architect with more than ten years of experience. I created StoryFlop and maintain it to make estimation sessions easier, friendlier and more fun.",
+    "ownerLinkedIn": "Meet me on LinkedIn",
+    "promiseRegistration": "No registration",
+    "promiseSubscriptions": "No subscriptions",
+    "promisePeople": "Unlimited participants",
+    "promiseVoting": "Unlimited voting",
+    "proposeImprovement": "Suggest an improvement",
+    "feedbackEyebrow": "Your experience matters",
+    "feedbackTitle": "An idea to improve StoryFlop?",
+    "feedbackLead": "Share a suggestion or tell me what went wrong. No account needed. Messages are private and reviewed by Jaume.",
+    "feedbackKind": "What would you like to share?",
+    "feedbackIdea": "I have an idea",
+    "feedbackProblem": "I found a problem",
+    "feedbackSubject": "Title",
+    "feedbackDescription": "Description",
+    "feedbackIdeaHint": "What need would your idea address and how would it help your team?",
+    "feedbackProblemHint": "Include steps to reproduce, what you expected and what happened. You can add the browser and page, without a room code.",
+    "feedbackName": "Name (optional)",
+    "feedbackEmail": "Email (optional)",
+    "feedbackEmailHint": "Leave it if you would like a reply. It will not be used for advertising.",
+    "feedbackPrivacy": "Do not include confidential information or private room links. Your data is used to review and answer the message and kept for a maximum of 24 months.",
+    "feedbackSend": "Send message",
+    "feedbackSending": "Sending…",
+    "feedbackSuccess": "Thank you! Your message has been saved for review. If you left your email, I can reply.",
+    "feedbackError": "Could not send. Your text is still here: try again or email",
+    "feedbackLimited": "You have sent several messages recently. Try again in an hour or email",
+    "opensNewTab": "opens in a new tab"
+  }
+}

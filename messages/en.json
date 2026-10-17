@@ -56,10 +56,6 @@
     "avatarLabel": "Avatar {avatar}"
   },
   "LandingSeo": {
-    "demoNav": "Demo (ES)",
-    "resourcesNav": "Guides & resources (ES)",
-    "projectNav": "About the project (ES)",
-    "resourcesLanguage": "Resources in Spanish",
     "navHow": "How it works",
     "navFeatures": "Features",
     "navFaq": "Questions",
@@ -208,7 +204,9 @@
     "nowVoter": "You are now participating as a voter. Choose a card.",
     "nextVoter": "You will be a voter in the next round.",
     "reactionAnnouncement": "{sender} sent {emoji} to {target}",
-    "closeError": "Close error notice"
+    "closeError": "Close error notice",
+    "proposeImprovement": "Suggest an improvement",
+    "opensNewTab": "opens in a new tab"
   },
   "Members": {
     "organizer": "Host",

@@ -1,0 +1,409 @@
+{
+  "guides": [
+    {
+      "slug": "primera-sesion",
+      "title": "La teva primera sessió de Planning Poker amb StoryFlop",
+      "description": "Prepara una història, reparteix els rols i recorre una ronda completa, del vot privat a la decisió de l'equip.",
+      "category": "Comença",
+      "sections": [
+        {
+          "id": "preparar",
+          "title": "1. Porta una història que es pugui discutir",
+          "paragraphs": [
+            "Abans d'obrir la sala, escriu el resultat esperat i com comprovar-lo. «Millorar l'accés» és ambigu; recuperar-lo amb un enllaç de correu que caduca descriu un comportament concret.",
+            "Practica amb recuperació de contrasenya i un servei de correu existent. L'enllaç caduca, és d'un sol ús i explica els errors. Canviar de proveïdor queda fora. L'estimació fictícia no és universal.",
+            "Porta una història acabada i coneguda per comparar mida relativa, incloent proves i revisió. Si la feina és confusa o falta una decisió que altera l'abast, anota la pregunta abans de votar."
+          ],
+          "checklist": [
+            "Resultat esperat i criteris d'acceptació",
+            "Dependències i exclusions",
+            "Una història coneguda com a referència"
+          ]
+        },
+        {
+          "id": "sala",
+          "title": "2. Crea la sala i acordeu qui fa què",
+          "paragraphs": [
+            "A la portada, selecciona Crea una sala, escriu el nom de la sessió, el teu nom i un avatar. Comparteix l'enllaç o el codi. Cadascú entra des del navegador sense registre.",
+            "L'organitzador dirigeix rondes i revela vots. Els col·laboradors ajuden amb històries i rondes. Qui estima vota; la resta pot observar. Reviseu els rols abans de començar.",
+            "Afegeix títol, descripció i un enllaç opcional a la tasca. Comparteix només informació autoritzada i conserva les decisions duradores al vostre sistema: les sales són temporals."
+          ]
+        },
+        {
+          "id": "votar",
+          "title": "3. Aclariu l'abast i voteu sense anunciar una xifra",
+          "paragraphs": [
+            "Llegiu la història i pregunteu pel correu disponible, la reutilització de l'enllaç i els missatges de caducitat. Amb un abast compartit, obriu la ronda i trieu independentment.",
+            "StoryFlop ofereix 0, 1, 2, 3, 5, 8, 13, 21 i 34, més ? i una pausa. Són comparacions de l'equip, no hores fixes. Utilitzeu ? per visibilitzar la informació que falta.",
+            "Espereu els votants abans de revelar. Dir «per mi és un 5» pot condicionar la resta. El vot privat conserva perspectives diferents fins a la conversa."
+          ]
+        },
+        {
+          "id": "acordar",
+          "title": "4. Reveleu, converseu i registreu la decisió",
+          "paragraphs": [
+            "Amb vots 3, 5 i 13, pregunteu què ha inclòs cadascú. Aquí, el 13 incloïa crear el correu i el 3 ometia proves de caducitat. Les cartes fan visibles aquestes diferències.",
+            "Aclariu que el servei existeix i que les proves s'inclouen. Torneu a votar si canvia la comprensió. Aquest equip pot acordar 5; altres equips amb referències diferents poden triar una altra xifra.",
+            "Registreu l'estimació i els supòsits. Sense acord, dividiu la història o investigueu una pregunta concreta. La mitjana descriu els vots, però no decideix l'abast."
+          ]
+        },
+        {
+          "id": "cerrar",
+          "title": "5. Tanqueu amb una comprovació útil",
+          "paragraphs": [
+            "Pregunteu què heu descobert que no estava escrit i afegiu-ho a la tasca. La sessió hauria de produir una història més clara, a més d'una xifra.",
+            "Traslladeu les decisions de l'historial al backlog. Les sales i dades s'eliminen després de 14 dies d'inactivitat. Conserveu referències útils i reviseu les que hagin quedat obsoletes.",
+            "Planning Poker és una tècnica per al vostre context. La Guia Scrum no exigeix cartes ni punts d'història. Adapteu les sessions per entendre la feina, no per votar sense propòsit."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "James Grenning: Planning Poker, article original",
+          "url": "https://wingman-sw.com/articles/planning-poker"
+        },
+        {
+          "label": "Guia Scrum: Product Backlog i refinament",
+          "url": "https://scrumguides.org/scrum-guide.html#product-backlog"
+        }
+      ]
+    },
+    {
+      "slug": "resolver-desacuerdos",
+      "title": "Vots 3, 5 i 13: com resoldre el desacord",
+      "description": "Un cas de recuperació de contrasenya per distingir abast, incertesa i referències de l'equip.",
+      "category": "Facilita",
+      "sections": [
+        {
+          "id": "caso",
+          "title": "El cas: una frase, tres feines diferents",
+          "paragraphs": [
+            "«Permetre recuperar la contrasenya per correu». En aquest cas fictici, l'Ana vota 3, en Bruno 5 i la Cris 13. La mitjana 7 i la mediana 5 no expliquen què ha entès cadascú.",
+            "L'Ana suposa pantalla reutilitzable i correu existent. En Bruno inclou caducitat i proves. La Cris inclou seleccionar i integrar un proveïdor. Repetir sense aclarir-ho reprodueix el problema.",
+            "Facilitar és descobrir què conté cada estimació. En lloc de «per què tan alt?», que pressiona per abaixar el vot, pregunta quins passos i riscos ha inclòs."
+          ]
+        },
+        {
+          "id": "preguntas",
+          "title": "Tres preguntes que converteixen xifres en informació",
+          "paragraphs": [
+            "Primer, pregunteu què ja existeix. Reviseu components, permisos, serveis i dades. Confirmar el correu existent elimina una gran diferència d'abast.",
+            "Segon, pregunteu què cal per acabar la història. Especifiqueu caducitat, ús únic i missatges clars. Una pantalla sola no és la mateixa feina que incloure aquestes comprovacions.",
+            "Tercer, pregunteu què desconeixeu i com esbrinar-ho. Si la invalidació d'enllaços és incerta, assigneu una investigació acotada en lloc d'amagar-la darrere una xifra precisa."
+          ],
+          "checklist": [
+            "Què existeix i es pot reutilitzar",
+            "Què inclou la definició d'acabat de l'equip",
+            "Què falta saber i qui ho aclarirà"
+          ]
+        },
+        {
+          "id": "decidir",
+          "title": "Decidiu entre aclarir, dividir o investigar",
+          "paragraphs": [
+            "Aclariu interpretacions diferents. Confirmeu el servei i afegiu les proves a la descripció perquè tothom torni a estimar la mateixa feina.",
+            "Dividiu resultats útils separables: recuperació per correu abans d'un altre canal, si cadascun compleix la qualitat. Separar programació i proves no redueix per si sol la mida del lliurament.",
+            "Investigueu dubtes tècnics o de producte que impedeixen estimar. Definiu evidència, responsable i revisió. Investigar ha de permetre decidir, no ajornar indefinidament."
+          ]
+        },
+        {
+          "id": "segunda-ronda",
+          "title": "Repetiu quan aparegui informació nova",
+          "paragraphs": [
+            "Després d'aclarir, trieu en privat. Vots 5, 5 i 5 indiquen una comprensió més propera, però no garanteixen absència d'imprevistos.",
+            "Si surten 5, 5 i 8, reviseu els supòsits pendents. No repetiu fins que algú cedeixi: acordeu com continuar, documenteu riscos o dividiu.",
+            "Utilitzeu distribució i historial de StoryFlop per recordar la conversa. No adopteu automàticament la mitjana: pot quedar entre cartes i no és una decisió compartida."
+          ]
+        },
+        {
+          "id": "registro",
+          "title": "Què escriure a la tasca després",
+          "paragraphs": [
+            "Nota il·lustrativa: correu existent; enllaç d'un sol ús, caducitat i proves incloses; canvi de proveïdor exclòs; estimació 5; revisar si canvia el servei. No és una estimació universal.",
+            "Comparar persones amb punts o exigir vots inicials idèntics elimina informació útil. Les discrepàncies descobreixen feina oculta i permeten decidir.",
+            "Si les mateixes preguntes reapareixen, afegiu-les a la preparació. Millorar el procés és més útil que aconseguir cartes iguals."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "James Grenning: origen i propòsit de Planning Poker",
+          "url": "https://wingman-sw.com/articles/planning-poker"
+        }
+      ]
+    },
+    {
+      "slug": "historias-listas-para-estimar",
+      "title": "Històries d'usuari preparades per estimar",
+      "description": "Tres exemples treballats per descobrir abast, proves i dependències abans de triar una carta.",
+      "category": "Prepara",
+      "sections": [
+        {
+          "id": "preparacion",
+          "title": "Preparar no vol dir saber tots els detalls",
+          "paragraphs": [
+            "Una història preparada té resultat comprensible, límits i preguntes visibles, no una especificació exhaustiva. El refinament aclareix i descompon la feina mentre apreneu.",
+            "Els exemples ficticis no tenen punts predeterminats. La mida depèn del producte, dependències, qualitat i referències de l'equip. Expliqueu primer què cal lliurar.",
+            "Aquesta ajuda no és una norma oficial de Scrum ni impedeix parlar d'incertesa. Una pregunta millor és útil encara que no pugueu estimar."
+          ]
+        },
+        {
+          "id": "busqueda",
+          "title": "Exemple 1: cercar comandes per referència",
+          "paragraphs": [
+            "Una persona de suport troba una comanda amb la referència completa. L'API i el camp de cerca existeixen. Coincidències parcials i filtres nous queden fora.",
+            "Acceptació: referència vàlida mostra la comanda autoritzada; desconeguda, estat buit; error de xarxa permet reintentar sense perdre text. La cerca funciona amb teclat i etiqueta clara.",
+            "Pregunteu per permisos, espais enganxats i proves de l'API que cobreixin el contracte de pantalla. Si l'API no existeix, l'abast original ha canviat.",
+            "Compareu amb una cerca acabada similar. Feu explícit un model de permisos nou: l'aspecte semblant no implica la mateixa mida."
+          ]
+        },
+        {
+          "id": "notificaciones",
+          "title": "Exemple 2: desactivar un correu de resum",
+          "paragraphs": [
+            "Una persona desactiva el resum setmanal a les preferències. Els correus de recuperació continuen actius. La freqüència personalitzada queda fora.",
+            "Acceptació: preferència persistent en tornar a entrar, enviament que la respecta i recuperació de l'estat anterior si falla el desament. Decidiu què passa amb resums ja en cua.",
+            "La incertesa pot estar en l'enviament, no en l'interruptor. Consulteu qui conegui el procés i investigueu la cua si cal abans d'estimar.",
+            "Comenceu amb una opció binària i deixeu freqüències addicionals per després. Cada part ha de funcionar de principi a fi: una pantalla sense canvis a l'enviament només ho aparenta."
+          ]
+        },
+        {
+          "id": "exportacion",
+          "title": "Exemple 3: exportar resultats d'un informe",
+          "paragraphs": [
+            "Una persona autoritzada descarrega resultats filtrats en CSV amb columnes acordades i capçalera llegible. És un producte fictici, no una funció anunciada de StoryFlop.",
+            "Aclariu volum, dates, caràcters especials i permisos. Pàgina visible o tots els resultats? Què apareix mentre s'espera? Les respostes poden exigir solucions diferents.",
+            "Acceptació: filtres correctes, accents preservats, compatibilitat amb l'eina de destí i cap fila no autoritzada. Incloeu seguretat i tractament segur de valors interpretables com a fórmules.",
+            "Investigueu volums incerts amb dades representatives autoritzades. Una exportació limitada i útil pot ser un primer pas, en lloc de prometre'n una de completa de cost desconegut."
+          ]
+        },
+        {
+          "id": "comprobacion",
+          "title": "La comprovació comuna abans de votar",
+          "paragraphs": [
+            "Dues persones expliquen la història. Aclariu resultats diferents abans de comparar cartes. Incloeu proves, revisió, permisos i dependències a la feina acabada.",
+            "Registreu exclusions per evitar supòsits recurrents. Assigneu responsable i revisió als dubtes que alteren substancialment la solució.",
+            "Conserveu respostes a la plantilla i porteu títol i descripció a StoryFlop. Traslladeu l'acord al backlog per mantenir el context quan comenci la feina."
+          ],
+          "checklist": [
+            "Podem explicar el resultat esperat",
+            "Sabem com comprovar-lo",
+            "Dependències, límits i preguntes són visibles"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "Guia Scrum: refinament del Product Backlog",
+          "url": "https://scrumguides.org/scrum-guide.html#product-backlog"
+        }
+      ]
+    }
+  ],
+  "templateText": "PLANTILLA DE REFINAMENT · STORYFLOP\n\nSessió / data:\nParticipants i facilitador:\nHistòria de referència de l'equip:\n\nHISTÒRIA\nTítol:\nPersona usuària i resultat esperat:\nCriteris d'acceptació (comportaments comprovables):\n1.\n2.\n3.\nFora d'abast:\nDependències i components disponibles:\nProves, revisió i condicions de qualitat:\nPreguntes obertes / responsable / pròxima revisió:\n\nCONVERSA\nVots inicials:\nSupòsits del vot menor i major:\nInformació nova o canvi d'abast:\nDecisió: aclarir / dividir / investigar / acordar\nSegona ronda (si aporta informació):\nEstimació acordada (o motiu per ajornar):\nRiscos i supòsits de l'acord:\nOn es registra la decisió al backlog:\n\nTANCAMENT\nQuè hem descobert que no estava escrit?\nQuè millorarem en la pròxima preparació?\n\nÚs: copia una fitxa HISTÒRIA i CONVERSA per element.\nEls punts són relatius a l'equip; no són hores ni mesuren rendiment individual.\nRecurs: https://storyflop.com/recursos/plantilla-refinamiento\n",
+  "ui": {
+    "skip": "Salta al contingut",
+    "home": "StoryFlop, inici",
+    "navigation": "Navegació principal",
+    "demoNav": "Demostració",
+    "resourcesNav": "Guies i recursos",
+    "projectNav": "El projecte",
+    "createRoom": "Crea una sala",
+    "learn": "Aprèn amb StoryFlop",
+    "byline": "Per StoryFlop",
+    "aboutResources": "Sobre aquests recursos",
+    "published": "Publicat el",
+    "projectContact": "Projecte i contacte",
+    "legal": "Avís legal",
+    "privacy": "Privacitat",
+    "cookies": "Galetes",
+    "indexMeta": "Guies i recursos de Planning Poker",
+    "indexDescription": "Exemples treballats, una demostració i una plantilla per preparar històries i facilitar estimacions amb StoryFlop.",
+    "indexTitle": "Una conversa millor, abans de triar una carta.",
+    "indexLead": "Guies pràctiques de Planning Poker: prepara la feina, descobreix supòsits i conserva les decisions de l'equip.",
+    "startHere": "Comença aquí",
+    "tryRound": "Prova una ronda sense preparar una reunió",
+    "tryRoundBody": "Una recuperació de contrasenya, tres perspectives i un desacord. Recorre un cas fictici i comprova què canvia després de conversar.",
+    "openDemo": "Obre la demostració",
+    "threeGuides": "Tres guies per a la pròxima sessió",
+    "readGuide": "Llegeix la guia",
+    "takeTemplate": "Emporta't una plantilla de refinament",
+    "takeTemplateBody": "Una fitxa per a criteris, dependències, vots i decisions. Inclou un exemple emplenat i una versió editable per copiar, descarregar o imprimir.",
+    "useTemplate": "Utilitza la plantilla",
+    "useResources": "Com utilitzar aquests recursos",
+    "useResourcesBody": "Comença amb la demostració i la guia de la primera sessió. Si les votacions s'encallen, consulta el cas de desacord. Prepara el backlog amb els exemples i la plantilla.",
+    "fictionNotice": "Els casos són didàctics i ficticis; les xifres il·lustren converses, no estimacions universals. Adapta els materials a la feina de l'equip.",
+    "projectLink": "Coneix el projecte i com proposar una correcció.",
+    "toc": "En aquesta guia",
+    "practice": "Porta-ho a la pràctica",
+    "interactiveCase": "Prova el cas interactiu",
+    "prepareTemplate": "Prepara la pròxima sessió amb la plantilla",
+    "createTeamRoom": "Crea una sala amb el teu equip",
+    "sources": "Fonts i lectures",
+    "sourcesBody": "Els exemples i les instruccions de StoryFlop són propis d'aquesta secció. Aquestes fonts expliquen el context del mètode i del refinament:",
+    "related": "Continua aprenent",
+    "otherGuides": "Altres guies",
+    "demoMeta": "Demostració de Planning Poker",
+    "demoDescription": "Prova una ronda fictícia: tria una carta, revela els vots i descobreix com aclarir l'abast canvia una estimació.",
+    "demoTitle": "Prova una ronda. Descobreix la conversa.",
+    "demoLead": "Tria una carta, compara perspectives i torna a estimar amb informació nova. Sense compte ni reunió d'equip.",
+    "simulation": "És una simulació local amb personatges i vots ficticis. No crea cap sala, no connecta amb altres participants ni conserva les eleccions en sortir.",
+    "practicing": "Què estàs practicant",
+    "practicingBody": "Votar independentment fa visibles les diferències. Revelar les cartes permet preguntar quin abast considera cadascú. Repeteix quan la conversa aporti informació.",
+    "realRoom": "En una sala real, cadascú vota des del navegador i l'organitzador gestiona les rondes. Aquesta demostració utilitza personatges i decisions preparats per explicar un cas.",
+    "firstGuide": "Llegeix com preparar la primera sessió",
+    "practiceLabel": "Sessió de pràctica · Dades fictícies",
+    "reset": "Reinicia la demostració",
+    "progress": "Progrés de la demostració",
+    "stepVote": "Vota",
+    "stepDiscuss": "Conversa",
+    "stepRepeat": "Repeteix",
+    "stepFinish": "Conclou",
+    "practiceStory": "Història de pràctica",
+    "taskTitle": "Recuperar l'accés per correu",
+    "taskBody": "Una persona amb compte sol·licita un enllaç per canviar la contrasenya. Caduca, només funciona una vegada i mostra errors comprensibles.",
+    "scopeLabel": "Abast aclarit:",
+    "beforeVote": "Abans de votar:",
+    "scopeBody": "El servei de correu ja existeix. Incloem proves de caducitat i reutilització. Canviar de proveïdor queda fora.",
+    "beforeBody": "Compara amb una història coneguda de l'equip. Revisa els supòsits sobre el correu i les proves.",
+    "step": "Pas {phase} de 4",
+    "phaseVote": "Tria la primera carta",
+    "phaseDiscuss": "Descobreix els supòsits",
+    "phaseRepeat": "Torna a estimar l'abast aclarit",
+    "phaseFinish": "Interpreta el resultat",
+    "revealedBody": "Les cartes estan revelades. Ara pots comparar els vots.",
+    "hiddenBody": "Els personatges ja han votat. Les cartes continuen ocultes fins que revelis la ronda.",
+    "players": "Vots dels participants ficticis",
+    "you": "Tu",
+    "noVote": "sense vot",
+    "hiddenVote": "vot ocult",
+    "yourChoice": "La teva elecció",
+    "chooseCard": "Tria una carta",
+    "revealedVote": "Vot revelat",
+    "hasVoted": "Ha votat",
+    "estimateInitial": "La teva estimació inicial",
+    "estimateSecond": "La teva estimació a la segona ronda",
+    "unsure": "Tinc dubtes",
+    "pause": "Demana una pausa",
+    "estimate": "Estima {value}",
+    "reveal": "Revela els vots",
+    "revealSecond": "Revela la segona ronda",
+    "numbers": "Què diuen els números",
+    "mean": "Mitjana numèrica",
+    "median": "Mediana numèrica",
+    "equalVotes": "Tots els vots coincideixen",
+    "yes": "Sí",
+    "no": "No",
+    "unavailable": "No disponible",
+    "calculation": "Els càlculs inclouen el teu vot i exclouen ? i ☕ de la mitjana i la mediana. Cartes iguals no demostren una comprensió compartida de l'abast.",
+    "whyDifferent": "Per què han votat diferent?",
+    "anaReason": "Ha suposat que reutilitzaria una pantalla i ha omès les proves de caducitat.",
+    "brunoReason": "Ha inclòs la pantalla, l'enllaç d'un sol ús i les proves.",
+    "crisReason": "Ha suposat que calia crear el servei de correu.",
+    "discussBody": "L'equip confirma que el correu existeix i inclou les proves. Aquesta informació canviaria el teu vot?",
+    "clarify": "Aclareix l'abast i repeteix",
+    "agreed": "Hi ha coincidència; cal documentar l'acord",
+    "stopDiscuss": "La teva carta demana aturar-se i conversar",
+    "difference": "La diferència continua sent informació útil",
+    "agreedBody": "Els quatre vots són 5. En una sessió real, confirmeu els supòsits i registreu l'estimació acordada.",
+    "differenceBody": "Els personatges han votat 5, però la teva carta és diferent. Explica la feina o la incertesa que consideres. La demostració no modifica el vot per forçar un acord.",
+    "closingLabel": "Nota de tancament de l'exemple:",
+    "closingBody": "Servei de correu existent, enllaç d'un sol ús, caducitat i proves incloses. Canviar de proveïdor queda fora. El 5 és il·lustratiu, no una recomanació per a altres equips.",
+    "saveContext": "Conserva el context amb la plantilla",
+    "needsJs": "La interacció necessita JavaScript. Pots llegir el cas complet sense activar-lo.",
+    "fullCase": "Cas complet: vots 3, 5 i 13",
+    "templateMeta": "Plantilla de refinament per a Planning Poker",
+    "templateDescription": "Copia, edita, descarrega o imprimeix una fitxa de preparació i decisions, amb instruccions i un exemple de recuperació de contrasenya.",
+    "templateTitle": "Prepara la història. Conserva l'acord.",
+    "templateLead": "Una plantilla de refinament per portar preguntes útils i sortir amb alguna cosa més que una xifra.",
+    "howTo": "Com utilitzar-la",
+    "instruction1": "Completa el resultat esperat, els criteris i les dependències abans de la sessió. Deixa visibles les preguntes obertes.",
+    "instruction2": "Utilitza una fitxa per història. Recull els supòsits del vot menor i major sense dades personals innecessàries.",
+    "instruction3": "Després de conversar, anota si cal aclarir, dividir, investigar o acordar una estimació. Repeteix si hi ha informació nova.",
+    "instruction4": "Copia l'acord al backlog. Conserva la fitxa descarregada: l'editor no desa els canvis.",
+    "templatePermission": "Pots copiar i adaptar la plantilla a l'equip. No és un requisit oficial de Scrum ni substitueix la conversa.",
+    "editable": "La teva fitxa editable",
+    "editorBody": "Adapta els camps abans de copiar o descarregar. Els canvis només són en aquesta pàgina i es perden en tancar-la o recarregar-la.",
+    "templateLabel": "Plantilla de la sessió",
+    "copy": "Copia la plantilla",
+    "download": "Descarrega .txt",
+    "print": "Imprimeix la fitxa",
+    "copied": "Plantilla copiada al porta-retalls.",
+    "copyFailed": "No s'ha pogut copiar. Selecciona el text i copia'l manualment.",
+    "downloadReady": "Fitxer de text preparat per descarregar.",
+    "templateNoJs": "Pots seleccionar i copiar el text. Activa JavaScript per editar, descarregar o utilitzar el botó d'impressió.",
+    "exampleTitle": "Exemple emplenat · Cas fictici",
+    "exampleStory": "Història",
+    "exampleStoryBody": "Recuperar l'accés amb un enllaç enviat per correu.",
+    "exampleCriteria": "Criteris",
+    "exampleCriteriaBody": "L'enllaç caduca, només funciona una vegada i mostra un error comprensible quan no és vàlid.",
+    "exampleDependencies": "Dependències i límits",
+    "exampleDependenciesBody": "Servei de correu existent. No inclou contractar un altre proveïdor.",
+    "exampleVotes": "Vots inicials",
+    "exampleVotesBody": "3, 5 i 13. El 3 ometia proves de caducitat; el 13 incloïa crear el servei de correu.",
+    "exampleInfo": "Informació nova",
+    "exampleInfoBody": "Confirmem el servei disponible i incloem les proves.",
+    "exampleDecision": "Decisió",
+    "exampleDecisionBody": "Repetir la ronda. En aquest cas fictici, l'equip acorda 5 i registra l'abast aclarit al backlog.",
+    "exampleReview": "Pròxima revisió",
+    "exampleReviewBody": "Revisar abast i estimació si canvia el servei de correu disponible.",
+    "missingInfo": "Quan falta informació",
+    "missingInfoBody": "En lloc de forçar una estimació, escriu la pregunta, un responsable i quan revisar-la. Per exemple: comprovar la invalidació d'enllaços usats; assignar responsable a la sessió; revisar abans de la pròxima ronda.",
+    "threeExamples": "Consulta tres històries treballades",
+    "aboutMeta": "Sobre StoryFlop i contacte",
+    "aboutDescription": "Crea una sala, comparteix l’enllaç i comença a estimar amb l’equip. Sense registre, sense subscripcions i amb un toc divertit.",
+    "aboutTitle": "Scrum Poker sense complicacions. I amb algun emoji volant.",
+    "aboutLead": "Crea una sala, comparteix l’enllaç i comença a estimar amb l’equip. Sense registre, sense subscripcions i amb un toc divertit.",
+    "purpose": "El propòsit del projecte",
+    "purposeBody": "StoryFlop neix d’una idea senzilla: fer Scrum Poker sense subscripcions, pagaments per seient ni límits de participants i votacions imposats per l’eina. El propòsit és que qualsevol equip es pugui centrar a conversar i estimar, de manera àgil i sense complicacions.",
+    "featuresBody": "Prepara les històries, convida l’equip per enllaç i revela les cartes quan tothom hagi votat. I quan la sessió necessiti una mica d’energia, llança un emoji a un company: estimar també pot ser divertit.",
+    "retentionBody": "Les sales són temporals: les dades s'eliminen després de 14 dies d'inactivitat. Conserva les decisions al backlog i consulta la política de privacitat abans de compartir informació.",
+    "owner": "Qui hi ha al darrere",
+    "ownerBody": "El titular de StoryFlop és Jaume Bonet Martín, que presta el servei com a particular. L'avís legal conté la identificació i les condicions d'ús.",
+    "authorship": "Els recursos signats StoryFlop són documentació del projecte i exercicis d'estimació. No impliquen certificació ni afiliació amb els autors del mètode o de Scrum.",
+    "editorial": "Com es plantegen les guies",
+    "editorialBody": "Les guies distingeixen les funcions de StoryFlop dels exemples d'altres productes. Els casos i personatges s'identifiquen com a ficticis. Les xifres expliquen decisions, no esforços transferibles entre equips.",
+    "correctionsBody": "Cada guia inclou data de publicació i fonts. Les correccions i canvis importants es reflectiran al contingut i la data de revisió. Proposa millores si una instrucció és ambigua o queda desactualitzada.",
+    "contact": "Contacte i suport",
+    "contactBody": "També pots escriure a aquest correu per comunicar incidències, proposar millores o correccions de les guies i consultar sobre privacitat.",
+    "reportBody": "Per incidències, indica pàgina, navegador i passos per reproduir-les; per correccions, enllaç i paràgraf. No enviïs codis de sales actives ni contingut confidencial.",
+    "landingDemoEyebrow": "Practica",
+    "landingDemoTitle": "Una ronda, pas a pas",
+    "landingDemoBody": "Vota, revela i descobreix com aclarir l'abast canvia una estimació, sense crear sales.",
+    "landingDemoLink": "Prova la demostració",
+    "landingGuidesEyebrow": "Aprèn",
+    "landingGuidesTitle": "Guies per al teu equip",
+    "landingGuidesBody": "La primera sessió, com resoldre desacords i tres històries treballades per preparar el backlog.",
+    "landingGuidesLink": "Explora les guies",
+    "landingTemplateEyebrow": "Prepara",
+    "landingTemplateTitle": "Una plantilla per emportar-te",
+    "landingTemplateBody": "Escriu criteris, preguntes i acords. Copia, descarrega o imprimeix la fitxa de la pròxima sessió.",
+    "ownerBio": "Soc enginyer i arquitecte de programari, amb més de deu anys d’experiència. He creat StoryFlop i m’encarrego del manteniment per facilitar les sessions d’estimació i donar-los un toc més proper i divertit.",
+    "ownerLinkedIn": "Coneix-me a LinkedIn",
+    "promiseRegistration": "Sense registre",
+    "promiseSubscriptions": "Sense subscripcions",
+    "promisePeople": "Participants sense límit",
+    "promiseVoting": "Votacions sense límit",
+    "proposeImprovement": "Proposar una millora",
+    "feedbackEyebrow": "La teva experiència compta",
+    "feedbackTitle": "Una idea per millorar StoryFlop?",
+    "feedbackLead": "Comparteix una proposta o explica’m què ha fallat. No cal cap compte. Els missatges són privats i els revisa en Jaume.",
+    "feedbackKind": "Què vols compartir?",
+    "feedbackIdea": "Tinc una idea",
+    "feedbackProblem": "He trobat un problema",
+    "feedbackSubject": "Títol",
+    "feedbackDescription": "Descripció",
+    "feedbackIdeaHint": "Quina necessitat resoldria la teva idea i com ajudaria l’equip?",
+    "feedbackProblemHint": "Indica els passos per reproduir-ho, què esperaves i què ha passat. Pots afegir el navegador i la pàgina, sense el codi de la sala.",
+    "feedbackName": "Nom (opcional)",
+    "feedbackEmail": "Correu electrònic (opcional)",
+    "feedbackEmailHint": "Deixa’l si vols que et pugui respondre. No s’utilitzarà per a publicitat.",
+    "feedbackPrivacy": "No incloguis informació confidencial ni enllaços de sales privades. Les dades s’utilitzen per revisar i respondre el missatge i es conserven un màxim de 24 mesos.",
+    "feedbackSend": "Enviar missatge",
+    "feedbackSending": "Enviant…",
+    "feedbackSuccess": "Gràcies! El missatge s’ha desat i el revisaré. Si has deixat el correu, et podré respondre.",
+    "feedbackError": "No s’ha pogut enviar. El text continua aquí: torna-ho a provar o escriu a",
+    "feedbackLimited": "Has enviat diversos missatges en poc temps. Torna-ho a provar d’aquí a una hora o escriu a",
+    "opensNewTab": "s’obre en una pestanya nova"
+  }
+}

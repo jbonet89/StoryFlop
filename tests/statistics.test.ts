@@ -9,6 +9,9 @@ describe("calculateRoundStats", () => {
 });
 
 describe("suggestFinalEstimate", () => {
+  it("mantiene la coma decimal en euskera aunque el navegador carezca de datos eu", () => {
+    expect(formatStatistic(6.5, "eu")).toBe("6,5");
+  });
   it("elige la carta más próxima a la mediana", () => {
     expect(suggestFinalEstimate(["3", "5", "8"])).toBe("5");
   });

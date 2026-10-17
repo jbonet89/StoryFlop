@@ -22,5 +22,7 @@ export function suggestFinalEstimate(values: VoteValue[]): VoteValue | null {
 }
 
 export function formatStatistic(value: number | null, locale = "es", unavailable = "No disponible"): string {
-  return value === null || !Number.isFinite(value) ? unavailable : new Intl.NumberFormat(locale, { maximumFractionDigits: 2 }).format(value);
+  // Chromium can lack Basque number data; use the same decimal convention on server and client.
+  const numberLocale = locale === "eu" ? "es-ES" : locale;
+  return value === null || !Number.isFinite(value) ? unavailable : new Intl.NumberFormat(numberLocale, { maximumFractionDigits: 2 }).format(value);
 }

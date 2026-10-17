@@ -1,7 +1,9 @@
 "use client";
 /* eslint-disable @next/next/no-html-link-for-pages -- Full document navigation discards the advertising runtime on non-editorial pages. */
 import { useState, type FormEvent } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+import type { SupportedLocale } from "@/i18n/config";
+import { resourceHref } from "@/lib/resource-links";
 import { ZodError } from "zod";
 import { ArrowRight, Check, CircleCheck, Copy, EyeOff, Globe2, History, Infinity, Layers3, ListPlus, LockKeyhole, Radio, ShieldCheck, Sparkles, UserPlus, UsersRound, Zap } from "lucide-react";
 import { AvatarPicker } from "@/components/AvatarPicker";
@@ -17,6 +19,9 @@ import { roomApi } from "../api";
 
 export function LandingPage() {
   const t = useTranslations("Home");
+  const r = useTranslations("Resources");
+  const locale = useLocale() as SupportedLocale;
+  const href = (path: string) => resourceHref(locale, path);
   const tSeo = useTranslations("LandingSeo");
   const tBrand = useTranslations("Brand");
   const tValidation = useTranslations("Validation");
@@ -45,7 +50,7 @@ export function LandingPage() {
   }
 
   return <main className="landing">
-    <nav className="landing-nav"><Brand showTagline /><div className="landing-nav-links"><a href="/demo" hrefLang="es">{tSeo("demoNav")}</a><a href="/recursos" hrefLang="es">{tSeo("resourcesNav")}</a><a href="#como-funciona">{tSeo("navHow")}</a><a href="#preguntas">{tSeo("navFaq")}</a></div><div className="landing-nav-actions"><span className="live-pill"><Radio size={14} /> {t("realtime")}</span><LanguageSelector /></div></nav>
+    <nav className="landing-nav"><Brand showTagline /><div className="landing-nav-links"><a href={href("/demo")}>{r("demoNav")}</a><a href={href("/recursos")}>{r("resourcesNav")}</a><a href="#como-funciona">{tSeo("navHow")}</a><a href="#preguntas">{tSeo("navFaq")}</a></div><div className="landing-nav-actions"><span className="live-pill"><Radio size={14} /> {t("realtime")}</span><LanguageSelector /></div></nav>
     <div className="landing-grid">
       <section className="hero-copy">
         <div className="eyebrow"><Sparkles size={15} /> {tBrand("tagline")}</div>
@@ -77,13 +82,13 @@ export function LandingPage() {
     </div>
     <AdSenseUnit slot="3113577981" format="auto" fullWidthResponsive label={tSeo("advertisementLabel")} className="ad-horizontal" />
     <section className="seo-section landing-resources" aria-labelledby="resources-title">
-      <div className="seo-heading"><span>{tSeo("resourcesLanguage")}</span><h2 id="resources-title">{tSeo("resourcesNav")}</h2></div>
-      <div className="resource-grid" lang="es">
-        <a className="resource-card" href="/demo" hrefLang="es"><span className="resource-eyebrow">Practica</span><h3>Una ronda, paso a paso</h3><p>Vota, revela y descubre cómo cambia una estimación al aclarar el alcance. Una demo sin crear salas.</p><span className="resource-card-link">Probar la demostración →</span></a>
-        <a className="resource-card" href="/recursos" hrefLang="es"><span className="resource-eyebrow">Aprende</span><h3>Guías para tu equipo</h3><p>Tu primera sesión, cómo resolver desacuerdos y tres historias trabajadas para preparar el backlog.</p><span className="resource-card-link">Explorar las guías →</span></a>
-        <a className="resource-card" href="/recursos/plantilla-refinamiento" hrefLang="es"><span className="resource-eyebrow">Prepara</span><h3>Una plantilla para llevarte</h3><p>Escribe criterios, preguntas y acuerdos. Copia, descarga o imprime la ficha de tu próxima sesión.</p><span className="resource-card-link">Usar la plantilla →</span></a>
+      <div className="seo-heading"><span>{r("learn")}</span><h2 id="resources-title">{r("resourcesNav")}</h2></div>
+      <div className="resource-grid">
+        <a className="resource-card" href={href("/demo")}><span className="resource-eyebrow">{r("landingDemoEyebrow")}</span><h3>{r("landingDemoTitle")}</h3><p>{r("landingDemoBody")}</p><span className="resource-card-link">{r("landingDemoLink")} →</span></a>
+        <a className="resource-card" href={href("/recursos")}><span className="resource-eyebrow">{r("landingGuidesEyebrow")}</span><h3>{r("landingGuidesTitle")}</h3><p>{r("landingGuidesBody")}</p><span className="resource-card-link">{r("landingGuidesLink")} →</span></a>
+        <a className="resource-card" href={href("/recursos/plantilla-refinamiento")}><span className="resource-eyebrow">{r("landingTemplateEyebrow")}</span><h3>{r("landingTemplateTitle")}</h3><p>{r("landingTemplateBody")}</p><span className="resource-card-link">{r("useTemplate")} →</span></a>
       </div>
-      <p className="landing-project-link"><a href="/sobre-storyflop" hrefLang="es">{tSeo("projectNav")} →</a></p>
+      <p className="landing-project-link"><a href={href("/sobre-storyflop")}>{r("projectNav")} →</a></p>
     </section>
     <PlanningGuide />
     <section className="seo-section how-section" id="como-funciona">
