@@ -198,6 +198,204 @@
           "url": "https://scrumguides.org/scrum-guide.html#product-backlog"
         }
       ]
+    },
+    {
+      "slug": "dividir-historias",
+      "title": "Große Storys aufteilen und nützliche Ergebnisse erhalten",
+      "description": "Drei Vorher-Nachher-Fälle für begrenzte vollständige Lieferungen, Qualität und sinnvolle neue Schätzungen.",
+      "category": "Eingrenzen",
+      "sections": [
+        {
+          "id": "objetivo",
+          "title": "1. Erkennen, was die Story groß macht",
+          "paragraphs": [
+            "Eine hohe Karte kann viele Szenarien, offene Abhängigkeiten oder unklare Ergebnisse zeigen. Kein Punkteschwellenwert gilt für alle Teams. Fragt, was noch nicht erklärt oder geprüft werden kann.",
+            "Diese Anleitung nutzt ein fiktives Berichts- und Bestellprodukt. Entscheidungen zeigen Möglichkeiten, keine beobachteten StoryFlop-Kundenergebnisse. Beschreibt vor dem Teilen, wer das Ergebnis braucht und was die erste Lieferung ermöglicht."
+          ]
+        },
+        {
+          "id": "criterios",
+          "title": "2. Einen vollständigen Ablauf erhalten",
+          "paragraphs": [
+            "„API bauen“, „Oberfläche erstellen“ und „testen“ zu trennen kann Aufgaben ordnen, ohne drei nützliche Storys zu liefern. Sucht eine begrenzte Fähigkeit mit allen nötigen Schichten und Prüfungen.",
+            "Eingrenzen heißt nicht, Rechte, Barrierefreiheit oder Tests für niedrigere Zahlen zu entfernen. Muss ein Export den Datenzugriff prüfen, gehört das zur ersten Lieferung. Grenzen müssen ausdrücklich und für Nutzende akzeptabel sein."
+          ]
+        },
+        {
+          "id": "opciones",
+          "title": "3. Eine erklärbare Grenze wählen",
+          "paragraphs": [
+            "Beginnt mit einem Format, Kanal, Nutzertyp oder einer Geschäftsregel. Manueller CSV- und geplanter PDF-Export erfüllen verschiedene Bedürfnisse. Klärt zuerst Wert oder Lerngewinn; teilt nicht bloß getrennte Oberflächen.",
+            "Bei unbekannter Datenmenge oder Anbieterfunktion definiert eine Untersuchung mit Frage, Verantwortung und Prüfung. Erkenntnisse können die Aufteilung ändern. Versprecht keine begrenzte Lieferung, die niemand nutzen kann."
+          ]
+        },
+        {
+          "id": "comprobar",
+          "title": "4. Die Aufteilung vor dem Abstimmen prüfen",
+          "paragraphs": [
+            "Beschreibt je Teil eine Vorführung: wer eintritt, was geschieht und welches Ergebnis geprüft wird. Nennt Fehlerfall und Zugangsbedingungen. Braucht jede Vorführung drei unfertige Storys, überarbeitet die Aufteilung.",
+            "Schätzt mit demselben Team und Referenzen neu. Verteilt ursprüngliche Punkte nicht mechanisch: Teilen kann gemeinsame Arbeit oder eine andere Lösung zeigen. Teilwerte müssen nicht die erste Zahl ergeben."
+          ]
+        },
+        {
+          "id": "registrar",
+          "title": "5. Den ursprünglichen Bedarf verknüpft lassen",
+          "paragraphs": [
+            "Dokumentiert ersten Umfang, aufgeschobene Arbeit und Gründe. Verknüpft den ursprünglichen Bedarf und Abhängigkeiten zwischen Teilen. Prüft bei neuen Prioritäten, ob die Begrenzung nützlich bleibt.",
+            "Fragt nächstes Mal, ob der erste Teil prüfbar war und eine Entscheidung ermöglichte. Entstand nur halbfertige Arbeit, passt das Muster an. Bewahrt Annahmen neben Schätzungen in der Vorlage auf."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "Mountain Goat Software: Storys nach Ergebnissen aufteilen",
+          "url": "https://www.mountaingoatsoftware.com/agile/user-stories/story-splitting"
+        },
+        {
+          "label": "Scrum Guide: Product-Backlog-Refinement",
+          "url": "https://scrumguides.org/scrum-guide.html#product-backlog"
+        }
+      ],
+      "cases": [
+        {
+          "title": "Berichte exportieren",
+          "before": "„Alle Berichte in CSV und PDF mit Zeitplanung und allen Filtern.“ Datenmenge und Zeilenberechtigungen sind unklar.",
+          "after": "Erste Story: einen Bericht manuell als CSV laden, mit vereinbarten Spalten, bestehenden Rechten, ausdrücklicher Mengengrenze und prüfbaren Fehlern. PDF und Planung folgen später.",
+          "decision": "Ein Format und vollständiger Ablauf behalten Zugriffsschutz und Tests. Prüft mit Nutzenden, ob die Mengengrenze noch eine nützliche Lieferung ergibt."
+        },
+        {
+          "title": "Benachrichtigungseinstellungen",
+          "before": "„Alle Benachrichtigungen per E-Mail, Mobilgerät und Anwendung einstellen.“ Kanäle und Regeln vermischen sich.",
+          "after": "Erste Story: Wochenübersicht per E-Mail abschalten, Einstellung speichern und ihre Beachtung beim Versand prüfen. Zugangswiederherstellung bleibt aktiv.",
+          "decision": "Die Einstellung funktioniert durchgängig. Kein visueller Schalter ohne Versandänderung. Andere Kanäle werden nach Bestätigung dieses Bedarfs priorisiert."
+        },
+        {
+          "title": "Bestellungen je Rolle ansehen",
+          "before": "„Dashboard für alle Rollen und Organisationen mit Suche, Export und Verwaltung.“ Rechte und Abläufe bleiben offen.",
+          "after": "Erste Story: eigene Bestellungen mit bestehender Autorisierung, Referenzsuche sowie Leer- und Fehlerzustand ansehen. Organisationsübergreifende Verwaltung und Export sind ausgeschlossen.",
+          "decision": "Person und Ablauf werden eingegrenzt, ohne Autorisierung aufzuschieben. Deckt die bestehende Regel den Zugang nicht, klärt dies vor der Schätzbereitschaft."
+        }
+      ]
+    },
+    {
+      "slug": "interpretar-resultados",
+      "title": "Mittelwert, Median und Verteilung in StoryFlop verstehen",
+      "description": "Berechnete Beispiele erklären Stimmen und die Entscheidungen, die weiterhin beim Team liegen.",
+      "category": "Einordnen",
+      "sections": [
+        {
+          "id": "leer",
+          "title": "1. Mit den Karten statt dem Durchschnitt beginnen",
+          "paragraphs": [
+            "Die Verteilung zeigt, wie viele Menschen jede Karte wählen. Prüft zuerst Häufungen, Extreme und Fragen. Derselbe Durchschnitt kann sehr unterschiedliche Gespräche verbergen.",
+            "Die fiktiven Beispiele entsprechen StoryFlops Berechnungsregeln. Zahlen erklären Ergebnisse, sie wandeln keine Punkte in Stunden um und vergleichen keine Leistung."
+          ]
+        },
+        {
+          "id": "comparar",
+          "title": "2. Mittelwert und Median beantworten andere Fragen",
+          "paragraphs": [
+            "Bei 3, 5 und 13 ist der Mittelwert 7: Summe durch Anzahl numerischer Stimmen. Der Median ist 5, der mittlere sortierte Wert. Ein Mittelwert muss keine Spielkarte sein.",
+            "Keiner beweist Einigkeit. Fragt, was die 3 enthält und die 13 sieht. Bei unterschiedlicher Arbeit ist Umfangsklärung wichtiger als die Wahl zwischen 5 und 7."
+          ]
+        },
+        {
+          "id": "dispersion",
+          "title": "3. Ein Ausreißer verdient eine Frage",
+          "paragraphs": [
+            "Bei 5, 5, 5 und 21 sind Mittelwert 9 und Median 5. Der Median beschreibt die Mitte, beseitigt aber die Information der 21 nicht. Vielleicht kennt jemand eine übersehene Abhängigkeit.",
+            "Fragt nach Arbeit und Risiko statt nach Verteidigung einer Zahl. Neue gemeinsame Umfangsinformation führt zur nächsten Runde; offene Fragen zu Untersuchung oder Teilung."
+          ]
+        },
+        {
+          "id": "especiales",
+          "title": "4. Null zählt; Fragen sind keine Zahlen",
+          "paragraphs": [
+            "Bei 0, 5 und ? zählen 0 und 5: Mittelwert und Median sind 2,5. Null zählt mit. ? bleibt in der Verteilung und fordert Klärung; es ist nicht Null.",
+            "Bei ? und ☕ fehlen numerische Stimmen und damit Mittelwert und Median. Selbst gleiche Sonderkarten bedeuten eine Frage oder Pause, keine vereinbarte Arbeitsschätzung."
+          ]
+        },
+        {
+          "id": "decidir",
+          "title": "5. Zusammenfassung und endgültige Entscheidung trennen",
+          "paragraphs": [
+            "Gleiche Karten bedeuten gleiche Stimmen. Eine nützliche Vereinbarung bestätigt auch Umfang, Qualität und Annahmen. Haltet Gründe der Endschätzung fest und prüft sie bei Storyänderungen.",
+            "Der Verlauf erinnert an Auslöser einer weiteren Runde. Bewertet Menschen nicht nach ihrer Nähe zum Mittelwert. Planning Poker soll Arbeit erklären statt Anpassung belohnen."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "James Grenning: Gespräch und unabhängiges Schätzen",
+          "url": "https://wingman-sw.com/articles/planning-poker"
+        }
+      ]
+    },
+    {
+      "slug": "sesiones-remotas",
+      "title": "Remote-Sitzungen ohne erzwungene Einigkeit moderieren",
+      "description": "Vorbereitung, Redereihenfolge und ein vollständiger Fall für klare Entscheidungen bei Remote-Abstimmungen.",
+      "category": "Remote moderieren",
+      "sections": [
+        {
+          "id": "preparar",
+          "title": "1. Gespräch und Rollen vorbereiten",
+          "paragraphs": [
+            "Wählt vor dem Link wenige Storys mit Ergebnis, Kriterien und Fragen. Bestimmt Moderation, Abstimmende und Beobachtende. Mitwirkende helfen bei Vorbereitung und Runden.",
+            "Vereinbart zugänglichen Sprach- oder Textkanal und Referenzstory. Schweigen ist keine Einigung. Klärt, wie Fragen und Pausen ausdrücklich angefordert werden."
+          ]
+        },
+        {
+          "id": "votar",
+          "title": "2. Unabhängigkeit der ersten Stimme schützen",
+          "paragraphs": [
+            "Lest und klärt Verständnis vor der Kartenwahl. Nennt während der Abstimmung keine Zahl. StoryFlop hält Stimmen bis zum Aufdecken verdeckt; Beobachtende zählen nicht als Abstimmende.",
+            "Prüft die Teilnahmefähigkeit aller erwarteten Personen. Verbindungsabbruch oder Verzögerung ist keine freiwillige Enthaltung. Bestätigt Änderungen und das weitere Vorgehen mit der Gruppe."
+          ]
+        },
+        {
+          "id": "turnos",
+          "title": "3. Redereihenfolge zum Verstehen statt Überreden",
+          "paragraphs": [
+            "Ladet nach dem Aufdecken die niedrigsten und höchsten Stimmen zur Erklärung ein. Fragt nach vorhandenen Komponenten, Tests und unbekannten Abhängigkeiten. Gebt bislang unbeschriebenen Risiken Raum.",
+            "Wiederholen sich Argumente ohne Erkenntnisse, fasst Bekanntes zusammen. Klären, Teilen oder Untersuchen sind mögliche Schritte. Stimmt nicht ab, bis jemand aus Müdigkeit nachgibt."
+          ]
+        },
+        {
+          "id": "ejemplo",
+          "title": "4. Ein Remote-Fall vom Anfang bis zum Ende",
+          "paragraphs": [
+            "Im fiktiven Beispiel stimmen drei Personen 3, 5 und 13 für Passwortwiederherstellung. Die Moderatorin fragt nach E-Mail und Tests. Das Team bestätigt den Dienst und ergänzt Linkablauf in den Kriterien.",
+            "Mit geklärtem Umfang wird erneut abgestimmt und hier 5 vereinbart. Eine offene Frage könnte stattdessen Verantwortung und nächste Aktion ohne Zahl ergeben. Die Vorlage erlaubt beides."
+          ]
+        },
+        {
+          "id": "cerrar",
+          "title": "5. Mit wiederauffindbaren Entscheidungen abschließen",
+          "paragraphs": [
+            "Lest nach jeder Story Umfang, mögliche Schätzung, Risiken und nächste Aktion vor. Übertragt sie ins Backlog. Räume und Daten verschwinden nach 14 Tagen Inaktivität; Verlauf ersetzt kein dauerhaftes Protokoll.",
+            "Fragt abschließend nach fehlenden Anforderungen und Teilnahme aller. Nutzt Antworten für die nächste Vorbereitung. Lernen braucht keine Veröffentlichung von Teaminformationen: Öffentliche Fälle können gekennzeichnete Fiktion sein."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "James Grenning: Zweck unabhängiger Abstimmung",
+          "url": "https://wingman-sw.com/articles/planning-poker"
+        },
+        {
+          "label": "Scrum Guide: Transparenz und Überprüfung der Arbeit",
+          "url": "https://scrumguides.org/scrum-guide.html"
+        }
+      ],
+      "cases": [
+        {
+          "title": "Vom Schweigen zur sichtbaren Entscheidung",
+          "before": "Nach 3, 5 und 13 heißt es „nehmen wir 5“, ohne Extreme anzuhören. Zwei schweigen und der Umfang bleibt unklar.",
+          "after": "Die Moderation verteilt Redezeit, bestätigt vorhandene E-Mail, ergänzt Tests und fordert eine neue unabhängige Abstimmung. Dann wird die Entscheidung vorgelesen und dokumentiert.",
+          "decision": "Wichtig ist die Sichtbarkeit von Annahmen und Einigung. Die 5 gehört zur Übung und verpflichtet keine echte Sitzung auf diese Zahl."
+        }
+      ]
     }
   ],
   "templateText": "REFINEMENT-VORLAGE · STORYFLOP\n\nSitzung / Datum:\nTeilnehmende und Moderation:\nReferenzstory des Teams:\n\nSTORY\nTitel:\nNutzende und erwartetes Ergebnis:\nAkzeptanzkriterien (prüfbares Verhalten):\n1.\n2.\n3.\nAußerhalb des Umfangs:\nAbhängigkeiten und vorhandene Komponenten:\nTests, Review und Qualitätsbedingungen:\nOffene Fragen / Verantwortung / nächste Prüfung:\n\nGESPRÄCH\nErste Stimmen:\nAnnahmen hinter niedrigster und höchster Stimme:\nNeue Informationen oder Umfangsänderung:\nEntscheidung: klären / aufteilen / untersuchen / vereinbaren\nZweite Runde (bei neuen Informationen):\nVereinbarte Schätzung (oder Aufschubgrund):\nRisiken und Annahmen der Vereinbarung:\nWo die Entscheidung im Backlog steht:\n\nABSCHLUSS\nWas haben wir neu entdeckt, das nicht aufgeschrieben war?\nWas verbessern wir bei der nächsten Vorbereitung?\n\nNutzung: Je Element ein STORY- und GESPRÄCH-Blatt kopieren.\nPunkte gelten relativ zum Team, nicht als Stunden oder individuelle Leistungsmessung.\nMaterial: https://storyflop.com/recursos/plantilla-refinamiento\n",
@@ -225,7 +423,7 @@
     "tryRound": "Eine Runde ohne geplantes Teamtreffen ausprobieren",
     "tryRoundBody": "Passwort zurücksetzen, drei Perspektiven und eine Meinungsverschiedenheit. Erlebe einen fiktiven Fall und was das Gespräch verändert.",
     "openDemo": "Demo öffnen",
-    "threeGuides": "Drei Anleitungen für eure nächste Sitzung",
+    "threeGuides": "Anleitungen für Vorbereitung und Moderation",
     "readGuide": "Anleitung lesen",
     "takeTemplate": "Eine Refinement-Vorlage zum Mitnehmen",
     "takeTemplateBody": "Ein Arbeitsblatt für Kriterien, Abhängigkeiten, Stimmen und Entscheidungen. Mit ausgefülltem Beispiel und bearbeitbarer Version zum Kopieren, Herunterladen oder Drucken.",
@@ -377,6 +575,20 @@
     "landingGuidesLink": "Anleitungen erkunden",
     "landingTemplateEyebrow": "Vorbereiten",
     "landingTemplateTitle": "Eine Vorlage zum Mitnehmen",
-    "landingTemplateBody": "Kriterien, Fragen und Vereinbarungen notieren. Das Blatt für eure nächste Sitzung kopieren, herunterladen oder drucken."
+    "landingTemplateBody": "Kriterien, Fragen und Vereinbarungen notieren. Das Blatt für eure nächste Sitzung kopieren, herunterladen oder drucken.",
+    "caseStudiesTitle": "Ausgearbeitete Fälle: vom ersten Umfang zur Entscheidung",
+    "beforeLabel": "Vorher",
+    "afterLabel": "Nachher",
+    "decisionLabel": "Warum diese Entscheidung",
+    "fictionalCaseLabel": "Fiktives Lernbeispiel",
+    "labTitle": "Ergebnisse einer Runde erkunden",
+    "labLead": "Vergleiche vorbereitete Beispiele. Die Berechnung folgt StoryFlop-Regeln und entscheidet nicht für das Team.",
+    "labScenario": "Abstimmungsbeispiel",
+    "labScope": "Unterschiedlicher Umfang · 3, 5 und 13",
+    "labOutlier": "Ein Ausreißer · 5, 5, 5 und 21",
+    "labMixed": "Null und eine Frage · 0, 5 und ?",
+    "labUnknown": "Nur Sonderkarten · ? und ☕",
+    "labNote": "Sonderkarten erscheinen in der Verteilung, nicht in Mittelwert oder Median. Null zählt mit. Gleiche Karten sind keine dokumentierte Vereinbarung.",
+    "usageNotice": "Wir messen zusammengefasste Nutzung ohne Besucher zu identifizieren. Do Not Track und Global Privacy Control werden respektiert."
   }
 }

@@ -20,6 +20,13 @@ describe("recursos públicos en todos los idiomas", () => {
       const original = base.guides[index];
       expect(guide.sections.map(section => section.id)).toEqual(original.sections.map(section => section.id));
       expect(guide.sources.map(source => source.url)).toEqual(original.sources.map(source => source.url));
+      expect(guide.cases?.length).toBe(original.cases?.length);
+      guide.cases?.forEach((example, i) => {
+        for (const key of ["title", "before", "after", "decision"] as const) {
+          expect(example[key].trim()).not.toBe("");
+          if (locale !== "es" && key !== "title") expect(example[key]).not.toBe(original.cases![i][key]);
+        }
+      });
       guide.sections.forEach((section, sectionIndex) => {
         expect(section.paragraphs.length).toBe(original.sections[sectionIndex].paragraphs.length);
         expect(section.checklist?.length).toBe(original.sections[sectionIndex].checklist?.length);

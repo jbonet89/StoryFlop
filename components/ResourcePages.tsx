@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { getLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { ResourceShell } from "@/components/ResourceShell";
+import { ResultsLab } from "@/components/ResultsLab";
 import { PlanningDemo } from "@/components/PlanningDemo";
 import { RefinementTemplate } from "@/components/RefinementTemplate";
 import { getResourceContent } from "@/lib/resources";
@@ -39,9 +40,20 @@ export async function GuidePage({ slug }: { slug: string }) {
   const { ui, guides, href } = await content();
   const guide = guides.find(item => item.slug === slug);
   if (!guide) notFound();
+  const locale = await getLocale() as SupportedLocale;
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://storyflop.com";
+  const url = `${siteUrl}${href(`/recursos/${guide.slug}`)}`;
+  const structured = { "@context": "https://schema.org", "@graph": [
+    { "@type": "Article", headline: guide.title, description: guide.description, inLanguage: locale, datePublished: "2026-10-17", dateModified: "2026-10-17", author: { "@type": "Organization", name: "StoryFlop", url: `${siteUrl}${href("/sobre-storyflop")}` }, mainEntityOfPage: url },
+    { "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: ui.resourcesNav, item: `${siteUrl}${href("/recursos")}` }, { "@type": "ListItem", position: 2, name: guide.title, item: url }] },
+  ] };
   return <ResourceShell title={guide.title} description={guide.description} editorial>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structured).replace(/</g, "\\u003c") }} />
     <nav className="resource-toc" aria-label={ui.toc}><strong>{ui.toc}</strong><ol>{guide.sections.map(section => <li key={section.id}><a href={`#${section.id}`}>{section.title}</a></li>)}</ol></nav>
+    {slug === "interpretar-resultados" && <ResultsLab />}
     {guide.sections.map(section => <section id={section.id} key={section.id}><h2>{section.title}</h2>{section.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}{section.checklist && <ul className="resource-checklist">{section.checklist.map(item => <li key={item}>{item}</li>)}</ul>}</section>)}
+    {guide.cases && <section className="worked-cases" aria-labelledby="cases-title"><span className="resource-eyebrow">{ui.fictionalCaseLabel}</span><h2 id="cases-title">{ui.caseStudiesTitle}</h2>{guide.cases.map(example => <article className="worked-case" key={example.title}><h3>{example.title}</h3><div className="case-comparison"><section><h4>{ui.beforeLabel}</h4><p>{example.before}</p></section><section><h4>{ui.afterLabel}</h4><p>{example.after}</p></section></div><p className="case-decision"><strong>{ui.decisionLabel}: </strong>{example.decision}</p></article>)}</section>}
+    <div data-guide-end aria-hidden="true" style={{ height: 1 }} />
     <section className="resource-callout"><h2>{ui.practice}</h2><p><a href={href("/demo")}>{ui.interactiveCase} →</a></p><p><a href={href("/recursos/plantilla-refinamiento")}>{ui.prepareTemplate} →</a></p><p><a href={`/${(await getLocale())}#entry-title`}>{ui.createTeamRoom} →</a></p></section>
     <section><h2>{ui.sources}</h2><p>{ui.sourcesBody}</p><ul>{guide.sources.map(source => <li key={source.url}><a href={source.url} rel="noreferrer">{source.label}</a></li>)}</ul></section>
     <nav className="resource-related" aria-label={ui.otherGuides}><h2>{ui.related}</h2>{guides.filter(item => item.slug !== slug).map(item => <a href={href(`/recursos/${item.slug}`)} key={item.slug}>{item.title} →</a>)}</nav>
