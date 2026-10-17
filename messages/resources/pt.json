@@ -198,6 +198,204 @@
           "url": "https://scrumguides.org/scrum-guide.html#product-backlog"
         }
       ]
+    },
+    {
+      "slug": "dividir-historias",
+      "title": "Dividir histórias grandes sem perder um resultado útil",
+      "description": "Três casos antes e depois para limitar entregas completas, manter qualidade e voltar a estimar com sentido.",
+      "category": "Limitar âmbito",
+      "sections": [
+        {
+          "id": "objetivo",
+          "title": "1. Descubra o que torna a história grande",
+          "paragraphs": [
+            "Uma carta alta pode revelar muitos cenários, dependências em aberto ou um resultado pouco claro. Não existe um limiar de pontos universal para dividir. Perguntem o que ainda não conseguem explicar ou verificar.",
+            "O guia usa um produto fictício de relatórios e encomendas. As decisões ilustram possibilidades, não resultados de clientes StoryFlop. Antes de dividir, escrevam quem precisa do resultado e o que a primeira entrega permite."
+          ]
+        },
+        {
+          "id": "criterios",
+          "title": "2. Preserve um percurso completo",
+          "paragraphs": [
+            "Separar «criar API», «fazer interface» e «testar» pode organizar tarefas sem produzir três histórias úteis. Procurem uma capacidade limitada com as camadas e verificações necessárias para funcionar.",
+            "Limitar não significa retirar permissões, acessibilidade ou testes para baixar um número. Se exportar dados exige verificar quem os pode ver, essa proteção integra a primeira entrega. As restrições devem ser explícitas e aceitáveis para quem utiliza o resultado."
+          ]
+        },
+        {
+          "id": "opciones",
+          "title": "3. Escolha uma restrição explicável",
+          "paragraphs": [
+            "Comecem por um formato, canal, pessoa ou regra de negócio. CSV manual e PDF programado respondem a necessidades diferentes. Confirmem o que entrega valor ou aprendizagem primeiro; não dividam só porque há interfaces separadas.",
+            "Se desconhecem volume ou comportamento do fornecedor, definam investigação com pergunta, responsável e revisão. Os resultados podem alterar a divisão. Não prometam uma entrega limitada que ninguém consiga usar."
+          ]
+        },
+        {
+          "id": "comprobar",
+          "title": "4. Verifique a divisão antes de votar",
+          "paragraphs": [
+            "Descrevam uma demonstração por parte: quem entra, o que faz e o resultado verificado. Incluam um erro e condições de acesso. Se nada pode ser mostrado sem três histórias inacabadas, revejam a proposta.",
+            "Reestimem cada história com a mesma equipa e referências. Não distribuam mecanicamente os pontos originais: a divisão pode revelar trabalho comum ou mudar a solução. As partes não têm de somar a estimativa inicial."
+          ]
+        },
+        {
+          "id": "registrar",
+          "title": "5. Mantenha ligação à necessidade original",
+          "paragraphs": [
+            "Registem âmbito inicial, trabalho adiado e motivos. Mantenham a ligação à necessidade original e dependências entre partes. Revejam se o limite permanece útil quando as prioridades mudam.",
+            "Na próxima sessão, perguntem se a primeira parte é verificável e ajudou a decidir. Se só gerou trabalho incompleto, ajustem o padrão. Guardem pressupostos junto das estimativas no modelo de refinamento."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "Mountain Goat Software: dividir histórias por resultados",
+          "url": "https://www.mountaingoatsoftware.com/agile/user-stories/story-splitting"
+        },
+        {
+          "label": "Guia Scrum: refinamento do Product Backlog",
+          "url": "https://scrumguides.org/scrum-guide.html#product-backlog"
+        }
+      ],
+      "cases": [
+        {
+          "title": "Exportar relatórios",
+          "before": "«Exportar todos os relatórios em CSV e PDF, com programação e todos os filtros». Não se esclarece volume nem quem pode descarregar cada linha.",
+          "after": "Primeira história: descarregar manualmente um relatório em CSV, com colunas acordadas, permissões existentes, limite explícito de volume e erros verificáveis. PDF e programação ficam para depois.",
+          "decision": "Escolhemos formato e percurso completos sem retirar autorização ou testes. Validem que o limite de volume ainda torna a entrega útil."
+        },
+        {
+          "title": "Preferências de notificações",
+          "before": "«Configurar todas as notificações por email, telemóvel e aplicação». Mistura canais e regras.",
+          "after": "Primeira história: desativar o resumo semanal por email, guardar a preferência e verificar que o envio a respeita. Mensagens de recuperação continuam ativas.",
+          "decision": "A preferência funciona de ponta a ponta. Não entregamos um interruptor separado do envio. Priorizamos outros canais depois de confirmar a necessidade."
+        },
+        {
+          "title": "Consultar encomendas por papel",
+          "before": "«Painel para todos os papéis e organizações, com pesquisa, exportação e administração». Permissões e percursos por definir.",
+          "after": "Primeira história: consultar as próprias encomendas com autorização existente, pesquisa por referência e estados vazio e de erro. Administração entre organizações e exportação ficam excluídas.",
+          "decision": "Limitamos pessoa e percurso sem adiar a autorização. Se a política existente não cobre o acesso, esclarecemos isso antes de considerar a história preparada."
+        }
+      ]
+    },
+    {
+      "slug": "interpretar-resultados",
+      "title": "Interpretar média, mediana e distribuição no StoryFlop",
+      "description": "Exemplos calculados para compreender os votos e as decisões que continuam a pertencer à equipa.",
+      "category": "Interpretar",
+      "sections": [
+        {
+          "id": "leer",
+          "title": "1. Comece pelas cartas, não pela média",
+          "paragraphs": [
+            "A distribuição mostra quantas pessoas escolheram cada carta. Antes de resumir, vejam concentração, extremos e dúvidas. A mesma média pode esconder conversas muito diferentes.",
+            "Os exemplos fictícios reproduzem as regras do StoryFlop. Os números ajudam a ler resultados, não a converter pontos em horas ou comparar desempenhos de pessoas e equipas."
+          ]
+        },
+        {
+          "id": "comparar",
+          "title": "2. Média e mediana respondem a perguntas diferentes",
+          "paragraphs": [
+            "Com 3, 5 e 13, a média é 7: soma dividida pela quantidade de votos numéricos. A mediana é 5, o valor central ordenado. A média pode não ser uma carta.",
+            "Nenhuma prova acordo. Perguntem o que o 3 incluiu e o que o 13 viu. Se entenderam trabalhos diferentes, esclarecer âmbito vale mais do que escolher entre 5 e 7."
+          ]
+        },
+        {
+          "id": "dispersion",
+          "title": "3. Um voto afastado merece uma pergunta",
+          "paragraphs": [
+            "Com 5, 5, 5 e 21, média 9 e mediana 5. A mediana descreve o centro sem eliminar a informação do 21. Essa pessoa pode conhecer uma dependência esquecida.",
+            "Perguntem pelo trabalho e risco, não por uma defesa do número. Se a informação altera o âmbito comum, repitam; se não se resolve, registem investigação ou divisão."
+          ]
+        },
+        {
+          "id": "especiales",
+          "title": "4. Zero conta; dúvidas não são números",
+          "paragraphs": [
+            "Com 0, 5 e ?, os votos numéricos são 0 e 5: média e mediana 2,5. Zero participa. A carta ? permanece na distribuição e pede esclarecimento; não é zero.",
+            "Com ? e ☕ não há votos numéricos nem média ou mediana disponíveis. Mesmo cartas especiais iguais exprimem dúvida ou pausa, não uma estimativa de trabalho acordada."
+          ]
+        },
+        {
+          "id": "decidir",
+          "title": "5. Separe o resumo da decisão final",
+          "paragraphs": [
+            "Cartas coincidentes significam votos iguais. Um acordo útil confirma ainda âmbito, qualidade e pressupostos. Registem o motivo da estimativa final e revejam quando a história muda.",
+            "Usem o histórico para recordar a informação que motivou outra ronda. Não classifiquem pessoas pela distância à média. Planning Poker deve ajudar a entender trabalho, não premiar conformidade."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "James Grenning: conversa e estimativa independente",
+          "url": "https://wingman-sw.com/articles/planning-poker"
+        }
+      ]
+    },
+    {
+      "slug": "sesiones-remotas",
+      "title": "Facilitar sessões remotas sem forçar consenso",
+      "description": "Preparação, turnos de conversa e um caso completo para transformar votação remota em decisões claras.",
+      "category": "Facilitar à distância",
+      "sections": [
+        {
+          "id": "preparar",
+          "title": "1. Prepare conversa e papéis",
+          "paragraphs": [
+            "Antes da ligação, selecionem poucas histórias com resultado, critérios e perguntas abertas. Confirmem facilitador, votantes e observadores. Colaboradores podem ajudar a preparar histórias e gerir rondas.",
+            "Acordem um canal de voz ou texto acessível e uma referência. Silêncio não é acordo. Prevejam uma forma explícita de pedir esclarecimento ou pausa."
+          ]
+        },
+        {
+          "id": "votar",
+          "title": "2. Proteja a independência do primeiro voto",
+          "paragraphs": [
+            "Leiam a história e esclareçam compreensão antes das cartas. Não anunciem um número durante a votação. StoryFlop mantém votos privados até à revelação; observadores não contam como votantes.",
+            "Verifiquem se quem deve votar consegue participar. Desconexão ou atraso não é abstenção voluntária. Se a participação muda, confirmem com o grupo como continuar."
+          ]
+        },
+        {
+          "id": "turnos",
+          "title": "3. Dê turnos para compreender, não convencer",
+          "paragraphs": [
+            "Após revelar, convidem os extremos a explicar pressupostos. Perguntem por componentes existentes, testes e dependências desconhecidas. Deem espaço a riscos ainda ausentes da descrição.",
+            "Se argumentos se repetem sem informação nova, resumam o conhecido. Podem esclarecer, dividir ou investigar. Não prolonguem votações até alguém ceder por cansaço."
+          ]
+        },
+        {
+          "id": "ejemplo",
+          "title": "4. Um caso remoto do início ao fim",
+          "paragraphs": [
+            "Neste exercício fictício, três pessoas votam 3, 5 e 13 numa recuperação de palavra-passe. A facilitadora pergunta por email e testes. Confirmam o serviço e acrescentam expiração aos critérios.",
+            "Com âmbito esclarecido, voltam a votar e acordam 5 neste exemplo. Uma dúvida pendente poderia terminar com pergunta e responsável, sem número. O modelo suporta ambas as saídas."
+          ]
+        },
+        {
+          "id": "cerrar",
+          "title": "5. Termine com decisões recuperáveis",
+          "paragraphs": [
+            "Após cada história, leiam âmbito, estimativa se existir, riscos e próxima ação. Transfiram ao backlog. Salas e dados são eliminados após 14 dias inativos; o histórico não substitui registo duradouro.",
+            "No fim, perguntem o que faltava e se todos puderam participar. Usem a resposta na preparação seguinte. Aprender não exige publicar dados da equipa: casos públicos podem ser exercícios fictícios identificados."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "James Grenning: propósito da votação independente",
+          "url": "https://wingman-sw.com/articles/planning-poker"
+        },
+        {
+          "label": "Guia Scrum: transparência e inspeção do trabalho",
+          "url": "https://scrumguides.org/scrum-guide.html"
+        }
+      ],
+      "cases": [
+        {
+          "title": "Do silêncio a uma decisão visível",
+          "before": "Após 3, 5 e 13, propõe-se «ficar com 5» sem ouvir os extremos. Duas pessoas calam-se e o âmbito permanece ambíguo.",
+          "after": "A facilitadora dá turnos, confirma email existente, inclui testes e pede nova votação independente. Depois lê a decisão e regista-a na tarefa.",
+          "decision": "A mudança importante é tornar pressupostos e acordo visíveis. O 5 pertence ao exercício, não significa que uma sessão real tenha de terminar nesse valor."
+        }
+      ]
     }
   ],
   "templateText": "MODELO DE REFINAMENTO · STORYFLOP\n\nSessão / data:\nParticipantes e facilitador:\nHistória de referência da equipa:\n\nHISTÓRIA\nTítulo:\nPessoa utilizadora e resultado esperado:\nCritérios de aceitação (comportamentos verificáveis):\n1.\n2.\n3.\nFora do âmbito:\nDependências e componentes disponíveis:\nTestes, revisão e condições de qualidade:\nPerguntas abertas / responsável / próxima revisão:\n\nCONVERSA\nVotos iniciais:\nPressupostos dos votos menor e maior:\nInformação nova ou alteração do âmbito:\nDecisão: esclarecer / dividir / investigar / acordar\nSegunda ronda (se acrescentar informação):\nEstimativa acordada (ou motivo para adiar):\nRiscos e pressupostos do acordo:\nOnde fica registada a decisão no backlog:\n\nFECHO\nO que descobrimos que não estava escrito?\nO que melhoraremos na próxima preparação?\n\nUso: copie uma ficha HISTÓRIA e CONVERSA por elemento.\nOs pontos são relativos à equipa; não são horas nem medem desempenho individual.\nRecurso: https://storyflop.com/recursos/plantilla-refinamiento\n",
@@ -225,7 +423,7 @@
     "tryRound": "Experimente uma ronda sem organizar uma reunião",
     "tryRoundBody": "Recuperação de palavra-passe, três perspetivas e um desacordo. Explore um caso fictício e veja o que muda depois da conversa.",
     "openDemo": "Abrir a demonstração",
-    "threeGuides": "Três guias para a próxima sessão",
+    "threeGuides": "Guias para preparar e facilitar as suas sessões",
     "readGuide": "Ler o guia",
     "takeTemplate": "Leve um modelo de refinamento",
     "takeTemplateBody": "Uma ficha para critérios, dependências, votos e decisões. Inclui um exemplo preenchido e uma versão editável para copiar, descarregar ou imprimir.",
@@ -378,6 +576,20 @@
     "landingTemplateEyebrow": "Prepare",
     "landingTemplateTitle": "Um modelo para levar consigo",
     "landingTemplateBody": "Escreva critérios, perguntas e acordos. Copie, descarregue ou imprima a ficha da próxima sessão.",
+    "caseStudiesTitle": "Casos desenvolvidos: do âmbito inicial a uma decisão",
+    "beforeLabel": "Antes",
+    "afterLabel": "Depois",
+    "decisionLabel": "Porquê esta decisão",
+    "fictionalCaseLabel": "Caso didático fictício",
+    "labTitle": "Explore os resultados de uma ronda",
+    "labLead": "Compare exemplos preparados. Os cálculos seguem as regras do StoryFlop; não decidem pela equipa.",
+    "labScenario": "Exemplo de votação",
+    "labScope": "Âmbitos diferentes · 3, 5 e 13",
+    "labOutlier": "Um voto afastado · 5, 5, 5 e 21",
+    "labMixed": "Zero e uma dúvida · 0, 5 e ?",
+    "labUnknown": "Apenas cartas especiais · ? e ☕",
+    "labNote": "As cartas especiais aparecem na distribuição, mas não na média nem na mediana. O zero conta. Cartas iguais não são um acordo documentado.",
+    "usageNotice": "Medimos utilização agregada sem identificar visitantes. Respeitamos Do Not Track e Global Privacy Control.",
     "ownerBio": "Sou engenheiro e arquiteto de software, com mais de dez anos de experiência. Criei o StoryFlop e faço a sua manutenção para facilitar as sessões de estimativa e torná-las mais próximas e divertidas.",
     "ownerLinkedIn": "Conheça-me no LinkedIn",
     "promiseRegistration": "Sem registo",

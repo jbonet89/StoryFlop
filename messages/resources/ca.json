@@ -198,6 +198,204 @@
           "url": "https://scrumguides.org/scrum-guide.html#product-backlog"
         }
       ]
+    },
+    {
+      "slug": "dividir-historias",
+      "title": "Dividir històries grans sense perdre un resultat útil",
+      "description": "Tres casos abans i després per acotar lliuraments complets, mantenir qualitat i tornar a estimar amb sentit.",
+      "category": "Acotar",
+      "sections": [
+        {
+          "id": "objetivo",
+          "title": "1. Descobreix què fa gran la història",
+          "paragraphs": [
+            "Una carta alta pot revelar molts escenaris, dependències obertes o un resultat ambigu. No hi ha un llindar de punts universal per dividir. Pregunteu què no podeu explicar o comprovar encara.",
+            "La guia utilitza un producte fictici d'informes i comandes. Les decisions il·lustren possibilitats, no resultats de clients de StoryFlop. Abans de dividir, escriviu qui necessita el resultat i què permetrà el primer lliurament."
+          ]
+        },
+        {
+          "id": "criterios",
+          "title": "2. Conserva un recorregut complet",
+          "paragraphs": [
+            "Separar «crear l'API», «fer la pantalla» i «provar» pot organitzar tasques sense produir tres històries útils. Busqueu una capacitat acotada amb les capes i comprovacions necessàries per funcionar.",
+            "Acotar no és treure permisos, accessibilitat o proves per abaixar una xifra. Si exportar dades exigeix comprovar qui pot veure-les, aquesta protecció forma part del primer lliurament. Les restriccions han de ser explícites i acceptables per qui l'utilitzarà."
+          ]
+        },
+        {
+          "id": "opciones",
+          "title": "3. Tria una restricció explicable",
+          "paragraphs": [
+            "Comenceu per un format, canal, persona o regla de negoci. CSV manual i PDF programat resolen necessitats diferents. Confirmeu què aporta valor o aprenentatge primer; no dividiu només perquè hi ha pantalles separades.",
+            "Si desconeixeu volum o comportament del proveïdor, definiu investigació amb pregunta, responsable i revisió. El resultat pot canviar la divisió. No prometeu un lliurament limitat que ningú no pugui utilitzar."
+          ]
+        },
+        {
+          "id": "comprobar",
+          "title": "4. Comprova la divisió abans de votar",
+          "paragraphs": [
+            "Descriviu una demostració per part: qui entra, què fa i quin resultat comprova. Incloeu un error i condicions d'accés. Si mostrar res depèn de tres històries inacabades, reviseu la proposta.",
+            "Reestimeu amb el mateix equip i referències. No repartiu mecànicament els punts originals: dividir pot descobrir feina comuna, eliminar supòsits o canviar la solució. Les parts no han de sumar la xifra inicial."
+          ]
+        },
+        {
+          "id": "registrar",
+          "title": "5. Mantén el vincle amb la necessitat original",
+          "paragraphs": [
+            "Registreu l'abast inicial, el que s'ajorna i els motius. Manteniu la referència original i les dependències entre parts. Reviseu si el límit continua sent útil quan canvien les prioritats.",
+            "A la pròxima sessió, pregunteu si la primera part es pot comprovar i ha ajudat a decidir. Si només ha generat feina a mitges, ajusteu el patró. Guardeu els supòsits amb les estimacions a la plantilla."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "Mountain Goat Software: dividir històries per resultats",
+          "url": "https://www.mountaingoatsoftware.com/agile/user-stories/story-splitting"
+        },
+        {
+          "label": "Guia Scrum: refinament del Product Backlog",
+          "url": "https://scrumguides.org/scrum-guide.html#product-backlog"
+        }
+      ],
+      "cases": [
+        {
+          "title": "Exportar informes",
+          "before": "«Exportar tots els informes en CSV i PDF, amb programació i tots els filtres». No s'aclareix el volum ni qui pot descarregar cada fila.",
+          "after": "Primera història: descarregar manualment un informe en CSV, amb columnes acordades, permisos existents, límit explícit de volum i errors verificables. PDF i programació queden per després.",
+          "decision": "Triem un format i un recorregut complets mantenint autorització i proves. Valideu que el límit de volum encara fa útil el lliurament."
+        },
+        {
+          "title": "Preferències de notificacions",
+          "before": "«Configurar totes les notificacions per correu, mòbil i dins l'aplicació». Barreja canals i regles.",
+          "after": "Primera història: desactivar el resum setmanal per correu, conservar la preferència i verificar que l'enviament la respecta. Els missatges de recuperació continuen actius.",
+          "decision": "La preferència funciona de principi a fi. No lliurem un interruptor separat de l'enviament. Prioritzem els altres canals després de confirmar la necessitat."
+        },
+        {
+          "title": "Consultar comandes per rol",
+          "before": "«Un panell per a tots els rols i organitzacions, amb cerca, exportació i administració». Permisos i fluxos per definir.",
+          "after": "Primera història: consultar les pròpies comandes amb autorització existent, cerca per referència i estats buit i d'error. Administració entre organitzacions i exportació queden fora.",
+          "decision": "Acotem persona i recorregut sense ajornar l'autorització. Si la política existent no cobreix l'accés, aclarim-ho abans de considerar preparada la història."
+        }
+      ]
+    },
+    {
+      "slug": "interpretar-resultados",
+      "title": "Interpretar mitjana, mediana i distribució a StoryFlop",
+      "description": "Exemples calculats per entendre els vots i les decisions que continuen corresponent a l'equip.",
+      "category": "Interpretar",
+      "sections": [
+        {
+          "id": "leer",
+          "title": "1. Comença per les cartes, no pel promig",
+          "paragraphs": [
+            "La distribució mostra quantes persones han triat cada carta. Abans del resum, observeu concentració, extrems i dubtes. La mateixa mitjana pot amagar converses molt diferents.",
+            "Els exemples ficticis reprodueixen les regles de StoryFlop. Els números ajuden a llegir resultats, no a convertir punts en hores o comparar rendiments de persones i equips."
+          ]
+        },
+        {
+          "id": "comparar",
+          "title": "2. Mitjana i mediana responen preguntes diferents",
+          "paragraphs": [
+            "Amb 3, 5 i 13, la mitjana és 7: suma dividida pel nombre de vots numèrics. La mediana és 5, el valor central ordenat. La mitjana pot no ser una carta.",
+            "Cap valor demostra acord. Pregunteu què incloïa el 3 i què veia el 13. Si entenien feines diferents, aclarir l'abast val més que triar entre 5 i 7."
+          ]
+        },
+        {
+          "id": "dispersion",
+          "title": "3. Un vot allunyat mereix una pregunta",
+          "paragraphs": [
+            "Amb 5, 5, 5 i 21, mitjana 9 i mediana 5. La mediana descriu el centre, no elimina la informació del 21. Pot conèixer una dependència ignorada.",
+            "Pregunteu per feina i risc, no per defensar una xifra. Si la informació canvia l'abast, repetiu; si no es resol, registreu investigació o divisió."
+          ]
+        },
+        {
+          "id": "especiales",
+          "title": "4. El zero compta; els dubtes no són números",
+          "paragraphs": [
+            "Amb 0, 5 i ?, els vots numèrics són 0 i 5: mitjana i mediana 2,5. El zero participa. La ? continua a la distribució i demana aclariment; no és zero.",
+            "Amb ? i ☕ no hi ha vots numèrics ni mitjana o mediana disponibles. Fins i tot cartes especials iguals expressen dubte o pausa, no una estimació de feina acordada."
+          ]
+        },
+        {
+          "id": "decidir",
+          "title": "5. Separa el resum de la decisió final",
+          "paragraphs": [
+            "Cartes coincidents volen dir vots iguals. L'acord útil també confirma abast, qualitat i supòsits. Registreu el motiu de l'estimació final i reviseu-la si canvia la història.",
+            "Utilitzeu l'historial per recordar què va motivar una altra ronda. No classifiqueu persones per la distància a la mitjana. Planning Poker ha d'ajudar a entendre feina, no premiar conformitat."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "James Grenning: conversa i estimació independent",
+          "url": "https://wingman-sw.com/articles/planning-poker"
+        }
+      ]
+    },
+    {
+      "slug": "sesiones-remotas",
+      "title": "Facilitar sessions remotes sense forçar el consens",
+      "description": "Preparació, torns de conversa i un cas complet per convertir votació remota en decisions clares.",
+      "category": "Facilitar a distància",
+      "sections": [
+        {
+          "id": "preparar",
+          "title": "1. Prepara la conversa i els rols",
+          "paragraphs": [
+            "Abans de l'enllaç, trieu poques històries amb resultat, criteris i preguntes. Confirmeu facilitador, votants i observadors. Els col·laboradors poden preparar històries i gestionar rondes amb l'organitzador.",
+            "Acordeu un canal de veu o text accessible i una referència. Silenci no és acord. Preveieu una manera explícita de demanar aclariments o pausa."
+          ]
+        },
+        {
+          "id": "votar",
+          "title": "2. Protegeix la independència del primer vot",
+          "paragraphs": [
+            "Llegiu la història i aclarim-ne la comprensió abans de les cartes. No anuncieu una xifra durant la votació. StoryFlop manté els vots privats fins al revelat; observadors no compten com a votants.",
+            "Verifiqueu que qui ha de votar pot participar. Una desconnexió o demora no és abstenció voluntària. Si la participació canvia, confirmeu amb el grup com continuar."
+          ]
+        },
+        {
+          "id": "turnos",
+          "title": "3. Dona torns per entendre, no per convèncer",
+          "paragraphs": [
+            "Després de revelar, convideu els extrems a explicar supòsits. Pregunteu per components existents, proves i dependències desconegudes. Doneu espai als riscos absents de la descripció.",
+            "Si es repeteixen arguments sense informació nova, resumiu el que sabeu. Podeu aclarir, dividir o investigar. No allargueu les rondes fins que algú cedeixi per cansament."
+          ]
+        },
+        {
+          "id": "ejemplo",
+          "title": "4. Un cas remot de principi a fi",
+          "paragraphs": [
+            "En aquest exercici fictici, tres persones voten 3, 5 i 13 per recuperar una contrasenya. La facilitadora pregunta pel correu i les proves. Confirmen el servei i afegeixen caducitat als criteris.",
+            "Amb l'abast aclarit, tornen a votar i acorden 5 en aquest exemple. Un dubte pendent podria acabar amb pregunta i responsable, sense xifra. La plantilla recull totes dues sortides."
+          ]
+        },
+        {
+          "id": "cerrar",
+          "title": "5. Tanca amb decisions recuperables",
+          "paragraphs": [
+            "Després de cada història, llegiu abast, estimació si n'hi ha, riscos i següent acció. Traslladeu-ho al backlog. Sales i dades s'eliminen després de 14 dies inactius; l'historial no substitueix un registre durador.",
+            "Al final, pregunteu què faltava i si tothom ha pogut participar. Utilitzeu-ho per preparar la pròxima sessió. Aprendre no exigeix publicar dades de l'equip: els casos públics poden ser exercicis ficticis identificats."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "James Grenning: propòsit de la votació independent",
+          "url": "https://wingman-sw.com/articles/planning-poker"
+        },
+        {
+          "label": "Guia Scrum: transparència i inspecció de la feina",
+          "url": "https://scrumguides.org/scrum-guide.html"
+        }
+      ],
+      "cases": [
+        {
+          "title": "Del silenci a una decisió visible",
+          "before": "Després de 3, 5 i 13, es proposa «quedar-nos amb 5» sense escoltar els extrems. Dues persones callen i l'abast segueix ambigu.",
+          "after": "La facilitadora dona torns, confirma correu existent, inclou proves i demana una nova votació independent. Després llegeix la decisió i la registra a la tasca.",
+          "decision": "El canvi important és fer visibles supòsits i acord. El 5 pertany a l'exercici, no vol dir que una sessió real hagi d'acabar amb aquesta xifra."
+        }
+      ]
     }
   ],
   "templateText": "PLANTILLA DE REFINAMENT · STORYFLOP\n\nSessió / data:\nParticipants i facilitador:\nHistòria de referència de l'equip:\n\nHISTÒRIA\nTítol:\nPersona usuària i resultat esperat:\nCriteris d'acceptació (comportaments comprovables):\n1.\n2.\n3.\nFora d'abast:\nDependències i components disponibles:\nProves, revisió i condicions de qualitat:\nPreguntes obertes / responsable / pròxima revisió:\n\nCONVERSA\nVots inicials:\nSupòsits del vot menor i major:\nInformació nova o canvi d'abast:\nDecisió: aclarir / dividir / investigar / acordar\nSegona ronda (si aporta informació):\nEstimació acordada (o motiu per ajornar):\nRiscos i supòsits de l'acord:\nOn es registra la decisió al backlog:\n\nTANCAMENT\nQuè hem descobert que no estava escrit?\nQuè millorarem en la pròxima preparació?\n\nÚs: copia una fitxa HISTÒRIA i CONVERSA per element.\nEls punts són relatius a l'equip; no són hores ni mesuren rendiment individual.\nRecurs: https://storyflop.com/recursos/plantilla-refinamiento\n",
@@ -225,7 +423,7 @@
     "tryRound": "Prova una ronda sense preparar una reunió",
     "tryRoundBody": "Una recuperació de contrasenya, tres perspectives i un desacord. Recorre un cas fictici i comprova què canvia després de conversar.",
     "openDemo": "Obre la demostració",
-    "threeGuides": "Tres guies per a la pròxima sessió",
+    "threeGuides": "Guies per preparar i facilitar les sessions",
     "readGuide": "Llegeix la guia",
     "takeTemplate": "Emporta't una plantilla de refinament",
     "takeTemplateBody": "Una fitxa per a criteris, dependències, vots i decisions. Inclou un exemple emplenat i una versió editable per copiar, descarregar o imprimir.",
@@ -378,6 +576,20 @@
     "landingTemplateEyebrow": "Prepara",
     "landingTemplateTitle": "Una plantilla per emportar-te",
     "landingTemplateBody": "Escriu criteris, preguntes i acords. Copia, descarrega o imprimeix la fitxa de la pròxima sessió.",
+    "caseStudiesTitle": "Casos treballats: de l'abast inicial a una decisió",
+    "beforeLabel": "Abans",
+    "afterLabel": "Després",
+    "decisionLabel": "Per què aquesta decisió",
+    "fictionalCaseLabel": "Cas didàctic fictici",
+    "labTitle": "Explora els resultats d'una ronda",
+    "labLead": "Compara exemples preparats. Els càlculs segueixen les regles de StoryFlop; no decideixen per l'equip.",
+    "labScenario": "Exemple de votació",
+    "labScope": "Abasts diferents · 3, 5 i 13",
+    "labOutlier": "Un vot allunyat · 5, 5, 5 i 21",
+    "labMixed": "Zero i un dubte · 0, 5 i ?",
+    "labUnknown": "Només cartes especials · ? i ☕",
+    "labNote": "Les cartes especials apareixen a la distribució, però no a la mitjana ni a la mediana. El zero sí que compta. Cartes iguals no són un acord documentat.",
+    "usageNotice": "Mesurem l'ús agregat sense identificar visitants. Respectem Do Not Track i Global Privacy Control.",
     "ownerBio": "Soc enginyer i arquitecte de programari, amb més de deu anys d’experiència. He creat StoryFlop i m’encarrego del manteniment per facilitar les sessions d’estimació i donar-los un toc més proper i divertit.",
     "ownerLinkedIn": "Coneix-me a LinkedIn",
     "promiseRegistration": "Sense registre",

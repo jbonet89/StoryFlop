@@ -135,3 +135,10 @@ Jaume puede revisar los mensajes en **Supabase → Table Editor → feedback_sub
 ## Estado del proyecto
 
 El proyecto está en desarrollo activo. Antes de utilizarlo en producción, revisa las políticas de conservación de datos, límites de Supabase y disponibilidad legal del nombre de marca para tu jurisdicción.
+
+
+## Recursos y métricas editoriales
+
+Las seis guías, demo y plantilla están disponibles en los nueve idiomas. Consulta [la revisión de segunda fase](docs/phase-two-review.md) para rutas, eventos, privacidad y estado de AdSense/Search Console.
+
+La medición agregada requiere `SUPABASE_SERVICE_ROLE_KEY` en el servidor y la migración `20261017182914_resource_usage_daily.sql`. No publicar esta clave en el navegador. Informe del propietario: `node scripts/resource-usage-report.mjs 30`. Auditoría pública: `node scripts/audit-resource-site.mjs https://storyflop.com`. Para probar contra un servidor local alternativo, configurar `PLAYWRIGHT_BASE_URL`.

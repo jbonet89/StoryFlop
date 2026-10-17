@@ -2,7 +2,7 @@
 
 ## Recursos públicos · primera fase (17 de octubre de 2026)
 
-- `/recursos`: índice editorial con tres guías, demo y plantilla.
+- `/recursos`: índice editorial con seis guías, demo y plantilla.
 - `/recursos/primera-sesion`: preparación, roles, votación y registro del acuerdo.
 - `/recursos/resolver-desacuerdos`: caso ficticio trabajado de votos 3, 5 y 13.
 - `/recursos/historias-listas-para-estimar`: tres ejemplos originales con alcance, criterios y preguntas.
@@ -16,9 +16,13 @@ Los recursos no cargan el script ni unidades de AdSense. La navegación desde la
 
 Al cambiar una guía, mantener su fecha de revisión y la fecha correspondiente del sitemap. Los casos ficticios deben seguir identificados como tales. No atribuir experiencia, certificaciones, resultados o testimonios que no estén acreditados.
 
-Los catálogos editoriales viven en `messages/resources/{locale}.json`, sin fallback parcial entre idiomas. `tests/resource-localization.test.ts` valida cobertura y estructura de cada guía, textos, plantillas y parámetros de interpolación. `e2e/resource-localization.spec.ts` recorre las siete páginas de los nueve idiomas sin JavaScript, comprueba enlaces de idioma y prueba demo, descarga y selector en escritorio y móvil.
+Los catálogos editoriales viven en `messages/resources/{locale}.json`, sin fallback parcial entre idiomas. `tests/resource-localization.test.ts` valida cobertura y estructura de cada guía, textos, plantillas y parámetros de interpolación. `e2e/resource-localization.spec.ts` recorre las diez páginas de los nueve idiomas sin JavaScript, comprueba enlaces de idioma y prueba demo, descarga y selector en escritorio y móvil.
 
 Verificación: `e2e/resources.spec.ts` cubre la demo, la descarga del texto editado, la impresión, lectura sin JavaScript, idioma, canónicas, sitemap, desbordamiento y descarte del runtime publicitario en escritorio y móvil.
+
+## Segunda fase
+
+Tres guías nuevas, casos antes/después, comparador y métricas agregadas: ver [informe de segunda fase](phase-two-review.md). Se ha consultado el rechazo vigente en AdSense. La cuenta de Search Console no tiene acceso a la propiedad del dominio; la auditoría pública no prueba indexación.
 
 ## Configuración publicitaria existente
 

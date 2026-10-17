@@ -3,6 +3,8 @@
 import { useState, type FormEvent } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import type { SupportedLocale } from "@/i18n/config";
+import { useClientReady } from "@/lib/use-client-ready";
+import { recordResourceUsage } from "@/lib/resource-usage-client";
 import { resourceHref } from "@/lib/resource-links";
 import { ZodError } from "zod";
 import { ArrowRight, Check, CircleCheck, Copy, EyeOff, Globe2, History, Infinity, Layers3, ListPlus, LockKeyhole, Radio, ShieldCheck, Sparkles, UserPlus, UsersRound, Zap } from "lucide-react";
@@ -18,6 +20,7 @@ import { getErrorCode } from "@/lib/errors";
 import { roomApi } from "../api";
 
 export function LandingPage() {
+  const ready = useClientReady();
   const t = useTranslations("Home");
   const r = useTranslations("Resources");
   const locale = useLocale() as SupportedLocale;
@@ -41,6 +44,7 @@ export function LandingPage() {
         const name = roomNameSchema.parse(roomName);
         const person = displayNameSchema.parse(displayName);
         const result = await roomApi.createRoom(name, person, avatar);
+        recordResourceUsage({ event: "room_created", locale, resource: "home" });
         // A new document discards Auto ads and their runtime before entering a room.
         window.location.assign(`/sala/${result.code}`);
       } else {
@@ -66,7 +70,7 @@ export function LandingPage() {
         </div>
       </section>
       <section className="entry-card" aria-labelledby="entry-title">
-        <div className="mode-tabs"><button className={mode === "create" ? "active" : ""} onClick={() => { setMode("create"); setError(""); }}>{t("createRoom")}</button><button className={mode === "join" ? "active" : ""} onClick={() => { setMode("join"); setError(""); }}>{t("joinWithCode")}</button></div>
+        <div className="mode-tabs"><button disabled={!ready} className={mode === "create" ? "active" : ""} onClick={() => { setMode("create"); setError(""); }}>{t("createRoom")}</button><button disabled={!ready} className={mode === "join" ? "active" : ""} onClick={() => { setMode("join"); setError(""); }}>{t("joinWithCode")}</button></div>
         <form onSubmit={submit}>
           <div className="card-heading"><h2 id="entry-title">{mode === "create" ? t("prepareTable") : t("joinTeam")}</h2><p>{mode === "create" ? t("createDetail") : t("joinDetail")}</p></div>
           {mode === "create" ? <>
@@ -75,7 +79,7 @@ export function LandingPage() {
             <AvatarPicker value={avatar} onChange={setAvatar} />
           </> : <label>{t("roomCode")}<input autoFocus className="code-input" value={code} onChange={e => setCode(e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 8))} placeholder="K7M4P9Q2" maxLength={8} /></label>}
           {error && <p className="form-error" role="alert">{error}</p>}
-          <button className="primary-button" disabled={pending}>{pending ? t("preparing") : mode === "create" ? t("createRoom") : t("enterRoom")}<ArrowRight size={18} /></button>
+          <button className="primary-button" disabled={pending || !ready}>{pending ? t("preparing") : mode === "create" ? t("createRoom") : t("enterRoom")}<ArrowRight size={18} /></button>
           <p className="privacy-note"><Check size={14} /> {t("privacy")}</p>
         </form>
       </section>

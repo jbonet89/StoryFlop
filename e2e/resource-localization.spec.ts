@@ -7,7 +7,7 @@ import type { ResourceContent } from "../lib/resources";
 for (const locale of supportedLocales) {
   const content: ResourceContent = JSON.parse(readFileSync(`messages/resources/${locale}.json`, "utf8"));
   const { ui } = content;
-  test(`publica siete páginas completas sin JavaScript y enlaces de idioma en ${locale}`, async ({ browser }, testInfo) => {
+  test(`publica todas las páginas completas sin JavaScript y enlaces de idioma en ${locale}`, async ({ browser }, testInfo) => {
     const context = await browser.newContext({ javaScriptEnabled: false, locale: "es-ES", viewport: testInfo.project.use.viewport });
     const page = await context.newPage();
     const paths = ["/recursos", ...content.guides.map(guide => `/recursos/${guide.slug}`), "/recursos/plantilla-refinamiento", "/demo", "/sobre-storyflop"];

@@ -198,6 +198,204 @@
           "url": "https://scrumguides.org/scrum-guide.html#product-backlog"
         }
       ]
+    },
+    {
+      "slug": "dividir-historias",
+      "title": "Istorio handiak zatitzea emaitza erabilgarria galdu gabe",
+      "description": "Aurretik eta ondorengo hiru kasu, entrega osoak mugatzeko, kalitatea mantentzeko eta zentzuz berriz estimatzeko.",
+      "category": "Mugatu",
+      "sections": [
+        {
+          "id": "objetivo",
+          "title": "1. Aurkitu zerk egiten duen istorioa handia",
+          "paragraphs": [
+            "Karta altuak agertoki asko, mendekotasun irekiak edo emaitza lausoa erakuts ditzake. Ez dago talde guztientzako puntu-mugarik zatitzeko. Galdetu zer ezin duzuen oraindik azaldu edo egiaztatu.",
+            "Gidak txosten eta eskaeren fikziozko produktua erabiltzen du. Erabakiek aukerak azaltzen dituzte, ez StoryFlop bezeroen emaitzak. Zatitu aurretik idatzi nork behar duen emaitza eta zer ahalbidetzen duen lehen entregak."
+          ]
+        },
+        {
+          "id": "criterios",
+          "title": "2. Mantendu ibilbide osoa",
+          "paragraphs": [
+            "«APIa sortu», «pantaila egin» eta «probatu» bereizteak zereginak antolatzen ditu, baina ez beti hiru istorio erabilgarri sortu. Bilatu funtzionatzeko geruzak eta egiaztapenak dituen gaitasun mugatua.",
+            "Mugatzea ez da baimenak, irisgarritasuna edo probak kentzea zenbakia jaisteko. Esportazioak datuak nork ikus ditzakeen egiaztatu behar badu, babesa lehen entregaren parte da. Mugak esplizituak eta erabiltzaileentzat onargarriak izan behar dira."
+          ]
+        },
+        {
+          "id": "opciones",
+          "title": "3. Aukeratu azal daitekeen muga",
+          "paragraphs": [
+            "Hasi formatu, kanal, erabiltzaile mota edo negozio-arau batekin. Eskuzko CSVk eta programatutako PDFk behar desberdinak dituzte. Baieztatu zerk ematen duen lehen balioa edo ikasketa; ez zatitu pantaila bereiziak daudelako soilik.",
+            "Bolumena edo hornitzailea ezezaguna bada, zehaztu ikerketa galdera, arduradun eta berrikuspenarekin. Emaitzek zatiketa alda dezakete. Ez agindu inork erabili ezin duen entrega mugatua."
+          ]
+        },
+        {
+          "id": "comprobar",
+          "title": "4. Egiaztatu zatiketa bozkatu aurretik",
+          "paragraphs": [
+            "Deskribatu erakustaldi bat zati bakoitzeko: nor sartzen den, zer egiten duen eta emaitza nola egiaztatzen duen. Sartu errorea eta sarbide-baldintzak. Dena erakusteko hiru istorio amaitu gabe behar badira, berrikusi.",
+            "Estimatu berriro talde eta erreferentzia berekin. Ez banatu jatorrizko puntuak mekanikoki: zatitzeak lan komuna edo bestelako soluzioa aurki dezake. Zatien baturak ez du hasierako zenbakia izan behar."
+          ]
+        },
+        {
+          "id": "registrar",
+          "title": "5. Mantendu jatorrizko beharrarekiko lotura",
+          "paragraphs": [
+            "Jaso lehen norainokoa, gerorako lana eta arrazoiak. Mantendu beharraren erreferentzia eta zatien mendekotasunak. Berrikusi muga erabilgarria den lehentasunak aldatzen direnean.",
+            "Hurrengo saioan galdetu lehen zatia egiaztagarria den eta erabakitzen lagundu duen. Lan erdia besterik ez badu sortu, egokitu eredua. Gorde aurresuposizioak estimazioekin txantiloian."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "Mountain Goat Software: istorioak emaitzen arabera zatitzea",
+          "url": "https://www.mountaingoatsoftware.com/agile/user-stories/story-splitting"
+        },
+        {
+          "label": "Scrum Gida: Product Backlog-aren fintzea",
+          "url": "https://scrumguides.org/scrum-guide.html#product-backlog"
+        }
+      ],
+      "cases": [
+        {
+          "title": "Txostenak esportatzea",
+          "before": "«Txosten guztiak CSV eta PDFn, programazioarekin eta iragazki guztiekin». Bolumena eta errenkaden sarbide-baimenak ez daude argi.",
+          "after": "Lehen istorioa: txosten zehatza eskuz CSVn deskargatzea, adostutako zutabe, egungo baimen, bolumen-muga esplizitu eta errore egiaztagarriekin. PDF eta programazioa gero.",
+          "decision": "Formatu eta ibilbide osoa aukeratzen ditugu, baimenak edo probak kendu gabe. Egiaztatu bolumen-mugarekin entrega oraindik erabilgarria den."
+        },
+        {
+          "title": "Jakinarazpenen hobespenak",
+          "before": "«Jakinarazpen guztiak posta, mugikor eta aplikazioan konfiguratu». Kanalak eta arauak nahasten ditu.",
+          "after": "Lehen istorioa: asteko posta-laburpena desgaitu, hobespena gorde eta bidalketak errespetatzen duela egiaztatu. Berreskuratze-mezuek aktibo jarraitzen dute.",
+          "decision": "Hobespenak osorik funtzionatzen du. Ez dugu bidalketatik bereizitako etengailu bisualik entregatzen. Beste kanalak beharra baieztatu ondoren lehenesten dira."
+        },
+        {
+          "title": "Eskaerak rolaren arabera ikustea",
+          "before": "«Rol eta erakunde guztientzako panela, bilaketa, esportazio eta administrazioarekin». Baimenak eta ibilbideak zehaztu gabe.",
+          "after": "Lehen istorioa: norberaren eskaerak ikusi egungo baimenekin, erreferentzia-bilaketarekin eta huts/errore egoerekin. Erakundeen arteko administrazioa eta esportazioa kanpoan.",
+          "decision": "Pertsona eta ibilbidea mugatzen ditugu baimenak atzeratu gabe. Egungo politikak sarbidea estaltzen ez badu, argitu istorioa prest dagoela esan aurretik."
+        }
+      ]
+    },
+    {
+      "slug": "interpretar-resultados",
+      "title": "Batezbestekoa, mediana eta banaketa StoryFlop-en ulertzea",
+      "description": "Kalkulatutako adibideak botoak eta taldeari dagozkion erabakiak ulertzeko.",
+      "category": "Interpretatu",
+      "sections": [
+        {
+          "id": "leer",
+          "title": "1. Hasi kartekin, ez batezbestekoarekin",
+          "paragraphs": [
+            "Banaketak karta bakoitza zenbat pertsonak aukeratu duten erakusten du. Laburpenaren aurretik ikusi multzoak, muturrak eta zalantzak. Batezbesteko berak elkarrizketa desberdinak ezkuta ditzake.",
+            "Fikziozko adibideek StoryFlop-en kalkulu-arauak erabiltzen dituzte. Zenbakiek emaitzak irakurtzen laguntzen dute, ez puntuak ordu bihurtzen edo errendimendua alderatzen."
+          ]
+        },
+        {
+          "id": "comparar",
+          "title": "2. Batezbestekoak eta medianak galdera desberdinak erantzuten dituzte",
+          "paragraphs": [
+            "3, 5 eta 13rekin batezbestekoa 7 da: batura zenbakizko boto kopuruaz zatituta. Mediana 5 da, ordenatutako erdiko balioa. Batezbestekoa ez da beti karta bat.",
+            "Ez batek ez besteak ez du adostasuna frogatzen. Galdetu zer sartzen duen 3ak eta zer ikusten duen 13ak. Lan desberdina ulertzen badute, norainokoa argitzea 5 eta 7 artean aukeratzea baino baliotsuagoa da."
+          ]
+        },
+        {
+          "id": "dispersion",
+          "title": "3. Urruneko botoak galdera merezi du",
+          "paragraphs": [
+            "5, 5, 5 eta 21ekin batezbestekoa 9 eta mediana 5 dira. Medianak erdigunea azaltzen du, baina ez du 21aren informazioa kentzen. Agian ahaztutako mendekotasuna ezagutzen du.",
+            "Galdetu lanaz eta arriskuaz, ez zenbakiaren defentsaz. Informazioak norainokoa aldatzen badu, bozkatu berriro; ezin bada argitu, jaso ikerketa edo zatiketa."
+          ]
+        },
+        {
+          "id": "especiales",
+          "title": "4. Zeroak balio du; zalantzak ez dira zenbakiak",
+          "paragraphs": [
+            "0, 5 eta ? izanik, zenbakizko botoak 0 eta 5 dira: batezbestekoa eta mediana 2,5. Zeroa sartzen da. ? banaketan dago eta argitzea eskatzen du; ez da zero.",
+            "? eta ☕ bakarrik badira, ez dago zenbakizko botorik, ez batezbestekorik edo medianarik. Karta berezi berdinek ere zalantza edo atsedena adierazten dute, ez lan-estimazio adostua."
+          ]
+        },
+        {
+          "id": "decidir",
+          "title": "5. Bereizi laburpena eta azken erabakia",
+          "paragraphs": [
+            "Karta berdinek boto berdinak esan nahi dute. Adostasun erabilgarriak norainokoa, kalitatea eta aurresuposizioak ere baieztatzen ditu. Jaso azken estimazioaren arrazoia eta berrikusi istorioa aldatzean.",
+            "Erabili historia beste txanda zerk eragin zuen gogoratzeko. Ez sailkatu pertsonak batezbestekoarekiko hurbiltasunaz. Planning Poker-ek lana ulertzen lagundu behar du, ez berdintasuna saritzen."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "James Grenning: elkarrizketa eta estimazio independentea",
+          "url": "https://wingman-sw.com/articles/planning-poker"
+        }
+      ]
+    },
+    {
+      "slug": "sesiones-remotas",
+      "title": "Urruneko saioak erraztea adostasuna behartu gabe",
+      "description": "Prestaketa, hitz egiteko txandak eta kasu osoa, urruneko bozketa erabaki argi bihurtzeko.",
+      "category": "Urrunetik erraztu",
+      "sections": [
+        {
+          "id": "preparar",
+          "title": "1. Prestatu elkarrizketa eta rolak",
+          "paragraphs": [
+            "Esteka baino lehen aukeratu istorio gutxi emaitza, irizpide eta galderekin. Baieztatu erraztailea, bozkatzaileak eta behatzaileak. Laguntzaileek antolatzaileari istorio eta txandekin lagun diezaiokete.",
+            "Adostu ahots edo testu kanal irisgarria eta erreferentzia-istorioa. Isiltasuna ez da adostasuna. Zehaztu argibideak edo atsedena eskatzeko modua."
+          ]
+        },
+        {
+          "id": "votar",
+          "title": "2. Babestu lehen botoaren independentzia",
+          "paragraphs": [
+            "Irakurri eta argitu ulermena kartak baino lehen. Ez esan zenbakirik bozketan. StoryFlop-ek botoak pribatu mantentzen ditu erakutsi arte; behatzaileak ez dira bozkatzaile gisa zenbatzen.",
+            "Egiaztatu espero diren bozkatzaileek parte har dezaketela. Deskonexioa edo atzerapena ez da borondatezko abstentzioa. Parte-hartzea aldatzen bada, baieztatu taldearekin nola jarraitu."
+          ]
+        },
+        {
+          "id": "turnos",
+          "title": "3. Eman txandak ulertzeko, ez konbentzitzeko",
+          "paragraphs": [
+            "Erakutsi ondoren, eskatu muturreko botoei aurresuposizioak azaltzeko. Galdetu dauden osagaiez, probez eta mendekotasun ezezagunez. Eman lekua deskribatu gabeko arriskuei.",
+            "Argudioak informazio berririk gabe errepikatzen badira, laburbildu dakizuena. Argitu, zatitu edo ikertu dezakezue. Ez jarraitu norbaitek nekeagatik amore eman arte."
+          ]
+        },
+        {
+          "id": "ejemplo",
+          "title": "4. Urruneko kasua hasieratik amaierara",
+          "paragraphs": [
+            "Fikziozko ariketan hiru pertsonak 3, 5 eta 13 ematen dituzte pasahitzaren berreskurapenean. Erraztaileak posta eta probez galdetzen du. Zerbitzua baieztatu eta iraungitzea irizpideetara gehitzen da.",
+            "Argitutako norainokoarekin berriz bozkatzen dute eta hemen 5 adosten. Ebatzi gabeko zalantzak galdera eta arduradunarekin amaitzea ekar lezake, zenbakirik gabe. Txantiloiak bi emaitzak jasotzen ditu."
+          ]
+        },
+        {
+          "id": "cerrar",
+          "title": "5. Amaitu berreskura daitezkeen erabakiekin",
+          "paragraphs": [
+            "Istorio bakoitzaren ondoren irakurri norainokoa, estimazioa badago, arriskuak eta hurrengo ekintza. Eraman backlog-era. Gelak eta datuak 14 egun inaktiboren ondoren ezabatzen dira; historiak ez du erregistro iraunkorra ordezkatzen.",
+            "Amaieran galdetu zer falta zen eta denek parte hartu ahal izan duten. Erabili erantzunak hurrengo prestaketan. Ikasteak ez du taldeko informazioa argitaratzea eskatzen: kasu publikoak fikziozko ariketa identifikatuak izan daitezke."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "James Grenning: bozketa independentearen helburua",
+          "url": "https://wingman-sw.com/articles/planning-poker"
+        },
+        {
+          "label": "Scrum Gida: lanaren gardentasuna eta ikuskapena",
+          "url": "https://scrumguides.org/scrum-guide.html"
+        }
+      ],
+      "cases": [
+        {
+          "title": "Isiltasunetik erabaki ikusgarrira",
+          "before": "3, 5 eta 13ren ondoren «har dezagun 5» proposatzen da muturrei galdetu gabe. Bi pertsona isilik geratzen dira eta norainokoa lausoa da.",
+          "after": "Erraztaileak txandak banatu, posta baieztatu, probak sartu eta bozketa independente berria eskatzen du. Ondoren erabakia irakurri eta zereginean jasotzen du.",
+          "decision": "Aldaketa garrantzitsua aurresuposizioak eta adostasuna ikusgarri egitea da. 5 ariketakoa da; benetako saioak ez du zenbaki horrekin amaitu behar."
+        }
+      ]
     }
   ],
   "templateText": "FINTZE-TXANTILOIA · STORYFLOP\n\nSaioa / data:\nParte-hartzaileak eta erraztailea:\nTaldearen erreferentzia-istorioa:\n\nISTORIOA\nTitulua:\nErabiltzailea eta espero den emaitza:\nOnarpen-irizpideak (portaera egiaztagarriak):\n1.\n2.\n3.\nNorainokotik kanpo:\nMendekotasunak eta osagai erabilgarriak:\nProbak, berrikuspena eta kalitate-baldintzak:\nGaldera irekiak / arduraduna / hurrengo berrikuspena:\n\nELKARRIZKETA\nHasierako botoak:\nBoto txikienaren eta handienaren aurresuposizioak:\nInformazio berria edo norainoko-aldaketa:\nErabakia: argitu / zatitu / ikertu / adostu\nBigarren txanda (informazioa ematen badu):\nAdostutako estimazioa (edo atzeratzeko arrazoia):\nAdostasunaren arriskuak eta aurresuposizioak:\nErabakia backlog-ean non jasotzen den:\n\nAMAIERA\nZer aurkitu dugu idatzita ez zegoena?\nZer hobetuko dugu hurrengo prestaketan?\n\nErabilera: kopiatu ISTORIOA eta ELKARRIZKETA fitxa elementu bakoitzeko.\nPuntuak taldearekiko erlatiboak dira; ez dira orduak edo banakako errendimendu-neurriak.\nBaliabidea: https://storyflop.com/recursos/plantilla-refinamiento\n",
@@ -225,7 +423,7 @@
     "tryRound": "Probatu txanda bat bilerarik antolatu gabe",
     "tryRoundBody": "Pasahitza berreskuratzea, hiru ikuspegi eta desadostasun bat. Aztertu fikziozko kasua eta ikusi zer aldatzen den hitz egin ondoren.",
     "openDemo": "Ireki demoa",
-    "threeGuides": "Hiru gida hurrengo saiorako",
+    "threeGuides": "Saioak prestatzeko eta errazteko gidak",
     "readGuide": "Irakurri gida",
     "takeTemplate": "Eraman fintze-txantiloia",
     "takeTemplateBody": "Irizpideak, mendekotasunak, botoak eta erabakiak jasotzeko fitxa. Betetako adibidea eta kopiatu, deskargatu edo inprimatzeko bertsio editagarria ditu.",
@@ -378,6 +576,20 @@
     "landingTemplateEyebrow": "Prestatu",
     "landingTemplateTitle": "Eramateko txantiloia",
     "landingTemplateBody": "Idatzi irizpideak, galderak eta adostasunak. Kopiatu, deskargatu edo inprimatu hurrengo saioko fitxa.",
+    "caseStudiesTitle": "Kasu landuak: hasierako norainokotik erabakira",
+    "beforeLabel": "Aurretik",
+    "afterLabel": "Ondoren",
+    "decisionLabel": "Erabaki honen arrazoia",
+    "fictionalCaseLabel": "Fikziozko ikasketa-kasua",
+    "labTitle": "Aztertu txanda baten emaitzak",
+    "labLead": "Alderatu prestatutako adibideak. Kalkuluek StoryFlop-en arauak jarraitzen dituzte; ez dute taldearen ordez erabakitzen.",
+    "labScenario": "Bozketa-adibidea",
+    "labScope": "Norainoko desberdinak · 3, 5 eta 13",
+    "labOutlier": "Urruneko botoa · 5, 5, 5 eta 21",
+    "labMixed": "Zero eta zalantza · 0, 5 eta ?",
+    "labUnknown": "Karta bereziak soilik · ? eta ☕",
+    "labNote": "Karta bereziak banaketan agertzen dira, ez batezbestekoan edo medianan. Zeroak balio du. Karta berdinak ez dira dokumentatutako adostasuna.",
+    "usageNotice": "Erabilera agregatua neurtzen dugu bisitariak identifikatu gabe. Do Not Track eta Global Privacy Control errespetatzen ditugu.",
     "ownerBio": "Software ingeniaria eta arkitektoa naiz, hamar urte baino gehiagoko esperientziarekin. StoryFlop sortu dut eta haren mantentze-lanez arduratzen naiz, estimazio saioak errazagoak, hurbilagoak eta dibertigarriagoak izan daitezen.",
     "ownerLinkedIn": "Ezagutu nazazu LinkedIn-en",
     "promiseRegistration": "Erregistrorik gabe",
