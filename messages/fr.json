@@ -27,10 +27,6 @@
     "preparing": "Préparation…", "enterRoom": "Entrer dans la salle", "privacy": "Sans inscription. Salles privées et données temporaires.", "footerTime": "Conçu pour les équipes qui valorisent leur temps.", "footerShare": "Partagez un lien et commencez.", "chooseAvatar": "Choisissez votre avatar", "avatarLabel": "Avatar {avatar}"
   },
   "LandingSeo": {
-    "demoNav": "Démo (ES)",
-    "resourcesNav": "Guides et ressources (ES)",
-    "projectNav": "Le projet (ES)",
-    "resourcesLanguage": "Ressources en espagnol",
     "navHow": "Fonctionnement", "navFeatures": "Fonctionnalités", "navFaq": "Questions",
     "howEyebrow": "Planning Poker simple", "howTitle": "De la user story au consensus en trois étapes", "howLead": "StoryFlop transforme l’estimation agile en une conversation ciblée : chacun décide indépendamment, l’équipe compare les résultats et s’accorde sur la suite.",
     "step1Title": "Créez la salle", "step1Body": "Nommez la session et partagez son lien ou son code à huit caractères. Aucun compte n’est nécessaire.",

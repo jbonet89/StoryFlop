@@ -6,8 +6,11 @@ import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
 import { setLocale } from "@/i18n/actions";
 import { isSupportedLocale, localeNames, supportedLocales, type SupportedLocale } from "@/i18n/config";
+import { resourceHref, resourceRoots } from "@/lib/resource-links";
+import { useClientReady } from "@/lib/use-client-ready";
 
 export function LanguageSelector({ compact = false }: { compact?: boolean }) {
+  const ready = useClientReady();
   const currentLocale = useLocale() as SupportedLocale;
   const t = useTranslations("Language");
   const router = useRouter();
@@ -22,7 +25,10 @@ export function LanguageSelector({ compact = false }: { compact?: boolean }) {
       document.documentElement.lang = value;
       setAnnouncement(t("changed", { language: localeNames[value] }));
       const segments = pathname.split("/");
-      if (isSupportedLocale(segments[1])) {
+      const resourcePath = isSupportedLocale(segments[1]) ? segments.slice(2) : segments.slice(1);
+      if (resourceRoots.includes(resourcePath[0])) {
+        window.location.assign(resourceHref(value, `/${resourcePath.join("/")}`));
+      } else if (isSupportedLocale(segments[1])) {
         segments[1] = value;
         router.push(segments.join("/") || `/${value}`);
       } else if (pathname === "/") {
@@ -36,7 +42,7 @@ export function LanguageSelector({ compact = false }: { compact?: boolean }) {
   return <div className={`language-selector ${compact ? "compact" : ""}`}>
     <Languages size={15} aria-hidden="true" />
     <label className={compact ? "sr-only" : undefined} htmlFor={`language-${compact ? "menu" : "home"}`}>{t("label")}</label>
-    <select id={`language-${compact ? "menu" : "home"}`} value={currentLocale} disabled={isPending} onChange={event => changeLocale(event.target.value)} aria-label={compact ? t("label") : undefined}>
+    <select id={`language-${compact ? "menu" : "home"}`} value={currentLocale} disabled={isPending || !ready} onChange={event => changeLocale(event.target.value)} aria-label={compact ? t("label") : undefined}>
       {supportedLocales.map(locale => <option key={locale} value={locale}>{localeNames[locale]}</option>)}
     </select>
     <span className="sr-only" aria-live="polite">{announcement}</span>

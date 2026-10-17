@@ -18,10 +18,6 @@
     "preparing": "Preparazione…", "enterRoom": "Entra nella stanza", "privacy": "Nessuna registrazione. Stanze private e dati temporanei.", "footerTime": "Pensato per i team che danno valore al proprio tempo.", "footerShare": "Condividi un link e inizia.", "chooseAvatar": "Scegli il tuo avatar", "avatarLabel": "Avatar {avatar}"
   },
   "LandingSeo": {
-    "demoNav": "Demo (ES)",
-    "resourcesNav": "Guide e risorse (ES)",
-    "projectNav": "Il progetto (ES)",
-    "resourcesLanguage": "Risorse in spagnolo",
     "navHow": "Come funziona", "navFeatures": "Funzionalità", "navFaq": "Domande",
     "howEyebrow": "Planning Poker semplice", "howTitle": "Dalla user story al consenso in tre passaggi", "howLead": "StoryFlop trasforma la stima Agile in una conversazione focalizzata: ognuno decide in autonomia, il team confronta i risultati e concorda il passo successivo.",
     "step1Title": "Crea la stanza", "step1Body": "Dai un nome alla sessione e condividi il link o il codice di otto caratteri. Nessuno deve creare un account.",

@@ -56,10 +56,6 @@
     "avatarLabel": "Avatar {avatar}"
   },
   "LandingSeo": {
-    "demoNav": "Demo (ES)",
-    "resourcesNav": "Guides & resources (ES)",
-    "projectNav": "About the project (ES)",
-    "resourcesLanguage": "Resources in Spanish",
     "navHow": "How it works",
     "navFeatures": "Features",
     "navFaq": "Questions",

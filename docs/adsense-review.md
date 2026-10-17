@@ -10,11 +10,13 @@
 - `/demo`: simulación local de dos rondas, sin crear salas ni acceder al backend. Los personajes son ficticios y el voto de quien prueba se conserva aunque discrepe.
 - `/sobre-storyflop`: propósito, titular, criterios editoriales y contacto ya publicado en el aviso legal.
 
-Estos recursos se sirven en español, con idioma de documento explícito, canónica propia y entradas en el sitemap. Las nueve portadas enlazan los recursos e indican que están en español. El texto editorial y la ficha están disponibles sin JavaScript; la demo requiere JavaScript para interactuar y enlaza un caso legible sin él.
+Los recursos completos están traducidos a español, inglés, francés, italiano, alemán, portugués, catalán, euskera y ruso. Las URL españolas originales se conservan; los demás idiomas utilizan prefijos, por ejemplo `/en/recursos` y `/de/demo`. Cada versión tiene idioma de documento, canónica y alternancias hreflang recíprocas en HTML y sitemap. Las nueve portadas enlazan a su versión correspondiente. El selector conserva la página al cambiar de idioma; las plantillas descargadas y las cifras de la demo también se localizan. El texto editorial y la ficha están disponibles sin JavaScript; la demo requiere JavaScript para interactuar y enlaza un caso legible sin él.
 
 Los recursos no cargan el script ni unidades de AdSense. La navegación desde la portada carga un documento nuevo para descartar su runtime publicitario. No se han cambiado ajustes de la cuenta de AdSense ni solicitado una revisión. La publicación de estos recursos no garantiza aprobación.
 
 Al cambiar una guía, mantener su fecha de revisión y la fecha correspondiente del sitemap. Los casos ficticios deben seguir identificados como tales. No atribuir experiencia, certificaciones, resultados o testimonios que no estén acreditados.
+
+Los catálogos editoriales viven en `messages/resources/{locale}.json`, sin fallback parcial entre idiomas. `tests/resource-localization.test.ts` valida cobertura y estructura de cada guía, textos, plantillas y parámetros de interpolación. `e2e/resource-localization.spec.ts` recorre las siete páginas de los nueve idiomas sin JavaScript, comprueba enlaces de idioma y prueba demo, descarga y selector en escritorio y móvil.
 
 Verificación: `e2e/resources.spec.ts` cubre la demo, la descarga del texto editado, la impresión, lectura sin JavaScript, idioma, canónicas, sitemap, desbordamiento y descarte del runtime publicitario en escritorio y móvil.
 

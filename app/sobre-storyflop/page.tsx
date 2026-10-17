@@ -1,14 +1,4 @@
-/* eslint-disable @next/next/no-html-link-for-pages -- Full document navigation keeps the Spanish document language and clears advertising runtimes. */
-import type { Metadata } from "next";
-import { ResourceShell } from "@/components/ResourceShell";
+import { AboutPage, resourceMetadata } from "@/components/ResourcePages";
 
-export const metadata: Metadata = { title: "Sobre StoryFlop y contacto", description: "Conoce el propósito de StoryFlop, quién mantiene el proyecto y cómo comunicar incidencias o proponer correcciones de las guías.", alternates: { canonical: "/sobre-storyflop" } };
-export default function AboutPage() {
-  return <ResourceShell title="Una mesa compartida para entender el trabajo." description="StoryFlop es una herramienta gratuita de Planning Poker para equipos que quieren estimar juntos desde el navegador.">
-    <section><h2>El propósito del proyecto</h2><p>StoryFlop reúne historias, votos privados y resultados en una sala compartida. Su objetivo es facilitar la conversación sobre el alcance y la incertidumbre del trabajo, con entrada por enlace y sin exigir una cuenta a cada participante.</p><p>El organizador puede preparar las historias, invitar a su equipo y conducir las rondas. Los participantes eligen si votan u observan. El historial ayuda a recuperar el contexto de la sesión; las reacciones permiten expresarse durante la reunión.</p><p>Las salas son temporales: sus datos asociados se eliminan tras 14 días de inactividad. Conserva las decisiones importantes en vuestro backlog y consulta la <a href="/privacidad">política de privacidad</a> antes de compartir información.</p></section>
-    <section><h2>Quién está detrás</h2><p>El titular de StoryFlop es Jaume Bonet Martín, que presta el servicio como particular. La información identificativa y las condiciones de uso están disponibles en el <a href="/aviso-legal">aviso legal</a>.</p><p>Los recursos publicados bajo la firma StoryFlop forman parte de la documentación del proyecto. Explican el uso de la herramienta y proponen ejercicios de estimación; no representan una certificación ni una afiliación con los autores del método o de Scrum.</p></section>
-    <section><h2>Cómo están planteadas las guías</h2><p>Las guías separan las funciones de StoryFlop de los ejemplos de otros productos. Los casos y los personajes son ficticios y se indican como tales. Los números sirven para explicar una decisión; no son tablas de esfuerzo reutilizables entre equipos.</p><p>Cada guía incluye su fecha de publicación y las fuentes pertinentes. Las correcciones y los cambios sustanciales se reflejarán en el contenido y en su fecha de revisión. Puedes sugerir mejoras cuando una instrucción resulte ambigua o deje de coincidir con la aplicación.</p></section>
-    <section className="resource-callout"><h2>Contacto y correcciones</h2><p>Escribe a <a href="mailto:privacy.storyflop@gmail.com">privacy.storyflop@gmail.com</a> para comunicar un problema de la aplicación, proponer una corrección de las guías o consultar sobre privacidad.</p><p>Para una incidencia, indica la página, el navegador y los pasos para reproducirla. Para una corrección, incluye el enlace y el párrafo al que te refieres. Evita enviar códigos de salas activas o contenido confidencial del equipo.</p></section>
-    <p><a href="/demo">Explora la demostración</a> o <a href="/recursos">elige una guía para tu próxima sesión</a>.</p>
-  </ResourceShell>;
-}
+export const generateMetadata = () => resourceMetadata("about");
+export default AboutPage;

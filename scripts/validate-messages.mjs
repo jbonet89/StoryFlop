@@ -10,6 +10,8 @@ const flatten = (messages, prefix = "") => Object.entries(messages).flatMap(([ke
 }).sort(([a], [b]) => a.localeCompare(b));
 const baseEntries = flatten(read("es"));
 const baseKeys = baseEntries.map(([key]) => key);
+const resourceBaseEntries = flatten(JSON.parse(readFileSync(`${root}/messages/resources/es.json`, "utf8")));
+const resourceKeys = resourceBaseEntries.map(([key]) => key);
 const partialLocales = new Set(["fr", "it", "ru"]);
 const requiredPublicPrefixes = ["Metadata.", "Brand.", "Language.", "Common.", "Home.", "LandingSeo."];
 const errors = [];
@@ -23,6 +25,13 @@ for (const locale of locales) {
     if (missingPublic.length) errors.push(`${locale}: faltan claves públicas: ${missingPublic.join(", ")}`);
   } else if (JSON.stringify(keys) !== JSON.stringify(baseKeys)) errors.push(`${locale}: las claves no coinciden con es`);
   for (const [key, value] of entries) if (!value.trim()) errors.push(`${locale}: ${key} está vacía`);
+  const resources = flatten(JSON.parse(readFileSync(`${root}/messages/resources/${locale}.json`, "utf8")));
+  if (JSON.stringify(resources.map(([key]) => key)) !== JSON.stringify(resourceKeys)) errors.push(`${locale}: los recursos no tienen la estructura completa`);
+  for (const [key, value] of resources) {
+    if (!value.trim()) errors.push(`${locale}: Resources.${key} está vacía`);
+    const source = resourceBaseEntries.find(([sourceKey]) => sourceKey === key)?.[1];
+    if (JSON.stringify(value.match(/\{\w+\}/g)) !== JSON.stringify(source?.match(/\{\w+\}/g))) errors.push(`${locale}: Resources.${key} tiene parámetros distintos`);
+  }
 }
 if (errors.length) {
   console.error(errors.join("\n"));

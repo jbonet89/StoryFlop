@@ -1,14 +1,4 @@
-/* eslint-disable @next/next/no-html-link-for-pages -- Full document navigation keeps the Spanish document language and clears advertising runtimes. */
-import type { Metadata } from "next";
-import { ResourceShell } from "@/components/ResourceShell";
-import { RefinementTemplate } from "@/components/RefinementTemplate";
+import { TemplatePage, resourceMetadata } from "@/components/ResourcePages";
 
-export const metadata: Metadata = { title: "Plantilla de refinamiento para Planning Poker", description: "Copia, edita, descarga o imprime una ficha de preparación y decisiones. Con instrucciones y un ejemplo de recuperación de contraseña.", alternates: { canonical: "/recursos/plantilla-refinamiento" } };
-export default function TemplatePage() {
-  return <ResourceShell title="Prepara la historia. Conserva el acuerdo." description="Una plantilla de refinamiento para llevar a la sesión las preguntas adecuadas y salir con algo más que una cifra." editorial>
-    <section><h2>Cómo utilizarla</h2><ol><li>Antes de la sesión, completa el resultado esperado, los criterios y las dependencias. Deja las preguntas abiertas a la vista.</li><li>Usa una ficha por historia. Durante la votación, recoge los supuestos del voto menor y mayor, sin registrar datos personales innecesarios.</li><li>Tras conversar, anota si vais a aclarar, dividir, investigar o acordar una estimación. Repite la ronda si hay información nueva.</li><li>Copia el acuerdo a vuestro backlog. Guarda la ficha descargada si necesitas conservarla: este editor no almacena los cambios.</li></ol><p>Puedes copiar y adaptar esta plantilla para el trabajo de tu equipo. No es un requisito oficial de Scrum ni sustituye vuestra conversación.</p></section>
-    <RefinementTemplate />
-    <section className="resource-callout"><h2>Ejemplo cumplimentado · Caso ficticio</h2><dl className="template-example"><div><dt>Historia</dt><dd>Recuperar el acceso mediante un enlace enviado por correo.</dd></div><div><dt>Criterios</dt><dd>El enlace caduca, solo se usa una vez y muestra un error comprensible cuando ya no es válido.</dd></div><div><dt>Dependencias y límites</dt><dd>Servicio de correo existente. No incluye contratar otro proveedor.</dd></div><div><dt>Votos iniciales</dt><dd>3, 5 y 13. El 3 omitía pruebas de caducidad; el 13 incluía crear el servicio de correo.</dd></div><div><dt>Información nueva</dt><dd>Confirmamos el servicio disponible e incluimos las pruebas en la historia.</dd></div><div><dt>Decisión</dt><dd>Repetir la ronda. En este caso ilustrativo, el equipo acuerda 5 y registra el alcance aclarado en su backlog.</dd></div><div><dt>Siguiente revisión</dt><dd>Revisar alcance y estimación si cambia el servicio de correo disponible.</dd></div></dl></section>
-    <section><h2>Cuándo falta información</h2><p>En vez de completar el campo de estimación a la fuerza, escribe la pregunta, una persona responsable y el momento para revisarla. Por ejemplo: «Comprobar si el servicio invalida enlaces usados; responsable asignado en la sesión; revisar antes de la siguiente ronda».</p><p><a href="/recursos/historias-listas-para-estimar">Consulta tres historias trabajadas</a> o <a href="/demo">practica con la demostración</a> antes de utilizar la ficha con tu equipo.</p></section>
-  </ResourceShell>;
-}
+export const generateMetadata = () => resourceMetadata("template");
+export default TemplatePage;
