@@ -169,6 +169,8 @@ label { display:block;font-size:12px;font-weight:750;margin:15px 0;color:#394540
 
 .participation-badge { position:absolute;top:calc(100% + 3px);left:50%;transform:translateX(-50%);z-index:3;white-space:nowrap;display:flex;align-items:center;gap:3px;padding:2px 6px;border:1px solid #d7ddd9;border-radius:99px;background:#f7faf8;color:var(--green);font-size:9px;font-style:normal;font-weight:800;box-shadow:0 2px 5px rgba(25,45,37,.08); }
 .participation-badge.observer { border-color:#d8d0ea;background:#f8f5ff;color:#654b88; }
+.participation-badge.pending-vote { border-color:#f3bf82;background:#fff0dc;color:#9a480b; }
+.participation-badge.has-voted { border-color:#8ecba7;background:#dcf4e5;color:#176039; }
 .player-seat.observer .seat-main { border-color:#d8d0ea;background:rgba(251,249,255,.97); }
 .felt-dots i.observer { border-style:dashed;opacity:.45; }
 
