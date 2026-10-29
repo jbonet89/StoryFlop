@@ -6,6 +6,7 @@ import {
   getEligibleRoundVotes,
   getMemberRoundMode,
   getPendingVoters,
+  hasUnanimousRound,
 } from "@/lib/participation";
 import { calculateRoundStats } from "@/lib/statistics";
 import type { Member, Participation, ParticipationMode, Vote } from "@/lib/types";
@@ -21,6 +22,24 @@ const vote = (member_id: string, value: Vote["value"], round_id = "round-1"): Vo
 const member = (default_participation_mode: ParticipationMode): Member => ({
   id: "member-1", room_id: "room-1", user_id: "user-1", display_name: "Ana", avatar_key: "🦊",
   role: "participant", default_participation_mode, joined_at: now, is_kicked: false,
+});
+
+describe("unanimous celebration", () => {
+  const rows = [participation("a", "voter", true), participation("b", "voter", true), participation("c", "observer")];
+  it("includes every voter and excludes observers", () => {
+    expect(hasUnanimousRound([vote("a", "5"), vote("b", "5"), vote("c", "13")], rows)).toBe(true);
+  });
+  it("rejects mixed, missing, pending, empty and previous-round votes", () => {
+    expect(hasUnanimousRound([vote("a", "5"), vote("b", "8")], rows)).toBe(false);
+    expect(hasUnanimousRound([vote("a", "5")], rows)).toBe(false);
+    expect(hasUnanimousRound([vote("a", "5"), vote("b", "5")], [...rows, participation("d")])).toBe(false);
+    expect(hasUnanimousRound([], [participation("c", "observer")])).toBe(false);
+    expect(hasUnanimousRound([], [])).toBe(false);
+    expect(hasUnanimousRound([vote("a", "5"), vote("b", "5", "old")], rows)).toBe(false);
+  });
+  it("also recognizes matching nonnumeric cards", () => {
+    expect(hasUnanimousRound([vote("a", "?"), vote("b", "?")], rows)).toBe(true);
+  });
 });
 
 describe("progreso de votación", () => {

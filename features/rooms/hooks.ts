@@ -7,6 +7,7 @@ import type { Member, Participation, Vote } from "@/lib/types";
 import { removeMember, removeParticipation, removeVote, upsertMember, upsertParticipation, upsertVote } from "@/lib/room-state";
 import { isReactionBroadcastEvent, REACTION_BROADCAST_EVENT, type ReactionBroadcastEvent } from "@/lib/reaction-events";
 import { fetchRoom, type RoomSnapshot } from "./api";
+import { watchRoomRecovery } from "@/lib/room-recovery";
 
 export type RealtimeStatus = "conectando" | "en_directo" | "reconectando" | "sin_conexion" | "error";
 
@@ -17,7 +18,7 @@ function debugStatus(channel: string, status: string) {
 export function useRoom(code: string) {
   const queryClient = useQueryClient();
   const queryKey = useMemo(() => ["room", code] as const, [code]);
-  const query = useQuery({ queryKey, queryFn: () => fetchRoom(code), refetchOnWindowFocus: true });
+  const query = useQuery({ queryKey, queryFn: () => fetchRoom(code), refetchOnWindowFocus: true, refetchInterval: 15_000, refetchIntervalInBackground: false });
   const roomId = query.data?.room.id;
   const [realtimeStatus, setRealtimeStatus] = useState<RealtimeStatus>("conectando");
 
@@ -53,6 +54,10 @@ export function useRoom(code: string) {
       else updateSnapshot(current => ({ ...current, votes: upsertVote(current.votes, payload.new as Vote) }));
     };
     const refreshRoom = () => { if (active) void queryClient.invalidateQueries({ queryKey, exact: true }); };
+    const stopRecovery = watchRoomRecovery(() => {
+      refreshRoom();
+      if (!supabase.realtime.isConnected()) supabase.realtime.connect();
+    });
 
     const channel = supabase.channel(`room-data:${roomId}`)
       .on("postgres_changes", { event: "*", schema: "public", table: "room_members", filter: `room_id=eq.${roomId}` }, handleMember)
@@ -70,7 +75,7 @@ export function useRoom(code: string) {
         else if (status === "CLOSED") setRealtimeStatus("sin_conexion");
       });
 
-    return () => { active = false; void supabase.removeChannel(channel); };
+    return () => { active = false; stopRecovery(); void supabase.removeChannel(channel); };
   }, [query.data?.me.id, queryClient, queryKey, roomId]);
 
   return { ...query, realtimeStatus };
@@ -86,7 +91,17 @@ export function usePresence(roomId: string | undefined, memberId: string | undef
     const supabase = createClient();
     const channelName = `presence:${roomId}`;
     const channel = supabase.channel(channelName, { config: { presence: { key: memberId } } });
-    const syncPresence = () => { if (active) { setOnlineIds(new Set(Object.keys(channel.presenceState()))); setSyncedRoomId(roomId); } };
+    const trackPresence = async () => {
+      const result = await channel.track({ member_id: memberId, online_at: new Date().toISOString() });
+      if (active && result !== "ok") { setOnlineIds(new Set()); setStatus("reconectando"); setSyncedRoomId(undefined); }
+    };
+    const stopRecovery = watchRoomRecovery(() => {
+      if (!supabase.realtime.isConnected()) supabase.realtime.connect();
+      if (channel.state === "joined") void trackPresence();
+    });
+    const markOffline = () => { setOnlineIds(new Set()); setSyncedRoomId(undefined); setStatus("sin_conexion"); };
+    window.addEventListener("offline", markOffline);
+    const syncPresence = () => { if (active) { setOnlineIds(new Set(Object.keys(channel.presenceState()))); setSyncedRoomId(roomId); setStatus("en_directo"); } };
     channel
       .on("presence", { event: "sync" }, syncPresence)
       .on("presence", { event: "join" }, syncPresence)
@@ -94,12 +109,13 @@ export function usePresence(roomId: string | undefined, memberId: string | undef
       .subscribe(async (state: string) => {
         debugStatus(channelName, state);
         if (!active) return;
-        if (state === "SUBSCRIBED") { setStatus("en_directo"); await channel.track({ member_id: memberId, online_at: new Date().toISOString() }); }
+        if (state === "SUBSCRIBED") { setStatus("en_directo"); await trackPresence(); }
         else if (state === "TIMED_OUT") setStatus("reconectando");
         else if (state === "CHANNEL_ERROR") setStatus("error");
         else if (state === "CLOSED") setStatus("sin_conexion");
+        if (state !== "SUBSCRIBED") { setOnlineIds(new Set()); setSyncedRoomId(undefined); }
       });
-    return () => { active = false; void channel.untrack(); void supabase.removeChannel(channel); };
+    return () => { active = false; stopRecovery(); window.removeEventListener("offline", markOffline); void supabase.removeChannel(channel); };
   }, [memberId, roomId]);
   return useMemo(() => ({ onlineIds, status, synced: syncedRoomId === roomId }), [onlineIds, roomId, status, syncedRoomId]);
 }

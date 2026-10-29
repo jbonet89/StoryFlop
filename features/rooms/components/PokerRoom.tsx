@@ -10,7 +10,7 @@ import type { VoteValue } from "@/lib/constants";
 import type { ParticipationMode } from "@/lib/types";
 import type { ValidatedTaskDraft } from "@/lib/task-management";
 import { calculateSeatPositions, sortMembersStable } from "@/lib/seats";
-import { calculateVotingProgress, canRevealRound, getEligibleRoundVotes, getMemberRoundMode } from "@/lib/participation";
+import { calculateVotingProgress, canRevealRound, getEligibleRoundVotes, getMemberRoundMode, hasUnanimousRound } from "@/lib/participation";
 import { suggestFinalEstimate } from "@/lib/statistics";
 import { removeReactionAnimation } from "@/lib/room-state";
 import type { ReactionBroadcastEvent } from "@/lib/reaction-events";
@@ -22,6 +22,7 @@ import { usePresence, useReactionBroadcast, type RealtimeStatus } from "../hooks
 import { InviteButton } from "@/features/room/components/InviteButton";
 import { ConnectionIndicator } from "@/features/room/components/ConnectionIndicator";
 import { PlayerSeat } from "@/features/room/components/PlayerSeat";
+import { ConsensusConfetti } from "@/features/room/components/ConsensusConfetti";
 import { VotingDeck } from "@/features/room/components/VotingDeck";
 import { TaskList } from "@/features/room/components/TaskList";
 import { RoundResults } from "@/features/room/components/RoundResults";
@@ -184,6 +185,7 @@ export function PokerRoom({ snapshot, code, realtimeStatus }: { snapshot: RoomSn
     </div>
     <VotingDeck selected={myVote?.value} roundOpen={activeRound?.status === "voting"} observer={myCurrentMode === "observer"} onBecomeVoter={() => void changeParticipationMode("voter")} onVote={(value: VoteValue) => { if (activeRound?.status === "voting" && myCurrentMode === "voter") void action(() => roomApi.castVote(activeRound.id, value)); }} />
     <FlyingReactions animations={animations} onComplete={removeAnimation} />
+    <ConsensusConfetti roundId={activeRound?.id} status={activeRound?.status} unanimous={hasUnanimousRound(currentVotes, currentParticipation)} />
     <span className="sr-only" aria-live="polite">{announcement}</span>
     {inspectedTask && <TaskDetailDrawer key={`${inspectedTask.id}-${taskDetailMode}`} task={inspectedTask} rounds={snapshot.rounds} participations={snapshot.participations} votes={snapshot.votes} estimateChanges={snapshot.estimateChanges} isHost={canFacilitate} initialMode={taskDetailMode} onClose={closeTaskDetail} onSave={draft => action(() => roomApi.updateTask(inspectedTask.id, draft.title, draft.description, draft.taskUrl))} onUpdateEstimate={estimate => action(() => roomApi.updateFinalEstimate(inspectedTask.id, estimate))} onDelete={() => void deleteTask(inspectedTask.id)} />}
     {profileOpen && <MemberProfileDialog member={snapshot.me} onClose={() => setProfileOpen(false)} onSave={(displayName, avatar) => action(() => roomApi.updateMyProfile(snapshot.room.id, displayName, avatar))} />}

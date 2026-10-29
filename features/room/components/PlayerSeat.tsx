@@ -18,7 +18,6 @@ export function PlayerSeat({ member, position, compact, online, participationMod
       <span className="player-avatar">{member.avatar_key}<i className={online ? "online" : "offline"} /></span>
       <span className="player-meta"><strong>{member.display_name}{isMe && <small> {t("you")}</small>}</strong><em>{member.role === "host" ? <Crown size={11} /> : member.role === "collaborator" ? <ShieldCheck size={11} /> : null}{member.role === "host" ? t("organizer") : member.role === "collaborator" ? t("collaborator") : connectionLabel}</em></span>
       <span className={`participation-badge ${participationMode}`}>{participationMode === "observer" && <Eye size={12} />}{participationLabel}</span>
-      {participationMode === "observer" && <span className="observer-card"><Eye size={16} />{t("observer")}</span>}
       {participationMode === "voter" && voted && <span className={`vote-card ${revealed ? "revealed" : ""}`}>{revealed ? vote?.value ?? "—" : "✦"}</span>}
     </button>
     {!isMe && pickerOpen && <EmojiPicker targetName={member.display_name} onSelect={onReact} onClose={closePicker} />}

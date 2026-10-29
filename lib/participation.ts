@@ -46,3 +46,10 @@ export function getEligibleRoundVotes(votes: Vote[], participations: Participati
 export function getMemberRoundMode(member: Member, participation: Participation | undefined): ParticipationMode {
   return participation?.participation_mode ?? member.default_participation_mode;
 }
+
+export function hasUnanimousRound(votes: Vote[], participations: Participation[]): boolean {
+  const voters = getEligibleVoters(participations);
+  if (!voters.length || voters.some(voter => !voter.has_voted)) return false;
+  const values = voters.map(voter => votes.find(vote => vote.member_id === voter.member_id && vote.round_id === voter.round_id)?.value);
+  return values.every(value => value !== undefined && value === values[0]);
+}
