@@ -53,15 +53,32 @@ function AirplaneReaction({ animation, scale, onComplete }: ReactionProps) {
   const normalY = dx / distance;
   const curve = Math.min(Math.max(distance * .2, 45), 105);
   const heading = Math.atan2(dy, dx) * 180 / Math.PI + 45;
+  const reboundX = toX - dx / distance * 14;
+  // Keep the nose-down rotation close to the flight heading to avoid a full spin.
+  const fallingHeading = 135 + Math.round((heading - 135) / 360) * 360;
+  // Sample one continuous arc: separate easing on flight legs caused a midair slowdown.
+  const flight = Array.from({ length: 25 }, (_, index) => {
+    const progress = index / 24;
+    const offset = 4 * curve * progress * (1 - progress);
+    return {
+      x: fromX + dx * progress + normalX * offset,
+      y: fromY + dy * progress + normalY * offset,
+      rotate: heading + Math.atan2(4 * curve * (1 - 2 * progress), distance) * 180 / Math.PI,
+      scale: scale * (1 + .06 * Math.sin(Math.PI * progress)),
+      time: progress * .54,
+    };
+  });
+  const impactHeading = flight[flight.length - 1].rotate;
   return <motion.span className="flying-reaction airplane-reaction" data-emoji={animation.emoji}
-    initial={{ x: fromX, y: fromY, opacity: 0, scale: scale * .65, rotate: heading - 18 }}
+    initial={{ x: fromX, y: fromY, opacity: 1, scale, rotate: flight[0].rotate }}
     animate={{
-      x: [fromX, fromX + dx * .23 + normalX * curve, fromX + dx * .62 + normalX * curve * .7, toX],
-      y: [fromY, fromY + dy * .23 + normalY * curve, fromY + dy * .62 + normalY * curve * .7, toY],
-      opacity: [0, 1, 1, 0], scale: [scale * .65, scale, scale * 1.08, scale * .82],
-      rotate: [heading - 18, heading, heading + 10, heading + 24],
+      x: [...flight.map(frame => frame.x), reboundX, reboundX, reboundX, reboundX],
+      y: [...flight.map(frame => frame.y), toY - 22, toY + 8, toY + 65, toY + 115],
+      opacity: [...flight.map(() => 1), 1, 1, 1, 0],
+      scale: [...flight.map(frame => frame.scale), scale, scale, scale, scale * .96],
+      rotate: [...flight.map(frame => frame.rotate), impactHeading - 32, fallingHeading - 12, fallingHeading + 7, fallingHeading],
     }}
-    transition={{ duration: 1.18, times: [0, .22, .68, 1], ease: ["easeOut", "linear", "easeIn"] }}
+    transition={{ duration: 2.2, times: [...flight.map(frame => frame.time), .65, .75, .89, 1], ease: [...Array<"linear">(24).fill("linear"), "easeOut", "easeIn", "easeIn", "linear"] }}
     onAnimationComplete={() => onComplete(animation.eventId)}>{animation.emoji}</motion.span>;
 }
 
