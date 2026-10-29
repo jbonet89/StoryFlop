@@ -1,5 +1,6 @@
 "use client";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { useQueryClient } from "@tanstack/react-query";
@@ -42,6 +43,7 @@ export function PokerRoom({ snapshot, code, realtimeStatus }: { snapshot: RoomSn
   const tErrors = useTranslations("Errors");
   const queryClient = useQueryClient();
   const tableRef = useRef<HTMLDivElement>(null);
+  const reducedMotion = useReducedMotion();
   const presence = usePresence(snapshot.room.id, snapshot.me.id);
   const isHost = snapshot.me.role === "host";
   const canFacilitate = canFacilitateRoom(snapshot.me.role);
@@ -177,7 +179,11 @@ export function PokerRoom({ snapshot, code, realtimeStatus }: { snapshot: RoomSn
     <div className={`room-layout ${mobileBacklogOpen ? "backlog-open" : ""}`}><TaskList tasks={snapshot.tasks} activeTaskId={activeTask?.id} activeControls={hostControls} isHost={canFacilitate} onCreate={(draft: ValidatedTaskDraft) => action(() => roomApi.createTask(snapshot.room.id, draft.title, draft.description, draft.taskUrl))} onDelete={id => void deleteTask(id)} onClear={clearBacklog} onStart={taskId => { setMobileBacklogOpen(false); startTaskRound(taskId); }} onInspect={(task, mode) => { setMobileBacklogOpen(false); inspectTask(task.id, mode); }} onReorder={taskIds => action(() => roomApi.reorderTasks(snapshot.room.id, taskIds))} onClose={() => setMobileBacklogOpen(false)} />
       <section className="table-stage"><div className="round-heading"><span>{activeRound ? t("round", { number: activeRound.round_number }) : t("tableReady")}</span><h1>{activeTask?.title ?? t("whatEstimate")}</h1>{activeTask?.description && <p><LinkedText text={activeTask.description} /></p>}</div>
         <ParticipationModeToggle preference={snapshot.me.default_participation_mode} currentMode={activeRound ? myCurrentMode : undefined} roundStatus={activeRound?.status} changing={changingMode} onChange={mode => void changeParticipationMode(mode)} />
-        {activeRound?.status === "revealed" && <RoundResults votes={currentVotes} participations={currentParticipation} />}
+        <AnimatePresence initial={false}>
+          {activeRound?.status === "revealed" && <motion.div key={activeRound.id} className="round-results-reveal" initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: reducedMotion ? 0 : .5, ease: [.22, 1, .36, 1] }}>
+            <RoundResults votes={currentVotes} participations={currentParticipation} />
+          </motion.div>}
+        </AnimatePresence>
         <div ref={tableRef} className={`poker-table player-count-${Math.min(members.length, 12)} ${activeRound?.status === "revealed" ? "has-round-results" : ""}`}><div className="felt"><div className="felt-ring"><span>{activeRound?.status === "revealed" ? t("results") : activeRound ? t("votingInProgress") : t("brand")}</span><strong>{statusText}</strong><div className="felt-dots">{members.map(member => { const participation = currentParticipation.find(item => item.member_id === member.id); const mode = getMemberRoundMode(member, participation); return <i key={member.id} className={mode === "observer" ? "observer" : participation?.has_voted ? "done" : ""} title={mode === "observer" ? t("observerDot", { name: member.display_name }) : undefined} />; })}</div></div></div>
           <div className="seat-grid">{members.slice(0, 12).map((member, index) => { const participation = currentParticipation.find(item => item.member_id === member.id); return <PlayerSeat key={member.id} member={member} position={positions[index]} compact={members.length > 8} isMe={member.id === snapshot.me.id} online={member.id === snapshot.me.id || presence.onlineIds.has(member.id)} participationMode={getMemberRoundMode(member, participation)} roundActive={Boolean(activeRound)} voted={participation?.has_voted ?? false} vote={currentVotes.find(vote => vote.member_id === member.id)} revealed={activeRound?.status === "revealed"} onReact={(emoji, scale) => void react(member.id, emoji, scale)} onEditProfile={() => setProfileOpen(true)} />; })}</div>
         </div>

@@ -14,29 +14,34 @@ export function ConsensusConfetti({ roundId, status, unanimous, originRef }: { r
     firedRound.current = roundId;
     const element = stage.current;
     if (!element || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const table = originRef.current?.querySelector(".felt")?.getBoundingClientRect();
-    if (!table) return;
-    element.style.setProperty("--origin-x", `${table.left + table.width / 2}px`);
-    element.style.setProperty("--origin-y", `${table.top + table.height / 2}px`);
-    // Sample constant horizontal velocity and gravity. Unlike straight CSS
-    // segments, this trajectory slows smoothly through its apex without a kink.
-    const animations = Array.from(element.children).map((piece, index) => {
-      const duration = 1400 + (index * 37) % 240;
-      const seconds = duration / 1000;
-      const reach = (90 + (index * 67) % Math.min(480, window.innerWidth * .42)) * (index % 2 ? -1 : 1);
-      const peak = Math.min(120 + (index * 43) % 180, Math.max(40, table.top + table.height / 2 - 30));
-      const gravity = 1100;
-      const velocity = Math.sqrt(2 * gravity * peak);
-      const frames = Array.from({ length: 81 }, (_, frame) => {
-        const progress = frame / 80;
-        const time = progress * seconds;
-        return { transform: `translate(${reach * progress}px,${-velocity * time + .5 * gravity * time * time}px) rotate(${(index % 2 ? -1 : 1) * 620 * progress}deg)`, opacity: Math.min(1, progress * 15, (1 - progress) * 5), offset: progress };
+    let animations: Animation[] = [];
+    let timer: number | undefined;
+    // Let the results panel finish opening before measuring the table.
+    const launch = window.setTimeout(() => {
+      const table = originRef.current?.querySelector(".felt")?.getBoundingClientRect();
+      if (!table) return;
+      element.style.setProperty("--origin-x", `${table.left + table.width / 2}px`);
+      element.style.setProperty("--origin-y", `${table.top + table.height / 2}px`);
+      // Sample constant horizontal velocity and gravity. Unlike straight CSS
+      // segments, this trajectory slows smoothly through its apex without a kink.
+      animations = Array.from(element.children).map((piece, index) => {
+        const duration = 1400 + (index * 37) % 240;
+        const seconds = duration / 1000;
+        const reach = (90 + (index * 67) % Math.min(480, window.innerWidth * .42)) * (index % 2 ? -1 : 1);
+        const peak = Math.min(120 + (index * 43) % 180, Math.max(40, table.top + table.height / 2 - 30));
+        const gravity = 1100;
+        const velocity = Math.sqrt(2 * gravity * peak);
+        const frames = Array.from({ length: 81 }, (_, frame) => {
+          const progress = frame / 80;
+          const time = progress * seconds;
+          return { transform: `translate(${reach * progress}px,${-velocity * time + .5 * gravity * time * time}px) rotate(${(index % 2 ? -1 : 1) * 620 * progress}deg)`, opacity: Math.min(1, progress * 15, (1 - progress) * 5), offset: progress };
+        });
+        return piece.animate(frames, { duration, delay: index % 5 * 20, easing: "linear", fill: "both" });
       });
-      return piece.animate(frames, { duration, delay: index % 5 * 20, easing: "linear", fill: "both" });
-    });
-    element.classList.add("is-firing");
-    const timer = window.setTimeout(() => element.classList.remove("is-firing"), 1800);
-    return () => { window.clearTimeout(timer); animations.forEach(animation => animation.cancel()); element.classList.remove("is-firing"); };
+      element.classList.add("is-firing");
+      timer = window.setTimeout(() => element.classList.remove("is-firing"), 1800);
+    }, 550);
+    return () => { window.clearTimeout(launch); window.clearTimeout(timer); animations.forEach(animation => animation.cancel()); element.classList.remove("is-firing"); };
   }, [roundId, status, unanimous, originRef]);
 
   return <div ref={stage} className="consensus-confetti" aria-hidden="true">
