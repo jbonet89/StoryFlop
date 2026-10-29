@@ -442,5 +442,15 @@
     "invite": "Gonbidatu",
     "copied": "Esteka kopiatuta",
     "copyFailed": "Ezin izan da esteka kopiatu"
+  },
+  "Advertising": {
+    "label": "Publizitatea",
+    "consentTitle": "Publizitatea StoryFlop-en",
+    "consentBody": "Onartzen baduzu, Adsterraren eta haren iragarleen iragarkiak kargatuko ditugu hasierako orrian. Zure IP helbidea eta nabigatzailea bezalako datuak jaso eta publizitate-teknologiak erabil ditzakete. Uko egin eta funtzio guztiak erabiltzen jarrai dezakezu, edo aukera orri-oinean aldatu.",
+    "reject": "Uko egin",
+    "accept": "Publizitatea onartu",
+    "close": "Itxi",
+    "cookies": "Cookieen politika",
+    "providerPrivacy": "Adsterraren pribatutasuna"
   }
 }

@@ -1,3 +1,5 @@
+> Estado actual (29 de octubre de 2026): AdSense ya no se carga. La publicidad de portada usa Adsterra tras consentimiento. Este documento conserva el historial de preparación de AdSense; consultar [integración actual](adsterra-integration.md).
+
 # Revisión de AdSense
 
 ## Recursos públicos · primera fase (17 de octubre de 2026)

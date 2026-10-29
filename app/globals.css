@@ -651,3 +651,16 @@ label { display:block;font-size:12px;font-weight:750;margin:15px 0;color:#394540
 .lab-distribution li { margin:0!important;padding:8px 14px;border:1px solid var(--line);border-radius:8px;background:white;font-size:14px; }
 .usage-notice { flex-basis:100%;font-size:12px;line-height:1.7;color:var(--muted); }
 @media(max-width:650px) { .case-comparison { grid-template-columns:1fr; }.worked-case,.results-lab { padding:20px; }.results-lab .demo-results dl { grid-template-columns:1fr; } }
+
+/* Ads are mounted only after explicit advertising consent. Empty hosts have no height or margin. */
+.adsterra-host { width:min(1080px,calc(100% - 40px));margin:0 auto; }
+.adsterra-ad { margin:26px auto 40px;text-align:center;max-width:100%; }
+.adsterra-label { display:block;font-size:10px;line-height:1.4;color:var(--muted);margin-bottom:6px; }
+.adsterra-ad iframe { display:block;max-width:100%;margin:0 auto;border:0; }
+.advertising-consent { position:fixed;z-index:100;bottom:16px;left:16px;right:16px;max-width:980px;margin:auto;display:flex;align-items:center;gap:24px;padding:20px 24px;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:16px;box-shadow:0 8px 40px #183c3326;max-height:75dvh;overflow:auto; }
+.advertising-consent h2 { font-size:16px;margin:0 0 8px; }
+.advertising-consent p { font-size:12px;line-height:1.6;margin:4px 0; }
+.advertising-consent a { color:var(--green);text-decoration:underline; }
+.advertising-consent-actions { display:flex;gap:10px;flex-wrap:wrap;flex:none; }
+.advertising-consent-actions button { min-height:42px;border:1px solid var(--green);border-radius:9px;background:white;color:var(--green);font-size:12px;font-weight:750;padding:10px 14px;cursor:pointer; }
+@media(max-width:700px) { .advertising-consent { flex-direction:column;align-items:stretch;padding:18px;gap:12px; } .advertising-consent-actions button { flex:1; } .adsterra-host { width:calc(100% - 28px); } }

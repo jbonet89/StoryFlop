@@ -16,7 +16,7 @@ describe("páginas legales", () => {
   it("documenta los tratamientos y proveedores reales", () => {
     expect(privacy).toContain("Supabase");
     expect(privacy).toContain("Vercel");
-    expect(privacy).toContain("Google AdSense");
+    expect(privacy).toContain("Adsterra");
     expect(privacy).toContain("14 días");
   });
 

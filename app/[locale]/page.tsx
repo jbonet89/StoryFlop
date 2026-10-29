@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
-import { AdSenseScript } from "@/components/AdSenseScript";
 import { WebApplicationStructuredData } from "@/components/WebApplicationStructuredData";
 import { LandingPage } from "@/features/rooms/components/LandingPage";
 import { isSupportedLocale, localeAlternates, supportedLocales, type SupportedLocale } from "@/i18n/config";
@@ -47,5 +46,5 @@ function openGraphLocale(locale: SupportedLocale) {
 export default async function LocalizedHome({ params }: PageProps) {
   const { locale } = await params;
   if (!isSupportedLocale(locale)) notFound();
-  return <><WebApplicationStructuredData /><AdSenseScript /><LandingPage /></>;
+  return <><WebApplicationStructuredData /><LandingPage /></>;
 }

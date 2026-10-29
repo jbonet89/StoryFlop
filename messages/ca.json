@@ -442,5 +442,15 @@
     "invite": "Convidar",
     "copied": "Enllaç copiat",
     "copyFailed": "No s’ha pogut copiar l’enllaç"
+  },
+  "Advertising": {
+    "label": "Publicitat",
+    "consentTitle": "Publicitat a StoryFlop",
+    "consentBody": "Si acceptes, carregarem anuncis d’Adsterra i dels seus anunciants a la portada. Podran rebre dades com la teva IP i el navegador i utilitzar tecnologies publicitàries. Pots rebutjar-los i continuar fent servir totes les funcions, o canviar la tria des del peu de pàgina.",
+    "reject": "Rebutjar",
+    "accept": "Acceptar publicitat",
+    "close": "Tancar",
+    "cookies": "Política de galetes",
+    "providerPrivacy": "Privacitat d’Adsterra"
   }
 }

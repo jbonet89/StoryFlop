@@ -16,11 +16,7 @@ test("sirve la guía editorial sin JavaScript", async ({ browser }) => {
 test("descarta el documento publicitario al entrar en una sala", async ({ page }) => {
   await page.route("**/pagead2.googlesyndication.com/**", route => route.fulfill({ contentType: "application/javascript", body: "window.__adRuntime = true;" }));
   await page.goto("/es");
-  if (process.env.NEXT_PUBLIC_ADSENSE_ENABLED === "true") {
-    await expect.poll(() => page.evaluate(() => "__adRuntime" in window)).toBe(true);
-  } else {
-    await page.evaluate(() => { Object.assign(window, { __adRuntime: true }); });
-  }
+  await page.evaluate(() => { Object.assign(window, { __adRuntime: true }); });
   await page.getByRole("button", { name: "Entrar con código" }).click();
   await page.getByLabel("Código de sala").fill("K7M4P9Q2");
   await page.getByRole("button", { name: /Entrar a la sala/ }).click();
@@ -29,14 +25,11 @@ test("descarta el documento publicitario al entrar en una sala", async ({ page }
   await expect(page.locator('script[src*="adsbygoogle.js"]')).toHaveCount(0);
 });
 
-test("coloca las unidades manuales solo entre contenido editorial", async ({ page }) => {
-  await page.route("**/pagead2.googlesyndication.com/**", route => route.fulfill({ contentType: "application/javascript", body: "" }));
+test("no carga publicidad sin consentimiento ni dentro del formulario", async ({ page }) => {
   await page.goto("/es");
-  const enabled = process.env.NEXT_PUBLIC_ADSENSE_ENABLED === "true";
-  await expect(page.locator('.ad-horizontal ins[data-ad-slot="3113577981"]')).toHaveCount(enabled ? 3 : 0);
-  await expect(page.locator('.ad-horizontal ins[data-full-width-responsive="true"]')).toHaveCount(enabled ? 3 : 0);
-  await expect(page.locator('.ad-multiplex ins[data-ad-slot="1608924623"][data-ad-format="autorelaxed"]')).toHaveCount(enabled ? 1 : 0);
-  await expect(page.locator(".landing-grid .adsbygoogle")).toHaveCount(0);
+  await expect(page.locator(".adsterra-ad")).toHaveCount(0);
+  await expect(page.locator('script[src*="adsbygoogle.js"]')).toHaveCount(0);
+  await expect(page.locator(".landing-grid iframe")).toHaveCount(0);
 });
 
 test("la guía no desborda la pantalla", async ({ page }) => {

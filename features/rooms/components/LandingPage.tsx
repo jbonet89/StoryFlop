@@ -13,7 +13,7 @@ import { LanguageSelector } from "@/components/LanguageSelector";
 import { Brand } from "@/components/Brand";
 import { CookieSettingsButton } from "@/components/CookieSettingsButton";
 import { PlanningGuide } from "@/components/PlanningGuide";
-import { AdSenseUnit } from "@/components/AdSenseUnit";
+import { AdsterraPlacement } from "@/components/AdsterraPlacement";
 import { AVATARS } from "@/lib/constants";
 import { displayNameSchema, roomCodeSchema, roomNameSchema } from "@/lib/validation";
 import { getErrorCode } from "@/lib/errors";
@@ -84,7 +84,7 @@ export function LandingPage() {
         </form>
       </section>
     </div>
-    <AdSenseUnit slot="3113577981" format="auto" fullWidthResponsive label={tSeo("advertisementLabel")} className="ad-horizontal" />
+    <AdsterraPlacement kind="banner" />
     <section className="seo-section landing-resources" aria-labelledby="resources-title">
       <div className="seo-heading"><span>{r("learn")}</span><h2 id="resources-title">{r("resourcesNav")}</h2></div>
       <div className="resource-grid">
@@ -103,7 +103,6 @@ export function LandingPage() {
         <li><b>3</b><div><h3>{tSeo("step3Title")}</h3><p>{tSeo("step3Body")}</p></div></li>
       </ol>
     </section>
-    <AdSenseUnit slot="3113577981" format="auto" fullWidthResponsive label={tSeo("advertisementLabel")} className="ad-horizontal" />
     <section className="seo-section feature-section" id="funciones">
       <div className="seo-heading"><span>{tSeo("featuresEyebrow")}</span><h2>{tSeo("featuresTitle")}</h2><p>{tSeo("featuresLead")}</p></div>
       <div className="seo-feature-grid">
@@ -122,7 +121,7 @@ export function LandingPage() {
       <div className="seo-heading"><span>{tSeo("useEyebrow")}</span><h2>{tSeo("useTitle")}</h2><p>{tSeo("useLead")}</p></div>
       <div className="use-case-grid"><article><CircleCheck /><div><h3>{tSeo("refinementTitle")}</h3><p>{tSeo("refinementBody")}</p></div></article><article><CircleCheck /><div><h3>{tSeo("planningTitle")}</h3><p>{tSeo("planningBody")}</p></div></article><article><CircleCheck /><div><h3>{tSeo("remoteTeamsTitle")}</h3><p>{tSeo("remoteTeamsBody")}</p></div></article></div>
     </section>
-    <AdSenseUnit slot="3113577981" format="auto" fullWidthResponsive label={tSeo("advertisementLabel")} className="ad-horizontal" />
+    <AdsterraPlacement kind="native" />
     <section className="seo-section faq-section" id="preguntas">
       <div className="seo-heading"><span>{tSeo("faqEyebrow")}</span><h2>{tSeo("faqTitle")}</h2></div>
       <div className="faq-with-ad">
@@ -133,8 +132,7 @@ export function LandingPage() {
           <details><summary>{tSeo("faq4Question")}</summary><p>{tSeo("faq4Answer")}</p></details>
           <details><summary>{tSeo("faq5Question")}</summary><p>{tSeo("faq5Answer")}</p></details>
         </div>
-        <AdSenseUnit slot="1608924623" format="autorelaxed" label={tSeo("advertisementLabel")} className="ad-multiplex" />
-      </div>
+          </div>
     </section>
     <section className="seo-cta"><div><span>{tSeo("ctaEyebrow")}</span><h2>{tSeo("ctaTitle")}</h2><p>{tSeo("ctaBody")}</p></div><a href="#entry-title">{tSeo("ctaButton")}<ArrowRight size={18} /></a></section>
     <footer className="landing-footer"><span>{t("footerTime")}</span><nav aria-label={tSeo("footerNavLabel")}><a href="#guia">{tSeo("guideNav")}</a><a href="#como-funciona">{tSeo("navHow")}</a><a href="#funciones">{tSeo("navFeatures")}</a><a href="#preguntas">{tSeo("navFaq")}</a><a href="/aviso-legal">{tSeo("legalNotice")}</a><a href="/privacidad">{tSeo("privacyPolicy")}</a><a href="/cookies">{tSeo("cookiesPolicy")}</a><CookieSettingsButton>{tSeo("privacySettings")}</CookieSettingsButton></nav><span><Copy size={13} /> {t("footerShare")}</span></footer>

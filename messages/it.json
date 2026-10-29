@@ -80,5 +80,15 @@
   "Room": {
     "proposeImprovement": "Proponi un miglioramento",
     "opensNewTab": "si apre in una nuova scheda"
+  },
+  "Advertising": {
+    "label": "Pubblicità",
+    "consentTitle": "Pubblicità su StoryFlop",
+    "consentBody": "Se accetti, caricheremo annunci di Adsterra e dei suoi inserzionisti nella pagina iniziale. Potranno ricevere dati come il tuo indirizzo IP e il browser e usare tecnologie pubblicitarie. Puoi rifiutare e continuare a usare tutte le funzioni, oppure cambiare scelta dal piè di pagina.",
+    "reject": "Rifiuta",
+    "accept": "Accetta pubblicità",
+    "close": "Chiudi",
+    "cookies": "Informativa sui cookie",
+    "providerPrivacy": "Privacy di Adsterra"
   }
 }

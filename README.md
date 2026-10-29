@@ -142,3 +142,8 @@ El proyecto está en desarrollo activo. Antes de utilizarlo en producción, revi
 Las seis guías, demo y plantilla están disponibles en los nueve idiomas. Consulta [la revisión de segunda fase](docs/phase-two-review.md) para rutas, eventos, privacidad y estado de AdSense/Search Console.
 
 La medición agregada requiere `SUPABASE_SERVICE_ROLE_KEY` en el servidor y la migración `20261017182914_resource_usage_daily.sql`. No publicar esta clave en el navegador. Informe del propietario: `node scripts/resource-usage-report.mjs 30`. Auditoría pública: `node scripts/audit-resource-site.mjs https://storyflop.com`. Para probar contra un servidor local alternativo, configurar `PLAYWRIGHT_BASE_URL`.
+
+
+## Publicidad de portada
+
+Adsterra, únicamente después de aceptar publicidad. Consulta [formatos, consentimiento y límites de la integración](docs/adsterra-integration.md). `NEXT_PUBLIC_ADSTERRA_ENABLED=false` desactiva la carga tras un nuevo despliegue. No hay publicidad en las salas ni espera obligatoria de entrada.

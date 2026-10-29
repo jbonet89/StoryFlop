@@ -442,5 +442,15 @@
     "invite": "Convidar",
     "copied": "Link copiado",
     "copyFailed": "Não foi possível copiar o link"
+  },
+  "Advertising": {
+    "label": "Publicidade",
+    "consentTitle": "Publicidade no StoryFlop",
+    "consentBody": "Se aceitares, carregaremos anúncios da Adsterra e dos seus anunciantes na página inicial. Poderão receber dados como o teu endereço IP e navegador e utilizar tecnologias publicitárias. Podes rejeitar e continuar a utilizar todas as funções, ou alterar a tua escolha no rodapé.",
+    "reject": "Rejeitar",
+    "accept": "Aceitar publicidade",
+    "close": "Fechar",
+    "cookies": "Política de cookies",
+    "providerPrivacy": "Privacidade da Adsterra"
   }
 }
