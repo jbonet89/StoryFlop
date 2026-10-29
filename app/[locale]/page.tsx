@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!isSupportedLocale(locale)) return {};
   const t = await getTranslations({ locale, namespace: "Metadata" });
   return {
-    title: t("title"),
+    title: { absolute: t("title") },
     description: t("description"),
     alternates: {
       canonical: `/${locale}`,

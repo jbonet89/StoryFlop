@@ -1,5 +1,19 @@
 import { test, expect } from "@playwright/test";
 
+test("la portada permite probar una ronda y publica un título sin duplicar", async ({ page }) => {
+  await page.goto("/es");
+  await expect(page).toHaveTitle("Scrum Poker online gratis para equipos ágiles | StoryFlop");
+  const demo = page.locator(".landing-demo");
+  await demo.getByRole("button", { name: "Estimar 5", exact: true }).click();
+  await demo.getByRole("button", { name: "Revelar votos", exact: true }).click();
+  await expect(demo.locator(".demo-discussion")).toBeVisible();
+  await demo.getByRole("button", { name: /Aclarar el alcance y repetir/ }).click();
+  await demo.getByRole("button", { name: "Estimar 5", exact: true }).click();
+  await demo.getByRole("button", { name: "Revelar segunda ronda", exact: true }).click();
+  await expect(demo.getByRole("heading", { name: "Hay coincidencia; falta documentar el acuerdo" })).toBeVisible();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+});
+
 test("sirve la guía editorial sin JavaScript", async ({ browser }) => {
   const context = await browser.newContext({ javaScriptEnabled: false, locale: "es-ES" });
   const page = await context.newPage();

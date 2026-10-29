@@ -1,5 +1,6 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
+import buildSitemap from "../app/sitemap";
 
 const homePage = readFileSync("app/[locale]/page.tsx", "utf8");
 const roomPage = readFileSync("app/sala/[code]/page.tsx", "utf8");
@@ -8,6 +9,17 @@ const sitemap = readFileSync("app/sitemap.ts", "utf8");
 const structuredData = readFileSync("components/WebApplicationStructuredData.tsx", "utf8");
 
 describe("SEO técnico", () => {
+  it("asigna fechas de contenido estables y mantiene las salas fuera del sitemap", () => {
+    const entries = buildSitemap();
+    const dates = Object.fromEntries(entries.map(entry => [new URL(entry.url).pathname, new Date(entry.lastModified!).toISOString().slice(0, 10)]));
+    expect(dates["/es"]).toBe("2026-10-29");
+    expect(dates["/aviso-legal"]).toBe("2026-09-28");
+    expect(dates["/cookies"]).toBe("2026-10-29");
+    expect(dates["/recursos/dividir-historias"]).toBe("2026-10-17");
+    expect(entries).toHaveLength(102);
+    expect(entries.some(entry => entry.url.includes("/sala/"))).toBe(false);
+    expect(sitemap).not.toContain("new Date()");
+  });
   it("publica canonical, robots y sitemap", () => {
     expect(homePage).toContain("canonical: `/${locale}`");
     expect(homePage).toContain('"x-default": "/"');

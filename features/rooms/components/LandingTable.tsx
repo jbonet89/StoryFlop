@@ -59,6 +59,6 @@ export function LandingTable({ readyLabel }: { readyLabel: string }) {
       <div className="mini-felt"><span>SPRINT 24</span><strong>{readyLabel}</strong><div><i>3</i><i>5</i><i>8</i></div></div>
       <span className="mini-seat s4" data-character="frog">🐸</span><span className="mini-seat s5" data-character="fox">🦊</span>
     </div>
-    <FlyingReactions animations={animations} onComplete={removeAnimation} />
+    {animations.length > 0 && <FlyingReactions animations={animations} onComplete={removeAnimation} />}
   </>;
 }
