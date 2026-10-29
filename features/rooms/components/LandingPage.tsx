@@ -18,6 +18,7 @@ import { AVATARS } from "@/lib/constants";
 import { displayNameSchema, roomCodeSchema, roomNameSchema } from "@/lib/validation";
 import { getErrorCode } from "@/lib/errors";
 import { roomApi } from "../api";
+import { LandingTable } from "./LandingTable";
 
 export function LandingPage() {
   const ready = useClientReady();
@@ -63,11 +64,7 @@ export function LandingPage() {
         <div className="feature-row">
           <span><LockKeyhole /> {t("privateVotes")}</span><span><Radio /> {t("live")}</span><span><Layers3 /> {t("roundHistory")}</span>
         </div>
-        <div className="mini-table" aria-hidden="true">
-          <span className="mini-seat s1">🐼</span><span className="mini-seat s2">🐙</span><span className="mini-seat s3">🦁</span>
-          <div className="mini-felt"><span>SPRINT 24</span><strong>{t("ready")}</strong><div><i>3</i><i>5</i><i>8</i></div></div>
-          <span className="mini-seat s4">🐸</span><span className="mini-seat s5">🦊</span>
-        </div>
+        <LandingTable readyLabel={t("ready")} />
       </section>
       <section className="entry-card" aria-labelledby="entry-title">
         <div className="mode-tabs"><button disabled={!ready} className={mode === "create" ? "active" : ""} onClick={() => { setMode("create"); setError(""); }}>{t("createRoom")}</button><button disabled={!ready} className={mode === "join" ? "active" : ""} onClick={() => { setMode("join"); setError(""); }}>{t("joinWithCode")}</button></div>
