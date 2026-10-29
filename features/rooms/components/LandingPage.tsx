@@ -13,7 +13,6 @@ import { LanguageSelector } from "@/components/LanguageSelector";
 import { Brand } from "@/components/Brand";
 import { CookieSettingsButton } from "@/components/CookieSettingsButton";
 import { PlanningGuide } from "@/components/PlanningGuide";
-import { PlanningDemo } from "@/components/PlanningDemo";
 import { AdsterraPlacement } from "@/components/AdsterraPlacement";
 import { AVATARS } from "@/lib/constants";
 import { displayNameSchema, roomCodeSchema, roomNameSchema } from "@/lib/validation";
@@ -82,13 +81,6 @@ export function LandingPage() {
         </form>
       </section>
     </div>
-    <section className="seo-section landing-demo" aria-labelledby="landing-demo-title">
-      <div className="seo-heading"><span>{r("landingDemoEyebrow")}</span><h2 id="landing-demo-title">{r("demoTitle")}</h2><p>{r("demoLead")}</p></div>
-      <p className="resource-notice">{r("simulation")}</p>
-      <PlanningDemo />
-      <p>{r("realRoom")}</p>
-      <a className="resource-button" href="#entry-title">{r("createTeamRoom")} →</a>
-    </section>
     <AdsterraPlacement kind="banner" />
     <section className="seo-section landing-resources" aria-labelledby="resources-title">
       <div className="seo-heading"><span>{r("learn")}</span><h2 id="resources-title">{r("resourcesNav")}</h2></div>
