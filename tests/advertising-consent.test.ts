@@ -10,7 +10,8 @@ function storage() {
 describe("advertising consent", () => {
   it("requires explicit consent; malformed, expired and removed preferences do not authorize ads", () => {
     const data = storage(); expect(readAdvertisingChoice()).toBeNull();
-    data.set(consentKey, '{"choice":"accepted","version":1,"expiresAt":0}'); expect(readAdvertisingChoice()).toBeNull();
+    data.set(consentKey, '{"choice":"accepted","version":2,"expiresAt":0}'); expect(readAdvertisingChoice()).toBeNull();
+    data.set(consentKey, JSON.stringify({ choice: "accepted", version: 1, expiresAt: Date.now() + 100000 })); expect(readAdvertisingChoice()).toBeNull();
     data.set(consentKey, "invalid"); expect(readAdvertisingChoice()).toBeNull();
     setAdvertisingChoice("accepted"); expect(readAdvertisingChoice()).toBe("accepted");
     data.delete(consentKey); expect(readAdvertisingChoice()).toBeNull();

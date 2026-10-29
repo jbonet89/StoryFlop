@@ -16,6 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const googleSiteVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
   return {
     applicationName: APP_NAME,
+    referrer: "origin",
     title: { default: t("title"), template: `%s · ${APP_NAME}` },
     description: t("description"),
     other: { "google-adsense-account": "ca-pub-2657741160026304" },

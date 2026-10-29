@@ -146,4 +146,4 @@ La medición agregada requiere `SUPABASE_SERVICE_ROLE_KEY` en el servidor y la m
 
 ## Publicidad de portada
 
-Adsterra, únicamente después de aceptar publicidad. Consulta [formatos, consentimiento y límites de la integración](docs/adsterra-integration.md). `NEXT_PUBLIC_ADSTERRA_ENABLED=false` desactiva la carga tras un nuevo despliegue. No hay publicidad en las salas ni espera obligatoria de entrada.
+Adsterra en portada y formulario de nombre previo a una sala, únicamente después de aceptar publicidad. Consulta [formatos, consentimiento y límites de la integración](docs/adsterra-integration.md). `NEXT_PUBLIC_ADSTERRA_ENABLED=false` desactiva la carga tras un nuevo despliegue. No hay publicidad en la mesa de votación ni espera obligatoria de entrada. Las pruebas locales usan `NEXT_PUBLIC_ADSTERRA_TEST_MODE=true` y fixtures interceptados, sin tráfico a la red publicitaria.

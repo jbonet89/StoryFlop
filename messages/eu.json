@@ -446,11 +446,12 @@
   "Advertising": {
     "label": "Publizitatea",
     "consentTitle": "Publizitatea StoryFlop-en",
-    "consentBody": "Onartzen baduzu, Adsterraren eta haren iragarleen iragarkiak kargatuko ditugu hasierako orrian. Zure IP helbidea eta nabigatzailea bezalako datuak jaso eta publizitate-teknologiak erabil ditzakete. Uko egin eta funtzio guztiak erabiltzen jarrai dezakezu, edo aukera orri-oinean aldatu.",
+    "consentBody": "Onartzen baduzu, Adsterraren eta haren iragarleen iragarkiak kargatuko ditugu hasierako orrian eta gelara sartu aurretik. Datu teknikoak eta nabigazio-datuak jaso ditzakete, hala nola IP helbidea, nabigatzailea eta orriaren URLa, eta cookieak edo identifikatzaile pseudonimoak erabili publizitatea erakusteko eta neurtzeko. Uko egin eta funtzio guztiak erabil ditzakezu, edo aukera hobespenetan aldatu.",
     "reject": "Uko egin",
     "accept": "Publizitatea onartu",
     "close": "Itxi",
     "cookies": "Cookieen politika",
+    "settings": "Publizitate-hobespenak",
     "providerPrivacy": "Adsterraren pribatutasuna"
   }
 }

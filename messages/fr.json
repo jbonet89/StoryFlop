@@ -93,11 +93,12 @@
   "Advertising": {
     "label": "Publicité",
     "consentTitle": "Publicité sur StoryFlop",
-    "consentBody": "Si vous acceptez, nous chargerons les publicités d’Adsterra et de ses annonceurs sur la page d’accueil. Ils pourront recevoir des données comme votre adresse IP et votre navigateur et utiliser des technologies publicitaires. Vous pouvez refuser et utiliser toutes les fonctions, ou modifier votre choix dans le pied de page.",
+    "consentBody": "Si vous acceptez, nous chargerons des annonces d’Adsterra et de ses annonceurs sur l’accueil et avant l’accès à une salle. Ils peuvent recevoir des données techniques et de navigation, comme l’adresse IP, le navigateur et l’URL de la page, et utiliser des cookies ou identifiants pseudonymes pour afficher et mesurer la publicité. Vous pouvez refuser et utiliser toutes les fonctions, ou modifier votre choix dans les préférences.",
     "reject": "Refuser",
     "accept": "Accepter la publicité",
     "close": "Fermer",
     "cookies": "Politique de cookies",
+    "settings": "Préférences publicitaires",
     "providerPrivacy": "Confidentialité Adsterra"
   }
 }

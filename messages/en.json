@@ -446,11 +446,12 @@
   "Advertising": {
     "label": "Advertisement",
     "consentTitle": "Advertising on StoryFlop",
-    "consentBody": "If you accept, we will load ads from Adsterra and its advertisers on the homepage. They may receive data such as your IP address and browser and use advertising technologies. You can reject and keep using every feature, or change your choice in the footer.",
+    "consentBody": "If you accept, we will load ads from Adsterra and its advertisers on the homepage and before joining a room. They may receive technical and browsing data, such as your IP address, browser and page URL, and use cookies or pseudonymous identifiers to display and measure ads. You can reject and use every feature, or change your choice in the preferences.",
     "reject": "Reject",
     "accept": "Accept advertising",
     "close": "Close",
     "cookies": "Cookie policy",
+    "settings": "Advertising preferences",
     "providerPrivacy": "Adsterra privacy"
   }
 }

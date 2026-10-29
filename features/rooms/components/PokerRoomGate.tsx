@@ -1,9 +1,12 @@
 "use client";
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import Link from "next/link";
 import { ZodError } from "zod";
 import { useTranslations } from "next-intl";
 import { DoorOpen, LoaderCircle } from "lucide-react";
+import { AdsterraPlacement } from "@/components/AdsterraPlacement";
+import { CookieSettingsButton } from "@/components/CookieSettingsButton";
+import { hasAdsterraRuntime } from "@/lib/adsterra-runtime";
 import { AvatarPicker } from "@/components/AvatarPicker";
 import { LanguageSelector } from "@/components/LanguageSelector";
 import { Brand, BrandMark } from "@/components/Brand";
@@ -19,22 +22,25 @@ export function PokerRoomGate({ code }: { code: string }) {
   const tHome = useTranslations("Home");
   const tValidation = useTranslations("Validation");
   const tErrors = useTranslations("Errors");
+  const tPrivacy = useTranslations("Advertising");
   const validCode = roomCodeSchema.safeParse(code);
   const query = useRoom(validCode.success ? validCode.data : code);
   const [name, setName] = useState("");
   const [avatar, setAvatar] = useState<(typeof AVATARS)[number]>("🦊");
   const [pending, setPending] = useState(false);
   const [error, setError] = useState("");
+  useEffect(() => { if (query.data && hasAdsterraRuntime()) window.location.reload(); }, [query.data]);
   if (!validCode.success) return <RoomState title={t("invalidCode")} detail={t("invalidCodeDetail")} backLabel={t("backHome")} />;
   if (query.isLoading) return <RoomState title={t("preparingTable")} detail={t("restoringSeat")} backLabel={t("backHome")} loading />;
+  if (query.data && hasAdsterraRuntime()) return <RoomState title={t("preparingTable")} detail={t("restoringSeat")} backLabel={t("backHome")} loading />;
   if (query.data) return <PokerRoom snapshot={query.data} code={validCode.data} realtimeStatus={query.realtimeStatus} />;
 
   async function join(event: FormEvent) {
     event.preventDefault(); setPending(true); setError("");
-    try { await roomApi.joinRoom(validCode.data!, displayNameSchema.parse(name), avatar); await query.refetch(); }
+    try { await roomApi.joinRoom(validCode.data!, displayNameSchema.parse(name), avatar); window.location.assign(`/sala/${validCode.data}`); }
     catch (cause) { setError(cause instanceof ZodError ? tValidation(cause.issues[0]?.message ?? "CHECK_DATA") : tErrors(getErrorCode(cause))); setPending(false); }
   }
-  return <main className="join-screen"><div className="join-shell"><div className="join-brand"><Brand /><LanguageSelector /></div><section className="join-card"><span className="room-code-label">{t("roomCode", { code: validCode.data })}</span><h1>{t("joinTitle")}</h1><p>{t("joinDetail")}</p><form onSubmit={join}><label>{tHome("yourName")}<input autoFocus value={name} onChange={e => setName(e.target.value)} placeholder={tHome("namePlaceholder")} maxLength={32} /></label><AvatarPicker value={avatar} onChange={setAvatar} />{error && <p className="form-error" role="alert">{error}</p>}<button className="primary-button" disabled={pending}>{pending ? t("entering") : t("sit")}<DoorOpen size={18} /></button></form></section></div></main>;
+  return <main className="join-screen"><div className="join-shell"><div className="join-brand"><Brand /><LanguageSelector /></div><section className="join-card"><span className="room-code-label">{t("roomCode", { code: validCode.data })}</span><h1>{t("joinTitle")}</h1><p>{t("joinDetail")}</p><form onSubmit={join}><label>{tHome("yourName")}<input autoFocus value={name} onChange={e => setName(e.target.value)} placeholder={tHome("namePlaceholder")} maxLength={32} /></label><AvatarPicker value={avatar} onChange={setAvatar} />{error && <p className="form-error" role="alert">{error}</p>}<button className="primary-button" disabled={pending}>{pending ? t("entering") : t("sit")}<DoorOpen size={18} /></button></form></section>{!query.isError && <AdsterraPlacement kind="rectangle" />}<CookieSettingsButton>{tPrivacy("settings")}</CookieSettingsButton></div></main>;
 }
 
 function RoomState({ title, detail, backLabel, loading }: { title: string; detail: string; backLabel: string; loading?: boolean }) {
