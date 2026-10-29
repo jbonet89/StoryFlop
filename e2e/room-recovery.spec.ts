@@ -85,6 +85,13 @@ test("celebrates unanimous reveal once, then clears and does not replay on reloa
   await expect(page.locator(".consensus-confetti.is-firing")).toHaveCount(0);
   await reveal(page);
   await expect(page.locator(".consensus-confetti.is-firing")).toHaveCount(1);
+  const origin = await page.locator(".consensus-confetti").evaluate(element => {
+    const table = document.querySelector(".poker-table .felt")!.getBoundingClientRect();
+    const style = getComputedStyle(element);
+    return { x: parseFloat(style.getPropertyValue("--origin-x")), y: parseFloat(style.getPropertyValue("--origin-y")), expectedX: table.left + table.width / 2, expectedY: table.top + table.height / 2 };
+  });
+  expect(origin.x).toBeCloseTo(origin.expectedX, 1);
+  expect(origin.y).toBeCloseTo(origin.expectedY, 1);
   if (test.info().project.name === "webkit") {
     await expect.poll(() => page.locator(".consensus-confetti i").first().evaluate(element => Number(getComputedStyle(element).opacity))).toBeGreaterThan(0);
     await page.screenshot({ path: "outputs/consensus-webkit.png" });
