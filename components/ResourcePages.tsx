@@ -22,7 +22,7 @@ export async function resourceMetadata(kind: PageKind, slug?: string): Promise<M
   const guide = slug ? guides.find(item => item.slug === slug) : undefined;
   if (slug && !guide) return {};
   const path = guide ? `/recursos/${guide.slug}` : paths[kind];
-  const title = guide?.title ?? ui[`${kind}Meta`];
+  const title = guide?.metaTitle ?? guide?.title ?? ui[`${kind}Meta`];
   const description = guide?.description ?? ui[`${kind}Description`];
   const socialLocales: Record<SupportedLocale, string> = { es: "es_ES", en: "en_US", fr: "fr_FR", it: "it_IT", de: "de_DE", pt: "pt_PT", ca: "ca_ES", eu: "eu_ES", ru: "ru_RU" };
   return { title, description, alternates: { canonical: resourceHref(locale, path), languages: resourceAlternates(path) }, openGraph: { title, description, url: resourceHref(locale, path), locale: socialLocales[locale] }, twitter: { card: "summary_large_image", title, description } };

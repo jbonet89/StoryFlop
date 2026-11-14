@@ -2,6 +2,7 @@
   "guides": [
     {
       "slug": "primera-sesion",
+      "metaTitle": "La prima sessione di Planning Poker",
       "title": "La tua prima sessione di Planning Poker con StoryFlop",
       "description": "Prepara una storia, assegna i ruoli e segui un turno completo, dal voto privato alla decisione del team.",
       "category": "Iniziare",
@@ -201,6 +202,7 @@
     },
     {
       "slug": "dividir-historias",
+      "metaTitle": "Come dividere le storie utente grandi",
       "title": "Dividere storie grandi senza perdere un risultato utile",
       "description": "Tre casi prima e dopo per limitare consegne complete, mantenere qualità e stimare di nuovo con senso.",
       "category": "Delimitare",
@@ -279,6 +281,7 @@
     },
     {
       "slug": "interpretar-resultados",
+      "metaTitle": "Planning Poker: media, mediana e distribuzione",
       "title": "Interpretare media, mediana e distribuzione in StoryFlop",
       "description": "Esempi calcolati per capire i voti e le decisioni che restano al team.",
       "category": "Interpretare",
@@ -333,6 +336,7 @@
     },
     {
       "slug": "sesiones-remotas",
+      "metaTitle": "Come facilitare il Planning Poker da remoto",
       "title": "Facilitare sessioni remote senza forzare il consenso",
       "description": "Preparazione, turni di parola e un caso completo per trasformare il voto remoto in decisioni chiare.",
       "category": "Facilitare a distanza",

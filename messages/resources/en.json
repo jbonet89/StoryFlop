@@ -201,6 +201,7 @@
     },
     {
       "slug": "dividir-historias",
+      "metaTitle": "How to split large user stories",
       "title": "Split large stories without losing a useful outcome",
       "description": "Three before-and-after cases to narrow complete deliveries, maintain quality and estimate again meaningfully.",
       "category": "Narrow scope",
@@ -279,6 +280,7 @@
     },
     {
       "slug": "interpretar-resultados",
+      "metaTitle": "Planning Poker: mean, median and vote spread",
       "title": "Read the mean, median and distribution in StoryFlop",
       "description": "Calculated examples to understand what votes describe and which decisions remain with the team.",
       "category": "Interpret",
@@ -333,6 +335,7 @@
     },
     {
       "slug": "sesiones-remotas",
+      "metaTitle": "How to run remote Planning Poker sessions",
       "title": "Facilitate remote sessions without forcing consensus",
       "description": "Preparation, speaking turns and a complete case to turn remote voting into clear decisions.",
       "category": "Facilitate remotely",

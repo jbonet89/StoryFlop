@@ -70,6 +70,7 @@
     },
     {
       "slug": "resolver-desacuerdos",
+      "metaTitle": "Planning Poker: Uneinigkeit bei 3, 5 und 13",
       "title": "Stimmen 3, 5 und 13: Meinungsverschiedenheiten lösen",
       "description": "Ein Passwortfall zum Unterscheiden von Umfang, Unsicherheit und Teamreferenzen.",
       "category": "Moderieren",
@@ -201,6 +202,7 @@
     },
     {
       "slug": "dividir-historias",
+      "metaTitle": "Große User Storys sinnvoll aufteilen",
       "title": "Große Storys aufteilen und nützliche Ergebnisse erhalten",
       "description": "Drei Vorher-Nachher-Fälle für begrenzte vollständige Lieferungen, Qualität und sinnvolle neue Schätzungen.",
       "category": "Eingrenzen",
@@ -279,6 +281,7 @@
     },
     {
       "slug": "interpretar-resultados",
+      "metaTitle": "Mittelwert und Median beim Planning Poker",
       "title": "Mittelwert, Median und Verteilung in StoryFlop verstehen",
       "description": "Berechnete Beispiele erklären Stimmen und die Entscheidungen, die weiterhin beim Team liegen.",
       "category": "Einordnen",

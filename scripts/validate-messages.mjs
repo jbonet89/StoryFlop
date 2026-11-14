@@ -11,7 +11,8 @@ const flatten = (messages, prefix = "") => Object.entries(messages).flatMap(([ke
 const baseEntries = flatten(read("es"));
 const baseKeys = baseEntries.map(([key]) => key);
 const resourceBaseEntries = flatten(JSON.parse(readFileSync(`${root}/messages/resources/es.json`, "utf8")));
-const resourceKeys = resourceBaseEntries.map(([key]) => key);
+const isGuideMetaTitle = key => /^guides\.\d+\.metaTitle$/.test(key);
+const resourceKeys = resourceBaseEntries.map(([key]) => key).filter(key => !isGuideMetaTitle(key));
 const partialLocales = new Set(["fr", "it", "ru"]);
 const requiredPublicPrefixes = ["Metadata.", "Brand.", "Language.", "Common.", "Home.", "LandingSeo."];
 const errors = [];
@@ -26,9 +27,10 @@ for (const locale of locales) {
   } else if (JSON.stringify(keys) !== JSON.stringify(baseKeys)) errors.push(`${locale}: las claves no coinciden con es`);
   for (const [key, value] of entries) if (!value.trim()) errors.push(`${locale}: ${key} está vacía`);
   const resources = flatten(JSON.parse(readFileSync(`${root}/messages/resources/${locale}.json`, "utf8")));
-  if (JSON.stringify(resources.map(([key]) => key)) !== JSON.stringify(resourceKeys)) errors.push(`${locale}: los recursos no tienen la estructura completa`);
+  if (JSON.stringify(resources.map(([key]) => key).filter(key => !isGuideMetaTitle(key))) !== JSON.stringify(resourceKeys)) errors.push(`${locale}: los recursos no tienen la estructura completa`);
   for (const [key, value] of resources) {
     if (!value.trim()) errors.push(`${locale}: Resources.${key} está vacía`);
+    if (isGuideMetaTitle(key)) continue;
     const source = resourceBaseEntries.find(([sourceKey]) => sourceKey === key)?.[1];
     if (JSON.stringify(value.match(/\{\w+\}/g)) !== JSON.stringify(source?.match(/\{\w+\}/g))) errors.push(`${locale}: Resources.${key} tiene parámetros distintos`);
   }

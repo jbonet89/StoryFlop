@@ -2,6 +2,7 @@
   "guides": [
     {
       "slug": "primera-sesion",
+      "metaTitle": "Animer sa première séance de Planning Poker",
       "title": "Votre première séance de Planning Poker avec StoryFlop",
       "description": "Préparez un récit, répartissez les rôles et suivez un tour complet, du vote privé à la décision commune.",
       "category": "Commencer",
@@ -201,6 +202,7 @@
     },
     {
       "slug": "dividir-historias",
+      "metaTitle": "Comment découper les grandes user stories",
       "title": "Découper les grands récits sans perdre un résultat utile",
       "description": "Trois cas avant/après pour limiter des livraisons complètes, maintenir la qualité et réestimer utilement.",
       "category": "Limiter",
@@ -279,6 +281,7 @@
     },
     {
       "slug": "interpretar-resultados",
+      "metaTitle": "Planning Poker : moyenne, médiane et répartition",
       "title": "Interpréter moyenne, médiane et distribution dans StoryFlop",
       "description": "Des exemples calculés pour comprendre les votes et les décisions qui appartiennent toujours à l'équipe.",
       "category": "Interpréter",
@@ -333,6 +336,7 @@
     },
     {
       "slug": "sesiones-remotas",
+      "metaTitle": "Animer un Planning Poker à distance",
       "title": "Faciliter les séances à distance sans forcer le consensus",
       "description": "Préparation, tours de parole et cas complet pour transformer le vote distant en décisions claires.",
       "category": "Faciliter à distance",

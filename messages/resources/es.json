@@ -2,6 +2,7 @@
   "guides": [
     {
       "slug": "primera-sesion",
+      "metaTitle": "Cómo hacer una sesión de Planning Poker",
       "title": "Cómo hacer una sesión de Planning Poker paso a paso",
       "description": "Prepara una historia, reparte los roles y recorre una ronda completa: desde el voto privado hasta la decisión del equipo.",
       "category": "Empezar",
@@ -201,6 +202,7 @@
     },
     {
       "slug": "dividir-historias",
+      "metaTitle": "Cómo dividir historias de usuario grandes",
       "title": "Cómo dividir historias grandes sin perder el resultado útil",
       "description": "Tres casos antes y después para acotar entregas completas, conservar la calidad y volver a estimar con sentido.",
       "category": "Acotar",
@@ -279,6 +281,7 @@
     },
     {
       "slug": "interpretar-resultados",
+      "metaTitle": "Planning Poker: media, mediana y distribución",
       "title": "Cómo interpretar media, mediana y distribución en StoryFlop",
       "description": "Ejemplos calculados para entender qué describen los votos y qué decisiones siguen correspondiendo al equipo.",
       "category": "Interpretar",
@@ -333,6 +336,7 @@
     },
     {
       "slug": "sesiones-remotas",
+      "metaTitle": "Cómo facilitar un Planning Poker remoto",
       "title": "Cómo facilitar una sesión remota sin forzar el consenso",
       "description": "Preparación, turnos de conversación y un caso completo para que la votación remota termine en decisiones claras.",
       "category": "Facilitar a distancia",
