@@ -49,7 +49,7 @@ El contenido público revisado describe una herramienta de estimación y guías;
 
 ## Pruebas y operación
 
-`NEXT_PUBLIC_ADSTERRA_ENABLED=false` desactiva la integración tras redesplegar. `NEXT_PUBLIC_ADSTERRA_TEST_MODE=true` habilita en localhost únicamente rutas de fixtures `/__adsterra-test/{format}.js`, que las pruebas interceptan. No solicita tags reales en localhost, previews ni para headless en producción. No existe una ruta real que sirva esos fixtures fuera de las pruebas. No se crean impresiones ni clics facturables para probar.
+La integración, el aviso y las preferencias están desactivados por defecto. Para reactivar Adsterra, establece `NEXT_PUBLIC_ADSTERRA_ENABLED=true` y vuelve a desplegar. Para ejecutar las pruebas con anuncios simulados en localhost, inicia la aplicación con `NEXT_PUBLIC_ADSTERRA_ENABLED=true` y `NEXT_PUBLIC_ADSTERRA_TEST_MODE=true`. Las pruebas interceptan las rutas `/__adsterra-test/{format}.js`; la aplicación no sirve esos fixtures. La carga real sigue limitada al dominio de producción y a los navegadores admitidos.
 
 Pruebas cubren rechazo persistente, v1 sin autorización automática, caducidad, carga directa fuera de iframes propios, tamaños, acceso a sala con y sin publicidad, navegación completa antes de la mesa y ausencia de anuncios en ella. No se hacen cambios de esquema ni escrituras de prueba en Supabase.
 

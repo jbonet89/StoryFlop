@@ -1,4 +1,4 @@
-export const adsterraEnabled = process.env.NEXT_PUBLIC_ADSTERRA_ENABLED !== "false";
+export const adsterraEnabled = process.env.NEXT_PUBLIC_ADSTERRA_ENABLED === "true";
 export const adsterraFormats = {
   leaderboard: { key: "31210775e07ed4d1bfb4e74bfbe50383", width: 728, height: 90 },
   mobile: { key: "2cef96db594fff17ce9c57edb12b315c", width: 320, height: 50 },

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { isSupportedLocale, localeCookieName, resolveLocalePreference } from "@/i18n/config";
+import { defaultLocale, isSupportedLocale } from "@/i18n/config";
 import { resourceRoots } from "@/lib/resource-links";
 
 export function proxy(request: NextRequest) {
@@ -13,13 +13,9 @@ export function proxy(request: NextRequest) {
   }
 
   if (request.nextUrl.pathname === "/") {
-    const locale = resolveLocalePreference(
-      request.cookies.get(localeCookieName)?.value,
-      request.headers.get("accept-language"),
-    );
     const url = request.nextUrl.clone();
-    url.pathname = `/${locale}`;
-    return NextResponse.redirect(url);
+    url.pathname = `/${defaultLocale}`;
+    return NextResponse.redirect(url, 308);
   }
 
   if (isSupportedLocale(firstSegment) || resourceRoots.includes(firstSegment)) {

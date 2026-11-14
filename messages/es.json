@@ -1,8 +1,8 @@
 {
   "Metadata": {
     "appName": "StoryFlop",
-    "title": "Scrum Poker online gratis para equipos ágiles | StoryFlop",
-    "description": "Estima historias de usuario y story points en equipo con Scrum Poker en tiempo real. Pon cada historia sobre la mesa, revela las cartas y alcanza el consenso.",
+    "title": "Planning Poker online gratis y sin registro | StoryFlop",
+    "description": "Crea una sala de Planning Poker gratis y sin registro. Invita a tu equipo, estima historias de usuario con cartas Fibonacci y revela los votos en tiempo real.",
     "socialDescription": "Revela estimaciones. Alcanza el consenso.",
     "roomTitle": "Sala"
   },
@@ -29,7 +29,7 @@
   "Home": {
     "realtime": "Tiempo real",
     "eyebrow": "Scrum Poker para equipos ágiles",
-    "heroLine1": "Scrum Poker online.",
+    "heroLine1": "Planning Poker online.",
     "heroLine2": "Estima en equipo.",
     "lead": "Crea una sala gratuita de Planning Poker, invita a tu equipo y estima story points en tiempo real sin registro.",
     "privateVotes": "Votos privados",

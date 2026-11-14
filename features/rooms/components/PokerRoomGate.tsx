@@ -2,7 +2,7 @@
 import { useEffect, useState, type FormEvent } from "react";
 import Link from "next/link";
 import { ZodError } from "zod";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { DoorOpen, LoaderCircle } from "lucide-react";
 import { AdsterraPlacement } from "@/components/AdsterraPlacement";
 import { CookieSettingsButton } from "@/components/CookieSettingsButton";
@@ -44,5 +44,6 @@ export function PokerRoomGate({ code }: { code: string }) {
 }
 
 function RoomState({ title, detail, backLabel, loading }: { title: string; detail: string; backLabel: string; loading?: boolean }) {
-  return <main className="join-screen"><div className="state-shell"><Brand /><div className="state-card">{loading ? <LoaderCircle className="spin" /> : <BrandMark decorative className="state-mark" />}<h1>{title}</h1><p>{detail}</p>{!loading && <Link href="/">{backLabel}</Link>}</div></div></main>;
+  const locale = useLocale();
+  return <main className="join-screen"><div className="state-shell"><Brand /><div className="state-card">{loading ? <LoaderCircle className="spin" /> : <BrandMark decorative className="state-mark" />}<h1>{title}</h1><p>{detail}</p>{!loading && <Link href={`/${locale}`}>{backLabel}</Link>}</div></div></main>;
 }

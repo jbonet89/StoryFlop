@@ -22,8 +22,12 @@ describe("SEO técnico", () => {
   });
   it("publica canonical, robots y sitemap", () => {
     expect(homePage).toContain("canonical: `/${locale}`");
-    expect(homePage).toContain('"x-default": "/"');
-    expect(homePage).toContain("localeAlternates");
+    expect(homePage).toContain("languages: localeAlternates");
+    const homeEntries = buildSitemap().filter(entry => /^\/[a-z]{2}$/.test(new URL(entry.url).pathname));
+    expect(homeEntries).toHaveLength(9);
+    for (const entry of homeEntries) {
+      expect(entry.alternates?.languages?.["x-default"]).toBe(new URL("/es", entry.url).href);
+    }
     expect(robots).toContain("/sitemap.xml");
     expect(sitemap).toContain('changeFrequency: "weekly"');
     expect(sitemap).toContain("supportedLocales.map");

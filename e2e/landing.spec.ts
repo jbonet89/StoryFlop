@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 
 test("la portada publica un título sin duplicar", async ({ page }) => {
   await page.goto("/es");
-  await expect(page).toHaveTitle("Scrum Poker online gratis para equipos ágiles | StoryFlop");
+  await expect(page).toHaveTitle("Planning Poker online gratis y sin registro | StoryFlop");
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
 });
 
@@ -43,5 +43,5 @@ test("la guía no desborda la pantalla", async ({ page }) => {
   await page.locator("#guia").scrollIntoViewIfNeeded();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
 });
-test("muestra creación y entrada accesibles", async ({ page }) => { await page.goto("/"); await expect(page.getByRole("heading",{name:/Scrum Poker online/})).toBeVisible(); await expect(page.locator("form").getByRole("button",{name:"Crear sala",exact:true})).toBeVisible(); await page.getByRole("button",{name:"Entrar con código"}).click(); await expect(page.getByLabel("Código de sala")).toBeVisible(); });
+test("muestra creación y entrada accesibles", async ({ page }) => { await page.goto("/"); await expect(page.getByRole("heading",{name:/Planning Poker online/})).toBeVisible(); await expect(page.locator("form").getByRole("button",{name:"Crear sala",exact:true})).toBeVisible(); await page.getByRole("button",{name:"Entrar con código"}).click(); await expect(page.getByLabel("Código de sala")).toBeVisible(); });
 test("valida un código ambiguo", async ({ page }) => { await page.goto("/"); await page.getByRole("button",{name:"Entrar con código"}).click(); await page.getByLabel("Código de sala").fill("K7M4O9Q2"); await page.getByRole("button",{name:/Entrar a la sala/}).click(); await expect(page.locator(".form-error")).toContainText("Código de sala no válido"); });

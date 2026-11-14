@@ -2,7 +2,7 @@
 /* eslint-disable @next/next/no-html-link-for-pages -- Full document navigation discards the advertising runtime on non-editorial pages. */
 import { useState, type FormEvent } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import type { SupportedLocale } from "@/i18n/config";
+import { localeNames, supportedLocales, type SupportedLocale } from "@/i18n/config";
 import { useClientReady } from "@/lib/use-client-ready";
 import { recordResourceUsage } from "@/lib/resource-usage-client";
 import { resourceHref } from "@/lib/resource-links";
@@ -27,6 +27,7 @@ export function LandingPage() {
   const locale = useLocale() as SupportedLocale;
   const href = (path: string) => resourceHref(locale, path);
   const tSeo = useTranslations("LandingSeo");
+  const tLanguage = useTranslations("Language");
   const tBrand = useTranslations("Brand");
   const tValidation = useTranslations("Validation");
   const tErrors = useTranslations("Errors");
@@ -61,6 +62,7 @@ export function LandingPage() {
         <div className="eyebrow"><Sparkles size={15} /> {tBrand("tagline")}</div>
         <h1>{t("heroLine1")}<br /><em>{t("heroLine2")}</em></h1>
         <p className="hero-lead">{t("lead")}</p>
+        <p><a className="resource-button" href={href("/demo")}>{r("landingDemoLink")} <ArrowRight size={16} aria-hidden="true" /></a></p>
         <div className="feature-row">
           <span><LockKeyhole /> {t("privateVotes")}</span><span><Radio /> {t("live")}</span><span><Layers3 /> {t("roundHistory")}</span>
         </div>
@@ -132,6 +134,11 @@ export function LandingPage() {
           </div>
     </section>
     <section className="seo-cta"><div><span>{tSeo("ctaEyebrow")}</span><h2>{tSeo("ctaTitle")}</h2><p>{tSeo("ctaBody")}</p></div><a href="#entry-title">{tSeo("ctaButton")}<ArrowRight size={18} /></a></section>
+    <nav className="landing-language-links" aria-label={tLanguage("label")}>
+      {supportedLocales.filter(language => language !== locale).map(language => (
+        <a key={language} href={`/${language}`} hrefLang={language} lang={language}>{localeNames[language]}</a>
+      ))}
+    </nav>
     <footer className="landing-footer"><span>{t("footerTime")}</span><nav aria-label={tSeo("footerNavLabel")}><a href="#guia">{tSeo("guideNav")}</a><a href="#como-funciona">{tSeo("navHow")}</a><a href="#funciones">{tSeo("navFeatures")}</a><a href="#preguntas">{tSeo("navFaq")}</a><a href="/aviso-legal">{tSeo("legalNotice")}</a><a href="/privacidad">{tSeo("privacyPolicy")}</a><a href="/cookies">{tSeo("cookiesPolicy")}</a><CookieSettingsButton>{tSeo("privacySettings")}</CookieSettingsButton></nav><span><Copy size={13} /> {t("footerShare")}</span></footer>
   </main>;
 }

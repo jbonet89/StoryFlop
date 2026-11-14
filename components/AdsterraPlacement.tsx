@@ -23,15 +23,21 @@ function AdTag({ format, label }: { format: AdsterraFormat; label: string }) {
     {hasContent && <span className="adsterra-label">{label}</span>}<div className="adsterra-content" ref={target} />
   </aside>;
 }
-export function AdsterraPlacement({ kind }: { kind: "banner" | "native" | "rectangle" }) {
+type PlacementKind = "banner" | "native" | "rectangle";
+
+export function AdsterraPlacement({ kind }: { kind: PlacementKind }) {
+  return adsterraEnabled ? <EnabledPlacement kind={kind} /> : null;
+}
+
+function EnabledPlacement({ kind }: { kind: PlacementKind }) {
   const t = useTranslations("Advertising"); const choice = useAdvertisingChoice();
   const host = useRef<HTMLDivElement>(null); const [format, setFormat] = useState<AdsterraFormat | null>(null); const [near, setNear] = useState(false);
   useEffect(() => {
-    if (!adsterraEnabled || !adsterraDelivery(window.location.hostname, navigator.userAgent)) return;
+    if (!adsterraDelivery(window.location.hostname, navigator.userAgent)) return;
     return registerAdvertisingPlacement();
   }, []);
   useEffect(() => {
-    const element = host.current; if (!element || !adsterraEnabled || choice !== "accepted" || !adsterraDelivery(window.location.hostname, navigator.userAgent)) return;
+    const element = host.current; if (!element || choice !== "accepted" || !adsterraDelivery(window.location.hostname, navigator.userAgent)) return;
     const resize = new ResizeObserver(entries => {
       const width = Math.floor(entries[0].contentRect.width);
       const next = kind === "rectangle" ? (width >= 300 ? "rectangle" : null) : kind === "native" ? (width >= 900 ? "native" : null) : width >= 728 ? "leaderboard" : width >= 320 ? "mobile" : null;
@@ -41,5 +47,5 @@ export function AdsterraPlacement({ kind }: { kind: "banner" | "native" | "recta
     const visibility = new IntersectionObserver(entries => { if (entries.some(entry => entry.isIntersecting)) { setNear(true); visibility.disconnect(); } }, { rootMargin: "200px" }); visibility.observe(element);
     return () => { resize.disconnect(); visibility.disconnect(); };
   }, [choice, kind]);
-  return <div ref={host} className="adsterra-host">{adsterraEnabled && choice === "accepted" && near && format && <AdTag key={format} format={format} label={t("label")} />}</div>;
+  return <div ref={host} className="adsterra-host">{choice === "accepted" && near && format && <AdTag key={format} format={format} label={t("label")} />}</div>;
 }

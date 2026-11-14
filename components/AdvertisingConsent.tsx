@@ -6,6 +6,10 @@ import { useClientReady } from "@/lib/use-client-ready";
 import { adsterraEnabled } from "@/lib/adsterra";
 import { setAdvertisingChoice, useAdvertisingChoice, useAdvertisingPlacements } from "@/lib/advertising-consent";
 export function AdvertisingConsent() {
+  return adsterraEnabled ? <AdvertisingConsentPanel /> : null;
+}
+
+function AdvertisingConsentPanel() {
   const t = useTranslations("Advertising"); const choice = useAdvertisingChoice();
   const ready = useClientReady(); const placements = useAdvertisingPlacements();
   const [settings, setSettings] = useState(false); const firstButton = useRef<HTMLButtonElement>(null);
@@ -16,7 +20,7 @@ export function AdvertisingConsent() {
     return () => window.removeEventListener("storyflop-advertising-settings", open);
   }, []);
   useEffect(() => { if (settings) firstButton.current?.focus(); }, [settings]);
-  if (!ready || (!settings && (!adsterraEnabled || choice !== null || placements === 0))) return null;
+  if (!ready || (!settings && (choice !== null || placements === 0))) return null;
   function choose(value: "accepted" | "rejected") { setAdvertisingChoice(value); setSettings(false); trigger.current?.focus(); }
   return <section className="advertising-consent" role="region" aria-labelledby="advertising-consent-title">
     <div><h2 id="advertising-consent-title">{t("consentTitle")}</h2><p>{t("consentBody")}</p><p><a href="/cookies">{t("cookies")}</a> · <a href="https://adsterra.com/privacy-policy/" target="_blank" rel="noreferrer">{t("providerPrivacy")}</a></p></div>

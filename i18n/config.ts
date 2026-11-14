@@ -16,9 +16,10 @@ export const localeNames: Record<SupportedLocale, string> = {
   ru: "Русский",
 };
 
-export const localeAlternates = Object.fromEntries(
-  supportedLocales.map(locale => [locale, `/${locale}`]),
-) as Record<SupportedLocale, string>;
+export const localeAlternates = {
+  ...Object.fromEntries(supportedLocales.map(locale => [locale, `/${locale}`])),
+  "x-default": `/${defaultLocale}`,
+};
 
 export function isSupportedLocale(value: string | null | undefined): value is SupportedLocale {
   return supportedLocales.includes(value?.toLowerCase() as SupportedLocale);

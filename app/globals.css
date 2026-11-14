@@ -427,6 +427,8 @@ label { display:block;font-size:12px;font-weight:750;margin:15px 0;color:#394540
 .seo-cta p { color:rgba(255,255,255,.72);max-width:650px; }
 .seo-cta>a { flex:none;display:inline-flex;align-items:center;gap:8px;padding:13px 18px;border-radius:12px;background:var(--yellow);color:#533d12;text-decoration:none;font-size:12px;font-weight:850; }
 .landing-footer nav { max-width:720px;display:flex;align-items:center;justify-content:center;gap:8px 16px;flex-wrap:wrap; }
+.landing-language-links { display:flex;justify-content:center;gap:8px 16px;flex-wrap:wrap;margin-bottom:16px; }
+.landing-language-links a { color:var(--muted);font-size:12px;text-underline-offset:3px; }
 
 /* Legal pages */
 .legal-shell { min-height:100dvh;padding:28px clamp(20px,5vw,70px) 24px;background:var(--paper); }

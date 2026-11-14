@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { supportedLocales } from "@/i18n/config";
+import { localeAlternates, supportedLocales } from "@/i18n/config";
 import { guideSlugs, resourceReviewedDate } from "@/lib/resources";
 import { resourceAlternates, resourceHref } from "@/lib/resource-links";
 
@@ -22,7 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly" as const,
       priority: locale === "es" ? 1 : 0.9,
       alternates: {
-        languages: Object.fromEntries(supportedLocales.map(item => [item, `${siteUrl}/${item}`])),
+        languages: Object.fromEntries(Object.entries(localeAlternates).map(([language, path]) => [language, `${siteUrl}${path}`])),
       },
     })),
     { url: `${siteUrl}/aviso-legal`, lastModified: new Date("2026-09-28"), changeFrequency: "yearly", priority: 0.2 },

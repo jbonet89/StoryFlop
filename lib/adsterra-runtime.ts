@@ -1,10 +1,11 @@
 "use client";
-import { adsterraDelivery, adsterraFormats, type AdsterraFormat } from "@/lib/adsterra";
+import { adsterraDelivery, adsterraEnabled, adsterraFormats, type AdsterraFormat } from "@/lib/adsterra";
 let started = false;
 let reloadRequested = false;
 export function hasAdsterraRuntime() { return started; }
 export function discardAdsterraRuntime() { if (started && !reloadRequested) { reloadRequested = true; window.location.reload(); } }
 export function loadAdsterraTag(container: HTMLElement, format: AdsterraFormat, failed: () => void) {
+  if (!adsterraEnabled) return;
   const delivery = adsterraDelivery(window.location.hostname, navigator.userAgent);
   if (!delivery) return;
   const unit = adsterraFormats[format];
